@@ -1,0 +1,108 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #EDEEF1;
+}
+
+nav {
+    background-color: #F7FBFE;
+}
+
+
+
+#content {
+    display: inline-flex;
+    float: right;
+}
+
+
+#logo {
+    width: 150px;
+    height: 60px;
+}
+
+.sidebar {
+    width: 14rem!important; 
+    min-height: 100vh; 
+}
+
+.sidebar-divider {
+    margin-right: 29px;
+    margin-left: 29px;
+}
+
+#menu {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    background-color: #FF826E;
+    max-width: 38vh;    
+}
+
+#menu ul div button {
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+    float: right;
+    background-color: #FF826E;    
+}
+
+#menu ul div button img {    
+    opacity: 0.8; 
+    border-radius: 12px;   
+}
+ 
+#menu ul div button img:hover {
+    background-color: #fca99d;
+}
+
+#menu ul div li a span {    
+    color: #FFFBFB;    
+    margin-left: 30px;    
+}
+
+#menu ul div li a span:hover {    
+    color: #F7FBFE;    
+    opacity: 0.8;
+}
+
+.container {
+    display: flex;
+}
+
+/* categoria */
+.row-inner {
+    margin-top: 25px;    
+}
+
+
+/* FOOTER */
+ footer {
+    /* background:white ; */
+    font-family: Sedan SC;
+	background-color: #F8F9FC;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px; 
+    	 
+}
+
+ #bandeiras {
+	width: 90%;
+	height: 50%;
+	margin-right: 10px;
+	padding: 0;
+	border: 0%;
+  } 
+
+
+
+
+
+
+
+
+
