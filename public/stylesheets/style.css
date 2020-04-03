@@ -35,7 +35,10 @@ nav {
 
 .menu-lateral {
     position: absolute;
+    display: flex;
     left: 0px;
+    float: left;
+
 }
 
 #menu {
@@ -103,7 +106,21 @@ nav {
 	border: 0%;
   } 
 
+#avatar {
+    border-radius: 50%;
+}
 
+.avatar-lg {
+    display: flex;
+    right: 0px;
+}
+
+#painel-cliente {
+    position: relative;
+    display: grid;
+    flex-wrap: wrap;
+    gap: 1.5%;
+}
 
 
 

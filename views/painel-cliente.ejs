@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <% include partials/head %> 
+</head>
+<body>
+<% include partials/menu-logado %>
+
+<div class="menu-lateral">
+    <% include partials/mlateral-cliente %>
+</div>
+
+
+<!-- CONTEÚDO PRINCIPAL -->
+<div id="painel-cliente" class="container">
+    <h1>Paola Oliveira</h1>
+    <!-- ### Card de Dados Pessoais -->
+    <div class="card border-left-primary shadow">
+        
+        <div class="card-body">
+            <h3>Dados Pessais</h3>
+            <div class="row">
+                <div class='col-8'>
+                    <p>Nome Completo: Paola Oliveira</p>
+                    <p>Data Nascimento: 14/07/1990</p>
+                    <p>E-mail: paula@email.com.br</p>
+
+                </div>
+                <div class="avatar-lg col-4 text-right">
+                    <img id='avatar' src='images/perfilCliente.png' width="300px" height="300px" alt='avatar'>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- ### CARD DE ENDERECO -->
+    <div class="card border-left-primary shadow">
+        <div class="card-body">
+            <h3>Endereço Cadastrado:</h3>
+            <div class="row">
+                <div class='col-12'>
+                    <p>Rua: </p>
+                    <p>Numero da casa: </p>
+                    <p>Complemento: </p>
+                    <p>Cidade: </p>
+                    <p>Estado: </p>
+                    <p>CEP: </p>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ### CARD DE MUDAR SENHA -->
+    <div class="card border-left-primary shadow">
+        <div class="card-body">
+            <h3>Mudar Senha</h3>
+            <div class="row">
+                <div class='col-12'>
+                    <p>Senha Atual: </p>
+                    <p>Nova Senha: </p>
+                    <p>Confirmar Nova Senha: </p>                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ### CARD DE MUDAR PERFIL -->
+    <div class="card border-left-primary shadow">
+        <div class="card-body">
+            <h3>Alterar para Vendedor</h3>
+        </div>
+    </div>
+<!-- ### Fazer Footer Geral -->
+    <h6>Copyright Quero Festa - 2020</h6>    
+</div>

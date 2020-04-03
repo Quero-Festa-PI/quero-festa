@@ -21,4 +21,8 @@ router.get('/comemoracoes', function(req, res, next) {
   res.render('comemoracoes', {page:'comemoracoes', menuId:'comemoracoes'});
 });
 
+router.get('/painel-cliente', function(req, res, next) {
+  res.render('painel-cliente', {page:'painel-cliente', menuId:'login'});
+});
+
 module.exports = router;
