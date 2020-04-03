@@ -33,6 +33,11 @@ nav {
     margin-left: 29px;
 }
 
+.menu-lateral {
+    position: absolute;
+    left: 0px;
+}
+
 #menu {
     display: flex;
     flex-direction: column;
