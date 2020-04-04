@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <% include partials/head %> 
+</head>
+<body>
+<% include partials/menu-logado %>
+
+<div class="menu-lateral">
+    <% include partials/mlateral-cliente %>
+</div>
+
+
+<!-- CONTEÚDO PRINCIPAL -->
+<div id="painel-cliente" class="container">
+    <h1>Decorações Oliveira</h1>
+    <!-- ### CARD DE DADOS -->
+    <div class="card painel-dash border-left-primary shadow">
+        <div class="card-body painel-dash">
+            
+            <div class="row">
+                <div class='col-4'>
+                    <h3>Descrição</h3>
+                </div>
+                
+                 
+            </div>
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <div class="painel-dados row">
+                <div class="col-4 text-center">
+                    <img id='avatar' class='shadow border-bottom-primary' src='images/perfilCliente.png' width="230px" height="230px" alt='avatar'>
+                </div>  
+                
+                <div class='col-8'>
+                    <div class="row text-left">
+                        <div class="text-left col-3">
+                            <p>Slogan:</p>
+                            <p>Descrição:</p>
+                        </div>
+                        <div class="text-left col-9 text-primary">
+                            <p>Decorações para todo tipo de festa</p>
+                            <p>Nossa loja trabalha com decorações para comemorações como aniversários, e confraternizações.
+                            Não trabalhamos com kits de alimentos!</p>
+                        </div>
+                    </div>
+
+                    <!-- Divider -->
+                    <hr class="sidebar-divider my-0">
+
+                    <div class='row text-left'>
+                        <div class="text-left col-3">
+                            <p>Localização:</p>
+                            
+                        </div>
+                        <div class="text-left col-9 text-primary">
+                            <p>Guarulhos - SP</p>
+                        </div>
+                    </div>
+                    <!-- Divider -->
+                    <hr class="sidebar-divider my-0">
+
+                    <div class='row text-left'>
+                        <div class="text-left col-3">
+                            <p>Avaliação:</p>
+                            
+                        </div>
+                        <div class="text-left col-9 text-primary">
+                            <p>5.0</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div class=" container">
+    <%include partials/anuncios %>
+</div>
+<%include partials/footer-alt %>

@@ -97,6 +97,10 @@ nav {
     border-radius: 20px; 
     	 
 }
+footer-alt {
+    /* background:white ; */
+    font-family: Sedan SC;    	 
+}
 
  #bandeiras {
 	width: 90%;
@@ -108,23 +112,29 @@ nav {
 
 #avatar {
     border-radius: 50%;
+    display: inline;
+    
 }
 
-.avatar-lg {
-    display: flex;
-    right: 0px;
-}
 
 #painel-cliente {
     position: relative;
     display: grid;
     flex-wrap: wrap;
     gap: 1.5%;
+    /* align-content: stretch; */
 }
 
 .painel-dash {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 20px; 
+    border-radius: 20px;
+    display: grid;
+}
+
+.painel-dados {
+    display: flex;
+    position: float;
+    padding: 2%;
 }
 
 #painel-vendedor {
@@ -132,18 +142,31 @@ nav {
     display: grid;
     flex-wrap: wrap;
     gap: 1.5%;
+
 }
 
 .painel-metricas {
-    display: flex;
+    display: inline-flex;
     float: left;
-    gap: 1.5%
+    gap: 0.5%;
+    
 }
 
 .painel-graf {
     display: flex;
     float: left;
     gap: 1.5%
+}
+
+.btn-cheio {
+    background-color: #FF826E;
+}
+
+.btn-alt {
+    color: #FF826E;
+    background-color: white;
+    border-top: none;
+    border-bottom-color:  #FF826E;
 }
 
 

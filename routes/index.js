@@ -29,4 +29,9 @@ router.get('/painel-vendedor', function(req, res, next) {
   res.render('painel-vendedor', {page:'painel-vendedor', menuId:'login'});
 });
 
+router.get('/loja', function(req, res, next) {
+  res.render('perfil-loja', {page:'perfil-loja', menuId:'login'});
+});
+
+
 module.exports = router;

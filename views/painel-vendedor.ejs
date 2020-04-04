@@ -13,8 +13,64 @@
 
 <!-- CONTEÚDO PRINCIPAL -->
 <div id="painel-vendedor" class="container">
-    <h1>Painel Vendedor </h1>
+    <h1>Decor Oliveira </h1>
 
+    <div class="card painel-dash border-left-primary shadow">
+        <div class="card-body painel-dash">
+            
+            <div class="row">
+                <div class='col-4'>
+                    <h3>Descrição</h3>
+                </div>
+                <div class='col-8 text-right'>
+                    <button class="btn btn-alt">Alterar Dados</button>
+                </div>
+                
+                 
+            </div>
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <div class="painel-dados row">
+                <div class="col-4 text-center">
+                    <img id='avatar' class='shadow border-bottom-primary' src='images/perfilCliente.png' width="230px" height="230px" alt='avatar'>
+                    <br><br>
+                    <button class="btn btn-alt text-center col-12">Escolha sua foto!</button>
+                </div>  
+                
+                <div class='col-8'>
+                    <div class="row text-left">
+                        <div class="text-left col-3">
+                            <p>Slogan:</p>
+                            <p>Descrição:</p>
+                        </div>
+                        <div class="text-left col-9 text-primary">
+                            <p>Decorações para todo tipo de festa</p>
+                            <p>Nossa loja trabalha com decorações para comemorações como aniversários, e confraternizações.
+                            Não trabalhamos com kits de alimentos!</p>
+                        </div>
+                    </div>
+
+                    <!-- Divider -->
+                    <hr class="sidebar-divider my-0">
+
+                    <div class='row text-left'>
+                        <div class="text-left col-3">
+                            <p>Endereço:</p>
+                            <p>Cidade:</p>
+                            <p>CEP:</p>
+                        </div>
+                        <div class="text-left col-9 text-primary">
+                            <p>Minha Rua, 110, apto 20 - Meu Bairro</p>
+                            <p>Guarulhos - SP</p>
+                            <p>07296-000</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
     <div class='painel-metricas'>
             <!-- ### Card de Ganhos -->
             <div class="card painel-dash border-left-primary shadow col-3">
@@ -115,11 +171,11 @@
 
     <!-- ### CARD DE MUDAR PERFIL -->
     <div class="card painel-dash border-left-primary shadow">
-        <div class="card-body painel-dash">
-            <h3>Alterar para Vendedor</h3>
-        </div>
+        <a href='../painel-cliente'>
+            <button class="btn btn-cheio btn-small col-12 text-left">
+                Alterar para Perfil Cliente </button>
+        </a>
     </div>
-    <br><br>
-<!-- ### Fazer Footer Geral -->
-    <h6>Copyright Quero Festa - 2020</h6>    
+
+    <%include partials/footer-alt.ejs %>
 </div>
