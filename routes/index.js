@@ -33,5 +33,9 @@ router.get('/loja', function(req, res, next) {
   res.render('perfil-loja', {page:'perfil-loja', menuId:'login'});
 });
 
+router.get('/cart', function(req, res, next) {
+  res.render('cart', {page:'cart', menuId:'cart'});
+});
+
 
 module.exports = router;
