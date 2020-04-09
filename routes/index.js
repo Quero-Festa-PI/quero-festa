@@ -26,5 +26,9 @@ router.get('/especiais', produtoController.especiais);
 router.get('/comemoracoes', produtoController.comemoracoes);
 
 
+router.get('/cart', function(req, res, next) {
+  res.render('cart', {page:'cart', menuId:'cart'});
+});
+
 
 module.exports = router;
