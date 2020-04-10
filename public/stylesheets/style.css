@@ -115,53 +115,8 @@ footer-alt {
 	border: 0%;
   } 
 
-#avatar {
-    border-radius: 50%;
-    display: inline;
-    
-}
 
-
-#painel-cliente {
-    position: relative;
-    display: grid;
-    flex-wrap: wrap;
-    gap: 1.5%;
-    /* align-content: stretch; */
-}
-
-.painel-dash {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-    display: grid;
-}
-
-.painel-dados {
-    display: flex;
-    position: float;
-    padding: 2%;
-}
-
-#painel-vendedor {
-    position: relative;
-    display: grid;
-    flex-wrap: wrap;
-    gap: 1.5%;
-
-}
-
-.painel-metricas {
-    display: inline-flex;
-    float: left;
-    gap: 0.5%;
-    
-}
-
-.painel-graf {
-    display: flex;
-    float: left;
-    gap: 1.5%
-}
+  /* # Configuração dos Botoes  */
 
 .btn-cheio {
     background-color: #FF826E;
@@ -169,11 +124,21 @@ footer-alt {
 
 .btn-alt {
     color: #FF826E;
-    background-color: white;
+    background-color: transparent ;
     border-top: none;
     border-bottom-color:  #FF826E;
 }
 
+/* # Configuração de Fontes */
+
+.pagina-titulo {
+    font-size: 40px;
+    font-family: sedan sc;
+    font-weight: bold;
+    color: #fcd770;
+    text-decoration: border;
+    text-shadow: -1px 0 #FF826E, 0 1px #FF826E, 1px 0 #FF826E, 0 -1px #FF826E;
+}
 
 
 
