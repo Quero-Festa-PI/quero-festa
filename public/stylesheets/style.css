@@ -126,7 +126,8 @@ footer-alt {
     color: #FF826E;
     background-color: transparent ;
     border-top: none;
-    border-bottom-color:  #FF826E;
+    /* border-bottom-color:  #FF826E; */
+    border-bottom-color:  none;
 }
 
 /* # Configuração de Fontes */
