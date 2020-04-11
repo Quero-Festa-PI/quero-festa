@@ -1,0 +1,152 @@
+<% include partials/header %>
+
+<body>
+  <!-- PAGINA COMPLETA -->
+  <div class="page">
+    <% include partials/menu-logado %>
+    
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div id="meio-home" class="container">      
+      <div class="row ">
+        <% include partials/menulateral %>               
+      </div>
+     <!-- # Inicio Painel -->
+        <div id="painel-publico" class="container">
+            <!-- <h3>Decorações Oliveira</h3> -->
+            <br>
+            <!-- ### CARD DE DADOS -->
+            <div class="card painel-dash border-left-primary shadow">
+                <div class="card-body painel-dash"> 
+                    <div class="row">
+                        <div class='col-7'>
+                            <h3>Noite do Boteco</h3>
+                        </div>
+                    </div>
+                    <!-- Divider -->
+                    <hr class="sidebar-divider my-0">
+        
+                    <div class="painel-dados row">
+                        <div class="col-7 text-center">
+                            <!-- <img id='avatar-produto' class='img-fluid shadow border-bottom-primary' src='images/noiteBoteco.png' width="400px" height="400px" alt='avatar'> -->
+                            <%include partials/carrosel-produto %>
+                        </div>  
+                        
+                    
+                        <div class='col-5'>
+                            <div class="row text-left">
+                                <div class="text-left col-5">
+                                    <h5>Vendedor:</h5>
+                                    <h5>Preço:</h5>
+                                </div>
+                                <div class="text-left col-7 text-primary">
+                                    <h5>Bar do Beto</h5>
+                                    <h4>R$ 180,00</h4>
+                                </div>
+                            </div>
+        
+                            <!-- Divider -->
+                            <hr class="sidebar-divider my-0">
+        
+                            <div class='row text-left'>
+                                <div class="text-left col-5">
+                                    <h6>Frete:</h6>
+                                    
+                                </div>
+                                <div class="text-left col-7 text-primary">
+                                    <h6>A combinar</h6>
+                                </div>
+                                
+                            </div>
+                            <!-- Divider -->
+                            <hr class="sidebar-divider my-0">
+        
+                            <div class='row text-left'>
+                                <div class="text-left col-5">
+                                    <h6>Avaliação:</h6>
+                                    
+                                </div>
+                                <div class="text-left col-7 text-primary">
+                                    <h6>5.0</h6>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-8"></div>
+                        <button class="btn-cheio btn btn-md col-3" href='#' action=''>Comprar</button>
+                    </div>
+                </div>
+
+        
+        
+            </div>
+
+            <!-- ### CARD DE INFORMACAO -->
+            <div class="card painel-dash border-left-primary  shadow">
+                <div class="card-body painel-dash"> 
+                    <div class="row">
+                        <div class='col-7'>
+                            <h4>Informações</h4>
+                        </div>
+                    </div>
+                    <!-- Divider -->
+                    <hr class="sidebar-divider my-0">
+        
+                    <div class="painel-dados row">                  
+                    
+                        
+                            <div class="row text-left">
+                                <div class="text-left col-7">
+                                    <h5>Lista de Itens:</h5>
+                                    <ul class="text-primary">
+                                        <li>30 Espetinhos para Assar</li>
+                                        <li>100 Salgadinhos Diversos</li>
+                                        <li>Guardanapos descartaveis com tema Boteco</li>
+                                        <li>Não acompanha bebida</li>
+                                    </ul>
+                                </div>
+                                <div class="text-left col-5">
+                                    <h5>Descrição:</h5>
+                                    <h6>Kit combo com tema de Noite do Boteco</h6>
+                                </div>
+                            </div>
+                        </div>
+                
+                        
+                    </div>
+                    
+            </div>
+
+
+            <!-- ### CARD DE MAIS ANUNCIOS -->
+            
+                <div class="card-body"> 
+                    <div class="row">
+                        <div class='col-7'>
+                            <h4>Mais Anuncios deste Vendedor</h4>
+                        </div>
+                    </div>
+                    <!-- Divider -->
+                    <hr class="sidebar-divider my-0">
+           
+                        <% include partials/anuncios-vendedor %>
+
+            </div>
+
+        </div>
+
+
+        
+      </div>
+    </div>
+
+  </div>
+
+  <% include partials/footer-alt %>
+</div>
+</body>
+<% include partials/script %>
+</html>
