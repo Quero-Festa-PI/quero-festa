@@ -1,0 +1,14 @@
+#top-links {
+    float: left;
+    height: 56px;
+}
+
+.toggle_cont li a span{
+    display: inline-block;
+    text-decoration: none;
+}
+
+#menu-horizontal-vendedor {
+    background-color: rgba(248, 134, 116, 0.8);
+    border: 20px;    
+}

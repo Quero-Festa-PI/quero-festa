@@ -1,164 +1,170 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
- <% include partials/head %> 
-</head>
+<% include partials/header %>
+
 <body>
-<% include partials/menu-logado %>
-
-<div class="menu-lateral">
-    <% include partials/mlateral-cliente %>
-</div>
-
-
-<!-- CONTEÚDO PRINCIPAL -->
-<div id="painel-cliente" class="container">
-    <h1>Painel Cliente</h1>
-    <!-- ### CARD DE DADOS -->
-    <div class="card painel-dash border-left-primary shadow">
-        <div class="card-body painel-dash">
-            
-            <div class="row">
-                <div class='col-4'>
-                    <h3>Dados Pessais</h3>
-                </div>
-                <div class='col-8 text-right'>
-                    <button class="btn btn-alt">Alterar Dados</button>
-                </div>
-                
-                 
-            </div>
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <div class="painel-dados row">
-                <div class='col-8'>
-                    <div class="row text-left">
-                        <div class="text-left col-3">
-                            <p>Nome Completo:</p>
-                            <p>Data Nascimento:</p>
-                            <p>E-mail:</p>
-                        </div>
-                        <div class="text-left col-9 h4 text-primary">
-                            <p>Paola Oliveira</p>
-                            <p>14/07/1990</p>
-                            <p>paula@email.com.br</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4 text-center">
-                    <img id='avatar' class='shadow border-bottom-primary' src='images/perfilCliente.png' width="230px" height="230px" alt='avatar'>
-                    <br><br>
-                    <button class="btn btn-alt text-center col-12">Escolha sua foto!</button>
-                </div>  
-                
-            </div>
-        </div>
-    </div>
-
-<!-- ### CARD DE ENDERECO -->
-    <div class="card painel-dash border-left-primary shadow">
-        <div class="card-body ">
-            <div class="row">
-                <div class='col-4'>
-                    <h3>Endereço Cadastrado:</h3>
-                </div>
-                <div class='col-8 text-right'>
-                    <button class="btn btn-alt">Alterar Endereço</button>
-                </div>
-                 
-            </div>
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <div class="painel-dados row">
-                <div class='col-12'>
-                    <div class="row text-left">
-                        <div class="row col-12">
-                            <div class="text-left col-1">
-                                <div class="col-1 text-left"><button class="btn btn-sm btn-outline-secondary">Buscar</button></div>
-                                
-                            </div>  
-                            <div class="text-right col-1">
-                                <p>CEP:</p>
-                            </div>
-                            <div class="text-left col-2 text-primary">
-                                <p>07196-000</p>
-                            </div>
-                        </div>
-                        <div class="row col-12">
-                            <div class="text-right col-2">
-                                
-                                <p>Endereço: </p>
-                                <p>Complemento: </p>
-                                <p>Cidade: </p>
-                            </div>
-                            <div class="text-left col-2 h5 text-primary">
-                                
-                                <p>Minha Rua</p>
-                                <p>apto 20</p>
-                                <p>Guarulhos</p>
-                            </div>
-                            
-                            <div class="text-right col-2">
-                                <p>Nº:</p>
-                                <p>Bairro:</p>
-                                <p>UF:</p>
-                                
-                            </div>
-                            <div class="text-left col-3 text-primary">
-                                
-                                <p>110</p>
-                                <p>Meu bairro</p>
-                                <p>SP</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-
-
-    <!-- ### CARD DE MUDAR SENHA -->
-    <div class="card painel-dash border-left-primary shadow">
-        <div class="card-body">
-            <div class="row">
-                <div class='col-4'>
-                    <h3>Mudar Senha</h3>
-                </div>
-                <div class='col-8 text-right'>
-                    <button class="btn btn-alt">Alterar Senha</button>
-                </div>
-                 
-            </div>
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-            
-            <div class="row">
-                <div class='col-2'>
-                    <p>Senha Atual: </p>
-                    <p>Nova Senha: </p>
-                    <p>Digite Novamente: </p>                    
-
-                </div>
-                <div class='col-2'>
-                    <p>******</p>
-                    <p>******</p>
-                    <p>******</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ### CARD DE MUDAR PERFIL -->
-    <div class="card painel-dash border-left-primary shadow">
-        <a href='../painel-vendedor'>
-            <button class="btn btn-cheio btn-small col-12 text-left">
-                Alterar para Perfil Vendedor </button>
-        </a>
-    </div>
+  <!-- PAGINA COMPLETA -->
+  <div class="page">
+    <% include partials/menu-logado %>
     
-    <%include partials/footer-alt.ejs %>   
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div id="meio-home" class="container">      
+      <div class="row ">
+        <% include partials/menulateral %>               
+      </div>
+                <!-- CONTEÚDO PRINCIPAL -->
+        <div id="painel-cliente" class="container">
+        <!-- <h2 class= 'pagina-titulo'>Perfil Cliente</h2> -->
+        <br>
+        <!-- ### CARD DE DADOS -->
+        <div class="card painel-dash border-left-primary shadow">
+            <div class="card-body painel-dash">
+                
+                <div class="row">
+                    <div class='col-4'>
+                        <h4>Dados Pessoais</h4>
+                    </div>
+                    <div class='col-8 text-right'>
+                        <button class="btn btn-alt">Alterar Dados</button>
+                    </div>
+                    
+                    
+                </div>
+                <!-- Divider -->
+                <hr class="sidebar-divider my-0">
+
+                <div class="painel-dados row">
+                    <div class='col-8'>
+                        <div class="row text-left">
+                            <div class="text-left col-4">
+                                <h6>Nome Completo:</h6>
+                                <h6>Data Nascimento:</h6>
+                                <h6>E-mail:</h6>
+                            </div>
+                            <div class="text-left col-8 h4 text-primary">
+                                <h6>Paola Oliveira</h6>
+                                <h6>14/07/1990</h6>
+                                <h6>paula@email.com.br</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 text-center">
+                        <img id='avatar' class='shadow border-bottom-primary' src='images/perfilCliente.png' width="150px" height="150px" alt='avatar'>
+                        <button class="btn btn-alt text-center">Escolha sua foto!</button>
+                    </div>  
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- ### CARD DE ENDERECO -->
+        <div class="card painel-dash border-left-primary shadow">
+            <div class="card-body ">
+                <div class="row">
+                    <div class='col-5'>
+                        <h4>Endereço Cadastrado</h4>
+                    </div>
+                    <div class='col-7 text-right'>
+                        <button class="btn btn-alt">Alterar Endereço</button>
+                    </div>
+                    
+                </div>
+                <!-- Divider -->
+                <hr class="sidebar-divider my-0">
+
+                <div class="painel-dados row">
+                    <div class='col-12'>
+                        <div class="row text-left">
+                            <div class="row col-12">
+                                <div class="text-left col-1">
+                                    <div class=" text-left"><button class="btn btn-sm btn-outline-secondary">Buscar</button></div>
+                                    
+                                </div>  
+                                <div class="text-right col-2">
+                                    <h6>CEP:</h6>
+                                </div>
+                                <div class="text-left col-2 text-primary">
+                                    <h6>07196-000</h6>
+                                </div>
+                            </div>
+                            <div class="row col-12">
+                                <div class="text-right col-3">
+                                    
+                                    <h6>Endereço:</h6>
+                                    <h6>Complemento:</h6>
+                                    <h6>Cidade:</h6>
+                                </div>
+                                <div class="text-left col-2 h5 text-primary">
+                                    
+                                    <h6>Minha Rua</h6>
+                                    <h6>apto 20</h6>
+                                    <h6>Guarulhos</h6>
+                                </div>
+                                
+                                <div class="text-right col-2">
+                                    <h6>Nº:</h6>
+                                    <h6>Bairro:</h6>
+                                    <h6>UF:</h6>
+                                    
+                                </div>
+                                <div class="text-left col-3 text-primary">
+                                    
+                                    <h6>110</h6>
+                                    <h6>Meu bairro</h6>
+                                    <h6>SP</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+
+        <!-- ### CARD DE MUDAR SENHA -->
+        <div class="card painel-dash border-left-primary shadow">
+            <div class="card-body">
+                <div class="row">
+                    <div class='col-4'>
+                        <h4>Mudar Senha</h4>
+                    </div>
+                    <div class='col-8 text-right'>
+                        <button class="btn btn-alt">Alterar Senha</button>
+                    </div>
+                    
+                </div>
+                <!-- Divider -->
+                <hr class="sidebar-divider my-0">
+                
+                <div class="row">
+                    <div class='col-3'>
+                        <h6>Senha Atual: </h6>
+                        <h6>Nova Senha: </h6>
+                        <h6>Digite Novamente: </h6>                    
+
+                    </div>
+                    <div class='col-2'>
+                        <h6>******</h6>
+                        <h6>******</h6>
+                        <h6>******</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ### CARD DE MUDAR PERFIL -->
+        <div class="card painel-dash border-left-primary shadow">
+            <a href='../painel-vendedor'>
+                <button class="btn btn-cheio btn-small col-12 text-left">
+                    Alterar para Perfil Vendedor </button>
+            </a>
+        </div>
+
+        <!-- #  Fim do Painel -->
+      </div>
+    </div>
+  </div>
+  <% include partials/footer-alt %>
 </div>
+</body>
+<% include partials/script %>
+</html>

@@ -1,0 +1,93 @@
+ <% include partials/header %> 
+<body>
+<% include partials/menu-logado %>
+
+<div class="menu-lateral">
+    <% include partials/mlateral-cliente %>
+</div>
+    <div class="wrap cf">
+   
+        <div class="heading cf">
+          <h1>Finalização do Pedido</h1>
+          <a href="#" class="continue">Continuar Comprando</a>
+        </div>
+        <div class="cart">
+
+          <ul class="cartWrap">
+            <li class="items odd">
+              
+          <div class="infoWrap"> 
+              <div class="cartSection">
+              <img src='./images/combo1.png' alt="" class="itemImg" />
+              <h3><p class="itemNumber">Combo Festa Premium</p></h3>
+                <p>Torta marfim de morango<br />
+                200 salgados<br />
+                200 docinhos<br />
+                3 Refrigerantes 2LT<br /></p>
+                <p> <input type="text"  class="qty" placeholder="1"/> x R$437.00</p>
+              
+                <p class="stockStatus"> Em estoque</p>
+              </div>  
+          
+              
+              <div class="prodTotal cartSection">
+                <p>R$437.00</p>
+              </div>
+                    <div class="cartSection removeWrap">
+                 <a href="#" class="remove">x</a>
+              </div>
+            </div>
+            </li>
+            <li class="items even">
+              
+             <div class="infoWrap"> 
+              <div class="cartSection">
+               
+              <img src="./images/combo1.png" alt="" class="itemImg" />
+              <h3><p class="itemNumber">Combo Confraternização</p></h3>
+                <p>70 salgados (6 tipos)<br />
+                1.5kg biscoito de queijo<br />
+                10 mini panetones (2 sabores)<br />
+                2 Refrigerantes 2LT<br />
+                1 suco 1LT<br /></p>
+              
+                 <p> <input type="text"  class="qty" placeholder="1"/> x R$128.90</p>
+              
+                <p class="stockStatus"> Em estoque</p>
+              </div>  
+          
+              
+              <div class="prodTotal cartSection">
+                <p>R$128.90</p>
+              </div>
+                    <div class="cartSection removeWrap">
+                 <a href="#" class="remove">x</a>
+              </div>
+            </div>
+            </li>
+            
+          
+       
+          </ul>
+        </div>
+        
+        <div class="promoCode"><label for="promo">Tem um cupom?</label><input type="text" name="promo" placholder="Insira aqui o código" />
+        <a href="#" class="btn"></a></div>
+        
+        <div class="subtotal cf">
+          <ul>
+            <li class="totalRow"><span class="label">Produtos</span><span class="value">R$565.90</span></li>
+            
+                <li class="totalRow"><span class="label">Frete</span><span class="value">R$20.00</span></li>
+            
+
+                  <li class="totalRow final"><span class="label">Total</span><span class="value">R$585.90</span></li>
+            <li class="totalRow"><a href="#" class="btn continue">Finalizar Compra</a></li>
+          </ul>
+        </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

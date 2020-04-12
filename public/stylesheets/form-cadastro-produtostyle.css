@@ -1,0 +1,22 @@
+#form-img label img{
+	width: 85%;
+	margin-top: 10px;
+	display: block;
+	cursor: pointer;
+}
+
+#form-img label input[type="file"]{
+	display: none;
+}
+
+nav li a span {    
+    color: #FFFBFB;            
+}
+
+.form-group label {
+	color: #6887E3;
+}
+
+.form-group legend {
+	color: #6887E3;
+}

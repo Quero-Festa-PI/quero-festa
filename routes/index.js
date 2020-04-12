@@ -1,36 +1,33 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
-  res.render('index', {page:'Home', menuId:'home'});
-});
 
-router.get('/aniversario', function(req, res, next) {
-  res.render('aniversario', {page:'Aniversario', menuId:'aniversario'});
-});
 
-router.get('/bodas', function(req, res, next) {
-  res.render('bodas', {page:'Bodas', menuId:'bodas'});
-});
+// Chamando os controllers 
+const lojaController = require('../controllers/lojaController');
+const produtoController = require ('../controllers/produtoController');
 
-router.get('/especiais', function(req, res, next) {
-  res.render('especiais', {page:'Especiais', menuId:'especiais'});
-});
+//Requisições loja
+router.get ('/', lojaController.index);
+router.get ('/logar', lojaController.logar);
+router.get ('/cadastro', lojaController.cadastro);
+router.get ('/painel-vendedor', lojaController.painelVendedor);
+router.get ('/painel-cliente', lojaController.painelCliente);
+router.get ('/loja', lojaController.loja);
 
-router.get('/comemoracoes', function(req, res, next) {
-  res.render('comemoracoes', {page:'comemoracoes', menuId:'comemoracoes'});
-});
+// Requisições produtos
+router.get ('/buscar' , produtoController.buscar);
+router.get ('/cadastrar-produto', produtoController.cadastrar);
 
-router.get('/painel-cliente', function(req, res, next) {
-  res.render('painel-cliente', {page:'painel-cliente', menuId:'login'});
-});
+//Categorias
+router.get ('/aniversario', produtoController.aniversario);
+router.get('/bodas', produtoController.bodas);
+router.get('/especiais', produtoController.especiais);
+router.get('/comemoracoes', produtoController.comemoracoes);
 
-router.get('/painel-vendedor', function(req, res, next) {
-  res.render('painel-vendedor', {page:'painel-vendedor', menuId:'login'});
-});
 
-router.get('/loja', function(req, res, next) {
-  res.render('perfil-loja', {page:'perfil-loja', menuId:'login'});
+router.get('/cart', function(req, res, next) {
+  res.render('cart', {page:'cart', menuId:'cart'});
 });
 
 
