@@ -1,78 +1,92 @@
 <% include partials/header %>
+
 <body>
-<% include partials/menu-logado %>
-
-<div class="menu-lateral">
-    <% include partials/mlateral-cliente %>
-</div>
-
-
-<!-- CONTEÚDO PRINCIPAL -->
-<div id="painel-cliente" class="container">
-    <h1>Decorações Oliveira</h1>
-    <!-- ### CARD DE DADOS -->
-    <div class="card painel-dash border-left-primary shadow">
-        <div class="card-body painel-dash">
-            
-            <div class="row">
-                <div class='col-4'>
-                    <h3>Descrição</h3>
-                </div>
-                
-                 
-            </div>
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <div class="painel-dados row">
-                <div class="col-4 text-center">
-                    <img id='avatar' class='shadow border-bottom-primary' src='images/perfilCliente.png' width="230px" height="230px" alt='avatar'>
-                </div>  
-                
-                <div class='col-8'>
-                    <div class="row text-left">
-                        <div class="text-left col-3">
-                            <p>Slogan:</p>
-                            <p>Descrição:</p>
-                        </div>
-                        <div class="text-left col-9 text-primary">
-                            <p>Decorações para todo tipo de festa</p>
-                            <p>Nossa loja trabalha com decorações para comemorações como aniversários, e confraternizações.
-                            Não trabalhamos com kits de alimentos!</p>
-                        </div>
-                    </div>
-
-                    <!-- Divider -->
-                    <hr class="sidebar-divider my-0">
-
-                    <div class='row text-left'>
-                        <div class="text-left col-3">
-                            <p>Localização:</p>
-                            
-                        </div>
-                        <div class="text-left col-9 text-primary">
-                            <p>Guarulhos - SP</p>
+  <!-- PAGINA COMPLETA -->
+  <div class="page">
+    <% include partials/menu-logado %>
+    
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div id="meio-home" class="container">      
+      <div class="row ">
+        <% include partials/menulateral %>               
+      </div>
+     <!-- # Inicio Painel -->
+        <div id="painel-publico" class="container">
+            <!-- <h3>Decorações Oliveira</h3> -->
+            <br>
+            <!-- ### CARD DE DADOS -->
+            <div class="card painel-dash border-left-primary  shadow">
+                <div class="card-body painel-dash">
+                    
+                    <div class="row">
+                        <div class='col-4'>
+                            <h3>Decor Oliveira</h3>
                         </div>
                     </div>
                     <!-- Divider -->
                     <hr class="sidebar-divider my-0">
+        
+                    <div class="painel-dados row">
+                        <div class="col-4 text-center">
+                            <img id='avatar' class='shadow border-bottom-primary' src='images/deco-avatar.png' width="200px" height="200px" alt='avatar'>
+                        </div>  
+                        
+                        <div class='col-8'>
+                            <div class="row text-left">
+                                <div class="text-left col-3">
+                                    <h6>Slogan:</h6>
+                                    <h6>Descrição:</h6>
+                                </div>
+                                <div class="text-left col-9 text-primary">
+                                    <h6>Decorações para todo tipo de festa</h6>
+                                    <h6>Nossa loja trabalha com decorações para comemorações como aniversários, e confraternizações.
+                                    Não trabalhamos com kits de alimentos!</h6>
+                                </div>
+                            </div>
+        
+                            <!-- Divider -->
+                            <hr class="sidebar-divider my-0">
+        
+                            <div class='row text-left'>
+                                <div class="text-left col-3">
+                                    <h6>Localização:</h6>
+                                    
+                                </div>
+                                <div class="text-left col-9 text-primary">
+                                    <h6>Guarulhos - SP</h6>
+                                </div>
+                            </div>
+                            <!-- Divider -->
+                            <hr class="sidebar-divider my-0">
+        
+                            <div class='row text-left'>
+                                <div class="text-left col-3">
+                                    <h6>Avaliação:</h6>
+                                    
+                                </div>
+                                <div class="text-left col-9 text-primary">
+                                    <h6>5.0</h6>
+                                </div>
+                            </div>
+                        </div>
+                        
 
-                    <div class='row text-left'>
-                        <div class="text-left col-3">
-                            <p>Avaliação:</p>
-                            
-                        </div>
-                        <div class="text-left col-9 text-primary">
-                            <p>5.0</p>
-                        </div>
+
                     </div>
                 </div>
-                
             </div>
+              <!-- ### Anuncios da Loja -->
+        <div class="row container">
+            <%include partials/anuncios %>
         </div>
+        </div>
+      </div>
     </div>
+
+  </div>
+
+  <% include partials/footer-alt %>
 </div>
-<div class=" container">
-    <%include partials/anuncios %>
-</div>
-<%include partials/footer-alt %>
+</body>
+<% include partials/script %>
+</html>

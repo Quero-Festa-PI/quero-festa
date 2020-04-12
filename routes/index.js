@@ -30,5 +30,11 @@ router.get('/cart', function(req, res, next) {
   res.render('cart', {page:'cart', menuId:'cart'});
 });
 
+// ## Não sei fazer bonitinho, sorry Leo ## 
+router.get('/produto', function(req, res, next) {
+  res.render('produto', {page:'produto', menuId:'produto'});
+});
+
+
 
 module.exports = router;
