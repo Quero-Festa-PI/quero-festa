@@ -1,0 +1,281 @@
+.checkout1 {
+position: absolute;
+width: 725px;
+height: 234px;
+left: 381px;
+top: 246px;
+
+background: #F8F9FC;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
+}
+
+.checkout2 {
+
+    position: absolute;
+    width: 427px;
+    height: 600px;
+    left: 1152px;
+    top: 246px;
+    
+    background: #F8F9FC;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+
+.checkout3 {
+
+position: absolute;
+width: 725px;
+height: 192px;
+left: 384px;
+top: 500px;
+
+background: #F8F9FC;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
+}
+
+.checkout4 {
+
+position: absolute;
+width: 725px;
+height: 284px;
+left: 387px;
+top: 710px;
+
+background: #F8F9FC;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
+}
+
+.checkout5 {
+
+position: absolute;
+width: 198px;
+height: 108px;
+left: 1152px;
+top: 886px;
+
+background: #F8F9FC;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
+}
+
+.checkout6 {
+
+position: absolute;
+width: 198px;
+height: 108px;
+left: 1381px;
+top: 886px;
+
+background: #F8F9FC;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
+}
+
+.confirmar {
+
+  position: absolute;
+  width: 231px;
+  height: 29px;
+  left: 403px;
+  top: 267px;
+  
+  font-family: Carme;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 29px;
+    
+  color: #6887E3; }
+
+.finalizacao {
+
+position: absolute;
+width: 341px;
+height: 48px;
+left: 381px;
+top: 148px;
+
+font-family: Carme;
+font-style: normal;
+font-weight: normal;
+font-size: 33px;
+line-height: 40px;
+
+color: #000000;
+
+}
+
+.ret51 {
+position: absolute;
+width: 725px;
+height: 234px;
+left: 381px;
+top: 246px;
+
+background: #F8F9FC;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
+}
+
+.editar {
+    position: absolute;
+width: 80px;
+height: 29px;
+left: 1013px;
+top: 267px;
+
+font-family: Carme;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 29px;
+color: #6887E3;
+}
+
+.line {
+    position: absolute;
+width: 717.9px;
+height: 0px;
+left: 388.1px;
+top: 310px;
+
+border: 1px solid #E3E6F0;
+transform: rotate(0.17deg);
+}
+
+.opcao {
+    position: absolute;
+width: 231px;
+height: 29px;
+left: 406px;
+top: 521px;
+
+font-family: Carme;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 29px;
+
+
+color: #6887E3;
+}
+
+.lineopt {
+    position: absolute;
+width: 717.9px;
+height: 0px;
+left: 391.1px;
+top: 564px;
+
+border: 1px solid #E3E6F0;
+transform: rotate(0.17deg);
+}
+
+.detalhe {
+    position: absolute;
+width: 212px;
+height: 29px;
+left: 1180px;
+top: 267px;
+
+font-family: Carme;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 29px;
+
+color: #6887E3;
+}
+
+.linedet {
+    position: absolute;
+width: 413.91px;
+height: 0px;
+left: 1165.1px;
+top: 310px;
+
+border: 1px solid #E3E6F0;
+transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+.optpag {
+    position: absolute;
+width: 273px;
+height: 29px;
+left: 409px;
+top: 731px;
+
+font-family: Carme;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 29px;
+
+color: #6887E3;
+}
+
+.lineoptpag {
+    position: absolute;
+    width: 717.9px;
+    height: 0px;
+    left: 394.1px;
+    top: 774px;
+    
+    border: 1px solid #E3E6F0;
+    transform: rotate(0.17deg);
+}
+
+.cancelar {
+    position: absolute;
+width: 202px;
+height: 46px;
+left: 1381px;
+top: 806px;
+
+font-family: Carme;
+font-style: normal;
+font-weight: normal;
+font-size: 23px;
+line-height: 28px;
+
+color: #F64343;
+}
+
+.continuar {
+    position: absolute;
+width: 148px;
+height: 34px;
+left: 1172px;
+top: 913px;
+
+font-family: Carme;
+font-style: normal;
+font-weight: normal;
+font-size: 23px;
+line-height: 28px;
+text-align: center;
+
+color: #36B9CC;
+}
+
+.confirmarped {
+    position: absolute;
+width: 148px;
+height: 34px;
+left: 1401px;
+top: 913px;
+
+font-family: Carme;
+font-style: normal;
+font-weight: normal;
+font-size: 23px;
+line-height: 28px;
+text-align: center;
+
+color: #44D19E;
+}
