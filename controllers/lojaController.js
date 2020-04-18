@@ -23,6 +23,10 @@ module.exports = {
     painelCliente: (req, res, ) => {
          res.render('painel-cliente', {page:'painel-cliente'});
     },
+    //Pagina do cliente
+    clienteCadastro: (req, res) => {
+     res.render ('cliente-cadastro', {page:'cliente-cadastro'} );
+    },
     // Pagina da loja
     loja:(req, res, ) => {
          res.render('perfil-loja', {page:'perfil-loja'});

@@ -13,6 +13,7 @@ router.get ('/logar', lojaController.logar);
 router.get ('/cadastro', lojaController.cadastro);
 router.get ('/painel-vendedor', lojaController.painelVendedor);
 router.get ('/painel-cliente', lojaController.painelCliente);
+router.get ('/cliente-cadastro', lojaController.clienteCadastro);
 router.get ('/loja', lojaController.loja);
 
 // Requisições produtos
@@ -28,9 +29,6 @@ router.get('/comemoracoes', produtoController.comemoracoes);
 
 router.get('/cart', function(req, res, next) {
   res.render('cart', {page:'cart', menuId:'cart'});
-});
-router.get('/checkout', function(req, res, next) {
-  res.render('checkout', {page:'checkout', menuId:'checkout'});
 });
 
 // ## Não sei fazer bonitinho, sorry Leo ## 
