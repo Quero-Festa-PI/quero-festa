@@ -239,7 +239,8 @@ a.remove:hover {
   padding: .75em 0;
   border-radius: 0 1em 1em 0;
   text-align: center;
-  border: 1px solid #82ca9c;
+  border: 1px solid  #FF826E;
+  background-color:  #FF826E;
 }
 .promoCode a.btn:hover {
   border: 1px solid #f69679;
@@ -253,7 +254,7 @@ a.remove:hover {
   font-size: 1em;
   padding: 1em 3em;
   color: #fff;
-  background: #82ca9c;
+  /* background: #82ca9c; */
   font-weight: bold;
   border-radius: 50px;
   float: right;

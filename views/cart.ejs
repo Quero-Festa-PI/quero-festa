@@ -1,15 +1,20 @@
  <% include partials/header %> 
+ <link rel="stylesheet" href="./stylesheets/cartstyle.css">
 <body>
 <% include partials/menu-logado %>
 
 <div class="menu-lateral">
     <% include partials/mlateral-cliente %>
 </div>
+  <div class="container">
     <div class="wrap cf">
    
         <div class="heading cf">
-          <h1>Finalização do Pedido</h1>
-          <a href="#" class="continue">Continuar Comprando</a>
+          <h1 class='col-8'>Finalização do Pedido</h1>
+            <!-- <a href="#" class="continue"> -->
+            <a href ='/'>
+            <button class='btn btn-cheio col-4'>Continuar Comprando</button>
+          </a>
         </div>
         <div class="cart">
 
@@ -71,8 +76,10 @@
           </ul>
         </div>
         
-        <div class="promoCode"><label for="promo">Tem um cupom?</label><input type="text" name="promo" placholder="Insira aqui o código" />
-        <a href="#" class="btn"></a></div>
+        <div class="promoCode row"><label for="promo">Tem um cupom?</label>
+          <input type="text" name="promo" placholder="Insira aqui o código" />
+        <a href="#" class="btn">
+        </a></div>
         
         <div class="subtotal cf">
           <ul>
@@ -82,12 +89,18 @@
             
 
                   <li class="totalRow final"><span class="label">Total</span><span class="value">R$585.90</span></li>
-            <li class="totalRow"><a href="#" class="btn continue">Finalizar Compra</a></li>
+            <!-- <li class="totalRow"><a href="#" class="btn continue">Finalizar Compra</a></li> -->
           </ul>
+          <div class=" cf text-right">
+            <a href ='/finalizacao'>
+              <button class='btn btn-cheio'>Finalizar Compra</button>
+            </a>
+          </div>
+            
         </div>
       </div>
-      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
+  </div>  
+    </body>
+    <%include partials/footer-alt %>
+    <%include partials/script %>
 </html>
