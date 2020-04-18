@@ -1,5 +1,7 @@
 
 <% include partials/header %>
+<link rel="stylesheet" href="./stylesheets/logar.css">
+<link rel="stylesheet" href="./stylesheets/form-cadastro-produtostyle.css">
 
 <body>
     <div class="page">
@@ -23,13 +25,19 @@
                               <div class="col-inner d-flex justify-content-around">
                                 <div id="content" class="col-sm-12 col-md-12 col-lg-12">
                                   <!-- FORMULARIO -->
-                                  <form class="bg-light rounded col-sm-12 shadow p-3 mb-5 bg-white rounded"> 
+                                  
+                                  <form class="bg-light rounded col-12 shadow p-3 mb-5 bg-white rounded"> 
                                     <div class="form-group row">
-                                      <label for="dadosPessoais" class="col-sm-4 col-form-label">
+                                      
+                                      <label for="dadosPessoais" class="col-8 col-form-label">
                                         <h3>Dados Pessoais</h3>
                                       </label>
+                                      <a href='/painel-cliente'>
+                                        <input type='submit' class='btn-cheio btn text-left' action='' value="Enviar Dados">
+                                      </a>
+                
                                     </div>
-                      
+                                    
                         
                         <!-- FOTO DE PERFIL -->
                         <div class="row">        
@@ -95,7 +103,6 @@
                                         </div>
                                       </div>
                                     </fieldset>                         
-                                    
                                   </form>
 
                                  
@@ -158,7 +165,10 @@
                                               <option value="4">Rio Grande do Sul</option>
                                             </select>
                                           </div>
+                                          
                                         </div>
+                                        
+                                        
                                   </form>
                                   <!-- FIM FORMULARIO -->
                                 </div> 
@@ -206,9 +216,6 @@
                                       </div>
                                     </div>                            
                                 
-                                
-                                
-                                
                                             </div>
                                         </div>
                                     </div>
@@ -220,12 +227,7 @@
                 
                 
                 
-                                                                     <!-- ### CARD DE MUDAR PERFIL -->
-                                                                      <div class="card painel-dash border-left-primary shadow mb-5">
-                                                                        <a href='../painel-vendedor'>
-                                                                          <button class="btn btn-cheio btn-small col-12 text-left">Alterar para Perfil Vendedor </button>
-                                                                        </a>
-                                                                      </div>
+
                 
                 </div>
               </div>
