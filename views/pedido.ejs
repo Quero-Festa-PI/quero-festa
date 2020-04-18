@@ -1,0 +1,139 @@
+<% include partials/header %>
+<link rel="stylesheet" href="./stylesheets/pedidostyle.css">
+
+<body>
+  <!-- PAGINA COMPLETA -->
+  <div class="page">
+    <% include partials/menu-logado %>
+    
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div id="meio-home" class="container">      
+      <div class="row ">
+        <% include partials/menulateral %>               
+      </div>
+     <!-- # Inicio Painel -->
+        <div id="painel-publico" class="container">
+            
+            <br>
+            <!-- ### CARD DE DADOS PEDIDO -->
+            <div class="card painel-dash border-left-primary shadow">
+                <div class="card-body painel-dash"> 
+                    <div class="row">
+                        <div class='col-8'>
+                            <h4>Pedido: 100001234</h4>
+                        </div>
+                        <div class="col-4 text-left">
+                           <h5>Aguardando Pagamento</h5>
+                        </div>
+                    </div>
+                    <!-- Divider -->
+                    <hr class="sidebar-divider my-0">
+                    
+                    <div class="painel-dados row col-12">
+                        
+                        <img class='status img-fluid border-bottom-primary' src='images/status.png' width="400px" height="400px" alt='avatar'>                        
+                    </div>
+                    <a href="#">
+                        <button class="btn btn-cheio btn-muted">Rastrear</button>
+                    </a>
+                </div>
+
+        
+        
+            </div>
+
+            <!-- ### CARD DE INFORMACAO -->
+            <div class="card painel-dash border-left-primary  shadow">
+                <div class="card-body painel-dash"> 
+                    <div class="row">
+                        <div class='col-7'>
+                            <h4>Informações</h4>
+                        </div>
+                        
+                    
+                    </div>
+                        <!-- Divider -->
+                        <hr class="sidebar-divider my-0">
+                    <div class="row col-12">
+                        
+                        <h5 class="text-left col-8">Vendedor: MeuBoteco</h5>
+                        <button class="col-4 btn btn-sm btn-cheio">
+                            Falar com Vendedor
+                        </button>
+                        
+                    </div>
+                    <div class="painel-dados row"> 
+                        <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Item</th>
+                                <th scope="col">Valor</th>
+                                <th scope="col">QTD</th>
+                                <th scope="col">Subtotal</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">KC10392</th>
+                                <td>Combo Noite Boteco</td>
+                                <td>R$ 120,00</td>
+                                <td>01</td>
+                                <td>R$ 120,00</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">KC10456</th>
+                                <td>Kit Breja x24</td>
+                                <td>R$ 40,00</td>
+                                <td>02</td>
+                                <td>R$ 80,00</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">KC10332</th>
+                                <td>Kit Refri 10L</td>
+                                <td>R$ 20,00</td>
+                                <td>01</td>
+                                <td>R$ 20,00</td>
+                              </tr>
+                            </tbody>
+                            
+                          </table>
+                          <table class="table table-success text-sumario">
+                            <thead>
+                                <tr>
+                                  <th scope="col">Subtotal</th>
+                                  <th scope="col">Frete</th>
+                                  <th scope="col">Cupom</th>
+                                  <th scope="col">Desconto</th>
+                                  <th scope="col">Valor Total</th>
+                                </tr>
+                              </thead>
+                            <tr>
+                                <th  scope="row">R$ 220,00</th>
+                                <td >R$ 12,00</td>
+                                <td>BEMVINDO20</td>
+                                <td >- R$ 20,00</td>
+                                <td class="table-success">R$ 212,00</td>
+                            </tr>
+                          </table>
+                    </div>
+                    
+            </div>
+
+
+           
+
+        </div>
+
+
+        
+      </div>
+    </div>
+
+  </div>
+
+  <% include partials/footer-alt %>
+</div>
+</body>
+<% include partials/script %>
+</html>

@@ -1,0 +1,10 @@
+.status {
+    display: grid;
+    align-self: center;
+}
+
+/* FONTES PARA INFORMAÇÕES */
+.text-sumario {
+    font-size: 12px;
+    font-weight: bold;
+}
