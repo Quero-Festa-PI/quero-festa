@@ -30,6 +30,13 @@ router.get('/comemoracoes', produtoController.comemoracoes);
 router.get('/cart', function(req, res, next) {
   res.render('cart', {page:'cart', menuId:'cart'});
 });
+router.get('/checkout', function(req, res, next) {
+  res.render('checkout', {page:'checkout', menuId:'checkout'});
+});
+router.get('/confirmacao', function(req, res, next) {
+  res.render('confirmacao', {page:'confirmacao', menuId:'confirmacao'});
+});
+
 
 // ## Não sei fazer bonitinho, sorry Leo ## 
 router.get('/produto', function(req, res, next) {
