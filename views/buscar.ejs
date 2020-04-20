@@ -19,11 +19,11 @@
                                             <div class="col-inner d-flex justify-content-around">
                                                 <div id="content" class="col-sm-12 col-md-12 col-lg-12">
                                                     <!-- CAMINHO DAS PAGINAS -->
-                                                    <div class="col-sm-12">
+                                                    <div class="col-sm-11 mx-5">
                                                         <nav aria-label="breadcrumb">
                                                             <ol class="breadcrumb rounded shadow-sm" id="caminho-paginas">
-                                                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                                                <li class="breadcrumb-item active" aria-current="page"><a href="#">Buscar</a></li>                        
+                                                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                                                <li class="breadcrumb-item active" aria-current="page"><a href="/buscar">Buscar</a></li>                        
                                                             </ol>
                                                         </nav>
                                                     </div>
@@ -46,7 +46,7 @@
                                             <div class="col-inner d-flex justify-content-around">
                                                 <div id="content" class="col-sm-12 col-md-12 col-lg-12">
                                                     <!-- ITEM PESQUISADO -->
-                                                    <div class="col-sm-12">
+                                                    <div class="col-sm-11 mx-5">
                                                         <h4>
                                                             <strong>Aniversario 18 anos</strong> 
                                                             <small>(
@@ -74,7 +74,7 @@
                                             <div class="col-inner d-flex justify-content-around">
                                                 <div id="content" class="col-sm-12 col-md-12 col-lg-12">
                                                     <!-- ORDENAR POR -->
-                                                    <div class="col-sm-5">
+                                                    <div class="col-sm-5 mx-5">
                                                         <label>Ordenar por</label>
                                                         <select name="ordenar" id="ordenar" class="submit-on-change">
                                                             <option value="">Todos os produtos</option>
@@ -93,7 +93,9 @@
                         <!-- FIM CONTAINER ORDENAR POR -->
                         
                         <!-- ITENS ACHADOS -->
-                        <% include partials/anuncios %>
+                        <div class="mx-5">
+                            <% include partials/anuncios %>
+                        </div>
                         <!-- FIM ITENS ACHADOS -->
                                                 
                         
