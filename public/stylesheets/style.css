@@ -11,21 +11,12 @@ nav {
 }
 
 .logo_nav {
-    position: relative;
-    width: 15%;
+    position: relative;    
 }
-
-
 
 #content {
     display: inline-flex;
     float: right;
-}
-
-
-#logo {
-    width: 150px;
-    height: 60px;
 }
 
 .sidebar {
