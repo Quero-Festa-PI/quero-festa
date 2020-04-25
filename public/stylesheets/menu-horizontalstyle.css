@@ -10,6 +10,9 @@
 
 #menu-horizontal {
     background-color: #FF826E;
-    border: 20px;
-    
+    border: 20px;    
+}
+
+.nav-item a span {
+    color: #FFF3D7;
 }

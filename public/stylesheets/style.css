@@ -74,6 +74,14 @@ nav {
     opacity: 0.8;
 }
 
+.collapse div {
+    background-color: #fca99d; 
+}
+
+.collapse-item {
+    color: #FFF3D7;  
+}
+
 .container {
     display: flex;
 }

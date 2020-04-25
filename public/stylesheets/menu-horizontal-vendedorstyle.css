@@ -12,3 +12,7 @@
     background-color: rgba(248, 134, 116, 0.8);
     border: 20px;    
 }
+
+.collapse div {
+    background-color: #fdb6ab; 
+}
