@@ -26,6 +26,9 @@ router.get('/bodas', produtoController.bodas);
 router.get('/especiais', produtoController.especiais);
 router.get('/comemoracoes', produtoController.comemoracoes);
 
+// Usuarios
+router.get('/perfil-vendedor', lojaController.perfilVendedor);
+
 
 router.get('/cart', function(req, res, next) {
   res.render('cart', {page:'cart', menuId:'cart'});

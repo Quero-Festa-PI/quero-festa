@@ -19,6 +19,10 @@ module.exports = {
     painelVendedor: (req, res, ) => {
          res.render('painel-vendedor', {page:'painel-vendedor'});
     },
+    // Perfil vendedor
+    perfilVendedor: (req, res) => {
+         res.render('perfil-vendedor', {page:'perfil-vendedor'});
+    },
     // Pagina cliente
     painelCliente: (req, res, ) => {
          res.render('painel-cliente', {page:'painel-cliente'});
