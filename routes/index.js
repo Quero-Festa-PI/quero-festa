@@ -11,7 +11,7 @@ const produtoController = require ('../controllers/produtoController');
 router.get ('/', lojaController.index);
 router.get ('/logar', lojaController.logar);
 router.get ('/cadastro', lojaController.cadastro);
-router.get ('/painel-vendedor', lojaController.painelVendedor);
+router.get ('/dashboard', lojaController.dashboard);
 router.get ('/painel-cliente', lojaController.painelCliente);
 router.get ('/cliente-cadastro', lojaController.clienteCadastro);
 router.get ('/loja', lojaController.loja);
