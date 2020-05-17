@@ -27,16 +27,14 @@ let Usuario = (sequelize, DataTypes) => {
             },
             cpf: {
                 type: DataTypes.CHAR(11),
-                allowNull: false,
                 unique: true
             },
             data_nasc: {
                 type: DataTypes.DATE,
-                allowNull: false
             },
             sexo: {
-                type: DataTypes.ENUM('M', 'F'),
-                allowNull: false
+                type: DataTypes.ENUM('M', 'F', null),
+                defaultValue: null,
             },
         },
         {
