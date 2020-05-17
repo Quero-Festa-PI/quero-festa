@@ -24,6 +24,10 @@ let Pagamento = (sequelize, DataTypes) => {
         }
     )
 
+    pagamento.associate = models => {
+        pagamento.hasOne(models.Pedido, { foreignKey: 'id', as: 'pedido' });
+    }
+
     return pagamento;
 
 }

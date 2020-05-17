@@ -43,6 +43,8 @@ let Pedido = (sequelize, DataTypes) => {
         pedido.belongsTo(models.Usuario, { foreignKey: 'usuarios_id', as: 'usuario' });
         pedido.belongsTo(models.Loja, { foreignKey: 'lojas_id', as: 'loja' });
         pedido.belongsTo(models.Endereco, { foreignKey: 'enderecos_id', as: 'endereco' });
+        pedido.belongsTo(models.Entrega, { foreignKey: 'entregas_id', as: 'entrega' });
+        pedido.belongsTo(models.Pagamento, { foreignKey: 'pagamentos_id', as: 'pagamento' });
     }
 
     return pedido;

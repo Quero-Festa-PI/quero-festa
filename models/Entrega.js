@@ -21,6 +21,10 @@ let Entrega = (sequelize, DataTypes) => {
         }
     )
 
+    entrega.associate = models => {
+        entrega.hasOne(models.Pedido, { foreignKey: 'id', as: 'pedido' });
+    }
+
     return entrega;
 
 }
