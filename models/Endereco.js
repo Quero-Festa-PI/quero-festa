@@ -43,7 +43,8 @@ let Endereco = (sequelize, DataTypes) => {
     )
 
     endereco.associate = models => {
-        endereco.belongsTo(models.Usuario, { foreignKey: 'usuarios_id', as: 'usuario' })
+        endereco.belongsTo(models.Usuario, { foreignKey: 'usuarios_id', as: 'usuario' });
+        endereco.hasMany(models.Pedido, { foreignKey: 'enderecos_id', as: 'pedidos' });
     }
 
     return endereco;
