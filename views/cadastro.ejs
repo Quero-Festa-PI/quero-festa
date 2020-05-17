@@ -1,31 +1,28 @@
 <% include partials/header %>
-    <div class="wrapper fadeInDown">
-        <div id="formContent">
-            <!-- Tabs Titles -->
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
 
-            <!-- Icon -->
-            <div class="fadeIn first mt-5 mb-4">
-                <img src="images/logo_atual.png" id="icon" alt="User Icon" />
-            </div>
+        <!-- Icon -->
+        <div class="fadeIn first mt-5 mb-4">
+            <img src="images/logo_atual.png" id="icon" alt="User Icon" />
+        </div>
 
-            <!-- Login Form -->
-            <form>
-                <input type="text" id="login" class="fadeIn second" name="login" placeholder="Insira seu nome completo">
-                <input type="text" id="password" class="fadeIn third" name="login" placeholder="insira seu E-mail">
-                <input type="text" id="password" class="fadeIn third" name="login" placeholder="Confirmar E-mail">
-                <form>
-                <input  type="password" id="password" class="fadeIn third" name="senha" placeholder="Criar Senha">
-                </form>
-                <a href='/cliente-cadastro'> 
-                    <input type="submit" class="fadeIn fourth mt-2" value="Criar Conta">
-                </a>
-            </form>
+        <!-- Login Form -->
+        <form action="/cadastro" method="POST">
+            <input type="text" id="nome" class="fadeIn second" name="nome" placeholder="Insira seu nome completo">
+            <input type="email" id="email1" class="fadeIn third" name="email1" placeholder="insira seu E-mail">
+            <input type="email" id="email2" class="fadeIn third" name="email2" placeholder="Confirmar E-mail">
+            <input type="password" id="senha" class="fadeIn third" name="senha" placeholder="Criar Senha">
+            <input type="submit" class="fadeIn fourth mt-2">
+            <% if(err != 0) { %>
+            <p><%= err %></p>
+            <% } %>
+        </form>
 
-            <!-- Remind Passowrd -->
-            <div id="formFooter">
-                <a class="underlineHover" href="/logar">Ja possuo cadastro</a>
-            </div>    
-        </div>    
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" href="/logar">Ja possuo cadastro</a>
+        </div>
     </div>
-    
-    
+</div>
