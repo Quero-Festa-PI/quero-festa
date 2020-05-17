@@ -31,6 +31,7 @@ let Loja = (sequelize, DataTypes) => {
 
     loja.associate = models => {
         loja.belongsTo(models.Usuario, { foreignKey: 'usuarios_id', as: 'usuario' })
+        loja.hasMany(models.Produto, { foreignKey: 'lojas_id', as: 'produtos' })
     }
 
     return loja;

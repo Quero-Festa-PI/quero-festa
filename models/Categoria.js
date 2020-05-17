@@ -19,6 +19,15 @@ let Categoria = (sequelize, DataTypes) => {
         }
     )
 
+    categoria.associate = models => {
+        categoria.belongsToMany(models.Produto,
+            {
+                through: 'produtos_has_categorias',
+                as: 'produtos',
+                foreignKey: 'categorias_id'
+            })
+    }
+
     return categoria;
 
 }
