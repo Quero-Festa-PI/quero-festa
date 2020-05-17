@@ -16,8 +16,12 @@ module.exports = {
          res.render('cadastro', {page: 'cadastro'});
     },
     // Pagina painel do vendedor
-    painelVendedor: (req, res, ) => {
-         res.render('painel-vendedor', {page:'painel-vendedor'});
+    dashboard: (req, res, ) => {
+         res.render('dashboard', {page:'dashboard'});
+    },
+    // Perfil vendedor
+    perfilVendedor: (req, res) => {
+         res.render('perfil-vendedor', {page:'perfil-vendedor'});
     },
     // Pagina cliente
     painelCliente: (req, res, ) => {
