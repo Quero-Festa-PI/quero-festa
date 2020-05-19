@@ -123,9 +123,9 @@ module.exports = {
      perfilVendedor: (req, res) => {
           res.render('perfil-vendedor', { page: 'perfil-vendedor' });
      },
-     // Pagina cliente
-     painelCliente: (req, res, ) => {
-          res.render('painel-cliente', { page: 'painel-cliente' });
+     // Perfil cliente
+     perfilCliente: (req, res, ) => {
+          res.render('perfil-cliente', { page: 'perfil-cliente' });
      },
      //Pagina do cliente
      clienteCadastro: (req, res) => {

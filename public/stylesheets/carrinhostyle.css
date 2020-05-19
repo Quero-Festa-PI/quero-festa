@@ -1,0 +1,21 @@
+#table-carrinho tr th td {
+    width: 31%;
+}
+
+#table-carrinho input {
+    min-width: 75px;
+    max-width: 100px;
+   
+}
+
+#azul {
+    color: #36B9CC;
+}
+
+#verde {
+    color: #87E0C1;
+}
+
+#quantidade {
+    width: 65px;
+}
