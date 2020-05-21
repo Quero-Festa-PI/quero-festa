@@ -24,7 +24,8 @@
                                           <nav aria-label="breadcrumb">
                                               <ol class="breadcrumb rounded shadow-sm" id="caminho-paginas">
                                                   <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                                  <li class="breadcrumb-item active" aria-current="page"><a href="/cart">Carrinho</a></li>                        
+                                                  <li class="breadcrumb-item"><a href="/pedidos/pedido">Pedidos</a></li>
+                                                  <li class="breadcrumb-item active" aria-current="page"><a href="/pedidos/carrinho">Carrinho</a></li>                        
                                               </ol>
                                           </nav>
                                       </div>
@@ -45,7 +46,7 @@
                 <div class="row">
                 <!-- IMAGEM -->
                   <div class="col-3 text-center">
-                    <img id='avatar' class='shadow border-bottom-primary rounded' src='images/combo1.png' width="150px" height="150px" alt='avatar'>
+                    <img id='avatar' class='shadow border-bottom-primary rounded' src='../images/combo1.png' width="150px" height="150px" alt='avatar'>
                   </div>
                   <!-- DADOS DO PEDIDO -->
                   <div class="col-9">
@@ -111,7 +112,7 @@
                 <div class="row">
                 <!-- IMAGEM -->
                   <div class="col-3 text-center">
-                    <img id='avatar' class='shadow border-bottom-primary rounded ' src='images/confraternização.png' width="150px" height="150px" alt='avatar'>
+                    <img id='avatar' class='shadow border-bottom-primary rounded ' src='../images/confraternização.png' width="150px" height="150px" alt='avatar'>
                   </div>
                   <!-- DADOS DO PEDIDO -->
                   <div class="col-9">
@@ -143,16 +144,12 @@
                             </div>                           
                           </td>                     
                           <td class="align-middle text-center">
-                            <!-- <div class="justify-content-center"> -->
-                              <select class="custom-select " id="quantidade">
-                                <option value="1" selected>01</option>
-                                <option value="2">02</option>
-                                <option value="3">03</option>
-                                <option value="4">04</option>
-                              </select>
-                            <!-- </div> -->
-                            
-                            
+                            <select class="custom-select " id="quantidade">
+                              <option value="1" selected>01</option>
+                              <option value="2">02</option>
+                              <option value="3">03</option>
+                              <option value="4">04</option>
+                            </select>                       
                           </td>
                           <td id="verde" class=" align-middle text-center">
                             R$ 128,90
@@ -226,11 +223,7 @@
             </div>
           </div>
           <!-- FIM BOTÕES -->
-
-
-                  
-                    
-                  
+        
               </div>
             </div>
         </div>  

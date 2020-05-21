@@ -8,6 +8,8 @@ var session = require('express-session');
 // Rotas
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var produtoRouter = require('./routes/produto');
+var pedidoRouter = require('./routes/pedido');
 
 var app = express();
 
@@ -28,7 +30,9 @@ app.use(session({
 }));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/usuarios', usersRouter);
+app.use('/produtos', produtoRouter);
+app.use('/pedidos', pedidoRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
