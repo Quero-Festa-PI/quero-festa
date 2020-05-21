@@ -4,11 +4,6 @@ categoria {
 
 }
 
-categoria card {
-    
-    background-color: grey;
-}
-
 categoria titulo {
     font-size: 15px;
     font-weight: bold;
@@ -39,7 +34,7 @@ categoria img {
     border-radius: 10%;
 }
 
-.img-fluid {
+.img-cat {
     max-width: 100%; 
     height: auto; 
 } 

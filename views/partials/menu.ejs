@@ -11,7 +11,7 @@
           <!-- BARRA DE PESQUISA -->
           <li class="nav-item no-arrow mx-1">
             <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 
-            navbar-search" action="">
+            navbar-search" action="/buscar" method="GET">
                 <div class="input-group">
                     <input type="search" class="form-control bg-light border-0 medium" placeholder="Buscar"
                         aria-label="Search" aria-describebedby="basic-addon2">
@@ -24,10 +24,11 @@
                     </div>
                 </div>
             </form>
+                        
         </li>
           <!-- CARRINHO -->
           <li class="nav-item dropdown no-arrow  mx-1">
-              <a class="nav-link dropdown-togger" href="/cart" id="carrinho" role="button" data-toggle="dropdown"
+              <a class="nav-link dropdown-togger" href="/carrinho" id="carrinho" role="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
                   <img  src="images/carro-vazio.png" width="30px" height="30px" alt="carrinho"></a>
           </li>
