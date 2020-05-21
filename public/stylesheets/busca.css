@@ -1,0 +1,35 @@
+.container {
+  padding: 0; }
+
+.row.infos-resultados {
+  margin: 0 0 10px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+  .row.infos-resultados .resultado-busca {
+    display: flex;
+    align-items: center;
+    padding: 0px 9px; }
+    .row.infos-resultados .resultado-busca strong {
+      font-size: 1.5rem;
+      margin-right: 7px; }
+    .row.infos-resultados .resultado-busca p {
+      display: inline-block;
+      margin: 0;
+      text-align: center; }
+  .row.infos-resultados .select-ordenar {
+    right: 0; }
+    .row.infos-resultados .select-ordenar label {
+      text-align: center; }
+
+@media screen and (max-width: 576px) {
+  .row.infos-resultados {
+    font-size: 0.8rem; }
+    .row.infos-resultados .resultado-busca {
+      flex-direction: column; } }
+@media screen and (max-width: 470px) {
+  .row.infos-resultados .resultado-busca {
+    width: 100%;
+    margin-bottom: 10px; } }
+
+/*# sourceMappingURL=busca.css.map */

@@ -3,23 +3,22 @@
 <body>
   <!-- PAGINA COMPLETA -->
   <div class="page">
-    <% include partials/menu %>
-    
+    <%- include('partials/navbar.ejs') %>
+
     <!-- CONTEÚDO PRINCIPAL -->
-    <div id="meio-home" class="container">      
+    <div id="meio-home" class="container">
       <div class="row ">
-        <% include partials/menulateral %>      
-        
-        <div id="content" class="col-sm-8 col-md-9 col-lg-9">          
-          <div class="homebuilder clearfix"> 
+
+        <div id="content" class="col-sm-8 col-md-9 col-lg-9">
+          <div class="homebuilder clearfix">
             <div class="tm-container">
               <div class="tm-inner">
                 <div class="row row-level-1">
                   <div class="row-inner clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <div class="col-inner">
-                        <%include partials/carrosel %>  
-                      </div>                                  
+                        <%include partials/carrosel %>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -31,12 +30,13 @@
           <%include partials/anuncios %>
           <!-- </div> -->
         </div>
-        
+
       </div>
     </div>
   </div>
   <% include partials/footer %>
-</div>
+  </div>
+  <%- include('partials/script') %>
 </body>
-<% include partials/script %>
+
 </html>

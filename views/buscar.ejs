@@ -2,107 +2,96 @@
 
 <body>
     <div class="page">
-        <% include partials/menu %>
+        <%- include('partials/navbar') %>
 
         <!-- CONTEÚDO PRINCIPAL -->
-        <div class="container">
-            <div class="row">
-                <% include partials/menu-horizontal %>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="homebuilder clearfix"> 
-                        <!-- CONTAINER CAMINHO DAS PAGINAS -->
-                        <div class="tm-container">
-                            <div class="tm-inner">
-                                <div class="row row-level-1">                      
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="row-inner clearfix">
-                                            <div class="col-inner d-flex justify-content-around">
-                                                <div id="content" class="col-sm-12 col-md-12 col-lg-12">
-                                                    <!-- CAMINHO DAS PAGINAS -->
-                                                    <div class="col-sm-11 mx-5">
-                                                        <nav aria-label="breadcrumb">
-                                                            <ol class="breadcrumb rounded shadow-sm" id="caminho-paginas">
-                                                                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                                                <li class="breadcrumb-item active" aria-current="page"><a href="/buscar">Buscar</a></li>                        
-                                                            </ol>
-                                                        </nav>
-                                                    </div>
-                                                    <!-- FIM CAMINHO DAS PAGINAS -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
-
-                        <!-- CONTAINER ITEM PESQUISADO -->
-                        <div class="tm-container">
-                            <div class="tm-inner">
-                                <div class="row row-level-1">                      
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="row-inner clearfix">
-                                            <div class="col-inner d-flex justify-content-around">
-                                                <div id="content" class="col-sm-12 col-md-12 col-lg-12">
-                                                    <!-- ITEM PESQUISADO -->
-                                                    <div class="col-sm-11 mx-5">
-                                                        <h4>
-                                                            <strong>Aniversario 18 anos</strong> 
-                                                            <small>(
-                                                                <span id="resultado-numero">6</span>
-                                                                produtos encontrados )
-                                                            </small>
-                                                        </h4>
-                                                    </div>
-                                                    <!-- FIM ITEM PESQUISADO -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- FIM CONTAINER ITEM PESQUISADO -->
-
-                        <!-- CONTAINER ORDENAR POR -->
-                        <div class="tm-container">
-                            <div class="tm-inner">
-                                <div class="row row-level-1">                      
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="row-inner clearfix">
-                                            <div class="col-inner d-flex justify-content-around">
-                                                <div id="content" class="col-sm-12 col-md-12 col-lg-12">
-                                                    <!-- ORDENAR POR -->
-                                                    <div class="col-sm-5 mx-5">
-                                                        <label>Ordenar por</label>
-                                                        <select name="ordenar" id="ordenar" class="submit-on-change">
-                                                            <option value="">Todos os produtos</option>
-                                                            <option value="">Menor Preço</option>
-                                                            <option value="">Maior Preço</option>
-                                                        </select>
-                                                    </div>
-                                                    <!-- FIM ORDENAR POR -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- FIM CONTAINER ORDENAR POR -->
-                        
-                        <!-- ITENS ACHADOS -->
-                        <div class="mx-5">
-                            <% include partials/anuncios %>
-                        </div>
-                        <!-- FIM ITENS ACHADOS -->
-                                                
-                        
-                    </div>
-                </div>            
+        <div class="container d-flex flex-column">
+            <div class="row infos-resultados">
+                <!-- CONTAINER CAMINHO DAS PAGINAS -->
+                <%- include('partials/breadcrumb') %>
+                <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
+                <div class="resultado-busca">
+                    <strong><%= consulta %></strong>
+                    <p>(<%= produtos.length %> resultados encontrados)</p>
+                </div>
+                <div class="select-ordenar d-flex flex-column">
+                    <label>Ordenar por</label>
+                    <select name="ordenar" id="ordenar" class="submit-on-change">
+                        <option value="">Todos os produtos</option>
+                        <option value="">Menor Preço</option>
+                        <option value="">Maior Preço</option>
+                    </select>
+                </div>
             </div>
+            <div class="row">
+                <!-- ITENS ACHADOS -->
+                <div class="mx-5">
+                    <% for (let iFileiras = 1; iFileiras <= nFileiras; iFileiras++) { %>
+                    <div class="container">
+                        <anuncio>
+                            <div class="row row-level-1">
+                                <div class="row-inner clearfix">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-inner d-flex">
+                                            <% if(iFileiras != nFileiras) { %>
+                                            <% for (let iProdutos = 1; iProdutos <= 4; iProdutos++) { %>
+                                            <div class="col-sm-4">
+                                                <card class=" anuncio-box card shadow">
+                                                    <div class="card-body">
+                                                        <div class="row no-gutters">
+                                                            <div class='anuncio text-center'>
+                                                                <a href="#"><img src="images/mesversario.png" alt=""
+                                                                        class="img-fluid"></a>
+                                                                <titulo class="card-text text-center">Feliz 17
+                                                                    anos</titulo>
+                                                            </div>
+                                                            <preco class="text-right">R$ 300,00</preco>
+                                                            <info class='card-text'>
+                                                                Kit completo aniversários com tema 17 anos!
+                                                            </info>
+                                                            <button type="button" class="btn-alt btn btn-sm">Saiba
+                                                                Mais...</button>
+                                                        </div>
+                                                    </div>
+                                                </card>
+                                            </div>
+                                            <% } %>
+                                            <% } else { %>
+                                            <% for (let iProdutos = 1; iProdutos <= (produtos.length % 4); iProdutos++) { %>
+                                            <div class="col-sm-4">
+                                                <card class=" anuncio-box card shadow">
+                                                    <div class="card-body">
+                                                        <div class="row no-gutters">
+                                                            <div class='anuncio text-center'>
+                                                                <a href="#"><img src="images/mesversario.png" alt=""
+                                                                        class="img-fluid"></a>
+                                                                <titulo class="card-text text-center">Feliz 17
+                                                                    anos</titulo>
+                                                            </div>
+                                                            <preco class="text-right">R$ 300,00</preco>
+                                                            <info class='card-text'>
+                                                                Kit completo aniversários com tema 17 anos!
+                                                            </info>
+                                                            <button type="button" class="btn-alt btn btn-sm">Saiba
+                                                                Mais...</button>
+                                                        </div>
+                                                    </div>
+                                                </card>
+                                            </div>
+                                            <% } %>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </anuncio>
+                    </div>
+                    <% } %>
+                </div>
+                <!-- FIM ITENS ACHADOS -->
+            </div>
+            <!-- </div> -->
         </div>
     </div>
+    <%- include('partials/script') %>
 </body>
-

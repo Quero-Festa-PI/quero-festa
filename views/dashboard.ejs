@@ -1,154 +1,129 @@
 <% include partials/header %>
 
 <body>
-  <!-- PAGINA COMPLETA -->
-  <div class="page">
-    <% include partials/menu-logado %>
-    
-    <!-- CONTEÚDO PRINCIPAL -->
-    <div id="meio-home" class="container">      
-      <div class="row ">
-        <% include partials/menu-horizontal %> 
-        <% include partials/menu-horizontal-vendedor %>  
-        
+    <!-- PAGINA COMPLETA -->
+    <div class="page">
+        <%- include('partials/navbar') %>
+
         <!-- CONTEÚDO PRINCIPAL -->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div id="painel-vendedor" class="container">                
-                
-                <!-- CONTAINER CAMINHO DAS PAGINAS -->
-                <div class="tm-container">
-                    <div class="tm-inner">
-                        <div class="row row-level-1">                      
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="row-inner clearfix">
-                                    <div class="col-inner d-flex justify-content-around">
-                                        <div id="content" class="col-sm-12 col-md-12 col-lg-12">
-                                            <!-- CAMINHO DAS PAGINAS -->
-                                            <div class="col-sm-11 mx-5">
-                                                <nav aria-label="breadcrumb">
-                                                    <ol class="breadcrumb rounded shadow-sm" id="caminho-paginas">
-                                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                                        <li class="breadcrumb-item active" aria-current="page"><a href="/painel-vendedor">Perfil</a></li>                        
-                                                    </ol>
-                                                </nav>
-                                            </div>
-                                            <!-- FIM CAMINHO DAS PAGINAS -->
-                                        </div>
-                                    </div>
+        <div id="meio-home" class="container">
+            <div class="row ">
+
+                <!-- CONTEÚDO PRINCIPAL -->
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div id="painel-vendedor" class="container">
+
+                        <!-- CONTAINER CAMINHO DAS PAGINAS -->
+                        <%- include('partials/breadcrumb') %>
+                        <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
+                        <h2>Decor Oliveira </h2>
+
+                        <div class='painel-metricas mx-5'>
+                            <!-- ### Card de Ganhos -->
+                            <div class="card painel-dash border-left-primary shadow col-3">
+                                <div class="card-body text-center">
+                                    <h6>Ganhos (Mensais)</h6>
+                                    <h4>R$ 10.000</h4>
+                                </div>
+                            </div>
+
+                            <!-- ### Card de Ganhos Anuais -->
+                            <div class="card painel-dash border-left-primary shadow col-3">
+                                <div class="card-body text-center">
+                                    <h6>Ganhos (Anuais)</h6>
+                                    <h4>R$ 10.000</h4>
+                                </div>
+                            </div>
+
+                            <!-- ### Card de Tarefas -->
+                            <div class="card painel-dash border-left-primary shadow col-3">
+                                <div class="card-body text-center">
+                                    <h6>Tarefas</h6>
+                                    <h4>50%</h4>
+                                </div>
+                            </div>
+
+                            <!-- ### Card de Pedidos Pendentes -->
+                            <div class="card painel-dash border-left-primary shadow col-3">
+                                <div class="card-body text-center">
+                                    <h6>Em Andamento</h6>
+                                    <h4>18</h4>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class='painel-graf mx-5'>
+                            <!-- ### Card Grafico de Ganhos -->
+                            <div class="card painel-dash border-left-primary shadow col-8">
+                                <div class="card-body">
+                                    <h5>Visão Geral de Ganhos</h5>
+                                    <h6 class='text-muted'>Em Breve...</h6>
+                                    <br><br><br><br>
+                                </div>
+                            </div>
+
+                            <!-- ### Card Grafico Fonte de Renda -->
+                            <div class="card painel-dash border-left-primary shadow col-4">
+                                <div class="card-body">
+                                    <h5>Fontes de Renda</h5>
+                                    <h6 class='text-muted'>Em Breve...</h6>
+                                    <br><br><br><br>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
 
-                <h2>Decor Oliveira </h2>
-    
-                <div class='painel-metricas mx-5'>
-                        <!-- ### Card de Ganhos -->
-                        <div class="card painel-dash border-left-primary shadow col-3">
-                            <div class="card-body text-center">
-                                <h6>Ganhos (Mensais)</h6>
-                                <h4>R$ 10.000</h4>
+                        <div class='painel-graf mx-5'>
+                            <!-- ### Card Pedidos Pendentes -->
+                            <div class="card painel-dash border-left-primary shadow col-6">
+                                <div class="card-body">
+                                    <h5>Pedidos Pendentes</h5>
+                                    <h6 class='text-muted'>Em Breve...</h6>
+                                    <br><br><br><br>
+                                </div>
+                            </div>
+
+                            <!-- ### Card Vendas Concluidas -->
+                            <div class="card painel-dash border-left-primary shadow col-6">
+                                <div class="card-body">
+                                    <h5>Vendas Concluídas</h5>
+                                    <h6 class='text-muted'>Em Breve...</h6>
+                                    <br><br><br><br>
+                                </div>
                             </div>
                         </div>
-    
-                        <!-- ### Card de Ganhos Anuais -->
-                        <div class="card painel-dash border-left-primary shadow col-3">
-                            <div class="card-body text-center">
-                                <h6>Ganhos (Anuais)</h6>
-                                <h4>R$ 10.000</h4>
+
+
+                        <div class='painel-graf mx-5'>
+                            <!-- ### Card Clientes Recentes -->
+                            <div class="card painel-dash border-left-primary shadow col-6">
+                                <div class="card-body">
+                                    <h5>Clientes</h5>
+                                    <h6 class='text-muted'>Em Breve...</h6>
+                                    <br><br><br><br>
+                                </div>
+                            </div>
+
+                            <!-- ### Card Avaliacoes -->
+                            <div class="card painel-dash border-left-primary shadow col-6">
+                                <div class="card-body">
+                                    <h5>Avaliações</h5>
+                                    <h6 class='text-muted'>Em Breve...</h6>
+                                    <br><br><br><br>
+                                </div>
                             </div>
                         </div>
-    
-                        <!-- ### Card de Tarefas -->
-                        <div class="card painel-dash border-left-primary shadow col-3">
-                            <div class="card-body text-center">
-                                <h6>Tarefas</h6>
-                                <h4>50%</h4>
-                            </div>
-                        </div>
-    
-                        <!-- ### Card de Pedidos Pendentes -->
-                        <div class="card painel-dash border-left-primary shadow col-3">
-                            <div class="card-body text-center">
-                                <h6>Em Andamento</h6>
-                                <h4>18</h4>
-                            </div>
-                        </div>
-                        
-                </div>
-    
-                <div class='painel-graf mx-5'>
-                    <!-- ### Card Grafico de Ganhos -->
-                    <div class="card painel-dash border-left-primary shadow col-8">
-                        <div class="card-body">
-                            <h5>Visão Geral de Ganhos</h5>
-                            <h6 class='text-muted'>Em Breve...</h6>
-                            <br><br><br><br>
-                        </div>
-                    </div>
-    
-                    <!-- ### Card Grafico Fonte de Renda -->
-                    <div class="card painel-dash border-left-primary shadow col-4">
-                        <div class="card-body">
-                            <h5>Fontes de Renda</h5>
-                            <h6 class='text-muted'>Em Breve...</h6>
-                            <br><br><br><br>
-                        </div>
+
                     </div>
                 </div>
-    
-                <div class='painel-graf mx-5'>
-                    <!-- ### Card Pedidos Pendentes -->
-                    <div class="card painel-dash border-left-primary shadow col-6">
-                        <div class="card-body">
-                            <h5>Pedidos Pendentes</h5>
-                            <h6 class='text-muted'>Em Breve...</h6>
-                            <br><br><br><br>                                
-                        </div>
-                    </div>
-    
-                    <!-- ### Card Vendas Concluidas -->
-                    <div class="card painel-dash border-left-primary shadow col-6">
-                        <div class="card-body">
-                            <h5>Vendas Concluídas</h5>
-                            <h6 class='text-muted'>Em Breve...</h6>
-                            <br><br><br><br>                                
-                        </div>
-                    </div>
-                </div>
-    
-    
-                <div class='painel-graf mx-5'>
-                    <!-- ### Card Clientes Recentes -->
-                    <div class="card painel-dash border-left-primary shadow col-6">
-                        <div class="card-body">
-                            <h5>Clientes</h5>
-                            <h6 class='text-muted'>Em Breve...</h6>
-                            <br><br><br><br>                                
-                        </div>
-                    </div>
-    
-                    <!-- ### Card Avaliacoes -->
-                    <div class="card painel-dash border-left-primary shadow col-6">
-                        <div class="card-body">
-                            <h5>Avaliações</h5>
-                            <h6 class='text-muted'>Em Breve...</h6>
-                            <br><br><br><br>                                
-                        </div>
-                    </div>
-                </div>    
-                
-            </div>            
+            </div>
+
         </div>
-    </div>  
-
     </div>
-  </div>
-  <br><br>
-  <% include partials/footer-alt %>
-</div>
+    <br><br>
+    <% include partials/footer-alt %>
+    </div>
 </body>
 <% include partials/script %>
+
 </html>

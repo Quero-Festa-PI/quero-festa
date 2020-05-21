@@ -1,0 +1,23 @@
+.breadcrumb {
+  margin: 10px 0;
+  width: 100%;
+  background-color: #FFFFFF;
+  border: 1px solid #FF826E;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  padding: 12px 9px 12px 9px; }
+  .breadcrumb ul {
+    margin: 0; }
+    .breadcrumb ul li {
+      display: inline-block; }
+    .breadcrumb ul li:last-of-type a {
+      color: #FF826E;
+      font-weight: 500; }
+    .breadcrumb ul li:not(:last-of-type) a {
+      color: #999999; }
+    .breadcrumb ul li:not(:last-of-type)::after {
+      content: "\203a";
+      font-size: 20px;
+      margin: 0 5px;
+      color: #CCCCCC; }
+
+/*# sourceMappingURL=breadcrumb.css.map */

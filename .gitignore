@@ -3,3 +3,6 @@ navarro.todo
 quero-festa.sql
 .env
 testes/
+public/stylesheets/sass/
+public/stylesheets/.sass-cache/
+public/stylesheets/*.map
