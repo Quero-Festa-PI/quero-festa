@@ -1,153 +1,125 @@
-<% include partials/header %> 
-<!-- <link rel="stylesheet" href="../stylesheets/checkout.css"> -->
+<% include partials/header %>
+
 <body>
   <div class="page">
-    <% include partials/menu-logado %>
+    <%- include('partials/navbar') %>
 
     <!-- CONTEÚDO PRINCIPAL -->
     <div class="container">
       <div class="row">
-        <!-- MENU -->
-        <% include partials/menu-horizontal %>
-
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <div class="homebuilder clearfix">
             <!-- CONTAINER CAMINHO DAS PAGINAS -->
-            <div class="tm-container">
-              <div class="tm-inner">
-                  <div class="row row-level-1">                      
-                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div class="row-inner clearfix">
-                              <div class="col-inner d-flex justify-content-around">
-                                  <div id="content" class="col-sm-12 col-md-12 col-lg-12">
-                                      <!-- CAMINHO DAS PAGINAS -->
-                                      <div class="col-sm-12">
-                                          <nav aria-label="breadcrumb">
-                                              <ol class="breadcrumb rounded shadow-sm" id="caminho-paginas">
-                                                  <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                                  <li class="breadcrumb-item"><a href="/pedidos/pedido">Pedidos</a></li>
-                                                  <li class="breadcrumb-item active" aria-current="page"><a href="/pedidos/checkout">Checkout</a></li>                        
-                                              </ol>
-                                          </nav>
-                                      </div>
-                                      <!-- FIM CAMINHO DAS PAGINAS -->
-                                  </div>
-                              </div>
-                          </div>
+            <%- include('partials/breadcrumb') %>
+            <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
+
+            <div class="row">
+              <div class="col-8">
+
+                <!-- CONFIRMAÇÃO DO ENDEREÇO -->
+                <div id="confirmar-endereco">
+
+                  <br>
+                  <!-- Card Confirmação Endereço -->
+                  <div class="card checkout border-left-primary shadow ml-3">
+                    <div class="card-body checkout">
+                      <div class="row">
+                        <div class='col-5'>
+                          <h6>Confirmar Endereço</h6>
+                        </div>
+                        <div class='col-7 text-right'>
+                          <button class="btn btn-alt">Editar</button>
+                        </div>
                       </div>
+                      <!-- Divider -->
+                      <hr class="sidebar-divider my-0">
+                    </div>
                   </div>
-              </div>
-          </div>
-          <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
+                  <!-- Fim Card Confirmação Endereço -->
+                </div>
+                <!-- FIM DE CONFIRMAÇÃO DO ENDEREÇO -->
 
-          <div class="row">
-            <div class="col-8">
-              
-              <!-- CONFIRMAÇÃO DO ENDEREÇO -->
-              <div id="confirmar-endereco" >
-                
-                <br>
-                <!-- Card Confirmação Endereço -->
-                <div class="card checkout border-left-primary shadow ml-3">
-                  <div class="card-body checkout">
-                    <div class="row">
-                      <div class='col-5'>
-                        <h6>Confirmar Endereço</h6>
+                <!-- OPÇÕES DE ENVIO -->
+                <div id="confirmar-endereco">
+
+                  <br>
+                  <!-- Card Opções de envio -->
+                  <div class="card checkout border-left-primary rounder shadow ml-3">
+                    <div class="card-body checkout">
+                      <div class="row">
+                        <div class='col-5'>
+                          <h6>Opções de Envio</h6>
+                        </div>
                       </div>
-                      <div class='col-7 text-right'>
-                        <button class="btn btn-alt">Editar</button>
+                      <!-- Divider -->
+                      <hr class="sidebar-divider my-0">
+                    </div>
+                  </div>
+                  <!-- Fim Card Opções de envio -->
+                </div>
+                <!-- FIM OPÇÕES DE ENVIO -->
+
+                <!-- OPÇÕES DE PAGAMENTO -->
+                <div id="confirmar-endereco">
+
+                  <br>
+                  <!-- Card Opções de pagamento -->
+                  <div class="card checkout border-left-primary rounder shadow ml-3">
+                    <div class="card-body checkout">
+                      <div class="row">
+                        <div class='col-5'>
+                          <h6>Opções de Pagamento</h6>
+                        </div>
+                      </div>
+                      <!-- Divider -->
+                      <hr class="sidebar-divider my-0">
+                    </div>
+                  </div>
+                  <!-- Fim Card Opções de pagamento -->
+                </div>
+                <!-- FIM OPÇÕES DE PAGAMENTO -->
+              </div>
+
+              <div class="col-4">
+                <!-- DETALHES DO PEDIDO -->
+                <div id="confirmar-endereco">
+
+                  <br>
+                  <!-- Card Detalhes do pedido -->
+                  <div class="card checkout border-left-primary rounder shadow ">
+                    <div class="card-body checkout">
+                      <div class="row">
+                        <div class='col-12'>
+                          <h6>Detalhes do Pedido</h6>
+                        </div>
+                      </div>
+                      <!-- Divider -->
+                      <hr class="sidebar-divider my-0">
+
+                      <br><br><br><br>
+
+
+                      <div class="row ">
+                        <button type="button" class="btn btn-link btn-cancelar">Cancelar Pedido</button>
                       </div>
                     </div>
-                    <!-- Divider -->
-                    <hr class="sidebar-divider my-0">
-                  </div>              
-                </div>
-                <!-- Fim Card Confirmação Endereço -->
-              </div>
-              <!-- FIM DE CONFIRMAÇÃO DO ENDEREÇO -->
-    
-              <!-- OPÇÕES DE ENVIO -->
-              <div id="confirmar-endereco" >
-                
-                <br>
-                <!-- Card Opções de envio -->
-                <div class="card checkout border-left-primary rounder shadow ml-3">
-                  <div class="card-body checkout">
-                    <div class="row">
-                      <div class='col-5'>
-                        <h6>Opções de Envio</h6>
-                      </div>                  
-                    </div>
-                    <!-- Divider -->
-                    <hr class="sidebar-divider my-0">
                   </div>
-                </div>
-                <!-- Fim Card Opções de envio -->
-              </div>
-              <!-- FIM OPÇÕES DE ENVIO -->
-    
-              <!-- OPÇÕES DE PAGAMENTO -->
-              <div id="confirmar-endereco" >
-                
-                <br>
-                <!-- Card Opções de pagamento -->
-                <div class="card checkout border-left-primary rounder shadow ml-3">
-                  <div class="card-body checkout">
-                    <div class="row">
-                      <div class='col-5'>
-                        <h6>Opções de Pagamento</h6>
-                      </div>                  
-                    </div>
-                    <!-- Divider -->
-                    <hr class="sidebar-divider my-0">
+                  <div class="row mt-2">
+                    <button type="button"
+                      class="btn btn-comprando shadow px-3 py-2 mb-5 mr-4 ml-3  bg-white rounded">Continuar<br>
+                      Comprando</button>
+                    <button type="button"
+                      class="btn btn-confirmar shadow px-3 py-2 mb-5 mr-4 bg-white rounded">Confirmar<br>
+                      Pedido</button>
                   </div>
+                  <!-- Fim Card Detalhes do pedido -->
                 </div>
-                <!-- Fim Card Opções de pagamento -->
-              </div>
-              <!-- FIM OPÇÕES DE PAGAMENTO -->
-            </div>
-              
-            <div class="col-4">
-              <!-- DETALHES DO PEDIDO -->
-              <div id="confirmar-endereco" >
-                
-                <br>
-                <!-- Card Detalhes do pedido -->
-                <div class="card checkout border-left-primary rounder shadow ">
-                  <div class="card-body checkout">
-                    <div class="row">
-                      <div class='col-12'>
-                        <h6>Detalhes do Pedido</h6>
-                      </div>                  
-                    </div>
-                    <!-- Divider -->
-                    <hr class="sidebar-divider my-0">
-                    
-                    <br><br><br><br>
+                <!-- FIM DETALHES DO PEDIDO -->
 
-
-                    <div class="row ">
-                      <button type="button" class="btn btn-link btn-cancelar">Cancelar Pedido</button>                    
-                  </div>
-                </div>
               </div>
-              <div class="row mt-2">
-                <button type="button" class="btn btn-comprando shadow px-3 py-2 mb-5 mr-4 ml-3  bg-white rounded">Continuar<br> Comprando</button>
-                <button type="button" class="btn btn-confirmar shadow px-3 py-2 mb-5 mr-4 bg-white rounded">Confirmar<br> Pedido</button>                  
-              </div>
-              <!-- Fim Card Detalhes do pedido -->
-              </div>
-              <!-- FIM DETALHES DO PEDIDO -->
-
             </div>
           </div>
-          
-
         </div>
       </div>
     </div>
-  </div>
 </body>
-
-   
-

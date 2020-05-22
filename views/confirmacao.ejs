@@ -1,80 +1,53 @@
-<% include partials/header %> 
+<% include partials/header %>
+
 <body>
   <div class="page">
-    <% include partials/menu-logado %>
+    <%- include('partials/navbar') %>
 
     <!-- CONTEÚDO PRINCIPAL -->
     <div class="container">
       <div class="row">
-        <!-- MENU -->
-        <% include partials/menu-horizontal %>
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <div class="homebuilder clearfix">
             <!-- CONTAINER CAMINHO DAS PAGINAS -->
-            <div class="tm-container">
-              <div class="tm-inner">
-                  <div class="row row-level-1">                      
-                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div class="row-inner clearfix">
-                              <div class="col-inner d-flex justify-content-around">
-                                  <div id="content" class="col-sm-12 col-md-12 col-lg-12">
-                                      <!-- CAMINHO DAS PAGINAS -->
-                                      <div class="col-sm-12">
-                                          <nav aria-label="breadcrumb">
-                                              <ol class="breadcrumb rounded shadow-sm" id="caminho-paginas">
-                                                  <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                                  <li class="breadcrumb-item"><a href="/pedidos/pedido">Pedidos</a></li>
-                                                  <li class="breadcrumb-item active" aria-current="page"><a href="/pedidos/checkout">Confirmar Pedido</a></li>                        
-                                              </ol>
-                                          </nav>
-                                      </div>
-                                      <!-- FIM CAMINHO DAS PAGINAS -->
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
-          
-          <!-- CONFIRMAÇÃO DO PEDIDO -->
-          <div id="confirmar-pedido" class="col-12">
-            
-            <br>
-            <!-- Card Confirmação do Pedido -->
-            <div class="card confirmacao border-left-primary shadow ml-3">
-              <div class="card-body confirmacao">
-                <div class="row">
-                  <div class='col-5'>
-                    <h6>Confirmação do Pedido</h6>
-                  </div>
-                </div>
-                <!-- Divider -->
-                <hr class="sidebar-divider my-0">
-                <div class="row">
-                    <a href="#" class="mt-2 ml-4">Pedido Nº XXXXXXXXXXXXX</a>                    
-                </div>
-                <div class="row">
-                    <p class="mt-2 ml-4">Seu pedido foi finalizado com sucesso. <br>
-                        Enviaremos um email com as informações da sua compra.<br>
-                        Obrigada pela preferencia</p>
-                </div>
-              </div>              
-            </div>
-            <!-- Fim Card Confirmação do Pedido -->
-          </div>
-          <!-- FIM DE CONFIRMAÇÃO DO PEDIDO -->
+            <%- include('partials/breadcrumb') %>
+            <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
 
-          <div class="row my-3 float-right">
-            <button type="button" class="btn btn-voltar shadow px-4 py-2 mb-5 mr-4 bg-white rounded">Voltar</button>
+            <!-- CONFIRMAÇÃO DO PEDIDO -->
+            <div id="confirmar-pedido" class="col-12">
+
+              <br>
+              <!-- Card Confirmação do Pedido -->
+              <div class="card confirmacao border-left-primary shadow ml-3">
+                <div class="card-body confirmacao">
+                  <div class="row">
+                    <div class='col-5'>
+                      <h6>Confirmação do Pedido</h6>
+                    </div>
+                  </div>
+                  <!-- Divider -->
+                  <hr class="sidebar-divider my-0">
+                  <div class="row">
+                    <a href="#" class="mt-2 ml-4">Pedido Nº XXXXXXXXXXXXX</a>
+                  </div>
+                  <div class="row">
+                    <p class="mt-2 ml-4">Seu pedido foi finalizado com sucesso. <br>
+                      Enviaremos um email com as informações da sua compra.<br>
+                      Obrigada pela preferencia</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Fim Card Confirmação do Pedido -->
+            </div>
+            <!-- FIM DE CONFIRMAÇÃO DO PEDIDO -->
+
+            <div class="row my-3 float-right">
+              <button type="button" class="btn btn-voltar shadow px-4 py-2 mb-5 mr-4 bg-white rounded">Voltar</button>
+            </div>
+
           </div>
-          
         </div>
       </div>
     </div>
-  </div>
 </body>
-
-

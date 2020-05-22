@@ -1,0 +1,65 @@
+<nav class="navbar">
+
+    <div class="navbar-row1">
+        <!-- hamburguer -->
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+
+        <!-- logo -->
+        <a class="logo" href="/">
+            <picture>
+                <source media="(max-width: 470px)" srcset="../images/logo-mobile.png">
+                <source media="(min-width: 471px)" srcset="../images/logo-desktop.png">
+                <img src="../images/logo-mobile.png" alt="Logo do Quero Festa">
+            </picture>
+        </a>
+
+        <!-- formulário de busca -->
+        <form class="busca" action="/buscar" method="GET">
+            <input placeholder="O que você procura?" type="text" name="query" id="query">
+            <button type="submit"><img src="../images/lupa.png" alt=""></button>
+        </form>
+
+        <!-- carrinho -->
+        <a href="#" class="carrinho">
+            <img src="../images/carro-vazio.png" alt="">
+            <div>
+                <span>Meu carrinho</span>
+                <span>Itens</span>
+                <span>R$0,00</span>
+            </div>
+        </a>
+
+        <!-- botões de usuário -->
+        <div class="usuario">
+            <% if (!usuario) { %>
+            <div class="botoes">
+                <button onclick="redirecionarCadastro()">Cadastrar</button>
+                <button onclick="redirecionarLogin()">Entrar</button>
+            </div>
+            <div class="icone dropdown">
+                <img src="../images/icon-login.png" alt="">
+                <div class="dropdown-content">
+                    <a href="/usuarios/cadastro">Cadastrar</a>
+                    <a href="/usuarios/logar">Entrar</a>
+                </div>
+            </div>
+            <% } else { %>
+            <img class="rounded-circle" src="../images/perfilCliente.png" width="50px" height="50px" alt="avatar">
+            <% } %>
+        </div>
+
+    </div>
+    <div class="navbar-row2">
+        <ul class="menu">
+            <li><a href="/produtos/buscar">Aniversário</a></li>
+            <li><a href="">Bodas</a></li>
+            <li><a href="">Datas especiais</a></li>
+            <li><a href="">Comemorações</a></li>
+        </ul>
+    </div>
+
+</nav>

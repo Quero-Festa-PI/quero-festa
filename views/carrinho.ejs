@@ -1,240 +1,215 @@
- <% include partials/header %> 
- <link rel="stylesheet" href="../stylesheets/carrinhostyle.css">
+<% include partials/header %>
+<link rel="stylesheet" href="../stylesheets/carrinhostyle.css">
+
 <body>
   <div class="page">
-    <% include partials/menu-logado %>
+    <%- include('partials/navbar') %>
 
     <!-- CONTEÚDO PRINCIPAL -->
     <div class="container">
-      <div class="row">
-        <!-- MENU -->
-        <% include partials/menu-horizontal %> 
+      <div class="row">        
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <div class="homebuilder clearfix">
             <!-- CONTAINER CAMINHO DAS PAGINAS -->
+            <%- include('partials/breadcrumb') %>
+            <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
+
             <div class="tm-container">
-              <div class="tm-inner">
-                  <div class="row row-level-1">                      
-                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div class="row-inner clearfix">
-                              <div class="col-inner d-flex justify-content-around">
-                                  <div id="content" class="col-sm-12 col-md-12 col-lg-12">
-                                      <!-- CAMINHO DAS PAGINAS -->
-                                      <div class="col-sm-12">
-                                          <nav aria-label="breadcrumb">
-                                              <ol class="breadcrumb rounded shadow-sm" id="caminho-paginas">
-                                                  <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                                  <li class="breadcrumb-item"><a href="/pedidos/pedido">Pedidos</a></li>
-                                                  <li class="breadcrumb-item active" aria-current="page"><a href="/pedidos/carrinho">Carrinho</a></li>                        
-                                              </ol>
-                                          </nav>
-                                      </div>
-                                      <!-- FIM CAMINHO DAS PAGINAS -->
-                                  </div>
+              <!-- ### CARD DE DADOS DE PRODUTO SELECIONADO -->
+              <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
+                <div class="card-body painel-dash">
+                  <div class="row">
+                    <!-- IMAGEM -->
+                    <div class="col-3 text-center">
+                      <img id='avatar' class='shadow border-bottom-primary rounded' src='../images/combo1.png'
+                        width="150px" height="150px" alt='avatar'>
+                    </div>
+                    <!-- DADOS DO PEDIDO -->
+                    <div class="col-9">
+                      <table class="table table-sm" id="table-carrinho">
+                        <thead>
+                          <tr>
+                            <th id="azul" scope="col">Combo Festa Premium</th>
+                            <th id="azul" class="text-center" scope="col">Quantidade</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td id="verde">
+                              <div class="row ml-1">
+                                - Torta marfim de morango
                               </div>
-                          </div>
+                              <div class="row ml-1">
+                                - 200 salgados
+                              </div>
+                              <div class="row ml-1">
+                                - 200 docinhos
+                              </div>
+                              <div class="row ml-1">
+                                - 3 refrigerantes de 2LT
+                              </div>
+                            </td>
+                            <td class="align-middle text-center">
+                              <select class="custom-select ml-2" id="quantidade">
+                                <option id="verde" value="1" selected>01</option>
+                                <option id="verde" value="2">02</option>
+                                <option id="verde" value="3">03</option>
+                                <option id="verde" value="4">04</option>
+                              </select>
+                            </td>
+                            <td id="verde" class="align-middle text-center">
+                              R$ 437,00
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- FIM DADOS DO PEDIDO -->
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="float-right mr-3">
+                        <div class="cartSection removeWrap">
+                          <a href="#" class="remove">x</a>
+                        </div>
                       </div>
-                  </div>
-              </div>
-          </div>
-          <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
-         
-          <div class="tm-container">
-            <!-- ### CARD DE DADOS DE PRODUTO SELECIONADO -->
-            <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
-              <div class="card-body painel-dash">                  
-                <div class="row">
-                <!-- IMAGEM -->
-                  <div class="col-3 text-center">
-                    <img id='avatar' class='shadow border-bottom-primary rounded' src='../images/combo1.png' width="150px" height="150px" alt='avatar'>
-                  </div>
-                  <!-- DADOS DO PEDIDO -->
-                  <div class="col-9">
-                    <table class="table table-sm" id="table-carrinho">
-                      <thead>
-                        <tr>
-                          <th id="azul" scope="col">Combo Festa Premium</th>
-                          <th id="azul" class="text-center" scope="col">Quantidade</th>
-                          <th scope="col"></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td id="verde"> 
-                            <div class="row ml-1">
-                              - Torta marfim de morango
-                            </div>                            
-                            <div class="row ml-1">
-                              - 200 salgados
-                            </div>
-                            <div class="row ml-1">
-                              - 200 docinhos                              
-                            </div>
-                            <div class="row ml-1">
-                              - 3 refrigerantes de 2LT                              
-                            </div>
-                          </td>                     
-                          <td class="align-middle text-center">
-                            <select class="custom-select ml-2" id="quantidade">
-                              <option id="verde" value="1" selected>01</option>
-                              <option id="verde" value="2">02</option>
-                              <option id="verde" value="3">03</option>
-                              <option id="verde" value="4">04</option>
-                            </select>
-                          </td>
-                          <td id="verde" class="align-middle text-center">
-                            R$ 437,00
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>                  
-                </div>     
-                <div class="row">
-                  <div class="col-12">
-                    <div class="float-right mr-3">
-                      <div class="cartSection removeWrap">
-                        <a href="#" class="remove">x</a>
-                     </div>
                     </div>
                   </div>
-                </div>              
+                </div>
               </div>
             </div>
-          </div>
-          <!-- FIM CARD DADOS PESSOAIS -->
-            
-          <!-- CARD 2 -->
-          <div class="tm-container">
-            <!-- ### CARD DE DADOS DE PRODUTO SELECIONADO -->
-            <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
-              <div class="card-body painel-dash">                  
-                <div class="row">
-                <!-- IMAGEM -->
-                  <div class="col-3 text-center">
-                    <img id='avatar' class='shadow border-bottom-primary rounded ' src='../images/confraternização.png' width="150px" height="150px" alt='avatar'>
-                  </div>
-                  <!-- DADOS DO PEDIDO -->
-                  <div class="col-9">
-                    <table class="table table-sm" id="table-carrinho">
-                      <thead>
-                        <tr>
-                          <th id="azul" scope="col">Combo Confraternização</th>
-                          <th id="azul" class="text-center" scope="col">Quantidade</th>
-                          <th scope="col"></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td id="verde">
-                            <div class="row ml-1">
-                              - 70 salgados (6 tipos)
-                            </div>                            
-                            <div class="row ml-1">
-                              - 1.5kg biscoito de queijo
-                            </div>
-                            <div class="row ml-1">
-                              - 10 mini panetone (2 sabores)                              
-                            </div>
-                            <div class="row ml-1">
-                              - 2 refrigerantes de 2LT                              
-                            </div>
-                            <div class="row ml-1">
-                              - 1 suco 1LT                              
-                            </div>                           
-                          </td>                     
-                          <td class="align-middle text-center">
-                            <select class="custom-select " id="quantidade">
-                              <option value="1" selected>01</option>
-                              <option value="2">02</option>
-                              <option value="3">03</option>
-                              <option value="4">04</option>
-                            </select>                       
-                          </td>
-                          <td id="verde" class=" align-middle text-center">
-                            R$ 128,90
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div> 
-                <div class="row">
-                  <div class="col-12">
-                    <div class="float-right mr-3">
-                      <div class="cartSection removeWrap">
-                        <a href="#" class="remove">x</a>
-                     </div>
-                    </div>
-                  </div>
-                </div>                   
-              </div>
-            </div>
-          </div>
-          <!-- FIM CARD DADOS PESSOAIS -->
+            <!-- FIM CARD DADOS PESSOAIS -->
 
-          <!-- CARD 3 -->
-          <div class="tm-container">
-            <!-- ### CARD TOTAL DO PEDIDO -->
-            <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
-              <div class="card-body painel-dash">                  
-                <div class="row">
-                  <div class="col-9">
-                    <div class="float-right">
-                      <div class="row mb-2">
-                        <p id="azul"> Pedidos (2)  </p>
-                      </div>
-                      <div class="row mb-3">
-                        <p id="azul"> Frete  </p>
-                      </div>
-                      <div class="row">
-                        <p id="azul"> Total  </p>                 
+            <!-- CARD 2 -->
+            <div class="tm-container">
+              <!-- ### CARD DE DADOS DE PRODUTO SELECIONADO -->
+              <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
+                <div class="card-body painel-dash">
+                  <div class="row">
+                    <!-- IMAGEM -->
+                    <div class="col-3 text-center">
+                      <img id='avatar' class='shadow border-bottom-primary rounded ' src='../images/confraternização.png'
+                        width="150px" height="150px" alt='avatar'>
+                    </div>
+                    <!-- DADOS DO PEDIDO -->
+                    <div class="col-9">
+                      <table class="table table-sm" id="table-carrinho">
+                        <thead>
+                          <tr>
+                            <th id="azul" scope="col">Combo Confraternização</th>
+                            <th id="azul" class="text-center" scope="col">Quantidade</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td id="verde">
+                              <div class="row ml-1">
+                                - 70 salgados (6 tipos)
+                              </div>
+                              <div class="row ml-1">
+                                - 1.5kg biscoito de queijo
+                              </div>
+                              <div class="row ml-1">
+                                - 10 mini panetone (2 sabores)
+                              </div>
+                              <div class="row ml-1">
+                                - 2 refrigerantes de 2LT
+                              </div>
+                              <div class="row ml-1">
+                                - 1 suco 1LT
+                              </div>
+                            </td>
+                            <td class="align-middle text-center">
+                              <select class="custom-select " id="quantidade">
+                                <option value="1" selected>01</option>
+                                <option value="2">02</option>
+                                <option value="3">03</option>
+                                <option value="4">04</option>
+                              </select>
+                            </td>
+                            <td id="verde" class=" align-middle text-center">
+                              R$ 128,90
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="float-right mr-3">
+                        <div class="cartSection removeWrap">
+                          <a href="#" class="remove">x</a>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  
-                  <div class="col-3">
-                    <div class="float-right ">
-                      <div class="row mb-2 mr-3">
-                        <p id="verde">R$ 565,90</p>
-                      </div>
-                      <div class="row mb-3 mr-3">
-                        <p id="verde" >R$ 20,00</p>
-                      </div>
-                      <div class="row mr-3">
-                        <p id="verde">R$ 585,90</p>
+                </div>
+              </div>
+            </div>
+            <!-- FIM CARD 2 -->
+
+            <!-- CARD 3 -->
+            <div class="tm-container">
+              <!-- ### CARD TOTAL DO PEDIDO -->
+              <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
+                <div class="card-body painel-dash">
+                  <div class="row">
+                    <div class="col-9">
+                      <div class="float-right">
+                        <div class="row mb-2">
+                          <p id="azul"> Pedidos (2) </p>
+                        </div>
+                        <div class="row mb-3">
+                          <p id="azul"> Frete </p>
+                        </div>
+                        <div class="row">
+                          <p id="azul"> Total </p>
+                        </div>
                       </div>
                     </div>
-                  </div> 
-                  
-                </div>                   
-              </div>
-            </div>
-          </div>
-          <!-- FIM CARD TOTAL DO PEDIDO -->
 
-          <!-- BOTÕES -->
-          <div class="row mt-2">
-            <div class="col-12">
-              <div class="float-right mr-5">
-                <button type="button" class="btn btn-comprando shadow px-3 py-2 mb-5 mr-2 bg-white rounded">Continuar Comprando</button>
-                <button type="button" class="btn btn-confirmar shadow px-3 py-2 mb-5 bg-white rounded">Finalizar Compra</button>                  
-              </div>
-            </div>
-          </div>
-          <!-- FIM BOTÕES -->
-        
-              </div>
-            </div>
-        </div>  
+                    <div class="col-3">
+                      <div class="float-right ">
+                        <div class="row mb-2 mr-3">
+                          <p id="verde">R$ 565,90</p>
+                        </div>
+                        <div class="row mb-3 mr-3">
+                          <p id="verde">R$ 20,00</p>
+                        </div>
+                        <div class="row mr-3">
+                          <p id="verde">R$ 585,90</p>
+                        </div>
+                      </div>
+                    </div>
 
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- FIM CARD 3 -->
+
+            <!-- BOTÕES -->
+            <div class="row mt-2">
+              <div class="col-12">
+                <div class="float-right mr-5">
+                  <button type="button" class="btn btn-comprando shadow px-3 py-2 mb-5 mr-2 bg-white rounded">Continuar
+                    Comprando</button>
+                  <button type="button" class="btn btn-confirmar shadow px-3 py-2 mb-5 bg-white rounded">Finalizar
+                    Compra</button>
+                </div>
+              </div>
+            </div>
+            <!-- FIM BOTÕES -->
+          </div>
+        </div>
       </div>
     </div>
-    
-    
+  </div>  
+</body>
+<%include partials/footer-alt %>
+<%include partials/script %>
 
-  </div>
-    </body>
-    <%include partials/footer-alt %>
-    <%include partials/script %>
 </html>

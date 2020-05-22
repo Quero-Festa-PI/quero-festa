@@ -24,55 +24,7 @@
 
 <body>
     <div class="page">
-        <!-- NAVBAR -->
-<nav class="navbar navbar-expand navbar-light bg-white topbar mb4 static-top shadow row">
-    <!-- COMPONENTES DO NAVBAR -->
-    <div class="container">
-        <!-- LOGO -->
-        <div class="col">
-            <a class='navbar-brand' href="/"><img class='logo_nav w-25 ml-3' src="images/logo_atual.png" alt="logo"></a>
-        </div>
-      
-        <ul class="navbar-nav ml-auto">
-            <!-- BARRA DE PESQUISA -->
-            <li class="nav-item no-arrow mx-1">
-              <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 
-              navbar-search" action="">
-                  <div class="input-group">
-                      <input type="search" class="form-control bg-light border-0 medium" placeholder="Buscar"
-                          aria-label="Search" aria-describebedby="basic-addon2">
-                      <div class="input-group-append">
-                          <button class="btn" type="button">
-                              <img src="images/lupa.png" width="30px" height="30px" alt="lupa">
-                          </button>
-                      </div>
-                  </div>
-              </form>
-          </li>
-            <!-- CARRINHO -->
-            <li class="nav-item dropdown no-arrow  mx-1">
-                <a class="nav-link dropdown-togger" href="/pedidos/carrinho" id="carrinho" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <img src="images/carro-vazio.png" width="30px" height="30px" alt="carrinho"></a>
-            </li>
-            <!-- LOGIN -->
-            <li class="nav-item dropdown no-arrow show">
-                <a class="nav-link dropdown-togger" href="#" id="login" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <span class="nav-link dropdown-toggle text-gray-600 medium">Login</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in "
-                    aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="/usuarios/cadastro">Cadastrar</a>
-                    <a class="dropdown-item" href="/usuarios/logar">Logar</a>
-                </div>
-            </li>
-        </ul>
-        <!-- FIM DOS ELEMENTOS DO NAVBAR -->
-  
-    </div>
-  </nav>
-  <!-- FIM DO NAVBAR -->
+        <% include partials/menu %>
   
         <!-- MENU HORIZONTAL -->
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -169,71 +121,5 @@
 
 <!-- FOOTER -->
 <br><br>
-<footer>
-    <div class="container">
-        <div class="footer_modules">
-            <div class="homebuilder clearfix">
-                <div class="tm-container">
-                    <div class="tm-inner">
-                        <div class="row row-level-1">
-                            <div class="row-inner clearfix d-flex justify-content-around">
-                                <!-- 1º coluna -->
-                                <div class="col-md-3 mx-auto ">
-                                    <!-- Links -->
-                                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Sobre Nós</h5>
-                                    <ul class="list-unstyled">
-                                        <li>
-                                            <a href="#!">Quem Somos! </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- Grid column -->
-                                <hr class="clearfix w-100 d-md-none">
-                                <!-- 2º coluna -->
-                                <div class="col-md-3 mx-auto">
-                                    <!-- Links -->
-                                    <h5 class="font-weight-bold text-uppercase mt-3 mb-2">Meios de Pagamentos
-                                    </h5>
-                                    <figure>
-                                        <img id="bandeiras" src="images/bandeiras.png"
-                                            alt="Bandeiras de cartões">
-                                    </figure>
-                                </div>
-                                <!-- Grid column -->
-                                <hr class="clearfix w-100 d-md-none">
-                                <!-- 3º coluna -->
-                                <div class="col-md-2 mx-auto">
-                                    <!-- Links -->
-                                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Saiba Mais</h5>
-                                    <ul class="list-unstyled">
-                                        <li>
-                                            <a href="#!">Como Comprar</a>
-                                        </li>
-                                        <li>
-                                            <a href="#!">Como Vender</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- Grid column -->
-                                <hr class="clearfix w-100 d-md-none">
-                                <!-- 4º coluna -->
-                                <div class="col-md-3 mx-auto">
-                                    <!-- Links -->
-                                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Contato</h5>
-                                    <ul class="list-unstyled">
-                                        <li>
-                                            <a href="#!">Central de Atendimento</a>
-                                        </li>
-                                        <li>
-                                            <a href="#!">Duvidas Frequentes</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+<% include partials/footer %>
+<% include partials/script %>
