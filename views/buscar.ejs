@@ -1,4 +1,4 @@
-<% include partials/header %>
+<%- include('partials/header') %>
 
 <body>
     <div class="page">
@@ -11,7 +11,7 @@
                 <%- include('partials/breadcrumb') %>
                 <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
                 <div class="resultado-busca">
-                    <strong><%= consulta %></strong>
+                    <strong><%= busca %></strong>
                     <p>(<%= produtos.length %> resultados encontrados)</p>
                 </div>
                 <div class="select-ordenar d-flex flex-column">
@@ -26,6 +26,7 @@
             <div class="row">
                 <!-- ITENS ACHADOS -->
                 <div class="mx-5">
+                    <% let nFileiras = Math.ceil(produtos.length / 4) %>
                     <% for (let iFileiras = 1; iFileiras <= nFileiras; iFileiras++) { %>
                     <div class="container">
                         <anuncio>

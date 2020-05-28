@@ -1,14 +1,22 @@
 module.exports = {
     pedido: (req, res) => {
-        res.render('pedido', {page: 'pedido'});
+        console.log(res.usuario);
+        usuario = res.usuario;
+        res.render('pedido', { page: 'pedido', usuario });
     },
     carrinho: (req, res) => {
-        res.render('carrinho', {page: 'carrinho'});
+        console.log(res.usuario);
+        usuario = res.usuario;
+        res.render('carrinho', { page: 'carrinho', usuario });
     },
     checkout: (req, res) => {
-        res.render('checkout', {page: 'checkout'});
+        console.log(res.usuario);
+        usuario = res.usuario;
+        res.render('checkout', { page: 'checkout', usuario });
     },
     confirmacao: (req, res) => {
-        res.render('confirmacao', {page: 'confirmacao'});
+        console.log(res.usuario);
+        usuario = res.usuario;
+        res.render('confirmacao', { page: 'confirmacao', usuario });
     }
 }

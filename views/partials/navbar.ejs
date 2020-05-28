@@ -18,7 +18,7 @@
         </a>
 
         <!-- formulário de busca -->
-        <form class="busca" action="/buscar" method="GET">
+        <form class="busca" action="/produtos/buscar" method="GET">
             <input placeholder="O que você procura?" type="text" name="query" id="query">
             <button type="submit"><img src="../images/lupa.png" alt=""></button>
         </form>
@@ -35,7 +35,7 @@
 
         <!-- botões de usuário -->
         <div class="usuario">
-            <% if (!usuario) { %>
+            <% if (usuario == "Não há usuário logado no sistema.") { %>
             <div class="botoes">
                 <button onclick="redirecionarCadastro()">Cadastrar</button>
                 <button onclick="redirecionarLogin()">Entrar</button>
