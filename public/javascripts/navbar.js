@@ -21,8 +21,8 @@ const navSlide = () => {
 navSlide();
 
 function redirecionarCadastro() {
-    window.location.href = "http://localhost:3000/cadastro";
+    window.location.href = "http://localhost:3000/usuarios/cadastro";
 }
 function redirecionarLogin() {
-    window.location.href = "http://localhost:3000/logar";
+    window.location.href = "http://localhost:3000/usuarios/logar";
 }
