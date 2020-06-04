@@ -1,0 +1,99 @@
+<% include partials/header %>
+<body>
+    <div class="page">
+        <%- include('partials/navbar') %>
+
+        <div id="meio-home" class="container">
+            <div class="row">
+                <%- include('partials/breadcrumb') %>
+
+
+                <div id="content" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div id="painel-cliente" class="container center">
+                        
+                        <!-- Card Dados Pessoais -->
+                        <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
+                            <div class="card-body painel-dash">
+                                
+                                <!-- Form dos dados -->
+                                <form action="/usuarios/editar-cliente/<%= usuario.id %>?_method=PUT" method="POST">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <h4>Dados Pessoais</h4>
+                                        </div>
+                                    </div>
+                    
+                                    <!-- Divider -->
+                                    <hr class="sidebar-divider my-0">
+                                    
+                                    <div class="painel-dados row">
+                                        <div class='col-12'>    
+                                            <input type="hidden" name="id" value="<%= usuario.id %>">                    
+                                            <!-- NOME COMPLETO-->
+                                            <div class="form-group row">
+                                                <label for="inputNome" class="col-sm-3 col-form-label">Nome Completo</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="inputNome" name="nomeCli" value="<%= usuario.nome + ' ' + usuario.sobrenome%> ">
+                                                </div>
+                                            </div>
+                                            <!-- DATA NASCIMENTO -->
+                                            <div class="form-group row">
+                                                <label for="inputData" class="col-sm-3 col-form-label">Data de Nascimento</label>
+                                                <div class="col-sm-5">
+                                                    <input type="date" class="form-control" id="inputData" name="dataCli" value="<%= usuario.data_nasc %>">
+                                                </div>
+                                            </div>
+                                            <!-- CPF-->
+                                            <div class="form-group row">
+                                                <label for="inputCPf" class="col-sm-3 col-form-label">CPF</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="inputCPF" name="cpfCli" value="<%= usuario.cpf %>">
+                                                </div>
+                                            </div>
+                                            <!-- EMAIL -->
+                                            <div class="form-group row">
+                                                <label for="inputEmail" class="col-sm-3 col-form-label">Email</label>
+                                                <div class="col-sm-9">
+                                                    <input type="email" class="form-control" id="inputEmail" name="emailCli" value="<%= usuario.email %>">
+                                                </div>
+                                            </div>
+                                            <!-- SEXO -->
+                                            <fieldset class="form-group">
+                                                <div class="row">
+                                                    <legend class="col-form-label col-sm-3 pt-0">Sexo</legend>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="radioSexo"
+                                                            id="radioSexoF" value="opcao1">
+                                                        <label class="form-check-label" for="radioSexoF">Feminino</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="radioSexo"
+                                                            id="radioSexoM" value="opcao2">
+                                                        <label class="form-check-label" for="radioSexoM">Masculino</label>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+
+                                        <div class="col-4 text-center">
+                                            <img id='avatar' class='shadow border-bottom-primary rounded-circle'
+                                                src='../images/perfilCliente.png' width="150px" height="150px" alt='avatar'>
+                                            <button class="btn btn-alt text-center">Escolha sua foto!</button>
+                                        </div>                                    
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-alt">Alterar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>   
+                    </div>   
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <% include partials/footer-alt %>
+    <% include partials/script %>
+</body>
