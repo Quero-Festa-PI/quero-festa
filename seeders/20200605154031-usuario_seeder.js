@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('usuarios', [{
+      id: 1,
       nome: 'Bianca',
       sobrenome: 'Pereira Santos',
       email: 'bianca@querofesta.com.br',
@@ -14,6 +15,7 @@ module.exports = {
       sexo: 'F',
       imagem: null
     }, {
+      id: 2,
       nome: 'Leonardo',
       sobrenome: 'de Abreu Navarro',
       email: 'navarro@querofesta.com.br',
@@ -23,6 +25,7 @@ module.exports = {
       sexo: 'M',
       imagem: null
     }, {
+      id: 3,
       nome: 'Leonardo',
       sobrenome: 'Carvalho',
       email: 'carvalho@querofesta.com.br',
@@ -32,6 +35,7 @@ module.exports = {
       sexo: 'M',
       imagem: null
     }, {
+      id: 4,
       nome: 'Melody',
       sobrenome: 'Gomes',
       email: 'melody@querofesta.com.br',
