@@ -28,6 +28,10 @@ module.exports = {
         },
         onDelete: 'NO ACTION',
         onUpdate: 'CASCADE'
+      },
+      quantidade: {
+        type: Sequelize.INTEGER.UNSIGNED,
+        allowNull: false
       }
     });
   },
