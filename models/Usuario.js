@@ -33,9 +33,12 @@ let Usuario = (sequelize, DataTypes) => {
                 type: DataTypes.DATE,
             },
             sexo: {
-                type: DataTypes.ENUM('M', 'F', null),
-                defaultValue: null,
+                type: DataTypes.ENUM('M', 'F'),
+                defaultValue: null
             },
+            imagem: {
+                type: DataTypes.STRING
+            }
         },
         {
             tableName: 'usuarios',

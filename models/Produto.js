@@ -21,7 +21,7 @@ let Produto = (sequelize, DataTypes) => {
                 allowNull: false
             },
             disponibilidade: {
-                type: DataTypes.TINYINT,
+                type: DataTypes.BOOLEAN,
                 allowNull: false,
             },
             descricao: {
@@ -39,18 +39,19 @@ let Produto = (sequelize, DataTypes) => {
 
     produto.associate = models => {
         produto.belongsTo(models.Loja, { foreignKey: 'lojas_id', as: 'lojas' });
+        produto.hasMany(models.ImagensDeProduto, { foreignKey: 'produtos_id', as: 'imagens' })
         produto.belongsToMany(models.Categoria,
             {
-                through: 'produtos_has_categorias',
+                through: 'produtos_categorias',
                 as: 'categorias',
                 foreignKey: 'produtos_id'
-            })
+            });
         produto.belongsToMany(models.Pedido,
             {
-                through: 'pedidos_has_produtos',
+                through: 'pedido_produtos',
                 as: 'pedidos',
                 foreignKey: 'produtos_id'
-            })
+            });
     }
 
     return produto;

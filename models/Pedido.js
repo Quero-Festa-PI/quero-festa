@@ -10,15 +10,12 @@ let Pedido = (sequelize, DataTypes) => {
             },
             usuarios_id: {
                 type: DataTypes.INTEGER.UNSIGNED,
-                allowNull: false
             },
             lojas_id: {
                 type: DataTypes.INTEGER.UNSIGNED,
-                allowNull: false
             },
             enderecos_id: {
                 type: DataTypes.INTEGER.UNSIGNED,
-                allowNull: false
             },
             pagamentos_id: {
                 type: DataTypes.INTEGER.UNSIGNED,
@@ -35,7 +32,7 @@ let Pedido = (sequelize, DataTypes) => {
         },
         {
             tableName: 'pedidos',
-            timestamps: true
+            timestamps: false
         }
     )
 
@@ -47,7 +44,7 @@ let Pedido = (sequelize, DataTypes) => {
         pedido.belongsTo(models.Pagamento, { foreignKey: 'pagamentos_id', as: 'pagamento' });
         pedido.belongsToMany(models.Produto,
             {
-                through: 'pedidos_has_produtos',
+                through: 'pedido_produtos',
                 as: 'produtos',
                 foreignKey: 'pedidos_id'
             })
