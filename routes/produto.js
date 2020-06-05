@@ -9,5 +9,6 @@ const verificaUsuarioLogado = require('../middlewares/verificaUsuarioLogado');
 router.get('/produto', verificaUsuarioLogado, produtoController.produto);
 router.get('/buscar', verificaUsuarioLogado, produtoController.buscar);
 router.get('/cadastrar-produto', verificaUsuarioLogado, produtoController.cadastrar);
+// router.post('/cadastrar-produto', produtoController.cadastrar);
 
 module.exports = router;

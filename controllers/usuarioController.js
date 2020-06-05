@@ -19,11 +19,11 @@ module.exports = {
         let usuario = await Usuario.findOne({ where: { email } });
 
         if (!usuario) {
-             res.redirect('/logar?error=1');
+             res.redirect('/usuarios/logar?error=1');
         }
 
         if (!bcrypt.compareSync(senha, usuario.senha)) {
-             res.redirect('/logar?error=1');
+             res.redirect('/usuarios/logar?error=1');
         }
 
         req.session.usuario = usuario;
@@ -53,19 +53,19 @@ module.exports = {
         // verificando existencia do email no banco
         let usuario = await Usuario.findOne({ where: { email: email1 } });
         if (!(usuario == null)) {
-             return res.redirect('/cadastro?error=1');
+             return res.redirect('/usuarios/cadastro?error=1');
         };
 
         // verificando correspondencia de emails
         if (!(email1 == email2)) {
-             return res.redirect('cadastro?error=2');
+             return res.redirect('/usuarios/cadastro?error=2');
         }
 
         let nomeCompleto = nome;
 
         // verificando se o usuario inseriu o nome completo
         if (nomeCompleto.split(" ").length <= 1) {
-             return res.redirect('/cadastro?error=3');
+             return res.redirect('/usuarios/cadastro?error=3');
         };
 
         function titleize(text) {
@@ -111,10 +111,74 @@ module.exports = {
         res.render('perfil-vendedor', {page: 'perfil'});
     },
     // Perfil cliente
-    perfilCliente: (req, res) => {
-        res.render('perfil-cliente', {page: 'perfil'});
+    perfilCliente: async (req, res) => {
+     console.log(res.usuario);
+     usuario = res.usuario;  
+     res.render('perfil-cliente', { page: 'Perfil', usuario });        
     },
+    alter: (req, res) => {
+     console.log(res.usuario);
+     usuario = res.usuario; 
+
+     res.render('editar-cliente', {page: 'Editar Dados', usuario});
+    },
+    update: async (req, res) => {
+         let {id} = req.params;
+      
+         let {nomeCli, dataCli, cpfCli} = req.body;
+          Usuario.update({
+          nome: nomeCli,
+          data_nasc: dataCli,
+          cpf: cpfCli 
+     },{
+          where: {id},
+          return: true
+     })  
+     .then((user) => {
+          
+          res.render('perfil-cliente', user);
+     })        
+     .catch(erro => {
+          res.send('deu ruim');
+          
+     });     
+     
+     },
+
+
+//     update: (req, res) => {
+//      console.log(res.usuario);
+//      usuario = res.usuario; 
+      
+//      // Capturar novos dados
+//      let {id, nome, data, cpf } = req.body;      
+     
+//      // Alterar dados
+//      Usuario.findOne({where: {id: req.body.id}})
+//      console.log(id);
+//      res.render('perfil-cliente', { page: 'Perfil', usuario });       
+//      //  .then(user => {
+//      //      let alterarUser = 
+//           Usuario.update(
+//                {
+//                     nome,
+//                     data_nasc: data,
+//                     cpf
+//                } 
+                  
+
+//      //  }).catch(err => {
+//      //       req.flash('error_msg', 'Houve um erro');
+//      //       res.redirect('/usuarios/perfil-cliente');
+//      //  })
+      
+
+//           )},
     dashboard: (req, res, ) => {
      res.render('dashboard', { page: 'dashboard' });
-}
+     },
+     sair: (req, res) => {
+          req.session.destroy();
+          res.redirect('/');
+     }
 }
