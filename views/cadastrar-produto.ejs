@@ -75,23 +75,30 @@
                         <div class="col-inner d-flex justify-content-around">
                           <div id="content" class="col-sm-12 col-md-12 col-lg-12">
                             <!-- FORMULARIO -->
-                            <form class="bg-light rounded col-sm-12 ml-5 shadow p-3 mb-5 bg-white rounded">
+                            <form action="/produtos/cadastrar-produto" method="POST" class="bg-light rounded col-sm-12 ml-5 shadow p-3 mb-5 bg-white rounded">
+                              <!-- ID DA LOJA (TESTE) -->
+                              <div class="form-group row">
+                                <label for="idLoja" class="col-sm-3 col-form-label">Id da Loja</label>
+                                <div class="col-sm-9">
+                                  <input type="number" class="form-control" id="idLoja" name="idLoja">
+                                </div>
+                              </div>
                               <!-- NOME -->
                               <div class="form-group row">
-                                <label for="inputNome" class="col-sm-3 col-form-label">Nome</label>
+                                <label for="nomeP" class="col-sm-3 col-form-label">Nome</label>
                                 <div class="col-sm-9">
-                                  <input type="text" class="form-control" id="inputNome">
+                                  <input type="text" class="form-control" id="nomeP" name="nomeP">
                                 </div>
                               </div>
                               <!-- PREÇO -->
                               <div class="form-group row">
-                                <label for="inputPreco" class="col-sm-3 col-form-label">Preço</label>
+                                <label for="preco" class="col-sm-3 col-form-label">Preço</label>
                                 <div class="col-sm-9">
-                                  <input type="text" class="form-control" id="inputPreco">
+                                  <input type="number" class="form-control" id="preco" name="preco">
                                 </div>
                               </div>
                               <!-- CATEGORIA -->
-                              <div class="form-group row">
+                              <!-- <div class="form-group row">
                                 <label for="inputCategorias" class="col-sm-3 col-form-label">Categorias</label>
                                 <div class="col-sm-9">
                                   <select class="form-control" id="inputCategorias">
@@ -101,9 +108,9 @@
                                     <option>Comemorações</option>
                                   </select>
                                 </div>
-                              </div>
+                              </div> -->
                               <!-- SUBCATEGORIA -->
-                              <div class="form-group row">
+                              <!-- <div class="form-group row">
                                 <label for="inputSubcategorias" class="col-sm-3 col-form-label">Subcategorias</label>
                                 <div class="col-sm-9">
                                   <select class="form-control" id="inputCategorias">
@@ -114,37 +121,39 @@
                                     <option>Confraternização</option>
                                   </select>
                                 </div>
-                              </div>
+                              </div> -->
                               <!-- DESCRIÇÃO -->
                               <div class="form-group row">
-                                <label for="inputDescricao" class="col-sm-3 col-form-label">Descrição</label>
+                                <label for="descricaoP" class="col-sm-3 col-form-label">Descrição</label>
                                 <div class="col-sm-9">
-                                  <textarea class="form-control" id="inputDescricao" rows="3"></textarea>
+                                  <textarea class="form-control" id="descricaoP" name="descricaoP" rows="3"></textarea>
                                 </div>
                               </div>
-                              <!-- FRETE -->
+                              <!-- DISPONIBILIDADE -->
                               <fieldset class="form-group">
                                 <div class="row">
-                                  <legend class="col-form-label col-sm-3 pt-0">Frete</legend>
+                                  <legend class="col-form-label col-sm-3 pt-0">Disponibilidade</legend>
                                   <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="radioFrete" id="radioComFrete"
+                                    <input class="form-check-input" type="radio" name="disponibilidade" id="tem"
                                       value="opcao1">
-                                    <label class="form-check-label" for="radioComFrete">Com Frete</label>
+                                    <label class="form-check-label" for="tem">Disponível</label>
                                   </div>
                                   <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="radioFrete" id="radioSemFrete"
+                                    <input class="form-check-input" type="radio" name="disponibilidade" id="naoTem"
                                       value="opcao2">
-                                    <label class="form-check-label" for="radioSemFrete">Frete Grátis</label>
+                                    <label class="form-check-label" for="naoTem">Indisponível</label>
                                   </div>
                                 </div>
                               </fieldset>
+
                               <div class="form-group row">
                                 <div class="col-sm-12">
                                   <div class="d-flex justify-content-end">
-                                    <button type="button" class="btn btn-link btn-sm text-success">Cadastrar
+                                    <button type="submit" class="btn btn-link btn-sm text-success">Cadastrar
                                       Produto</button>
                                     <button type="button" class="btn btn-link btn-sm text-danger">Cancelar</button>
                                   </div>
+                                  
                                 </div>
                               </div>
                             </form>
