@@ -48,6 +48,7 @@ let Pedido = (sequelize, DataTypes) => {
                 as: 'produtos',
                 foreignKey: 'pedidos_id'
             })
+        pedido.hasMany(models.PedidoProduto, { foreignKey: 'pedidos_id', as: 'listaDeProdutos' });
     }
 
     return pedido;
