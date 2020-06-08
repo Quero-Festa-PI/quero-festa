@@ -1,4 +1,4 @@
-const { sequelize, Usuario } = require('../models')
+const { sequelize, Usuario } = require('../database/models')
 const bcrypt = require('bcrypt');
 
 module.exports = {
