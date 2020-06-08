@@ -3,13 +3,12 @@ var router = express.Router();
 
 // Chamando o controller
 const pedidoController = require('../controllers/pedidoController');
-const verificaUsuarioLogado = require('../middlewares/verificaUsuarioLogado');
 
 // Requisição pedido
-router.get('/pedido', verificaUsuarioLogado, pedidoController.pedido);
-router.get('/carrinho', verificaUsuarioLogado, pedidoController.carrinho);
-router.get('/checkout', verificaUsuarioLogado, pedidoController.checkout);
-router.get('/confirmacao', verificaUsuarioLogado, pedidoController.confirmacao);
+router.get('/pedido', pedidoController.pedido);
+router.get('/carrinho', pedidoController.carrinho);
+router.get('/checkout', pedidoController.checkout);
+router.get('/confirmacao', pedidoController.confirmacao);
 
 
 

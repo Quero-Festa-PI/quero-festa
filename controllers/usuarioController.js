@@ -1,4 +1,4 @@
-const { sequelize, Usuario, Endereco } = require('../database/models');
+const { sequelize, Usuario, Loja, Endereco } = require('../database/models');
 const bcrypt = require('bcrypt');
 
 module.exports = {
@@ -26,7 +26,13 @@ module.exports = {
                res.redirect('/usuarios/logar?error=1');
           }
 
+          let loja = await Loja.findOne({ where: { usuarios_id: usuario.id } });
+
           req.session.usuario = usuario;
+          if (loja) {
+               req.session.loja = loja;
+          }
+
           return res.redirect('/');
 
      },
@@ -91,7 +97,7 @@ module.exports = {
           senha = bcrypt.hashSync(senha, 10);
 
           // criando usuario
-          Usuario.create(
+          usuario = await Usuario.create(
                {
                     nome,
                     sobrenome,
@@ -101,85 +107,63 @@ module.exports = {
           );
 
           // iniciando session e redirecionando para a home
-          usuario = await Usuario.findOne({ where: { email: email1 } });
           req.session.usuario = usuario;
           return res.redirect('/');
 
      },
      // Perfil vendedor
      perfilVendedor: (req, res) => {
-          res.render('perfil-vendedor', { page: 'perfil' });
+          return res.render('perfil-vendedor', { page: 'perfil' });
      },
      // Perfil cliente
      perfilCliente: async (req, res) => {
-          console.log(res.usuario);
-          usuario = res.usuario;
+          console.log('cheguei no controller!');
 
-          // Fazer a consulta
-          let endereco = await Endereco.findOne({ where: { id: usuario.id } });
-          console.log(endereco);
+          let usuario = res.locals.usuario;
 
-          res.render('perfil-cliente', { page: 'Perfil', usuario, endereco });
+          console.log('status do usuario: ', usuario)
+
+          if (!usuario) {
+               console.log('entrei no if usuario undefined!');
+               return res.redirect('/usuarios/logar')
+          }
+
+          console.log('não entrei no usuário undefined');
+          let endereco = await Endereco.findOne({ where: { usuarios_id: res.locals.usuario.id } });
+
+          return res.render('perfil-cliente', { page: 'Perfil', endereco });
      },
      alter: (req, res) => {
-          console.log(res.usuario);
-          usuario = res.usuario;
 
-
-
-          res.render('editar-cliente', { page: 'Editar Dados', usuario });
+          res.render('editar-cliente', { page: 'Editar Dados' });
      },
      update: async (req, res) => {
           let { id } = req.params;
+
           let { nomeCli, dataCli, cpfCli } = req.body;
-
-          // Separar o nome    
-
-          let userNovo = await Usuario.update({
+          Usuario.update({
                nome: nomeCli,
                data_nasc: dataCli,
                cpf: cpfCli
           }, {
-               where: { id }
+               where: { id },
+               return: true
           })
+               .then((user) => {
 
-          console.log(userNovo);
-          return res.redirect('/usuarios/perfil-cliente');
+                    res.render('perfil-cliente', user);
+               })
+               .catch(erro => {
+                    res.send('deu ruim');
+
+               });
 
      },
 
-
-     //     update: (req, res) => {
-     //      console.log(res.usuario);
-     //      usuario = res.usuario; 
-
-     //      // Capturar novos dados
-     //      let {id, nome, data, cpf } = req.body;      
-
-     //      // Alterar dados
-     //      Usuario.findOne({where: {id: req.body.id}})
-     //      console.log(id);
-     //      res.render('perfil-cliente', { page: 'Perfil', usuario });       
-     //      //  .then(user => {
-     //      //      let alterarUser = 
-     //           Usuario.update(
-     //                {
-     //                     nome,
-     //                     data_nasc: data,
-     //                     cpf
-     //                } 
-
-
-     //      //  }).catch(err => {
-     //      //       req.flash('error_msg', 'Houve um erro');
-     //      //       res.redirect('/usuarios/perfil-cliente');
-     //      //  })
-
-
-     //           )},
      dashboard: (req, res, ) => {
           res.render('dashboard', { page: 'dashboard' });
      },
+
      sair: (req, res) => {
           req.session.destroy();
           res.redirect('/');

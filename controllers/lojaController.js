@@ -4,14 +4,11 @@ const bcrypt = require('bcrypt');
 module.exports = {
 
      index: (req, res) => {
-          console.log(res.usuario);
-          usuario = res.usuario;
-          return res.render('index', { page: 'Home', usuario });
+          return res.render('index', { page: 'Home' });
      },
      // Pagina da loja
      loja: (req, res, ) => {
-          usuario = res.usuario;
-          res.render('perfil-loja', { page: 'Perfil Loja', usuario });
+          return res.render('perfil-loja', { page: 'Perfil Loja' });
      }
 
 }

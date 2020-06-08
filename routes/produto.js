@@ -3,12 +3,11 @@ var router = express.Router();
 
 // Chamando o controller
 const produtoController = require('../controllers/produtoController');
-const verificaUsuarioLogado = require('../middlewares/verificaUsuarioLogado');
 
 // Requisições produto
-router.get('/produto', verificaUsuarioLogado, produtoController.produto);
-router.get('/buscar', verificaUsuarioLogado, produtoController.buscar);
-router.get('/cadastrar-produto', verificaUsuarioLogado, produtoController.cadastrar);
+router.get('/produto', produtoController.produto);
+router.get('/buscar', produtoController.buscar);
+router.get('/cadastrar-produto', produtoController.cadastrar);
 // router.post('/cadastrar-produto', produtoController.cadastrar);
 
 module.exports = router;
