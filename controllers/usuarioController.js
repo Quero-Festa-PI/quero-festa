@@ -1,4 +1,4 @@
-const {sequelize, Usuario} = require('../models');
+const {sequelize, Usuario, Endereco} = require('../models');
 const bcrypt = require('bcrypt');
 
 module.exports = {    
@@ -101,7 +101,7 @@ module.exports = {
         );
 
         // iniciando session e redirecionando para a home
-        usuario = await Usuario.findOne({ where: { email: email1 } });
+        usuario = await Usuario.findOne({ where: { email: email1 } });        
         req.session.usuario = usuario;
         return res.redirect('/');
 
@@ -114,34 +114,37 @@ module.exports = {
     perfilCliente: async (req, res) => {
      console.log(res.usuario);
      usuario = res.usuario;  
-     res.render('perfil-cliente', { page: 'Perfil', usuario });        
+
+     // Fazer a consulta
+     let endereco = await Endereco.findOne({where: {id: usuario.id}});
+     console.log(endereco);
+     
+     res.render('perfil-cliente', { page: 'Perfil', usuario, endereco });        
     },
     alter: (req, res) => {
      console.log(res.usuario);
      usuario = res.usuario; 
 
+     
+
      res.render('editar-cliente', {page: 'Editar Dados', usuario});
     },
     update: async (req, res) => {
-         let {id} = req.params;
-      
+         let {id} = req.params;      
          let {nomeCli, dataCli, cpfCli} = req.body;
-          Usuario.update({
+
+         // Separar o nome    
+
+         let userNovo = await Usuario.update({
           nome: nomeCli,
           data_nasc: dataCli,
           cpf: cpfCli 
      },{
-          where: {id},
-          return: true
+          where: {id}
      })  
-     .then((user) => {
-          
-          res.render('perfil-cliente', user);
-     })        
-     .catch(erro => {
-          res.send('deu ruim');
-          
-     });     
+     
+     console.log(userNovo);
+     return res.redirect('/usuarios/perfil-cliente');
      
      },
 

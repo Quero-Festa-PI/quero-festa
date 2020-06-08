@@ -53,7 +53,6 @@ let Produto = (sequelize, DataTypes) => {
                 foreignKey: 'produtos_id'
             });
         produto.hasMany(models.PedidoProduto, { foreignKey: 'produtos_id', as: 'listaDePedidos' });
-
     }
 
     return produto;

@@ -27,48 +27,7 @@
                                     
                                         <div class='col-8 text-right'>
                                             <a href="/usuarios/editar-cliente/<%= usuario.id %>" class="btn btn-alt">Alterar Dados</a>
-                                            <!-- <button type="button" class="btn btn-alt" data-toggle="modal" data-target="#exampleModal" 
-                                            data-whatever="<%= usuario.id %>"
-                                            data-whatevernome="<%= usuario.nome + ' ' + usuario.sobrenome %>"
-                                            data-whateverdata="<%= usuario.data_nasc %>"
-                                            data-whatevercpf="<%= usuario.cpf %>">Alterar Dados</button>                   -->
-                                        </div>                  
-                                    
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Dados Pessoais</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                <form action="/usuarios/perfil-cliente" method="POST">
-                                                    <div class="form-group">
-                                                    <label for="recipient-name" class="col-form-label">Nome Completo:</label>
-                                                    <input type="text" class="form-control" id="recipient-name" name="nome">
-                                                    </div>
-                                                    <div class="form-group">
-                                                    <label for="recipient-data" class="col-form-label">Data de Nascimento:</label>
-                                                    <input type="date" class="form-control" id="recipient-data" name="data">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="recipient-cpf" class="col-form-label">CPF:</label>
-                                                        <input type="text" class="form-control" id="recipient-cpf" name="cpf">
-                                                    </div>
-                                                    <input type="hidden" id="id-usuario" name="id" value="<%= usuario.id %>"> 
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                                        <button type="submit" class="btn btn-primary">Alterar</button>
-                                                    </div>
-                                                </form>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        <!-- Fim Modal -->
+                                        </div>               
                                     </div>
                                 </form>
                                 <!-- Divider -->
@@ -81,7 +40,7 @@
                                             <div class="form-group row">
                                                 <label for="inputNome" class="col-sm-3 col-form-label">Nome Completo</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="inputNome" name="nomeCli" placeholder="<%= usuario.nome + ' ' + usuario.sobrenome%> " readonly>
+                                                    <input type="text" class="form-control" id="inputNome" name="nomeCli" value="<%= usuario.nome%> " readonly>
                                                 </div>
                                             </div>
                                             <!-- DATA NASCIMENTO -->
@@ -89,14 +48,14 @@
                                                 <label for="inputData" class="col-sm-3 col-form-label">Data de
                                                     Nascimento</label>
                                                 <div class="col-sm-5">
-                                                    <input type="date" class="form-control" id="inputData" name="dataCli" placeholder="<%= usuario.data_nasc %>" readonly>
+                                                    <input type="date" class="form-control" id="inputData" name="dataCli" value="<%= usuario.data_nasc %>" readonly>
                                                 </div>
                                             </div>
                                             <!-- CPF-->
                                             <div class="form-group row">
                                                 <label for="inputCPf" class="col-sm-3 col-form-label">CPF</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="inputCPF" name="cpfCli" placeholder="<%= usuario.cpf %>" readonly>
+                                                    <input type="text" class="form-control" id="inputCPF" name="cpfCli" value="<%= usuario.cpf %>" readonly>
                                                 </div>
                                             </div>
                                             <!-- EMAIL -->
@@ -112,12 +71,12 @@
                                                     <legend class="col-form-label col-sm-3 pt-0">Sexo</legend>
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio" name="radioSexo"
-                                                            id="radioSexoF" value="opcao1">
+                                                            id="radioSexoF" value="F">
                                                         <label class="form-check-label" for="radioSexoF">Feminino</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio" name="radioSexo"
-                                                            id="radioSexoM" value="opcao2">
+                                                            id="radioSexoM" value="M">
                                                         <label class="form-check-label" for="radioSexoM">Masculino</label>
                                                     </div>
                                                 </div>
@@ -159,7 +118,7 @@
                                                         <label for="inputRua"
                                                             class="col-sm-2 col-form-label">CEP</label>
                                                         <div class="col-sm-5">
-                                                            <input type="text" class="form-control" id="inputCep">
+                                                            <input type="text" class="form-control" id="inputCep" value="<%= endereco.cep%>" readonly>
                                                         </div>
 
                                                         <div class=" text-left col-sm-2">
@@ -173,11 +132,11 @@
                                                         <label for="inputRua"
                                                             class="col-sm-2 col-form-label">Rua</label>
                                                         <div class="col-sm-5">
-                                                            <input type="text" class="form-control" id="inputRua">
+                                                            <input type="text" class="form-control" id="inputRua" value="<%= endereco.logradouro%>" readonly>
                                                         </div>
                                                         <label for="inputNum" class="col-sm-2 col-form-label">Nº</label>
                                                         <div class="col-sm-3">
-                                                            <input type="text" class="form-control" id="inputNum">
+                                                            <input type="text" class="form-control" id="inputNum" value="<%= endereco.numeral%>" readonly>
                                                         </div>
                                                     </div>
                                                     <!-- COMPLEMENTO -->
@@ -186,7 +145,7 @@
                                                             class="col-sm-2 col-form-label">Complemento</label>
                                                         <div class="col-sm-8">
                                                             <input type="text" class="form-control"
-                                                                id="inputComplemento">
+                                                                id="inputComplemento" value="<%= endereco.complemento%>" readonly>
                                                         </div>
                                                     </div>
                                                     <!-- BAIRRO -->
@@ -194,7 +153,7 @@
                                                         <label for="inputBairro"
                                                             class="col-sm-2 col-form-label">Bairro</label>
                                                         <div class="col-sm-8">
-                                                            <input type="text" class="form-control" id="inputBairro">
+                                                            <input type="text" class="form-control" id="inputBairro" value="Não tem no banco" readonly>
                                                         </div>
                                                     </div>
                                                     <!-- CIDADE -->
@@ -202,20 +161,20 @@
                                                         <label for="inputCidade"
                                                             class="col-sm-2 col-form-label">Cidade</label>
                                                         <div class="col-sm-5">
-                                                            <input type="text" class="form-control" id="inputCidade">
+                                                            <input type="text" class="form-control" id="inputCidade" value="<%= endereco.cidade%>" readonly>
                                                         </div>
                                                     </div>
                                                     <!-- ESTADO -->
                                                     <div class="form-group row">
                                                         <label for="inputEstado"
-                                                            class="col-sm-2 col-form-label">Estado</label>
+                                                            class="col-sm-2 col-form-label" >Estado</label>
                                                         <div class="col-sm-5">
-                                                            <select id="inputEstado" class="form-control">
-                                                                <option selected>Escolher...</option>
-                                                                <option value="1">São Paulo</option>
-                                                                <option value="2">Rio de Janeiro</option>
-                                                                <option value="3">Minas Gerais</option>
-                                                                <option value="4">Rio Grande do Sul</option>
+                                                            <select id="inputEstado" class="form-control" name="estado" disabled>
+                                                                <option <%= (endereco.estado == null)? 'selected' : '' %>>Escolher...</option>
+                                                                <option value="1" <%= (endereco.estado == 'SP')? 'selected' : '' %>>SP</option>
+                                                                <option value="2" <%= (endereco.estado == 'RJ')? 'selected' : '' %>>RJ</option>
+                                                                <option value="3" <%= (endereco.estado == 'MG')? 'selected' : '' %>>MG</option>
+                                                                <option value="4" <%= (endereco.estado == 'RS')? 'selected' : '' %>>RS</option>
                                                             </select>
                                                         </div>
                                                     </div>
