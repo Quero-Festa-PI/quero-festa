@@ -35,7 +35,7 @@
 
         <!-- botões de usuário -->
         <div class="usuario">
-            <% if (usuario == "Não há usuário logado no sistema.") { %>
+            <% if (!usuario) { %>
             <div class="botoes">
                 <button onclick="redirecionarCadastro()">Cadastrar</button>
                 <button onclick="redirecionarLogin()">Entrar</button>
@@ -48,18 +48,22 @@
                 </div>
             </div>
             <% } else { %>
-                <!-- NOME -->
-                <div class="btn-group">
-                    <button class="btn  dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <%= usuario.nome %>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/usuarios/perfil-cliente">Minha Conta</a>
-                        <a class="dropdown-item" href="/produtos/pedido">Meus Pedidos</a>
-                        <a class="dropdown-item" href="/usuarios/sair">Sair</a>
-                    </div>
-                  </div>
-               
+            <!-- NOME -->
+            <div class="btn-group">
+                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <%= usuario.nome %>
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/usuarios/perfil-cliente">Minha Conta</a>
+                    <% if (loja) { %>
+                    <a class="dropdown-item" href="/usuarios/perfil-vendedor">Minha Loja</a>
+                    <% } %>
+                    <a class="dropdown-item" href="/produtos/pedido">Meus Pedidos</a>
+                    <a class="dropdown-item" href="/usuarios/sair">Sair</a>
+                </div>
+            </div>
+
             <img class="rounded-circle" src="../images/perfilCliente.png" width="50px" height="50px" alt="avatar">
             <% } %>
         </div>
