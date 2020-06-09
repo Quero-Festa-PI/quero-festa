@@ -1,4 +1,4 @@
-const {sequelize, Usuario, Endereco} = require('../models');
+const {sequelize, Usuario, Endereco, Loja} = require('../models');
 const bcrypt = require('bcrypt');
 
 module.exports = {    
@@ -115,28 +115,36 @@ module.exports = {
      console.log(res.usuario);
      usuario = res.usuario;  
 
+     // Consultar loja
+     let loja = await Loja.findOne({where: {usuarios_id: usuario.id}});
+     console.log(loja);
+
      // Fazer a consulta
      let endereco = await Endereco.findOne({where: {id: usuario.id}});
      console.log(endereco);
      
-     res.render('perfil-cliente', { page: 'Perfil', usuario, endereco });        
+     res.render('perfil-cliente', { page: 'Perfil', usuario, endereco, loja });        
     },
     alter: (req, res) => {
      console.log(res.usuario);
-     usuario = res.usuario; 
-
-     
+     usuario = res.usuario;           
 
      res.render('editar-cliente', {page: 'Editar Dados', usuario});
     },
     update: async (req, res) => {
          let {id} = req.params;      
          let {nomeCli, dataCli, cpfCli} = req.body;
-
-         // Separar o nome    
+         let nomeCompleto = nomeCli;
+         
+         // Separar o nome  
+         let nome = nomeCompleto.split(' ')[0];         
+         let sobrenome = nomeCompleto.replace(nome + " ", "");
+         
+         console.log(nome + sobrenome);
 
          let userNovo = await Usuario.update({
-          nome: nomeCli,
+          nome,
+          sobrenome,
           data_nasc: dataCli,
           cpf: cpfCli 
      },{
@@ -144,40 +152,9 @@ module.exports = {
      })  
      
      console.log(userNovo);
-     return res.redirect('/usuarios/perfil-cliente');
-     
+     return res.redirect('/usuarios/perfil-cliente');     
      },
-
-
-//     update: (req, res) => {
-//      console.log(res.usuario);
-//      usuario = res.usuario; 
-      
-//      // Capturar novos dados
-//      let {id, nome, data, cpf } = req.body;      
-     
-//      // Alterar dados
-//      Usuario.findOne({where: {id: req.body.id}})
-//      console.log(id);
-//      res.render('perfil-cliente', { page: 'Perfil', usuario });       
-//      //  .then(user => {
-//      //      let alterarUser = 
-//           Usuario.update(
-//                {
-//                     nome,
-//                     data_nasc: data,
-//                     cpf
-//                } 
-                  
-
-//      //  }).catch(err => {
-//      //       req.flash('error_msg', 'Houve um erro');
-//      //       res.redirect('/usuarios/perfil-cliente');
-//      //  })
-      
-
-//           )},
-    dashboard: (req, res, ) => {
+     dashboard: (req, res, ) => {
      res.render('dashboard', { page: 'dashboard' });
      },
      sair: (req, res) => {
