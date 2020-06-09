@@ -1,44 +1,30 @@
 anuncio {
     gap: 0.5%;
     display:grid;
-    font-family: Sedan SC;
-    
+    font-family: Sedan SC;    
 }
 
 anuncio card {
-    background-color: #ffffffe7;
-    
+    background-color: #ffffffe7;    
 }
 
 titulo {
     font-size: 16px;
     font-weight: bold;
     color: #000000;
-    /* text-align: center; */
-    /* align-content: center; */
 }
 
-preco {
-    
+preco {    
     font-size: 15px;
     font-weight: bold;
     color: #F64343;
     min-width: 100%;
-    /* text-align: right; */
 }
 
 
 info {
     font-size: 9px;
     color: darkgray;
-    min-width: 100%;
-    /* text-align: justify; */
+    min-width: 100%;    
 }
 
-/* anuncio img {
-    border-radius: 9% 
-} */
-
-/* .anuncio-box {
-    border-radius: 10%;
-} */

@@ -6,14 +6,6 @@ body {
     background-color: #EDEEF1;
 }
 
-nav {
-    background-color: #F7FBFE;
-}
-
-.logo_nav {
-    position: relative;    
-}
-
 #content {
     display: inline-flex;
     float: right;
@@ -27,51 +19,6 @@ nav {
 .sidebar-divider {
     margin-right: 29px;
     margin-left: 29px;
-}
-
-.menu-lateral {
-    position: absolute;
-    display: flex;
-    left: 0px;
-    float: left;
-
-}
-
-#menu {
-    display: flex;
-    flex-direction: column;
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none;
-    background-color: #FF826E;
-    max-width: 38vh;    
-}
-
-#menu ul div button {
-    width: 40px;
-    height: 40px;
-    margin-top: 10px;
-    float: right;
-    background-color: #FF826E;    
-}
-
-#menu ul div button img {    
-    opacity: 0.8; 
-    border-radius: 12px;   
-}
- 
-#menu ul div button img:hover {
-    background-color: #fca99d;
-}
-
-#menu ul div li a span {    
-    color: #FFFBFB;    
-    margin-left: 30px;    
-}
-
-#menu ul div li a span:hover {    
-    color: #F7FBFE;    
-    opacity: 0.8;
 }
 
 .collapse div {
@@ -91,32 +38,27 @@ nav {
     margin-top: 25px;    
 }
 
-
 /* FOOTER */
  footer {
-    /* background:white ; */
     font-family: Sedan SC;
 	background-color: #F8F9FC;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 20px; 
-    	 
+    border-radius: 20px;     	 
 }
+
 footer-alt {
-    /* background:white ; */
     font-family: Sedan SC;    	 
 }
 
- #bandeiras {
+#bandeiras {
 	width: 90%;
 	height: 50%;
 	margin-right: 10px;
 	padding: 0;
 	border: 0%;
-  } 
-
+} 
 
   /* # Configuração dos Botoes  */
-
 .btn-cheio {
     background-color: #FF826E;
 }
@@ -125,14 +67,10 @@ footer-alt {
     color: #FF826E;
     background-color: transparent ;
     border-top: none;
-    /* border-bottom-color:  #FF826E; */
     border-bottom-color:  none;
 }
 
-
-
 /* # Configuração de Fontes */
-
 .pagina-titulo {
     font-size: 40px;
     font-family: sedan sc;
@@ -142,9 +80,7 @@ footer-alt {
     text-shadow: -1px 0 #FF826E, 0 1px #FF826E, 1px 0 #FF826E, 0 -1px #FF826E;
 }
 
-
 /* # Configuração Pagina Erro */
-
 .painel-erro {
     position: relative;
     align-content: center;

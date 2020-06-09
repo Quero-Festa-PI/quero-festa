@@ -40,7 +40,7 @@
                                             <div class="form-group row">
                                                 <label for="inputNome" class="col-sm-3 col-form-label">Nome Completo</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="inputNome" name="nomeCli" value="<%= usuario.nome%> " readonly>
+                                                    <input type="text" class="form-control" id="inputNome" name="nomeCli" value="<%= usuario.nome + ' ' + usuario.sobrenome %> " readonly>
                                                 </div>
                                             </div>
                                             <!-- DATA NASCIMENTO -->
@@ -62,7 +62,8 @@
                                             <div class="form-group row">
                                                 <label for="inputEmail" class="col-sm-3 col-form-label">Email</label>
                                                 <div class="col-sm-9">
-                                                    <input type="email" class="form-control" id="inputEmail" name="emailCli" placeholder="<%= usuario.email %>" readonly>
+                                                    <input type="email" class="form-control" id="inputEmail" 
+                                                    name="emailCli" placeholder="<%= usuario.email %>" readonly>
                                                 </div>
                                             </div>
                                             <!-- SEXO -->
@@ -71,12 +72,12 @@
                                                     <legend class="col-form-label col-sm-3 pt-0">Sexo</legend>
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio" name="radioSexo"
-                                                            id="radioSexoF" value="F">
+                                                            id="radioSexoF" value="F" <%= (usuario.sexo == 'F')? 'checked' : '' %>>
                                                         <label class="form-check-label" for="radioSexoF">Feminino</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio" name="radioSexo"
-                                                            id="radioSexoM" value="M">
+                                                            id="radioSexoM" value="M" <%= (usuario.sexo == 'M')? 'checked' : '' %>>
                                                         <label class="form-check-label" for="radioSexoM">Masculino</label>
                                                     </div>
                                                 </div>
@@ -91,6 +92,69 @@
                             </div>
                         </div>
 
+                        <!-- ### CARD DE DADOS PROFISSIONAIS -->
+                        
+                        <% if(loja) { %>
+                            <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
+                                <div class="card-body painel-dash">
+    
+                                    <div class="row">
+                                        <div class='col-4'>
+                                            <h4>Dados Profissionais</h4>
+                                        </div>
+
+                                        <!-- <form action="/loja" method="GET"> -->
+                                            <div class='col-8 text-right'>
+                                                <button type="submit" class="btn btn-alt">
+                                                    <a href="/loja"> Ir para minha loja </a></button>
+                                            </div>
+                                        <!-- </form> -->
+    
+    
+                                    </div>
+                                    <!-- Divider -->
+                                    <hr class="sidebar-divider my-0">
+    
+                                    <div class="painel-dados row">
+    
+                                        <div class='col-8'>
+                                            <!-- NOME DA LOJA-->
+                                            <div class="form-group row">
+                                                <label for="inputNomeLoja" class="col-sm-3 col-form-label">Nome da
+                                                    Loja</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="inputNomeLoja" value="<%= loja.nome %>">
+                                                </div>
+                                            </div>
+                                            <!-- CNPJ-->
+                                            <div class="form-group row">
+                                                <label for="inputCNPJ" class="col-sm-3 col-form-label">CNPJ</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="inputCNPJ" value="Não tem no banco">
+                                                </div>
+                                            </div>
+                                            <!-- DESCRIÇÃO -->
+                                            <div class="form-group row">
+                                                <label for="inputDescricaoLoja"
+                                                    class="col-sm-3 col-form-label">Descrição</label>
+                                                <div class="col-sm-9">
+                                                    <textarea class="form-control" id="inputDescricaoLoja"
+                                                        rows="3">
+                                                        <%= loja.descricao %>
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 text-center">
+                                            <img id='avatar' class='shadow border-bottom-primary rounded'
+                                                src='../images/deco-avatar.png' width="150px" height="150px" alt='avatar'>
+                                            <button class="btn btn-alt text-center">Escolha sua foto!</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>    
+                        
                         <!-- ### CARD DE ENDERECO -->
                         <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
                             <div class="card-body ">
@@ -189,7 +253,6 @@
                             </div>
                         </div>
 
-
                         <!-- ### CARD DE MUDAR SENHA -->
                         <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
                             <div class="card-body">
@@ -252,23 +315,7 @@
     </div>
     <% include partials/footer-alt %>
     </div>
-    <% include partials/script %>
-    <script type="text/javascript">
-        $('#exampleModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget) // Botão que acionou o modal
-            var recipient = button.data('whatever')
-            var recipientnome = button.data('whatevernome')
-            var recipientdata = button.data('whateverdata')
-            var recipientcpf = button.data('whatevercpf') 
-            var modal = $(this)
-            modal.find('.modal-title').text('Dados Pessoais de ' + recipientnome)
-            modal.find('#id-usuario').val(recipient)
-            modal.find('#recipient-name').val(recipientnome)
-            modal.find('#recipient-data').val(recipientdata)
-            modal.find('#recipient-cpf').val(recipientcpf)
-            
-        })        
-    </script>
+    <% include partials/script %>    
 </body>
 
 </html>

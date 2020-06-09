@@ -96,7 +96,10 @@
                         <!-- FIM CARD DADOS PESSOAIS -->
 
                         <!-- ### CARD DE DADOS PROFISSIONAIS -->
-                        <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
+                        <% if(!lojas.usuarios_id == usuarios) { %>
+                            document.getElementsById('profissional).className = 'invisible';                            
+                        <% } %>
+                        <div id="profissional" class="card painel-dash border-left-primary shadow ml-5 mr-5">
                             <div class="card-body painel-dash">
 
                                 <div class="row">
