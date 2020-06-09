@@ -1,4 +1,4 @@
-const {sequelize, Usuario, Endereco, Loja} = require('../models');
+const {sequelize, Usuario, Endereco, Loja} = require('../database/models');
 const bcrypt = require('bcrypt');
 
 module.exports = {    
@@ -26,10 +26,16 @@ module.exports = {
              res.redirect('/usuarios/logar?error=1');
         }
 
-        req.session.usuario = usuario;
-        return res.redirect('/');
+        let loja = await Loja.findOne({ where: { usuarios_id: usuario.id } });
 
-   },
+        req.session.usuario = usuario;
+        
+        if (loja) {
+            req.session.loja = loja;
+        }
+        
+        return res.redirect('/');
+    },
    cadastro: (req, res) => {
         let err = req.query.error
         if (err == 1) {
@@ -91,7 +97,7 @@ module.exports = {
         senha = bcrypt.hashSync(senha, 10);
 
         // criando usuario
-        Usuario.create(
+        usuario = await Usuario.create(
              {
                   nome,
                   sobrenome,
@@ -101,35 +107,34 @@ module.exports = {
         );
 
         // iniciando session e redirecionando para a home
-        usuario = await Usuario.findOne({ where: { email: email1 } });        
         req.session.usuario = usuario;
         return res.redirect('/');
 
    },
     // Perfil vendedor
     perfilVendedor: (req, res) => {
-        res.render('perfil-vendedor', {page: 'perfil'});
+        return res.render('perfil-vendedor', {page: 'perfil'});
     },
     // Perfil cliente
     perfilCliente: async (req, res) => {
-     console.log(res.usuario);
-     usuario = res.usuario;  
+        console.log('cheguei no controller!');
 
-     // Consultar loja
-     let loja = await Loja.findOne({where: {usuarios_id: usuario.id}});
-     console.log(loja);
+          let usuario = res.locals.usuario;
 
-     // Fazer a consulta
-     let endereco = await Endereco.findOne({where: {id: usuario.id}});
-     console.log(endereco);
-     
-     res.render('perfil-cliente', { page: 'Perfil', usuario, endereco, loja });        
+          console.log('status do usuario: ', usuario)
+
+          if (!usuario) {
+               console.log('entrei no if usuario undefined!');
+               return res.redirect('/usuarios/logar')
+          }
+
+          console.log('não entrei no usuário undefined');
+          let endereco = await Endereco.findOne({ where: { usuarios_id: res.locals.usuario.id } });
+
+          return res.render('perfil-cliente', { page: 'Perfil', endereco });
     },
     alter: (req, res) => {
-     console.log(res.usuario);
-     usuario = res.usuario;           
-
-     res.render('editar-cliente', {page: 'Editar Dados', usuario});
+        res.render('editar-cliente', {page: 'Editar Dados'});
     },
     update: async (req, res) => {
          let {id} = req.params;      

@@ -1,10 +1,8 @@
-const { Sequelize, Produto } = require('../models')
+const { Sequelize, Produto } = require('../database/models')
 const Op = Sequelize.Op;
 
 module.exports = {
     buscar: async (req, res) => {
-        console.log(res.usuario);
-        usuario = res.usuario;
 
         busca = req.query.query;
 
@@ -18,18 +16,14 @@ module.exports = {
             }
         );
 
-        res.render('buscar', { page: 'Buscar', usuario, produtos, busca });
+        res.render('buscar', { page: 'Buscar', produtos, busca });
     },
 
     cadastrar: (req, res) => {
-        console.log(res.usuario);
-        usuario = res.usuario;
-        res.render('cadastrar-produto', { page: 'cadastrar-produto', usuario });
+        res.render('cadastrar-produto', { page: 'cadastrar-produto' });
     },
     produto: (req, res) => {
-        console.log(res.usuario);
-        usuario = res.usuario;
-        res.render('produto', { page: 'produto', usuario });
+        res.render('produto', { page: 'produto' });
     }
 
 }

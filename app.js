@@ -31,6 +31,12 @@ app.use(session({
   name: 'user-session'
 }));
 
+app.use((req, res, next) => {
+  res.locals.usuario = req.session.usuario;
+  res.locals.loja = req.session.loja;
+  next();
+})
+
 app.use('/', indexRouter);
 app.use('/usuarios', usersRouter);
 app.use('/produtos', produtoRouter);
@@ -49,7 +55,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', { page: 'Erro' });
 });
 
 module.exports = app;
