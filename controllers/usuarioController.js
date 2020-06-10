@@ -128,6 +128,24 @@ module.exports = {
 
           return res.render('perfil-cliente', { page: 'Perfil', endereco });
      },
+     perfilClienteId: async (req, res) => {
+
+          let usuario = res.locals.usuario;
+
+          if (!usuario) {
+               return res.redirect('/usuarios/logar')
+          }
+
+          // capturando id da rota
+          let idUsuario = req.params.id;
+
+          let usuarioPerfil = await Usuario.findByPk(idUsuario, { include: ['lojas', 'enderecos'] });
+          let lojaPerfil = usuarioPerfil.lojas
+          let endereco = usuarioPerfil.enderecos[0];
+
+          res.render('perfil-cliente', { page: 'Perfil Cliente', usuarioPerfil, lojaPerfil, endereco })
+
+     },
      alter: (req, res) => {
           res.render('editar-cliente', { page: 'Editar Dados' });
      },

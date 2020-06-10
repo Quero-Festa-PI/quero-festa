@@ -1,4 +1,4 @@
-<% include partials/header %>
+<%- include('partials/header') %>
 
 <body>
     <!-- PAGINA COMPLETA -->
@@ -8,11 +8,11 @@
         <!-- CONTEÚDO PRINCIPAL -->
         <div id="meio-home" class="container">
             <div class="row ">
-           
+
                 <!-- CONTAINER CAMINHO DAS PAGINAS -->
                 <%- include('partials/breadcrumb') %>
                 <div id="content" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                   
+
 
                     <div id="painel-cliente" class="container center">
                         <!-- ### CARD DE DADOS -->
@@ -24,10 +24,13 @@
                                         <div class='col-4'>
                                             <h4>Dados Pessoais</h4>
                                         </div>
-                                    
+
+                                        <% if (usuario.id === usuarioPerfil.id) { %>
                                         <div class='col-8 text-right'>
-                                            <a href="/usuarios/editar-cliente/<%= usuario.id %>" class="btn btn-alt">Alterar Dados</a>
-                                        </div>               
+                                            <a href="/usuarios/editar-cliente/<%= usuarioPerfil.id %>"
+                                                class="btn btn-alt">Alterar Dados</a>
+                                        </div>
+                                        <% } %>
                                     </div>
                                 </form>
                                 <!-- Divider -->
@@ -36,125 +39,152 @@
                                 <div class="painel-dados row">
 
                                     <div class='col-8'>
-                                            <!-- NOME COMPLETO-->
-                                            <div class="form-group row">
-                                                <label for="inputNome" class="col-sm-3 col-form-label">Nome Completo</label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="inputNome" name="nomeCli" value="<%= usuario.nome + ' ' + usuario.sobrenome %> " readonly>
-                                                </div>
+                                        <!-- NOME COMPLETO-->
+                                        <div class="form-group row">
+                                            <label for="inputNome" class="col-sm-3 col-form-label">Nome Completo</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="inputNome" name="nomeCli"
+                                                    value="<%= usuarioPerfil.nome + ' ' + usuarioPerfil.sobrenome %> "
+                                                    <%= (usuario.id !== usuarioPerfil.id) ? 'readonly' : '' %>>
                                             </div>
-                                            <!-- DATA NASCIMENTO -->
-                                            <div class="form-group row">
-                                                <label for="inputData" class="col-sm-3 col-form-label">Data de
-                                                    Nascimento</label>
-                                                <div class="col-sm-5">
-                                                    <input type="date" class="form-control" id="inputData" name="dataCli" value="<%= usuario.data_nasc %>" readonly>
-                                                </div>
-                                            </div>
-                                            <!-- CPF-->
-                                            <div class="form-group row">
-                                                <label for="inputCPf" class="col-sm-3 col-form-label">CPF</label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="inputCPF" name="cpfCli" value="<%= usuario.cpf %>" readonly>
-                                                </div>
-                                            </div>
-                                            <!-- EMAIL -->
-                                            <div class="form-group row">
-                                                <label for="inputEmail" class="col-sm-3 col-form-label">Email</label>
-                                                <div class="col-sm-9">
-                                                    <input type="email" class="form-control" id="inputEmail" 
-                                                    name="emailCli" placeholder="<%= usuario.email %>" readonly>
-                                                </div>
-                                            </div>
-                                            <!-- SEXO -->
-                                            <fieldset class="form-group">
-                                                <div class="row">
-                                                    <legend class="col-form-label col-sm-3 pt-0">Sexo</legend>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="radioSexo"
-                                                            id="radioSexoF" value="F" <%= (usuario.sexo == 'F')? 'checked' : '' %>>
-                                                        <label class="form-check-label" for="radioSexoF">Feminino</label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="radioSexo"
-                                                            id="radioSexoM" value="M" <%= (usuario.sexo == 'M')? 'checked' : '' %>>
-                                                        <label class="form-check-label" for="radioSexoM">Masculino</label>
-                                                    </div>
-                                                </div>
-                                            </fieldset>
                                         </div>
-                                        <div class="col-4 text-center">
-                                            <img id='avatar' class='shadow border-bottom-primary rounded-circle'
-                                                src='../images/perfilCliente.png' width="150px" height="150px" alt='avatar'>
-                                            <button class="btn btn-alt text-center">Escolha sua foto!</button>
-                                        </div>                                    
+                                        <!-- DATA NASCIMENTO -->
+                                        <div class="form-group row">
+                                            <label for="inputData" class="col-sm-3 col-form-label">Data de
+                                                Nascimento</label>
+                                            <div class="col-sm-5">
+                                                <input type="date" class="form-control" id="inputData" name="dataCli"
+                                                    value="<%= usuarioPerfil.data_nasc %>"
+                                                    <%= (usuario.id !== usuarioPerfil.id) ? 'readonly' : '' %>>
+                                            </div>
+                                        </div>
+                                        <!-- CPF-->
+                                        <div class="form-group row">
+                                            <label for="inputCPf" class="col-sm-3 col-form-label">CPF</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="inputCPF" name="cpfCli"
+                                                    value="<%= usuarioPerfil.cpf %>"
+                                                    <%= (usuario.id !== usuarioPerfil.id) ? 'readonly' : '' %>>
+                                            </div>
+                                        </div>
+                                        <!-- EMAIL -->
+                                        <div class="form-group row">
+                                            <label for="inputEmail" class="col-sm-3 col-form-label">Email</label>
+                                            <div class="col-sm-9">
+                                                <input type="email" class="form-control" id="inputEmail" name="emailCli"
+                                                    placeholder="<%= usuarioPerfil.email %>"
+                                                    <%= (usuario.id !== usuarioPerfil.id) ? 'readonly' : '' %>>
+                                            </div>
+                                        </div>
+                                        <!-- SEXO -->
+                                        <fieldset class="form-group">
+                                            <div class="row">
+                                                <legend class="col-form-label col-sm-3 pt-0">Sexo</legend>
+                                                <% if(usuario.id !== usuarioPerfil.id) { %>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="radioSexo"
+                                                        id="radioSexoF" value="F"
+                                                        <%= (usuarioPerfil.sexo === 'F') ? 'checked' : 'disabled' %>>
+                                                    <label class="form-check-label" for="radioSexoF">Feminino</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="radioSexo"
+                                                        id="radioSexoM" value="M"
+                                                        <%= (usuarioPerfil.sexo === 'M') ? 'checked' : 'disabled' %>>
+                                                    <label class="form-check-label" for="radioSexoM">Masculino</label>
+                                                </div>
+                                                <% } else { %>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="radioSexo"
+                                                        id="radioSexoF" value="F"
+                                                        <%= (usuarioPerfil.sexo === 'F') ? 'checked' : '' %>>
+                                                    <label class="form-check-label" for="radioSexoF">Feminino</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="radioSexo"
+                                                        id="radioSexoM" value="M"
+                                                        <%= (usuarioPerfil.sexo === 'M') ? 'checked' : '' %>>
+                                                    <label class="form-check-label" for="radioSexoM">Masculino</label>
+                                                </div>
+                                                <% } %>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <img id='avatar' class='shadow border-bottom-primary rounded-circle'
+                                            src='../../images/perfilCliente.png' width="150px" height="150px"
+                                            alt='avatar'>
+                                        <button class="btn btn-alt text-center">Escolha sua foto!</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- ### CARD DE DADOS PROFISSIONAIS -->
-                        
-                        <% if(loja) { %>
-                            <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
-                                <div class="card-body painel-dash">
-    
-                                    <div class="row">
-                                        <div class='col-4'>
-                                            <h4>Dados Profissionais</h4>
-                                        </div>
 
-                                        <!-- <form action="/loja" method="GET"> -->
-                                            <div class='col-8 text-right'>
-                                                <button type="submit" class="btn btn-alt">
-                                                    <a href="/loja"> Ir para minha loja </a></button>
-                                            </div>
-                                        <!-- </form> -->
-    
-    
+                        <% if(lojaPerfil) { %>
+                        <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
+                            <div class="card-body painel-dash">
+
+                                <div class="row">
+                                    <div class='col-4'>
+                                        <h4>Dados Profissionais</h4>
                                     </div>
-                                    <!-- Divider -->
-                                    <hr class="sidebar-divider my-0">
-    
-                                    <div class="painel-dados row">
-    
-                                        <div class='col-8'>
-                                            <!-- NOME DA LOJA-->
-                                            <div class="form-group row">
-                                                <label for="inputNomeLoja" class="col-sm-3 col-form-label">Nome da
-                                                    Loja</label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="inputNomeLoja" value="<%= loja.nome %>">
-                                                </div>
+
+                                    <!-- <form action="/loja" method="GET"> -->
+                                    <div class='col-8 text-right'>
+                                        <button type="submit" class="btn btn-alt">
+                                            <a href="/loja"> Ir para minha loja </a></button>
+                                    </div>
+                                    <!-- </form> -->
+
+
+                                </div>
+                                <!-- Divider -->
+                                <hr class="sidebar-divider my-0">
+
+                                <div class="painel-dados row">
+
+                                    <div class='col-8'>
+                                        <!-- NOME DA LOJA-->
+                                        <div class="form-group row">
+                                            <label for="inputNomeLoja" class="col-sm-3 col-form-label">Nome da
+                                                Loja</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="inputNomeLoja"
+                                                    value="<%= lojaPerfil.nome %>">
                                             </div>
-                                            <!-- CNPJ-->
-                                            <div class="form-group row">
-                                                <label for="inputCNPJ" class="col-sm-3 col-form-label">CNPJ</label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="inputCNPJ" value="Não tem no banco">
-                                                </div>
+                                        </div>
+                                        <!-- CNPJ-->
+                                        <div class="form-group row">
+                                            <label for="inputCNPJ" class="col-sm-3 col-form-label">CNPJ</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="inputCNPJ"
+                                                    value="Não tem no banco">
                                             </div>
-                                            <!-- DESCRIÇÃO -->
-                                            <div class="form-group row">
-                                                <label for="inputDescricaoLoja"
-                                                    class="col-sm-3 col-form-label">Descrição</label>
-                                                <div class="col-sm-9">
-                                                    <textarea class="form-control" id="inputDescricaoLoja"
-                                                        rows="3">
-                                                        <%= loja.descricao %>
+                                        </div>
+                                        <!-- DESCRIÇÃO -->
+                                        <div class="form-group row">
+                                            <label for="inputDescricaoLoja"
+                                                class="col-sm-3 col-form-label">Descrição</label>
+                                            <div class="col-sm-9">
+                                                <textarea class="form-control" id="inputDescricaoLoja" rows="3">
+                                                        <%= lojaPerfil.descricao %>
                                                     </textarea>
-                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-4 text-center">
-                                            <img id='avatar' class='shadow border-bottom-primary rounded'
-                                                src='../images/deco-avatar.png' width="150px" height="150px" alt='avatar'>
-                                            <button class="btn btn-alt text-center">Escolha sua foto!</button>
-                                        </div>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <img id='avatar' class='shadow border-bottom-primary rounded'
+                                            src='../../images/deco-avatar.png' width="150px" height="150px"
+                                            alt='avatar'>
+                                        <button class="btn btn-alt text-center">Escolha sua foto!</button>
                                     </div>
                                 </div>
                             </div>
-                        <% } %>    
-                        
+                        </div>
+                        <% } %>
+
                         <!-- ### CARD DE ENDERECO -->
                         <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
                             <div class="card-body ">
@@ -162,9 +192,11 @@
                                     <div class='col-4'>
                                         <h4>Endereço:</h4>
                                     </div>
+                                    <% if(usuario.id === usuarioPerfil.id) { %>
                                     <div class='col-8 text-right'>
                                         <button class="btn btn-alt">Alterar Endereço</button>
                                     </div>
+                                    <% } %>
 
                                 </div>
                                 <!-- Divider -->
@@ -182,7 +214,9 @@
                                                         <label for="inputRua"
                                                             class="col-sm-2 col-form-label">CEP</label>
                                                         <div class="col-sm-5">
-                                                            <input type="text" class="form-control" id="inputCep" value="<%= endereco.cep%>" readonly>
+                                                            <input type="text" class="form-control" id="inputCep"
+                                                                value="<%= endereco.cep%>"
+                                                                <%= (usuario.id !== usuarioPerfil.id) ? 'readonly' : '' %>>
                                                         </div>
 
                                                         <div class=" text-left col-sm-2">
@@ -196,11 +230,15 @@
                                                         <label for="inputRua"
                                                             class="col-sm-2 col-form-label">Rua</label>
                                                         <div class="col-sm-5">
-                                                            <input type="text" class="form-control" id="inputRua" value="<%= endereco.logradouro%>" readonly>
+                                                            <input type="text" class="form-control" id="inputRua"
+                                                                value="<%= endereco.logradouro%>"
+                                                                <%= (usuario.id !== usuarioPerfil.id) ? 'readonly' : '' %>>
                                                         </div>
                                                         <label for="inputNum" class="col-sm-2 col-form-label">Nº</label>
                                                         <div class="col-sm-3">
-                                                            <input type="text" class="form-control" id="inputNum" value="<%= endereco.numeral%>" readonly>
+                                                            <input type="text" class="form-control" id="inputNum"
+                                                                value="<%= endereco.numeral%>"
+                                                                <%= (usuario.id !== usuarioPerfil.id) ? 'readonly' : '' %>>
                                                         </div>
                                                     </div>
                                                     <!-- COMPLEMENTO -->
@@ -209,7 +247,8 @@
                                                             class="col-sm-2 col-form-label">Complemento</label>
                                                         <div class="col-sm-8">
                                                             <input type="text" class="form-control"
-                                                                id="inputComplemento" value="<%= endereco.complemento%>" readonly>
+                                                                id="inputComplemento" value="<%= endereco.complemento%>"
+                                                                <%= (usuario.id !== usuarioPerfil.id) ? 'readonly' : '' %>>
                                                         </div>
                                                     </div>
                                                     <!-- BAIRRO -->
@@ -217,7 +256,9 @@
                                                         <label for="inputBairro"
                                                             class="col-sm-2 col-form-label">Bairro</label>
                                                         <div class="col-sm-8">
-                                                            <input type="text" class="form-control" id="inputBairro" value="Não tem no banco" readonly>
+                                                            <input type="text" class="form-control" id="inputBairro"
+                                                                value="Não tem no banco"
+                                                                <%= (usuario.id !== usuarioPerfil.id) ? 'readonly' : '' %>>
                                                         </div>
                                                     </div>
                                                     <!-- CIDADE -->
@@ -225,20 +266,33 @@
                                                         <label for="inputCidade"
                                                             class="col-sm-2 col-form-label">Cidade</label>
                                                         <div class="col-sm-5">
-                                                            <input type="text" class="form-control" id="inputCidade" value="<%= endereco.cidade%>" readonly>
+                                                            <input type="text" class="form-control" id="inputCidade"
+                                                                value="<%= endereco.cidade%>"
+                                                                <%= (usuario.id !== usuarioPerfil.id) ? 'readonly' : '' %>>
                                                         </div>
                                                     </div>
                                                     <!-- ESTADO -->
                                                     <div class="form-group row">
                                                         <label for="inputEstado"
-                                                            class="col-sm-2 col-form-label" >Estado</label>
+                                                            class="col-sm-2 col-form-label">Estado</label>
                                                         <div class="col-sm-5">
-                                                            <select id="inputEstado" class="form-control" name="estado" disabled>
-                                                                <option <%= (endereco.estado == null)? 'selected' : '' %>>Escolher...</option>
-                                                                <option value="1" <%= (endereco.estado == 'SP')? 'selected' : '' %>>SP</option>
-                                                                <option value="2" <%= (endereco.estado == 'RJ')? 'selected' : '' %>>RJ</option>
-                                                                <option value="3" <%= (endereco.estado == 'MG')? 'selected' : '' %>>MG</option>
-                                                                <option value="4" <%= (endereco.estado == 'RS')? 'selected' : '' %>>RS</option>
+                                                            <select id="inputEstado" class="form-control" name="estado"
+                                                                <%= (usuario.id !== usuarioPerfil.id) ? 'disabled' : '' %>>
+                                                                <option
+                                                                    <%= (endereco.estado == null)? 'selected' : '' %>>
+                                                                    Escolher...</option>
+                                                                <option value="1"
+                                                                    <%= (endereco.estado == 'SP')? 'selected' : '' %>>SP
+                                                                </option>
+                                                                <option value="2"
+                                                                    <%= (endereco.estado == 'RJ')? 'selected' : '' %>>RJ
+                                                                </option>
+                                                                <option value="3"
+                                                                    <%= (endereco.estado == 'MG')? 'selected' : '' %>>MG
+                                                                </option>
+                                                                <option value="4"
+                                                                    <%= (endereco.estado == 'RS')? 'selected' : '' %>>RS
+                                                                </option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -254,6 +308,7 @@
                         </div>
 
                         <!-- ### CARD DE MUDAR SENHA -->
+                        <% if (usuario.id === usuarioPerfil.id) { %>
                         <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
                             <div class="card-body">
                                 <div class="row">
@@ -299,7 +354,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        <% } %>
                         <!-- ### CARD DE MUDAR PERFIL -->
                         <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
                             <a href='../perfil-vendedor'>
@@ -315,7 +370,7 @@
     </div>
     <% include partials/footer-alt %>
     </div>
-    <% include partials/script %>    
+    <% include partials/script %>
 </body>
 
 </html>
