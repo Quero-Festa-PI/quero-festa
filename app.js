@@ -34,6 +34,7 @@ app.use(session({
 app.use((req, res, next) => {
   res.locals.usuario = req.session.usuario;
   res.locals.loja = req.session.loja;
+  res.locals.navegacaoLoja = req.session.navegacaoLoja;
   next();
 })
 

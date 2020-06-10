@@ -24,7 +24,7 @@
         </form>
 
         <!-- carrinho -->
-        <a href="#" class="carrinho">
+        <a href="/pedidos/carrinho" class="carrinho">
             <img src="../images/carro-vazio.png" alt="">
             <div>
                 <span>Meu carrinho</span>
@@ -58,6 +58,11 @@
                     <a class="dropdown-item" href="/usuarios/perfil-cliente">Minha Conta</a>
                     <% if (loja) { %>
                     <a class="dropdown-item" href="/usuarios/perfil-vendedor">Minha Loja</a>
+                    <% if (navegacaoLoja) { %>
+                    <a class="dropdown-item" href="/alterar-navegacao">Navegar como Cliente</a>
+                    <% } else { %>
+                    <a class="dropdown-item" href="/alterar-navegacao">Navegar como Loja</a>
+                    <% } %>
                     <% } %>
                     <a class="dropdown-item" href="/produtos/pedido">Meus Pedidos</a>
                     <a class="dropdown-item" href="/usuarios/sair">Sair</a>
@@ -71,10 +76,17 @@
     </div>
     <div class="navbar-row2">
         <ul class="menu">
-            <li><a href="/produtos/buscar">Aniversário</a></li>
+            <% if (navegacaoLoja) { %>
+            <li><a href="">Novos Pedidos</a></li>
+            <li><a href="">Alguma Função</a></li>
+            <li><a href="">Meus Produtos</a></li>
+            <li><a href="">Dashboard</a></li>
+            <% } else { %>
+            <li><a href="">Aniversário</a></li>
             <li><a href="">Bodas</a></li>
             <li><a href="">Datas especiais</a></li>
             <li><a href="">Comemorações</a></li>
+            <% } %>
         </ul>
     </div>
 
