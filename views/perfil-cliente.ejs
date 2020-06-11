@@ -118,72 +118,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- ### CARD DE DADOS PROFISSIONAIS -->
-
-                        <% if(lojaPerfil) { %>
-                        <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
-                            <div class="card-body painel-dash">
-
-                                <div class="row">
-                                    <div class='col-4'>
-                                        <h4>Dados Profissionais</h4>
-                                    </div>
-
-                                    <!-- <form action="/loja" method="GET"> -->
-                                    <div class='col-8 text-right'>
-                                        <button type="submit" class="btn btn-alt">
-                                            <a href="/loja"> Ir para minha loja </a></button>
-                                    </div>
-                                    <!-- </form> -->
-
-
-                                </div>
-                                <!-- Divider -->
-                                <hr class="sidebar-divider my-0">
-
-                                <div class="painel-dados row">
-
-                                    <div class='col-8'>
-                                        <!-- NOME DA LOJA-->
-                                        <div class="form-group row">
-                                            <label for="inputNomeLoja" class="col-sm-3 col-form-label">Nome da
-                                                Loja</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="inputNomeLoja"
-                                                    value="<%= lojaPerfil.nome %>">
-                                            </div>
-                                        </div>
-                                        <!-- CNPJ-->
-                                        <div class="form-group row">
-                                            <label for="inputCNPJ" class="col-sm-3 col-form-label">CNPJ</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="inputCNPJ"
-                                                    value="Não tem no banco">
-                                            </div>
-                                        </div>
-                                        <!-- DESCRIÇÃO -->
-                                        <div class="form-group row">
-                                            <label for="inputDescricaoLoja"
-                                                class="col-sm-3 col-form-label">Descrição</label>
-                                            <div class="col-sm-9">
-                                                <textarea class="form-control" id="inputDescricaoLoja" rows="3">
-                                                        <%= lojaPerfil.descricao %>
-                                                    </textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4 text-center">
-                                        <img id='avatar' class='shadow border-bottom-primary rounded'
-                                            src='../../images/deco-avatar.png' width="150px" height="150px"
-                                            alt='avatar'>
-                                        <button class="btn btn-alt text-center">Escolha sua foto!</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <% } %>
+                        </div>                        
 
                         <!-- ### CARD DE ENDERECO -->
                         <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
