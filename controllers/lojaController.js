@@ -1,4 +1,4 @@
-const { sequelize, Usuario } = require('../database/models')
+const { sequelize, Usuario, Loja, Produto} = require('../database/models')
 const bcrypt = require('bcrypt');
 
 module.exports = {
@@ -7,8 +7,21 @@ module.exports = {
           return res.render('index', { page: 'Home' });
      },
      // Pagina da loja
-     loja: (req, res, ) => {
-          return res.render('perfil-loja', { page: 'Perfil Loja' });
+     loja: async (req, res ) => {
+          let {nome} = req.params;
+          let loja = await Loja.findOne({               
+              include: 
+              [{
+                   model: Produto,
+                   as: 'produtos'
+               },
+               {
+                    model: Usuario,
+                    as: 'usuario'
+               }]
+          })
+
+          return res.render('perfil-loja', { page: 'Perfil Loja', loja });
      },
 
      alterarNavegacao: (req, res) => {
