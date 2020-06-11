@@ -111,10 +111,6 @@ module.exports = {
           return res.redirect('/');
 
      },
-     // Perfil vendedor
-     perfilVendedor: (req, res) => {
-          return res.render('perfil-vendedor', { page: 'perfil' });
-     },
      // Perfil cliente
      perfilCliente: async (req, res) => {
 
