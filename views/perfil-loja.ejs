@@ -19,7 +19,7 @@
 
                             <div class="row">
                                 <div class='col-4'>
-                                    <h3>Decor Oliveira</h3>
+                                    <h3><%= loja.nome %></h3>
                                 </div>
                             </div>
                             <!-- Divider -->
@@ -34,14 +34,14 @@
                                 <div class='col-8'>
                                     <div class="row text-left">
                                         <div class="text-left col-3">
-                                            <h6>Slogan:</h6>
                                             <h6>Descrição:</h6>
+                                            <h6>Vendedor:</h6>
                                         </div>
                                         <div class="text-left col-9 text-primary">
-                                            <h6>Decorações para todo tipo de festa</h6>
-                                            <h6>Nossa loja trabalha com decorações para comemorações como aniversários,
-                                                e confraternizações.
-                                                Não trabalhamos com kits de alimentos!</h6>
+                                            
+                                            <h6><%= loja.descricao %></h6>
+                                            <h6><%= loja.usuario.nome%></h6>
+                                            
                                         </div>
                                     </div>
 
@@ -74,7 +74,61 @@
                     </div>
                     <!-- ### Anuncios da Loja -->
                     <div class="mx-5">
-                        <%include partials/anuncios %>
+                        <div class="container">
+                            <anuncio>
+                                <div class="row row-level-1">
+                                    <div class="row-inner clearfix">
+                                        <div class="col-inner d-flex">
+                                            <!-- card 1 -->
+                                            <% for( produto of loja.produtos) { %>
+                                                <div class="col-sm-3">
+                                                    <card class=" anuncio-box card shadow">
+                                                        <div class="row no-gutters rounded-top">                                    
+                                                            <div class='anuncio text-center'>
+                                                                <div class="m-1">
+                                                                    <a href="#"><img src="../images/bodasPapel.png" alt="" class="img-fluid rounded"></a> 
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="mt-1 mr-3 mb-2 ml-3">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <titulo class="text-left card-title"><%= produto.nome%> </titulo>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <preco class="text-left">R$<%= produto.valor%></preco> 
+                                                                    </div>
+                                                                </div>
+    
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <info class='card-text text-left'>                                         
+                                                                            <%= produto.descricao%>                          
+                                                                        </info>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <button type="button" class="btn-alt btn btn-sm">Ver</button>                                                
+                                                                    </div>
+                                                                </div>
+                                                            
+                                                            </div>
+                                                        </div>
+                                                    </card>
+                                                </div>
+                                            <% } %>
+                                            <!-- Fim card 1 -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </anuncio>
+                        </div>                        
+                        
                     </div>
                 </div>
             </div>
