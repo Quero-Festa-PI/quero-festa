@@ -13,12 +13,12 @@ module.exports = {
               include: 
               [{
                    model: Produto,
-                   as: 'produtos'
-               },
+                   as: 'produtos'                   
+               },               
                {
                     model: Usuario,
                     as: 'usuario'
-               }]
+               }]              
           })
 
           return res.render('perfil-loja', { page: 'Perfil Loja', loja });
