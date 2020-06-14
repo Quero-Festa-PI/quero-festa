@@ -8,8 +8,8 @@ module.exports = {
      },
      // Pagina da loja
      loja: async (req, res ) => {
-          let {nome} = req.params;
-          let loja = await Loja.findOne({               
+          let {id} = req.params;
+          let loja = await Loja.findByPk(id,{               
               include: 
               [{
                    model: Produto,
@@ -19,7 +19,7 @@ module.exports = {
                     model: Usuario,
                     as: 'usuario'
                }]              
-          })
+          });
 
           return res.render('perfil-loja', { page: 'Perfil Loja', loja });
      },
