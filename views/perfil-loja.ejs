@@ -14,15 +14,40 @@
                     <%- include('partials/breadcrumb') %>
                     <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
 
+<<<<<<< HEAD
                     <!-- ### CARD DE DADOS PROFISSIONAIS -->
+=======
+                            <div class="row">
+                                <div class='col-4'>
+                                    <h3><%= loja.nome %></h3>
+                                </div>
+                            </div>
+                            <!-- Divider -->
+                            <hr class="sidebar-divider my-0">
+>>>>>>> e503b17fce355bb5c0857e909ef325023c95b743
 
                     <% if(lojaPerfil.usuario) { %>
                         <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
                             <div class="card-body painel-dash">
 
+<<<<<<< HEAD
                                 <div class="row">
                                     <div class='col-4'>
                                         <h4>Dados Profissionais</h4>
+=======
+                                <div class='col-8'>
+                                    <div class="row text-left">
+                                        <div class="text-left col-3">
+                                            <h6>Descrição:</h6>
+                                            <h6>Vendedor:</h6>
+                                        </div>
+                                        <div class="text-left col-9 text-primary">
+                                            
+                                            <h6><%= loja.descricao %></h6>
+                                            <h6><%= loja.usuario.nome%></h6>
+                                            
+                                        </div>
+>>>>>>> e503b17fce355bb5c0857e909ef325023c95b743
                                     </div>
                                 </div>
                                 <!-- Divider -->
@@ -134,11 +159,16 @@
 
                     <!-- ### Anuncios da Loja -->
                     <div class="mx-5">
+<<<<<<< HEAD
                         <div class="container" id="lista-produtos">
+=======
+                        <div class="container">
+>>>>>>> e503b17fce355bb5c0857e909ef325023c95b743
                             <anuncio>
                                 <div class="row row-level-1">
                                     <div class="row-inner clearfix">
                                         <div class="col-inner d-flex">
+<<<<<<< HEAD
                                             
                                             <!-- card 1 -->
                                             <% for(produto of lojaPerfil.produtos) { %>
@@ -186,6 +216,50 @@
                                                                 </div>
                                                             </card>
                                                 </div>                                                     
+=======
+                                            <!-- card 1 -->
+                                            <% for( produto of loja.produtos) { %>
+                                                <div class="col-sm-3">
+                                                    <card class=" anuncio-box card shadow">
+                                                        <div class="row no-gutters rounded-top">                                    
+                                                            <div class='anuncio text-center'>
+                                                                <div class="m-1">
+                                                                    <a href="#"><img src="../images/bodasPapel.png" alt="" class="img-fluid rounded"></a> 
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="mt-1 mr-3 mb-2 ml-3">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <titulo class="text-left card-title"><%= produto.nome%> </titulo>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <preco class="text-left">R$<%= produto.valor%></preco> 
+                                                                    </div>
+                                                                </div>
+    
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <info class='card-text text-left'>                                         
+                                                                            <%= produto.descricao%>                          
+                                                                        </info>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <button type="button" class="btn-alt btn btn-sm">Ver</button>                                                
+                                                                    </div>
+                                                                </div>
+                                                            
+                                                            </div>
+                                                        </div>
+                                                    </card>
+                                                </div>
+>>>>>>> e503b17fce355bb5c0857e909ef325023c95b743
                                             <% } %>
                                             <!-- Fim card 1 -->
                                         </div>

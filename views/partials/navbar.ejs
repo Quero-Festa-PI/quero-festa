@@ -100,7 +100,11 @@
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="/usuarios/perfil-cliente/<%= String(usuario.id) %>">Minha Conta</a>
                     <% if (loja) { %>
+<<<<<<< HEAD
                     <a class="dropdown-item" href="/loja/<%= loja.id %>">Minha Loja</a>
+=======
+                    <a class="dropdown-item" href="/loja/<%= loja.nome %>">Minha Loja</a>
+>>>>>>> e503b17fce355bb5c0857e909ef325023c95b743
                     <% if (navegacaoLoja) { %>
                     <a class="dropdown-item" href="/alterar-navegacao">Navegar como Cliente</a>
                     <% } else { %>
