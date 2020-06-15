@@ -9,7 +9,7 @@ module.exports = {
      // Pagina da loja
      loja: async (req, res ) => {
           let {id} = req.params;
-          let loja = await Loja.findByPk(id,{               
+          let lojaPerfil = await Loja.findByPk(id,{               
               include: 
               [{
                    model: Produto,
@@ -19,9 +19,9 @@ module.exports = {
                     model: Usuario,
                     as: 'usuario'
                }]              
-          });
+          });          
 
-          return res.render('perfil-loja', { page: 'Perfil Loja', loja });
+          return res.render('perfil-loja', { page: 'Perfil Loja', lojaPerfil });
      },
 
      alterarNavegacao: (req, res) => {
