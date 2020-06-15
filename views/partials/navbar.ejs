@@ -34,9 +34,28 @@
                                 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <div class="m-2 p-1">
-                        <h6>Seu carrinho está vazio</h6>
-                        <p>Adicione produtos</p>
-                        <a href="/pedidos/carrinho" id="ver carrinho" type="button" class="btn-alt btn btn-sm">Ver carrinho</a>
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item dropdown">                                
+                                <div id="carrinho">
+                                    <table id="lista-carrinho" class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Imagem</th>
+                                                <th>Nome</th>
+                                                <th>Preço</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+    
+                                    <a href="/pedidos/carrinho" id="ver-carrinho" type="button" class="btn-alt btn btn-sm">Ver carrinho</a>
+                                    <a href="#" id="esvaziar-carrinho" type="button" class="btn-alt btn btn-sm">Esvaziar carrinho</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- <h6>Seu carrinho está vazio</h6>
+                        <p>Adicione produtos</p> -->
                     </div>
                 </div>
             </div>
