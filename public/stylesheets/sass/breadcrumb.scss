@@ -1,0 +1,38 @@
+// variáveis
+
+$primary: #FF826E;
+$primary-font: #F8F8F8;
+$secondary: #FFFFFF;
+$secondary-font: #1E1E1E;
+
+.breadcrumb{
+    margin: 10px 0;
+    background-color: #FFFFFF;
+    border: 1px solid $primary;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    padding: 12px 9px 12px 9px;
+    
+    ul{
+        margin: 0;
+
+        li{
+            display: inline-block;
+        }
+        
+        li:last-of-type a {
+            color: $primary;
+            font-weight: 500;
+        }
+        
+        li:not(:last-of-type) a {
+            color: #999999;
+        }
+        
+        li:not(:last-of-type)::after {
+            content: "\203a";
+            font-size: 20px;
+            margin: 0 5px;
+            color: #CCCCCC;
+        }
+    }
+}
