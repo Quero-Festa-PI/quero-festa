@@ -6,13 +6,11 @@
 
         <!-- CONTEÚDO PRINCIPAL -->
         <div class="container d-flex flex-column">
+            <%- include('partials/breadcrumb') %>
             <div class="row infos-resultados">
-                <!-- CONTAINER CAMINHO DAS PAGINAS -->
-                <%- include('partials/breadcrumb') %>
-                <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
                 <div class="resultado-busca">
                     <strong><%= search %></strong>
-                    <p>(<%= resultado.length %> resultados encontrados)</p>
+                    <p>(<%= quantidade %> produtos encontrados)</p>
                 </div>
                 <div class="select-ordenar d-flex flex-column">
                     <label>Ordenar por</label>
@@ -36,10 +34,30 @@
                 </card>
                 <% } %>
             </div>
-            <!-- FIM ITENS ACHADOS -->
+            <p>Exibindo <%= resultado.length %> de <%= quantidade %> resultados.</p>
+            <div class="row lista-paginas">
+                <% if(pageActual > 1) { %>
+                <a href="/produtos/buscar?search=<%= search %>&page=<%= (Number(pageActual) - 1) %>">
+                    <img src="/images/previous-page.png" alt="Ir para a página anterior.">
+                </a>
+                <% } %>
+                <% let inicio; let fim; %>
+                <% (pageActual <= 3) ? inicio = 1 : inicio = Math.max(1, Math.min((pageActual - 2), (totalPage - 4))) %>
+                <% (pageActual <= 3) ? fim = Math.min(5, totalPage) : fim = Math.min((pageActual + 2), totalPage) %>
+                <% for (let i = inicio; i <= fim; i++) { %>
+                <% if (i == pageActual) { %>
+                <a class="active" href="/produtos/buscar?search=<%= search %>&page=<%= i %>"><%= i %></a>
+                <% } else { %>
+                <a href="/produtos/buscar?search=<%= search %>&page=<%= i %>"><%= i %></a>
+                <% } %>
+                <% } %>
+                <% if(pageActual < totalPage) { %>
+                <a href="/produtos/buscar?search=<%= search %>&page=<%= (Number(pageActual) + 1) %>">
+                    <img src="/images/next-page.png" alt="Ir para a página posterior.">
+                </a>
+                <% } %>
+            </div>
         </div>
-        <!-- </div> -->
-    </div>
     </div>
     <%- include('partials/footer') %>
     <%- include('partials/script') %>

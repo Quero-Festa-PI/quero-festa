@@ -1,8 +1,10 @@
 .container {
   padding: 0; }
+  .container p {
+    text-align: center; }
 
 .row.infos-resultados {
-  margin: 0 0 10px 0;
+  margin: 0 -15px 10px -15px;
   display: flex;
   justify-content: space-around;
   align-items: center; }
@@ -26,11 +28,11 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-  margin: 0px 0px; }
+  margin: 0px -10px; }
   .row.produtos-busca card {
     display: flex;
     width: calc((100% - 80px) / 4);
-    margin: 10px 10px; }
+    margin: 0px 10px 20px 10px; }
     .row.produtos-busca card titulo {
       width: 100%;
       text-align: center;
@@ -57,6 +59,30 @@
         height: auto;
         margin: 0px 10px; }
 
+.row.lista-paginas {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap; }
+  .row.lista-paginas a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    font-size: 14px;
+    border: 1px #c9c9c9 solid;
+    border-left: 0px;
+    text-decoration: none;
+    color: #999;
+    font-weight: bold; }
+    .row.lista-paginas a img {
+      height: auto;
+      width: 10px; }
+  .row.lista-paginas a.active {
+    color: #555; }
+  .row.lista-paginas a:first-child {
+    border-left: 1px #c9c9c9 solid; }
+
 @media screen and (max-width: 990px) {
   .row.produtos-busca card {
     width: calc((100% - 60px) / 3); } }
@@ -67,7 +93,10 @@
   .row.infos-resultados {
     font-size: 0.8rem; }
     .row.infos-resultados .resultado-busca {
-      flex-direction: column; } }
+      flex-direction: column; }
+
+  .row.produtos-busca {
+    margin: 10px; } }
 @media screen and (max-width: 470px) {
   .row.infos-resultados .resultado-busca {
     width: 100%;

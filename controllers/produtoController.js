@@ -9,13 +9,13 @@ module.exports = {
 
         // pagina e limite padrões
         if (!pageActual) { pageActual = 1; }
-        let limitProducts = 10
+        let limitProducts = 10;
 
         let allProducts = await Produto.findAll({ where: { nome: { [Op.like]: '%' + search + '%' } } });
+        let totalPage = Math.ceil(allProducts.length / limitProducts);
 
         function listProducts(allProducts, pageActual, limitProducts) {
             let result = [];
-            let totalPage = Math.ceil(allProducts.length / limitProducts);
             let count = (pageActual * limitProducts) - limitProducts;
             let delimiter = count + limitProducts;
 
@@ -26,15 +26,16 @@ module.exports = {
                     }
                 }
             } else {
-                res.send('Página ultrapassou limite');
+                res.redirect('/produtos/buscar?search=' + search + '&page=' + totalPage);
             }
 
             return result;
         };
 
         const resultado = listProducts(allProducts, pageActual, limitProducts);
+        const quantidade = allProducts.length;
 
-        res.render('buscar', { page: 'Resultado da Busca', resultado, search });
+        res.render('buscar', { page: 'Resultado da Busca', resultado, search, quantidade, totalPage, pageActual });
     },
     cadastrar: (req, res) => {
         res.render('cadastrar-produto', { page: 'cadastrar-produto' });
