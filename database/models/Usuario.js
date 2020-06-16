@@ -49,6 +49,7 @@ let Usuario = (sequelize, DataTypes) => {
     usuario.associate = models => {
         usuario.hasOne(models.Loja, { foreignKey: 'id', as: 'lojas' })
         usuario.hasMany(models.Endereco, { foreignKey: 'usuarios_id', as: 'enderecos' });
+        usuario.hasMany(models.AvaliacoesDeProdutos, { foreignKey: 'usuarios_id', as: 'avaliacoes' });
         usuario.hasMany(models.Pedido, { foreignKey: 'usuarios_id', as: 'pedidos' })
     }
 
