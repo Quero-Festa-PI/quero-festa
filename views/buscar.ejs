@@ -11,8 +11,8 @@
                 <%- include('partials/breadcrumb') %>
                 <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
                 <div class="resultado-busca">
-                    <strong><%= busca %></strong>
-                    <p>(<%= produtos.length %> resultados encontrados)</p>
+                    <strong><%= search %></strong>
+                    <p>(<%= resultado.length %> resultados encontrados)</p>
                 </div>
                 <div class="select-ordenar d-flex flex-column">
                     <label>Ordenar por</label>
@@ -23,82 +23,24 @@
                     </select>
                 </div>
             </div>
-            <div class="row">
-                <!-- ITENS ACHADOS -->
-                <div class="mx-5">
-                    <% let nFileiras = Math.ceil(produtos.length / 4) %>
-                    <% for (let iFileiras = 1; iFileiras <= nFileiras; iFileiras++) { %>
-                    <div class="container">
-                        <anuncio>
-                            <div class="row row-level-1">
-                                <div class="row-inner clearfix">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="col-inner d-flex">
-                                            <% if(iFileiras != nFileiras) { %>
-                                            <% for (let iProdutos = 1; iProdutos <= 4; iProdutos++) { %>
-                                            <div class="col-sm-4">
-                                                <card class=" anuncio-box card shadow">
-                                                    <div class="card-body">
-                                                        <div class="row no-gutters">
-                                                            <div class='anuncio text-center'>
-                                                                <a href="#"><img src="/images/mesversario.png" alt=""
-                                                                        class="img-fluid"></a>
-                                                                <titulo class="card-text text-center">
-                                                                    <%= produtos[(iFileiras - 1) * 4 + (iProdutos - 1)].nome %>
-                                                                </titulo>
-                                                            </div>
-                                                            <preco class="text-right">
-                                                                R$<%= produtos[(iFileiras - 1) * 4 + (iProdutos - 1)].valor %>
-                                                            </preco>
-                                                            <info class='card-text'>
-                                                                <%= produtos[(iFileiras - 1) * 4 + (iProdutos - 1)].descricao %>
-                                                            </info>
-                                                            <button type="button" class="btn-alt btn btn-sm">Saiba
-                                                                Mais...</button>
-                                                        </div>
-                                                    </div>
-                                                </card>
-                                            </div>
-                                            <% } %>
-                                            <% } else { %>
-                                            <% for (let iProdutos = 1; iProdutos <= (produtos.length % 4); iProdutos++) { %>
-                                            <div class="col-sm-4">
-                                                <card class=" anuncio-box card shadow">
-                                                    <div class="card-body">
-                                                        <div class="row no-gutters">
-                                                            <div class='anuncio text-center'>
-                                                                <a href="#"><img src="/images/mesversario.png" alt=""
-                                                                        class="img-fluid"></a>
-                                                                <titulo class="card-text text-center">
-                                                                    <%= produtos[(iFileiras - 1) * 4 + (iProdutos - 1)].nome %>
-                                                                </titulo>
-                                                            </div>
-                                                            <preco class="text-right">
-                                                                R$<%= produtos[(iFileiras - 1) * 4 + (iProdutos - 1)].valor %>
-                                                            </preco>
-                                                            <info class='card-text'>
-                                                                <%= produtos[(iFileiras - 1) * 4 + (iProdutos - 1)].descricao %>
-                                                            </info>
-                                                            <button type="button" class="btn-alt btn btn-sm">Saiba
-                                                                Mais...</button>
-                                                        </div>
-                                                    </div>
-                                                </card>
-                                            </div>
-                                            <% } %>
-                                            <% } %>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </anuncio>
+            <div class="row produtos-busca">
+                <% for (produto of resultado) { %>
+                <card class="anuncio-box card shadow">
+                    <a href="#"><img src="/images/mesversario.png" alt="" class="img-fluid"></a>
+                    <titulo class="card-text"><%= produto.nome %></titulo>
+                    <div>
+                        <span>Avaliação: <b><%= produto.avaliacao %></b></span>
+                        <preco>R$<%= produto.valor.toFixed(2) %></preco>
                     </div>
-                    <% } %>
-                </div>
-                <!-- FIM ITENS ACHADOS -->
+                    <a href="#">Saiba Mais...</a>
+                </card>
+                <% } %>
             </div>
-            <!-- </div> -->
+            <!-- FIM ITENS ACHADOS -->
         </div>
+        <!-- </div> -->
     </div>
+    </div>
+    <%- include('partials/footer') %>
     <%- include('partials/script') %>
 </body>

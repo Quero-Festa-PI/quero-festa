@@ -22,6 +22,47 @@
     .row.infos-resultados .select-ordenar label {
       text-align: center; }
 
+.row.produtos-busca {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  margin: 0px 0px; }
+  .row.produtos-busca card {
+    display: flex;
+    width: calc((100% - 80px) / 4);
+    margin: 10px 10px; }
+    .row.produtos-busca card titulo {
+      width: 100%;
+      text-align: center;
+      vertical-align: middle;
+      height: 48px;
+      margin-bottom: 10px; }
+    .row.produtos-busca card div {
+      display: flex;
+      justify-content: space-between;
+      padding: 0px 10px; }
+      .row.produtos-busca card div preco {
+        font-weight: bold;
+        color: #FF826E;
+        min-width: 0; }
+    .row.produtos-busca card a {
+      font-weight: bold;
+      color: #FF826E;
+      position: relative;
+      bottom: 0;
+      align-self: center;
+      margin: 10px 0px; }
+      .row.produtos-busca card a img {
+        max-width: calc(100% - 20px);
+        height: auto;
+        margin: 0px 10px; }
+
+@media screen and (max-width: 990px) {
+  .row.produtos-busca card {
+    width: calc((100% - 60px) / 3); } }
+@media screen and (max-width: 767px) {
+  .row.produtos-busca card {
+    width: calc((100% - 40px) / 2); } }
 @media screen and (max-width: 576px) {
   .row.infos-resultados {
     font-size: 0.8rem; }
@@ -31,5 +72,10 @@
   .row.infos-resultados .resultado-busca {
     width: 100%;
     margin-bottom: 10px; } }
+@media screen and (max-width: 400px) {
+  .row.produtos-busca card {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto; } }
 
 /*# sourceMappingURL=busca.css.map */
