@@ -153,18 +153,60 @@ class Carrinho {
         evt.preventDefault();
 
         if(this.produtoLocalStorange().length === 0){
-            Swal.fire({
-                type: 'error',
-                title: 'Oops...',
-                text: 'O carrinho está vazio, adicione um produto',
-                showConfirmButton: false,
-                timer: 2000
-            })
+            alert('Carrinho vazio, adicione um produto')
         } else {
             location.href = 'http://localhost:3000/pedidos/carrinho';
         }
     }
 
+    // Ler dados do produto
+    lerDadosProduto(produto){
+        const infoProduto = {
+            img: produto.querySelector('img').src,
+            nome: produto.querySelector('titulo').textContent,
+            preco: produto.querySelector('preco').textContent,
+            descricao: produto.querySelector('info').textContent,
+            id: produto.querySelector('button').getAttribute('data-id'),
+            qtde: 1
+        }
+
+        let produtosLS = this.produtoLocalStorange();
+        produtosLS.forEach(function(produtoLS){
+            if(produtoLS.nome === infoProduto.nome){
+                produtosLS = produtoLS.nome;
+            }
+        });
+
+        if(produtosLS === infoProduto.nome){
+            alert('produto já adicionado');
+        } else {
+            this.inserirCarrinho(infoProduto);
+        }
+    } 
+
+    // Mostrar os produtos salvos no LS na views carrinho
+    mostrarProdutosLocalStorageCompra(){
+        let produtosLS = this.produtoLocalStorange();
+
+        // Modelo
+        produtosLS.forEach(function(produto){
+            const tr = document.createElement('tr');
+        tr.innerHTML = `
+        <td>
+            <img src="${produto.img}" width=100>
+        </td>
+        <td>${produto.nome}</td>
+        <td>${produto.preco}</td>
+        // <td>
+        //     <input type="number" class="form-control qtde" min="1" value=${produto.qtde}>
+        // </td>
+        // <td id="subtotal">${produto.preco * produto.qtde}</td>
+        <td>
+            <a href="#" class="remove" data-id="${produto.id}">x</a>
+        </td>`;           
+        listaCompra.appendChild(tr);
+        });
+    }
 }
 
 
