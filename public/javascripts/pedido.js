@@ -17,5 +17,9 @@ function carregarEventos() {
     // esvaziar o carrinho
     esvaziarCarrinhoBtn.addEventListener('click', evt => carro.esvaziarCarrinho(evt));
 
+    // Carregando documento mostra o que está armazenado no LS
+    document.addEventListener('DOMContentLoaded', carro.mostrarProdutosLocalStorage());
     
+    // Enviar pedido para outra pagina
+    verCarrinhoBtn.addEventListener('click', evt => carro.processarPedido(evt));
 }
