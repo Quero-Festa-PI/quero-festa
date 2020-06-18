@@ -58,17 +58,31 @@ $secondary-font: #1E1E1E;
             text-align: center;
             vertical-align: middle;
             height: 48px;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
         }
-        div {
-            display: flex;
-            justify-content: space-between;
-            padding: 0px 10px;
-            preco {
-                font-weight: bold;
-                color: $primary;
-                min-width: 0;
+        .avaliacao{
+            align-self: center;
+            margin-bottom: 6px;
+            .stars-outer{
+                position: relative;
+                display: inline-block;
+                color: #ccc;
             }
+            .stars-inner{
+                position: absolute;
+                color: #f8ce0b;
+                top: 0;
+                left: 0;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+        }
+        preco {
+            font-weight: bold;
+            color: $primary;
+            min-width: 0;
+            align-self: center;
+            margin-bottom: 6px;
         }
         a {
             font-weight: bold;
@@ -76,11 +90,11 @@ $secondary-font: #1E1E1E;
             position: relative;
             bottom: 0;
             align-self: center;
-            margin: 10px 0px;
+            margin-bottom: 6px;
             img {
                 max-width: calc(100% - 20px);
                 height: auto;
-                margin: 0px 10px;
+                margin: 10px 10px 0px 10px;
             }
         }
     }

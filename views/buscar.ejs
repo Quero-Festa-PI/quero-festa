@@ -23,14 +23,33 @@
             </div>
             <div class="row produtos-busca">
                 <% for (produto of resultado) { %>
+                <% const avaliacao = Math.round(Number(produto.toJSON().avaliacoes[0].media) * 10) / 10; %>
+                <% const avaliacaoPerc = ((18 * avaliacao) + (4.3875 * Math.trunc(avaliacao))) / 107.550 * 100 %>
+                <% const quantidade = Number(produto.toJSON().avaliacoes[0].quantidade); %>
                 <card class="anuncio-box card shadow">
                     <a href="#"><img src="/images/mesversario.png" alt="" class="img-fluid"></a>
                     <titulo class="card-text"><%= produto.nome %></titulo>
-                    <div>
-                        <span>Avaliação: <b><%= produto.avaliacao %></b></span>
-                        <preco>R$<%= produto.valor.toFixed(2) %></preco>
+                    <div class="avaliacao">
+                        <div class="stars-outer">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <div class="stars-inner" style="width: <%= avaliacaoPerc %>%">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <span><%= avaliacao %></span>
+                        <span>(<%= quantidade %>)</span>
                     </div>
-                    <a href="#">Saiba Mais...</a>
+                    <preco>R$<%= produto.valor.toFixed(2) %></preco>
+
+                    <a href="/produtos/<%= produto.id %>">Saiba Mais...</a>
                 </card>
                 <% } %>
             </div>
