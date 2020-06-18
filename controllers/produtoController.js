@@ -1,9 +1,10 @@
-const { Sequelize, Produto } = require('../database/models')
+const { sequelize, Sequelize, Produto, AvaliacoesDeProdutos } = require('../database/models')
 const Op = Sequelize.Op;
 
 module.exports = {
     buscar: async (req, res) => {
 
+        // armazenar parametros da pesquisa
         let search = req.query.search;
         let pageActual = req.query.page;
 
@@ -11,9 +12,24 @@ module.exports = {
         if (!pageActual) { pageActual = 1; }
         let limitProducts = 10;
 
-        let allProducts = await Produto.findAll({ where: { nome: { [Op.like]: '%' + search + '%' } } });
+        // buscar produtos no banco de dados
+        let allProducts = await Produto.findAll({
+            where: { nome: { [Op.like]: '%' + search + '%' } },
+            include: {
+                model: AvaliacoesDeProdutos,
+                as: 'avaliacoes',
+                attributes: [
+                    [sequelize.fn('avg', sequelize.col('classificacao')), 'media'],
+                    [sequelize.fn('count', sequelize.col('classificacao')), 'quantidade']
+                ],
+            },
+            group: ['produtos_id'],
+            attributes: ['id', 'nome', 'valor'],
+        });
+
         let totalPage = Math.ceil(allProducts.length / limitProducts);
 
+        // fazer paginação dos produtos encontrados
         function listProducts(allProducts, pageActual, limitProducts) {
             let result = [];
             let count = (pageActual * limitProducts) - limitProducts;
