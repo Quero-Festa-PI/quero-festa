@@ -5,9 +5,9 @@ var router = express.Router();
 const produtoController = require('../controllers/produtoController');
 
 // Requisições produto
-router.get('/produto', produtoController.produto);
 router.get('/buscar', produtoController.buscar);
 router.get('/cadastrar-produto', produtoController.cadastrar);
+router.get('/:id', produtoController.viewProduto);
 // router.post('/cadastrar-produto', produtoController.cadastrar);
 
 module.exports = router;

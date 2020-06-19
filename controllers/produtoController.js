@@ -1,4 +1,4 @@
-const { sequelize, Sequelize, Produto, AvaliacoesDeProdutos } = require('../database/models')
+const { sequelize, Sequelize, Produto, AvaliacoesDeProdutos, Loja } = require('../database/models')
 const Op = Sequelize.Op;
 
 module.exports = {
@@ -58,7 +58,29 @@ module.exports = {
     },
     produto: (req, res) => {
         res.render('produto', { page: 'produto' });
+    },
+    viewProduto: async (req, res) => {
+        // capturar o id do param
+        let { id } = req.params;
+
+        // buscar produto no bd
+        let produto = await Produto.findByPk(id, {
+            include: [{
+                model: Loja,
+                as: 'lojas',
+                attributes: ['id', 'nome']
+            }, {
+                model: AvaliacoesDeProdutos,
+                as: 'avaliacoes',
+                attributes: [
+                    [sequelize.fn('avg', sequelize.col('classificacao')), 'media'],
+                    [sequelize.fn('count', sequelize.col('classificacao')), 'quantidade']
+                ],
+            }],
+            group: ['produtos_id'],
+            attributes: ['id', 'nome', 'valor', 'disponibilidade', 'descricao']
+        });
+
+        return res.send(produto);
     }
-
 }
-
