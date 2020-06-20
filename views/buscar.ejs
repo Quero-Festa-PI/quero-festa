@@ -6,13 +6,11 @@
 
         <!-- CONTEÚDO PRINCIPAL -->
         <div class="container d-flex flex-column">
+            <%- include('partials/breadcrumb') %>
             <div class="row infos-resultados">
-                <!-- CONTAINER CAMINHO DAS PAGINAS -->
-                <%- include('partials/breadcrumb') %>
-                <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
                 <div class="resultado-busca">
-                    <strong><%= busca %></strong>
-                    <p>(<%= produtos.length %> resultados encontrados)</p>
+                    <strong><%= search %></strong>
+                    <p>(<%= quantidade %> produtos encontrados)</p>
                 </div>
                 <div class="select-ordenar d-flex flex-column">
                     <label>Ordenar por</label>
@@ -23,82 +21,63 @@
                     </select>
                 </div>
             </div>
-            <div class="row">
-                <!-- ITENS ACHADOS -->
-                <div class="mx-5">
-                    <% let nFileiras = Math.ceil(produtos.length / 4) %>
-                    <% for (let iFileiras = 1; iFileiras <= nFileiras; iFileiras++) { %>
-                    <div class="container">
-                        <anuncio>
-                            <div class="row row-level-1">
-                                <div class="row-inner clearfix">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="col-inner d-flex">
-                                            <% if(iFileiras != nFileiras) { %>
-                                            <% for (let iProdutos = 1; iProdutos <= 4; iProdutos++) { %>
-                                            <div class="col-sm-4">
-                                                <card class=" anuncio-box card shadow">
-                                                    <div class="card-body">
-                                                        <div class="row no-gutters">
-                                                            <div class='anuncio text-center'>
-                                                                <a href="#"><img src="../images/mesversario.png" alt=""
-                                                                        class="img-fluid"></a>
-                                                                <titulo class="card-text text-center">
-                                                                    <%= produtos[(iFileiras - 1) * 4 + (iProdutos - 1)].nome %>
-                                                                </titulo>
-                                                            </div>
-                                                            <preco class="text-right">
-                                                                R$<%= produtos[(iFileiras - 1) * 4 + (iProdutos - 1)].valor %>
-                                                            </preco>
-                                                            <info class='card-text'>
-                                                                <%= produtos[(iFileiras - 1) * 4 + (iProdutos - 1)].descricao %>
-                                                            </info>
-                                                            <button type="button" class="btn-alt btn btn-sm">Saiba
-                                                                Mais...</button>
-                                                        </div>
-                                                    </div>
-                                                </card>
-                                            </div>
-                                            <% } %>
-                                            <% } else { %>
-                                            <% for (let iProdutos = 1; iProdutos <= (produtos.length % 4); iProdutos++) { %>
-                                            <div class="col-sm-4">
-                                                <card class=" anuncio-box card shadow">
-                                                    <div class="card-body">
-                                                        <div class="row no-gutters">
-                                                            <div class='anuncio text-center'>
-                                                                <a href="#"><img src="../images/mesversario.png" alt=""
-                                                                        class="img-fluid"></a>
-                                                                <titulo class="card-text text-center">
-                                                                    <%= produtos[(iFileiras - 1) * 4 + (iProdutos - 1)].nome %>
-                                                                </titulo>
-                                                            </div>
-                                                            <preco class="text-right">
-                                                                R$<%= produtos[(iFileiras - 1) * 4 + (iProdutos - 1)].valor %>
-                                                            </preco>
-                                                            <info class='card-text'>
-                                                                <%= produtos[(iFileiras - 1) * 4 + (iProdutos - 1)].descricao %>
-                                                            </info>
-                                                            <button type="button" class="btn-alt btn btn-sm">Saiba
-                                                                Mais...</button>
-                                                        </div>
-                                                    </div>
-                                                </card>
-                                            </div>
-                                            <% } %>
-                                            <% } %>
-                                        </div>
-                                    </div>
-                                </div>
+            <div class="row produtos-busca">
+                <% for (produto of resultado) { %>
+                <% const avaliacao = Math.round(Number(produto.toJSON().avaliacoes[0].media) * 10) / 10; %>
+                <% const avaliacaoPerc = ((18 * avaliacao) + (4.3875 * Math.trunc(avaliacao))) / 107.550 * 100 %>
+                <% const quantidade = Number(produto.toJSON().avaliacoes[0].quantidade); %>
+                <card class="anuncio-box card shadow">
+                    <a href="#"><img src="/images/mesversario.png" alt="" class="img-fluid"></a>
+                    <titulo class="card-text"><%= produto.nome %></titulo>
+                    <div class="avaliacao">
+                        <div class="stars-outer">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <div class="stars-inner" style="width: <%= avaliacaoPerc %>%">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
                             </div>
-                        </anuncio>
+                        </div>
+                        <span><%= avaliacao %></span>
+                        <span>(<%= quantidade %>)</span>
                     </div>
-                    <% } %>
-                </div>
-                <!-- FIM ITENS ACHADOS -->
+                    <preco>R$<%= produto.valor.toFixed(2) %></preco>
+
+                    <a href="/produtos/<%= produto.id %>">Saiba Mais...</a>
+                </card>
+                <% } %>
             </div>
-            <!-- </div> -->
+            <p>Exibindo <%= resultado.length %> de <%= quantidade %> resultados.</p>
+            <div class="row lista-paginas">
+                <% if(pageActual > 1) { %>
+                <a href="/produtos/buscar?search=<%= search %>&page=<%= (Number(pageActual) - 1) %>">
+                    <img src="/images/previous-page.png" alt="Ir para a página anterior.">
+                </a>
+                <% } %>
+                <% let inicio; let fim; %>
+                <% (pageActual <= 3) ? inicio = 1 : inicio = Math.max(1, Math.min((pageActual - 2), (totalPage - 4))) %>
+                <% (pageActual <= 3) ? fim = Math.min(5, totalPage) : fim = Math.min((pageActual + 2), totalPage) %>
+                <% for (let i = inicio; i <= fim; i++) { %>
+                <% if (i == pageActual) { %>
+                <a class="active" href="/produtos/buscar?search=<%= search %>&page=<%= i %>"><%= i %></a>
+                <% } else { %>
+                <a href="/produtos/buscar?search=<%= search %>&page=<%= i %>"><%= i %></a>
+                <% } %>
+                <% } %>
+                <% if(pageActual < totalPage) { %>
+                <a href="/produtos/buscar?search=<%= search %>&page=<%= (Number(pageActual) + 1) %>">
+                    <img src="/images/next-page.png" alt="Ir para a página posterior.">
+                </a>
+                <% } %>
+            </div>
         </div>
     </div>
+    <%- include('partials/footer') %>
     <%- include('partials/script') %>
 </body>

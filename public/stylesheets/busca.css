@@ -1,8 +1,10 @@
 .container {
   padding: 0; }
+  .container p {
+    text-align: center; }
 
 .row.infos-resultados {
-  margin: 0 0 10px 0;
+  margin: 0 -15px 10px -15px;
   display: flex;
   justify-content: space-around;
   align-items: center; }
@@ -22,14 +24,99 @@
     .row.infos-resultados .select-ordenar label {
       text-align: center; }
 
+.row.produtos-busca {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  margin: 0px -10px; }
+  .row.produtos-busca card {
+    display: flex;
+    width: calc((100% - 80px) / 4);
+    margin: 0px 10px 20px 10px; }
+    .row.produtos-busca card titulo {
+      width: 100%;
+      text-align: center;
+      vertical-align: middle;
+      height: 48px;
+      margin-bottom: 6px; }
+    .row.produtos-busca card .avaliacao {
+      align-self: center;
+      margin-bottom: 6px; }
+      .row.produtos-busca card .avaliacao .stars-outer {
+        position: relative;
+        display: inline-block;
+        color: #ccc; }
+      .row.produtos-busca card .avaliacao .stars-inner {
+        position: absolute;
+        color: #f8ce0b;
+        top: 0;
+        left: 0;
+        white-space: nowrap;
+        overflow: hidden; }
+    .row.produtos-busca card preco {
+      font-weight: bold;
+      color: #FF826E;
+      min-width: 0;
+      align-self: center;
+      margin-bottom: 6px; }
+    .row.produtos-busca card a {
+      font-weight: bold;
+      color: #FF826E;
+      position: relative;
+      bottom: 0;
+      align-self: center;
+      margin-bottom: 6px; }
+      .row.produtos-busca card a img {
+        max-width: calc(100% - 20px);
+        height: auto;
+        margin: 10px 10px 0px 10px; }
+
+.row.lista-paginas {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap; }
+  .row.lista-paginas a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    font-size: 14px;
+    border: 1px #c9c9c9 solid;
+    border-left: 0px;
+    text-decoration: none;
+    color: #999;
+    font-weight: bold; }
+    .row.lista-paginas a img {
+      height: auto;
+      width: 10px; }
+  .row.lista-paginas a.active {
+    color: #555; }
+  .row.lista-paginas a:first-child {
+    border-left: 1px #c9c9c9 solid; }
+
+@media screen and (max-width: 990px) {
+  .row.produtos-busca card {
+    width: calc((100% - 60px) / 3); } }
+@media screen and (max-width: 767px) {
+  .row.produtos-busca card {
+    width: calc((100% - 40px) / 2); } }
 @media screen and (max-width: 576px) {
   .row.infos-resultados {
     font-size: 0.8rem; }
     .row.infos-resultados .resultado-busca {
-      flex-direction: column; } }
+      flex-direction: column; }
+
+  .row.produtos-busca {
+    margin: 10px; } }
 @media screen and (max-width: 470px) {
   .row.infos-resultados .resultado-busca {
     width: 100%;
     margin-bottom: 10px; } }
+@media screen and (max-width: 400px) {
+  .row.produtos-busca card {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto; } }
 
 /*# sourceMappingURL=busca.css.map */

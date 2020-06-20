@@ -17,122 +17,121 @@
                     <!-- ### CARD DE DADOS PROFISSIONAIS -->
 
                     <% if(loja.usuario) { %>
-                        <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
-                            <div class="card-body painel-dash">
+                    <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
+                        <div class="card-body painel-dash">
 
-                                <div class="row">
-                                    <div class='col-4'>
-                                        <h4>Dados Profissionais</h4>
-                                    </div>
-
-
+                            <div class="row">
+                                <div class='col-4'>
+                                    <h4>Dados Profissionais</h4>
                                 </div>
-                                <!-- Divider -->
-                                <hr class="sidebar-divider my-0">
 
-                                <div class="painel-dados row">
 
-                                    <div class="col-4 text-center">
-                                        <img id='avatar' class='shadow border-bottom-primary rounded'
-                                            src='../../images/deco-avatar.png' width="170px" height="170px"
-                                            alt='avatar'>
-                                        <button class="btn btn-alt text-center">Escolha sua foto!</button>
+                            </div>
+                            <!-- Divider -->
+                            <hr class="sidebar-divider my-0">
+
+                            <div class="painel-dados row">
+
+                                <div class="col-4 text-center">
+                                    <img id='avatar' class='shadow border-bottom-primary rounded'
+                                        src='/images/deco-avatar.png' width="170px" height="170px" alt='avatar'>
+                                    <button class="btn btn-alt text-center">Escolha sua foto!</button>
+                                </div>
+
+                                <div class='col-8'>
+                                    <!-- NOME DA LOJA-->
+                                    <div class="form-group row">
+                                        <label for="inputNomeLoja" class="col-sm-3 col-form-label">Nome da
+                                            Loja</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="inputNomeLoja"
+                                                value="<%= loja.nome %>">
+                                        </div>
                                     </div>
-
-                                    <div class='col-8'>
-                                        <!-- NOME DA LOJA-->
-                                        <div class="form-group row">
-                                            <label for="inputNomeLoja" class="col-sm-3 col-form-label">Nome da
-                                                Loja</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="inputNomeLoja"
-                                                    value="<%= loja.nome %>">
-                                            </div>
+                                    <!-- CNPJ-->
+                                    <div class="form-group row">
+                                        <label for="inputCNPJ" class="col-sm-3 col-form-label">CNPJ</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="inputCNPJ"
+                                                value="Não tem no banco">
                                         </div>
-                                        <!-- CNPJ-->
-                                        <div class="form-group row">
-                                            <label for="inputCNPJ" class="col-sm-3 col-form-label">CNPJ</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="inputCNPJ"
-                                                    value="Não tem no banco">
-                                            </div>
-                                        </div>
-                                        <!-- DESCRIÇÃO -->
-                                        <div class="form-group row">
-                                            <label for="inputDescricaoLoja"
-                                                class="col-sm-3 col-form-label">Descrição</label>
-                                            <div class="col-sm-9">
-                                                <textarea class="form-control" id="inputDescricaoLoja" rows="3">
+                                    </div>
+                                    <!-- DESCRIÇÃO -->
+                                    <div class="form-group row">
+                                        <label for="inputDescricaoLoja"
+                                            class="col-sm-3 col-form-label">Descrição</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control" id="inputDescricaoLoja" rows="3">
                                                         <%= loja.descricao %>
                                                     </textarea>
-                                            </div>
                                         </div>
                                     </div>
-                                    
                                 </div>
+
                             </div>
                         </div>
-                        <% } else { %>
-                            <!-- ### CARD DE DADOS -->
-                            <div class="card painel-dash border-left-primary shadow mx-5">
-                                <div class="card-body painel-dash">
-        
-                                    <div class="row">
-                                        <div class='col-4'>
-                                            <h3><%= loja.nome %></h3>
+                    </div>
+                    <% } else { %>
+                    <!-- ### CARD DE DADOS -->
+                    <div class="card painel-dash border-left-primary shadow mx-5">
+                        <div class="card-body painel-dash">
+
+                            <div class="row">
+                                <div class='col-4'>
+                                    <h3><%= loja.nome %></h3>
+                                </div>
+                            </div>
+                            <!-- Divider -->
+                            <hr class="sidebar-divider my-0">
+
+                            <div class="painel-dados row">
+                                <div class="col-4 text-center">
+                                    <img id='avatar' class='shadow border-bottom-primary' src='/images/deco-avatar.png'
+                                        width="200px" height="200px" alt='avatar'>
+                                </div>
+
+                                <div class='col-8'>
+                                    <div class="row text-left">
+                                        <div class="text-left col-3">
+                                            <h6>Descrição:</h6>
+                                            <h6>Vendedor:</h6>
+                                        </div>
+                                        <div class="text-left col-9 text-primary">
+
+                                            <h6><%= loja.descricao %></h6>
+                                            <h6><%= loja.usuario.nome%></h6>
+
+                                        </div>
+                                    </div>
+
+                                    <!-- Divider -->
+                                    <hr class="sidebar-divider my-0">
+
+                                    <div class='row text-left'>
+                                        <div class="text-left col-3">
+                                            <h6>Localização:</h6>
+                                        </div>
+                                        <div class="text-left col-9 text-primary">
+                                            <h6>Guarulhos - SP</h6>
                                         </div>
                                     </div>
                                     <!-- Divider -->
                                     <hr class="sidebar-divider my-0">
-        
-                                    <div class="painel-dados row">
-                                        <div class="col-4 text-center">
-                                            <img id='avatar' class='shadow border-bottom-primary' src='../images/deco-avatar.png'
-                                                width="200px" height="200px" alt='avatar'>
+
+                                    <div class='row text-left'>
+                                        <div class="text-left col-3">
+                                            <h6>Avaliação:</h6>
+
                                         </div>
-        
-                                        <div class='col-8'>
-                                            <div class="row text-left">
-                                                <div class="text-left col-3">
-                                                    <h6>Descrição:</h6>
-                                                    <h6>Vendedor:</h6>
-                                                </div>
-                                                <div class="text-left col-9 text-primary">
-                                                    
-                                                    <h6><%= loja.descricao %></h6>
-                                                    <h6><%= loja.usuario.nome%></h6>
-                                                    
-                                                </div>
-                                            </div>
-        
-                                            <!-- Divider -->
-                                            <hr class="sidebar-divider my-0">
-        
-                                            <div class='row text-left'>
-                                                <div class="text-left col-3">
-                                                    <h6>Localização:</h6>
-                                                </div>
-                                                <div class="text-left col-9 text-primary">
-                                                    <h6>Guarulhos - SP</h6>
-                                                </div>
-                                            </div>
-                                            <!-- Divider -->
-                                            <hr class="sidebar-divider my-0">
-        
-                                            <div class='row text-left'>
-                                                <div class="text-left col-3">
-                                                    <h6>Avaliação:</h6>
-        
-                                                </div>
-                                                <div class="text-left col-9 text-primary">
-                                                    <h6>5.0</h6>
-                                                </div>
-                                            </div>
+                                        <div class="text-left col-9 text-primary">
+                                            <h6>5.0</h6>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        <% } %>
+                        </div>
+                    </div>
+                    <% } %>
 
                     <!-- ### Anuncios da Loja -->
                     <div class="mx-5">
@@ -141,57 +140,61 @@
                                 <div class="row row-level-1">
                                     <div class="row-inner clearfix">
                                         <div class="col-inner d-flex">
-                                            
+
                                             <!-- card 1 -->
                                             <% for(produto of loja.produtos) { %>
-                                                 <div class="col-sm-3">
-                                                            <card class=" anuncio-box card shadow">
-                                                                <div class="row no-gutters rounded-top">                                    
-                                                                    <div class='anuncio text-center'>
-                                                                        <div class="m-1">
-                                                                            <a href="#"><img src="../images/bodasPapel.png" alt="" class="img-fluid rounded"></a> 
-                                                                        </div>
-                                                                    </div>
-                                                                    
-                                                                    <div class="mt-1 mr-3 mb-2 ml-3">
-                                                                        <div class="row">
-                                                                            <div class="col-12">
-                                                                                <titulo class="text-left card-title"><%= produto.nome%> </titulo>
-                                                                            </div>
-                                                                        </div>
-                                                                        
-                                                                        <div class="row">
-                                                                            <div class="col-12">
-                                                                                <preco class="text-left">R$<%= produto.valor%></preco> 
-                                                                            </div>
-                                                                        </div>
-            
-                                                                        <div class="row">
-                                                                            <div class="col-12">
-                                                                                <info class='card-text text-left'>                                         
-                                                                                    <%= produto.descricao%>                          
-                                                                                </info>
-                                                                            </div>
-                                                                        </div>
-                                                                        
-                                                                        <div class="row">
-                                                                            <div class="col-12">
-                                                                                <button type="button" class="btn-alt btn btn-sm">Ver</button>                                                
-                                                                            </div>
-                                                                        </div>
-                                                                    
-                                                                    </div>
+                                            <div class="col-sm-3">
+                                                <card class=" anuncio-box card shadow">
+                                                    <div class="row no-gutters rounded-top">
+                                                        <div class='anuncio text-center'>
+                                                            <div class="m-1">
+                                                                <a href="#"><img src="/images/bodasPapel.png" alt=""
+                                                                        class="img-fluid rounded"></a>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="mt-1 mr-3 mb-2 ml-3">
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <titulo class="text-left card-title">
+                                                                        <%= produto.nome%> </titulo>
                                                                 </div>
-                                                            </card>
-                                                </div>                                                     
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <preco class="text-left">R$<%= produto.valor%>
+                                                                    </preco>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <info class='card-text text-left'>
+                                                                        <%= produto.descricao%>
+                                                                    </info>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <button type="button"
+                                                                        class="btn-alt btn btn-sm">Ver</button>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </card>
+                                            </div>
                                             <% } %>
                                             <!-- Fim card 1 -->
                                         </div>
                                     </div>
                                 </div>
                             </anuncio>
-                        </div>                        
-                        
+                        </div>
+
                     </div>
                 </div>
             </div>

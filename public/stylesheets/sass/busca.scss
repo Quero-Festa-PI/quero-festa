@@ -1,0 +1,194 @@
+// variáveis
+
+$primary: #FF826E;
+$primary-font: #F8F8F8;
+$secondary: #FFFFFF;
+$secondary-font: #1E1E1E;
+
+.container {
+    padding: 0;
+    p {
+        text-align: center;
+    }
+}
+
+.row.infos-resultados {
+    margin: 0 -15px 10px -15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    .resultado-busca {
+        display: flex;
+        align-items: center;
+        padding: 0px 9px;
+
+        strong {
+            font-size: 1.5rem;
+            margin-right: 7px;
+        }
+    
+        p {
+            display: inline-block;
+            margin: 0;
+            text-align: center;
+        }
+    }
+
+    .select-ordenar {
+        right: 0;
+
+        label {
+            text-align: center;
+        }
+    }
+}
+
+.row.produtos-busca{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    margin: 0px -10px;
+    card {
+        display: flex;
+        width: calc((100% - 80px) / 4);
+        margin: 0px 10px 20px 10px;
+        titulo {
+            width: 100%;
+            text-align: center;
+            vertical-align: middle;
+            height: 48px;
+            margin-bottom: 6px;
+        }
+        .avaliacao{
+            align-self: center;
+            margin-bottom: 6px;
+            .stars-outer{
+                position: relative;
+                display: inline-block;
+                color: #ccc;
+            }
+            .stars-inner{
+                position: absolute;
+                color: #f8ce0b;
+                top: 0;
+                left: 0;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+        }
+        preco {
+            font-weight: bold;
+            color: $primary;
+            min-width: 0;
+            align-self: center;
+            margin-bottom: 6px;
+        }
+        a {
+            font-weight: bold;
+            color: $primary;
+            position: relative;
+            bottom: 0;
+            align-self: center;
+            margin-bottom: 6px;
+            img {
+                max-width: calc(100% - 20px);
+                height: auto;
+                margin: 10px 10px 0px 10px;
+            }
+        }
+    }
+}
+
+.row.lista-paginas {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        width: 50px;
+        font-size: 14px;
+        border: 1px #c9c9c9 solid;
+        border-left: 0px;
+        text-decoration: none;
+        color: #999;
+        font-weight: bold;
+        img {
+            height: auto;
+            width: 10px;
+        }
+    }
+    a.active{
+        color: #555;
+    }
+    a:first-child{
+        border-left: 1px #c9c9c9 solid;
+    }
+}
+
+// diminuir quantidade de produtos por linha
+
+@media screen and (max-width: 990px) {
+    
+    .row.produtos-busca{
+        card {
+            width: calc((100% - 60px) / 3);
+        }
+    }
+    
+}
+
+@media screen and (max-width: 767px) {
+
+    .row.produtos-busca{
+        card {
+            width: calc((100% - 40px) / 2);
+        }
+    }
+
+}
+
+// diminuir tamanho da fonte das infos e 
+// alterar direção da para coluna
+
+@media screen and (max-width: 576px) {
+
+    .row.infos-resultados {
+        font-size: 0.8rem;
+
+        .resultado-busca {
+            flex-direction: column;
+        }
+    }
+
+    .row.produtos-busca{
+        margin: 10px;
+    }
+
+}
+
+@media screen and (max-width: 470px) {
+
+    .row.infos-resultados {
+        .resultado-busca {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+
+    .row.produtos-busca{
+        card {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+}
