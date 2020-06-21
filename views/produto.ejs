@@ -1,4 +1,4 @@
-<% include partials/header %>
+<%- include('partials/header') %>
 
 <body>
 
@@ -8,124 +8,131 @@
 
         <!-- CONTEÚDO PRINCIPAL -->
         <div id="meio-home" class="container">
-            <div class="row ">
-                <!-- # Inicio Painel -->
-                <div id="painel-publico" class="container">
 
-                    <!-- CONTAINER CAMINHO DAS PAGINAS -->
-                    <%- include('partials/breadcrumb') %>
-                    <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
+            <%- include('partials/breadcrumb') %>
 
-                    <!-- ### CARD DE DADOS -->
-                    <div class="card painel-dash border-left-primary shadow mx-5">
-                        <div class="card-body painel-dash">
-                            <div class="row">
-                                <div class='col-7'>
-                                    <h3>Noite do Boteco</h3>
+            <!-- dados do produto -->
+            <div class="row produto">
+
+                <!-- imagens -->
+                <div class="carrossel-produto">
+                    <%include partials/carrosel-produto %>
+                </div>
+
+                <!-- informações do produto -->
+                <div class="infos">
+                    <!-- nome e avaliações -->
+                    <div class="header-produto">
+                        <h4><%= produto.nome %></h4>
+                        <div class="avaliacao">
+                            <% const avaliacao = Math.round(Number(media) * 10) / 10; %>
+                            <% const avaliacaoPerc = ((18 * avaliacao) + (4.3875 * Math.trunc(avaliacao))) / 107.550 * 100; %>
+                            <% const quantidade = Number(avaliacoes.length); %>
+                            <div class="stars-outer">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <div class="stars-inner" style="width: <%= avaliacaoPerc %>%">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
                                 </div>
                             </div>
-                            <!-- Divider -->
-                            <hr class="sidebar-divider my-0">
-
-                            <div class="painel-dados row">
-                                <div class="col-7 text-center">
-                                    <%include partials/carrosel-produto %>
-                                </div>
-
-
-                                <div class='col-5'>
-                                    <div class="row text-left">
-                                        <div class="text-left col-5">
-                                            <h5>Vendedor:</h5>
-                                            <h5>Preço:</h5>
-                                        </div>
-                                        <div class="text-left col-7 text-primary">
-                                            <h5>Bar do Beto</h5>
-                                            <h4>R$ 180,00</h4>
-                                        </div>
-                                    </div>
-
-                                    <!-- Divider -->
-                                    <hr class="sidebar-divider my-0">
-
-                                    <div class='row text-left'>
-                                        <div class="text-left col-5">
-                                            <h6>Frete:</h6>
-                                        </div>
-                                        <div class="text-left col-7 text-primary">
-                                            <h6>A combinar</h6>
-                                        </div>
-                                    </div>
-                                    <!-- Divider -->
-                                    <hr class="sidebar-divider my-0">
-
-                                    <div class='row text-left'>
-                                        <div class="text-left col-5">
-                                            <h6>Avaliação:</h6>
-                                        </div>
-                                        <div class="text-left col-7 text-primary">
-                                            <h6>5.0</h6>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <a class='col-12' href='/pedidos/carrinho'>
-                                    <div class="col-8"></div>
-                                    <button class="btn-cheio btn btn-md col-3" action=''>Comprar</button>
-                                </a>
-                            </div>
+                            <span><%= avaliacao %></span>
+                            <span>(<%= avaliacoes.length %>)</span>
                         </div>
                     </div>
 
-                    <!-- ### CARD DE INFORMACAO -->
-                    <div class="card painel-dash border-left-primary shadow mx-5">
-                        <div class="card-body painel-dash">
-                            <div class="row">
-                                <div class='col-7'>
-                                    <h4>Informações</h4>
-                                </div>
-                            </div>
-                            <!-- Divider -->
-                            <hr class="sidebar-divider my-0">
-
-                            <div class="painel-dados row">
-                                <div class="row text-left">
-                                    <div class="text-left col-7">
-                                        <h5>Lista de Itens:</h5>
-                                        <ul class="text-primary">
-                                            <li>30 Espetinhos para Assar</li>
-                                            <li>100 Salgadinhos Diversos</li>
-                                            <li>Guardanapos descartaveis com tema Boteco</li>
-                                            <li>Não acompanha bebida</li>
-                                        </ul>
-                                    </div>
-                                    <div class="text-left col-5">
-                                        <h5>Descrição:</h5>
-                                        <h6>Kit combo com tema de Noite do Boteco</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <!-- descrição e valor -->
+                    <div class="dados-produto">
+                        <p><%= produto.descricao %></p>
+                        <span>R$<%= produto.valor.toFixed(2) %></span>
+                        <button>Comprar</button>
                     </div>
 
-
-                    <!-- ### CARD DE MAIS ANUNCIOS -->
-                    <div class="card-body ">
-                        <div class="row">
-                            <div class='col-7 mx-5'>
-                                <h4>Mais Anuncios deste Vendedor</h4>
-                            </div>
-                        </div>
-                        <!-- Divider -->
-                        <hr class="sidebar-divider my-0">
-
-                        <% include partials/anuncios-vendedor %>
-                    </div>
+                    <!-- botão comprar -->
                 </div>
             </div>
+
+            <!-- avaliações do produto -->
+            <div class="row avaliacoes">
+                <h4 class="header-avaliacoes">Avaliações</h4>
+
+                <div class="avaliacoes-individuais">
+                    <% for (let i = quantidades.length - 1; i > 0; i--) { %>
+                    <div class="avaliacao">
+                        <div class="stars-outer">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <div class="stars-inner" style="width: <%= ((18 + 4.3875) * i) / 107.550 * 100 %>%">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <span>(<%= quantidades[i] %>)</span>
+                    </div>
+                    <% } %>
+                </div>
+
+                <h4 class="header-comentarios">Comentários</h4>
+
+                <div class="comentarios">
+                    <% for (let i = avaliacoes.length - 1; i >= 0; i--) { %>
+                    <% const nome = avaliacoes[i].usuarios.nome; const sobrenome = avaliacoes[i].usuarios.sobrenome %>
+                    <% const id = avaliacoes[i].usuarios.id %>
+
+                    <div class="comentario <%= i % 4 == 0 || (i-1) % 4 == 0 ? 'branco' : 'branco' %>">
+                        <a href="/usuarios/perfil-cliente/<%= id %>"><%= nome %> <%= sobrenome %></a>
+                        <div class="avaliacao">
+                            <div class="stars-outer">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <div class="stars-inner"
+                                    style="width: <%= ((18 * avaliacoes[i].classificacao) + (4.3875 * Math.trunc(avaliacoes[i].classificacao))) / 107.550 * 100 %>%">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <span><%= avaliacoes[i].createdAt.toLocaleDateString('pt-BR', { year: 'numeric', month: '2-digit', day: '2-digit' }) %></span>
+                        <p><%= avaliacoes[i].comentario || "Em branco" %></p>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+
+            <!-- ### CARD DE MAIS ANUNCIOS -->
+            <div class=" row card-body ">
+
+                <div class=" row">
+                    <div class='col-7 mx-5'>
+                        <h4>Mais Anuncios deste Vendedor</h4>
+                    </div>
+                </div>
+                <!-- Divider -->
+                <hr class="sidebar-divider my-0">
+
+                <% include partials/anuncios-vendedor %>
+            </div>
         </div>
+    </div>
+    </div>
     </div>
 
     <% include partials/footer-alt %>

@@ -7,6 +7,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -14,6 +15,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -21,6 +23,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -28,6 +31,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -35,6 +39,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -42,6 +47,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -49,6 +55,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -56,6 +63,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -63,6 +71,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -70,6 +79,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -77,6 +87,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -84,6 +95,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -91,6 +103,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -98,6 +111,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -105,6 +119,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -112,6 +127,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -119,6 +135,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -126,6 +143,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -133,6 +151,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -140,6 +159,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -147,6 +167,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -154,6 +175,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -161,6 +183,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -168,6 +191,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -175,6 +199,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -182,6 +207,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -189,6 +215,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -196,6 +223,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -203,6 +231,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -210,6 +239,7 @@ module.exports = {
       produtos_id: Math.ceil((Math.random() * 5)),
       usuarios_id: Math.ceil((Math.random() * 4)),
       classificacao: Math.ceil((Math.random() * 5)),
+      comentario: 'Comentario suadkdsa daksldajkslda jdkalsjdalkdjals jdlkasjkdjalksdj' + String(Math.ceil(Math.random() * 5)),
       createdAt: new Date(),
       updatedAt: new Date(),
     },]);
