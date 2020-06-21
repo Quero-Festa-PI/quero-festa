@@ -1,127 +1,104 @@
 <% include partials/header %>
 
+<!-- incluindo charts js -->
+<script src="https://cdn.jsdelivr.net/combine/npm/chart.js@2.9.3,npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
 <body>
     <!-- PAGINA COMPLETA -->
     <div class="page">
+       
         <%- include('partials/navbar') %>
 
-        <!-- CONTEÚDO PRINCIPAL -->
-        <div id="meio-home" class="container">
-            <div class="row ">
-
-                <!-- CONTEÚDO PRINCIPAL -->
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div id="painel-vendedor" class="container">
-
-                        <!-- CONTAINER CAMINHO DAS PAGINAS -->
-                        <%- include('partials/breadcrumb') %>
-                        <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
-                        <h2>Decor Oliveira </h2>
-
-                        <div class='painel-metricas mx-5'>
-                            <!-- ### Card de Ganhos -->
-                            <div class="card painel-dash border-left-primary shadow col-3">
-                                <div class="card-body text-center">
-                                    <h6>Ganhos (Mensais)</h6>
-                                    <h4>R$ 10.000</h4>
-                                </div>
-                            </div>
-
-                            <!-- ### Card de Ganhos Anuais -->
-                            <div class="card painel-dash border-left-primary shadow col-3">
-                                <div class="card-body text-center">
-                                    <h6>Ganhos (Anuais)</h6>
-                                    <h4>R$ 10.000</h4>
-                                </div>
-                            </div>
-
-                            <!-- ### Card de Tarefas -->
-                            <div class="card painel-dash border-left-primary shadow col-3">
-                                <div class="card-body text-center">
-                                    <h6>Tarefas</h6>
-                                    <h4>50%</h4>
-                                </div>
-                            </div>
-
-                            <!-- ### Card de Pedidos Pendentes -->
-                            <div class="card painel-dash border-left-primary shadow col-3">
-                                <div class="card-body text-center">
-                                    <h6>Em Andamento</h6>
-                                    <h4>18</h4>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class='painel-graf mx-5'>
-                            <!-- ### Card Grafico de Ganhos -->
-                            <div class="card painel-dash border-left-primary shadow col-8">
-                                <div class="card-body">
-                                    <h5>Visão Geral de Ganhos</h5>
-                                    <h6 class='text-muted'>Em Breve...</h6>
-                                    <br><br><br><br>
-                                </div>
-                            </div>
-
-                            <!-- ### Card Grafico Fonte de Renda -->
-                            <div class="card painel-dash border-left-primary shadow col-4">
-                                <div class="card-body">
-                                    <h5>Fontes de Renda</h5>
-                                    <h6 class='text-muted'>Em Breve...</h6>
-                                    <br><br><br><br>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class='painel-graf mx-5'>
-                            <!-- ### Card Pedidos Pendentes -->
-                            <div class="card painel-dash border-left-primary shadow col-6">
-                                <div class="card-body">
-                                    <h5>Pedidos Pendentes</h5>
-                                    <h6 class='text-muted'>Em Breve...</h6>
-                                    <br><br><br><br>
-                                </div>
-                            </div>
-
-                            <!-- ### Card Vendas Concluidas -->
-                            <div class="card painel-dash border-left-primary shadow col-6">
-                                <div class="card-body">
-                                    <h5>Vendas Concluídas</h5>
-                                    <h6 class='text-muted'>Em Breve...</h6>
-                                    <br><br><br><br>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class='painel-graf mx-5'>
-                            <!-- ### Card Clientes Recentes -->
-                            <div class="card painel-dash border-left-primary shadow col-6">
-                                <div class="card-body">
-                                    <h5>Clientes</h5>
-                                    <h6 class='text-muted'>Em Breve...</h6>
-                                    <br><br><br><br>
-                                </div>
-                            </div>
-
-                            <!-- ### Card Avaliacoes -->
-                            <div class="card painel-dash border-left-primary shadow col-6">
-                                <div class="card-body">
-                                    <h5>Avaliações</h5>
-                                    <h6 class='text-muted'>Em Breve...</h6>
-                                    <br><br><br><br>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+            <!-- Grafico de pedidos -->
+            <div class="grafico">
+                <canvas class="line-chart"> </canvas>
             </div>
 
-        </div>
-    </div>
-    <br><br>
-    <% include partials/footer-alt %>
+            <!-- Grafico Financeiro -->
+            <div class="grafico">
+                <canvas class="bar-chart"> </canvas>
+            </div>
+
+        <script>
+                var ctx = document.getElementsByClassName("line-chart");
+
+                // tipo, data e opções
+                var chartGraph1 = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Out","Nov","Dez"],
+                datasets:[
+                    {
+                    label: "Visão geral dos pedidos no ano",
+                    data: [30,10,50,35],
+                    borderWidth: 6,
+                    borderColor: 'rgba(77,166,253,0.85)',
+                    backgroundColor: "transparent",
+                    },
+                    {
+                    label: "Pedidos Cancelados",
+                    data: [10,40,150,35,470,75],
+                    borderWidth: 6,
+                    borderColor: 'rgba(6,204,6,0.85)',
+                    backgroundColor: "transparent",
+                    },
+                ]
+            },
+                options:{
+                    title:{
+                        display: true,
+                        fontSize:20,
+                        text: "Relatorio de Vendas"
+                    },
+                    labels:{
+                        fontStyle:"bold"
+                    }
+                
+                }
+            });
+
+            // Grafico de barras
+
+            var ctx = document.getElementsByClassName("bar-chart");
+
+                // tipo, data e opções
+                var chartGraph2 = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Out","Nov","Dez"],
+                datasets:[
+                    {
+                    label: "Ganho Anual",
+                    data: [30,10,50,35],
+                    borderWidth: 6,
+                    borderColor: 'rgba(77,166,253,0.85)',
+                    backgroundColor: "transparent",
+                    },
+                    {
+                    label: "Ganho Mensal",
+                    data: [10,40,150,35,470,75],
+                    borderWidth: 6,
+                    borderColor: 'rgba(6,204,6,0.85)',
+                    backgroundColor: "transparent",
+                    },
+                ]
+            },
+                options:{
+                    title:{
+                        display: true,
+                        fontSize:20,
+                        text: "Relatorio Financeiro"
+                    },
+                    labels:{
+                        fontStyle:"bold"
+                    }
+                
+                }
+            });
+
+        </script>
+
+        <% include partials/footer-alt %>
     </div>
 </body>
 <% include partials/script %>
