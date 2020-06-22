@@ -72,12 +72,12 @@
                 }
             });
 
-            // Grafico de barras
+                 // Grafico de barras
 
-            var ctx = document.getElementsByClassName("bar-chart");
+                var ctx = document.getElementsByClassName("bar-chart");
 
                 // tipo, data e opções
-            var chartGraph2 = new Chart(ctx, {
+                var chartGraph2 = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Out","Nov","Dez"],
@@ -111,52 +111,13 @@
                 }
             });
 
-            // Grafico de rosquinha
+                // Grafico de rosquinha
 
-             var ctx = document.getElementsByClassName("line-chart");
-
-                // tipo, data e opções
-            var chartGraph1 = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Out","Nov","Dez"],
-                datasets:[
-                    {
-                    label: "Visão geral dos pedidos no ano",
-                    data: [30,10,50,35],
-                    borderWidth: 6,
-                    borderColor: 'rgba(77,166,253,0.85)',
-                    backgroundColor: "transparent",
-                    },
-                    {
-                    label: "Pedidos Cancelados",
-                    data: [10,40,150,35,470,75],
-                    borderWidth: 6,
-                    borderColor: 'rgba(6,204,6,0.85)',
-                    backgroundColor: "transparent",
-                    },
-                ]
-            },
-                options:{
-                    title:{
-                        display: true,
-                        fontSize:20,
-                        text: "Relatorio de Vendas"
-                    },
-                    labels:{
-                        fontStyle:"bold"
-                    }
-                
-                }
-            });
-
-            // Grafico de rosquinha
-
-            var ctx = document.getElementsByClassName("doughnut-chart");
+                var ctx = document.getElementsByClassName("doughnut-chart");
 
                 // tipo, data e opções
 
-            var chartGraph3 = new Chart(ctx, {
+                var chartGraph3 = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
                     labels: ["Positivas", "Negativas", ],
@@ -177,16 +138,20 @@
                 }
         });
 
-        
-
         </script>
 
-        <% include partials/tabela-pedidos %>
+        <!-- Incluindo a tabela de status dos pedidos -->
 
+        <div class="grafico">
+            <% include partials/tabela-pedidos %>
+        </div>
+
+        <!-- Incluindo o footer -->
 
         <% include partials/footer-alt %>
     </div>
 </body>
+
 <% include partials/script %>
 
 </html>
