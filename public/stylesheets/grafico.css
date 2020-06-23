@@ -1,0 +1,12 @@
+
+.containerGrafico {
+    max-width: 900px;
+    max-height: 650;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+}
+
+.grafico { 
+    text-align: center;
+    margin-top: 50px;
+ } 

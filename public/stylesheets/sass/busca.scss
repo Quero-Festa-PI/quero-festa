@@ -60,23 +60,6 @@ $secondary-font: #1E1E1E;
             height: 48px;
             margin-bottom: 6px;
         }
-        .avaliacao{
-            align-self: center;
-            margin-bottom: 6px;
-            .stars-outer{
-                position: relative;
-                display: inline-block;
-                color: #ccc;
-            }
-            .stars-inner{
-                position: absolute;
-                color: #f8ce0b;
-                top: 0;
-                left: 0;
-                white-space: nowrap;
-                overflow: hidden;
-            }
-        }
         preco {
             font-weight: bold;
             color: $primary;
@@ -97,6 +80,24 @@ $secondary-font: #1E1E1E;
                 margin: 10px 10px 0px 10px;
             }
         }
+    }
+}
+
+.avaliacao{
+    align-self: center;
+    margin-bottom: 6px;
+    .stars-outer{
+        position: relative;
+        display: inline-block;
+        color: #ccc;
+    }
+    .stars-inner{
+        position: absolute;
+        color: #f8ce0b;
+        top: 0;
+        left: 0;
+        white-space: nowrap;
+        overflow: hidden;
     }
 }
 
