@@ -16,7 +16,7 @@
 
                     <!-- ### CARD DE DADOS PROFISSIONAIS -->
 
-                    <% if(loja.usuario) { %>
+                    <% if(navegacaoLoja) { %>
                     <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
                         <div class="card-body painel-dash">
 
@@ -24,7 +24,6 @@
                                 <div class='col-4'>
                                     <h4>Dados Profissionais</h4>
                                 </div>
-
 
                             </div>
                             <!-- Divider -->
@@ -177,12 +176,23 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <button type="button"
-                                                                        class="btn-alt btn btn-sm">Ver</button>
+                                                            <% if(navegacaoLoja){ %>
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <button type="button"
+                                                                            class="btn-alt btn btn-sm">Editar</button>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
+
+                                                            <% } else { %>
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <button type="button"
+                                                                            class="btn-alt btn btn-sm">Ver</button>
+                                                                    </div>
+                                                                </div>
+                                                            <% } %>
+
 
                                                         </div>
                                                     </div>
