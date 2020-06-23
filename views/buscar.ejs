@@ -23,11 +23,18 @@
             </div>
             <div class="row produtos-busca">
                 <% for (produto of resultado) { %>
-                <% const avaliacao = Math.round(Number(produto.toJSON().avaliacoes[0].media) * 10) / 10; %>
-                <% const avaliacaoPerc = ((18 * avaliacao) + (4.3875 * Math.trunc(avaliacao))) / 107.550 * 100 %>
-                <% const quantidade = Number(produto.toJSON().avaliacoes[0].quantidade); %>
+                <% if(produto.toJSON().avaliacoes[0]) { %>
+                <% var avaliacao = Math.round(Number(produto.toJSON().avaliacoes[0].media) * 10) / 10; %>
+                <% var avaliacaoPerc = ((18 * avaliacao) + (4.3875 * Math.trunc(avaliacao))) / 107.550 * 100; %>
+                <% var quantidadeAvaliacoes = Number(produto.toJSON().avaliacoes[0].quantidade); %>
+                <% } else { %>
+                <% var avaliacao = 0; %>
+                <% var avaliacaoPerc = 100; %>
+                <% var quantidadeAvaliacoes = 0; %>
+                <% } %>
                 <card class="anuncio-box card shadow">
-                    <a href="#"><img src="/images/mesversario.png" alt="" class="img-fluid"></a>
+                    <a href="/produtos/<%= produto.id %>"><img src="<%= produto.toJSON().imagens[0].image_url %>" alt=""
+                            class="img-fluid"></a>
                     <titulo class="card-text"><%= produto.nome %></titulo>
                     <div class="avaliacao">
                         <div class="stars-outer">
@@ -45,7 +52,7 @@
                             </div>
                         </div>
                         <span><%= avaliacao %></span>
-                        <span>(<%= quantidade %>)</span>
+                        <span>(<%= quantidadeAvaliacoes %>)</span>
                     </div>
                     <preco>R$<%= produto.valor.toFixed(2) %></preco>
 
