@@ -1,4 +1,4 @@
-const { sequelize, Usuario, Loja, Produto} = require('../database/models')
+const { sequelize, Usuario, Loja, Produto, ImagensDeProduto} = require('../database/models')
 const bcrypt = require('bcrypt');
 
 module.exports = {
@@ -13,12 +13,16 @@ module.exports = {
               include: 
               [{
                    model: Produto,
-                   as: 'produtos'                   
+                   as: 'produtos',
+                   include: [{
+                        model: ImagensDeProduto,
+                        as: 'imagens'
+                    }]    
                },               
                {
                     model: Usuario,
                     as: 'usuario'
-               }]              
+               }]                           
           });
 
           return res.render('perfil-loja', { page: 'Perfil Loja', loja });
