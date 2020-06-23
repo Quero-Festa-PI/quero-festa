@@ -1,4 +1,4 @@
-const { sequelize, Sequelize, Produto, AvaliacoesDeProdutos, Usuario, Loja, PedidoProduto } = require('../database/models')
+const { sequelize, Sequelize, Produto, AvaliacoesDeProdutos, Usuario, Loja, PedidoProduto, ImagensDeProduto } = require('../database/models')
 const Op = Sequelize.Op;
 
 module.exports = {
@@ -91,12 +91,23 @@ module.exports = {
             ]
         });
 
-        const { loja, avaliacoes } = produto;
+        let imagens = await ImagensDeProduto.findAll({
+            where: {
+                produtos_id: id,
+            },
+            attributes: ['image_url'],
+        })
+
+        // return res.send(imagens);
+
+        const { lojas, avaliacoes } = produto;
+
+        const comentarios = avaliacoes.filter(avaliacao => avaliacao.comentario)
 
         // contabilizar avaliações
         let { quantidades, media } = await contarAvaliacoes(avaliacoes);
 
-        return res.render('produto', { page: produto.nome, produto, loja, avaliacoes, quantidadeVendida, quantidades, media });
+        return res.render('produto', { page: produto.nome, produto, lojas, avaliacoes, comentarios, quantidadeVendida, quantidades, media, imagens });
     }
 }
 
