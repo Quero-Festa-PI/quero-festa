@@ -15,75 +15,53 @@
             <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
 
 
-            <div class="tm-container">
-              <!-- CONTAINER FORMULARIO DAS FOTOS -->
-              <div class="tm-inner">
-                <div class="row row-level-1">
-                  <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                    <div class="row-inner clearfix">
-                      <div class="col-inner d-flex justify-content-around">
-                        <div id="content" class="col-sm-12 col-md-12 col-lg-12">
-                          <!-- FORMULARIO FOTOS -->
-                          <form id="form-img"
-                            class="bg-light rounded col-sm-12 shadow mb-5 bg-white rounded d-inline-flex ml-5 p-2">
-                            <div class="form-group d-inline p-2">
-                              <label for="img-input1">
-                                <img src="/images/sem-foto.png" class="shadow mb-1 ml-3">
-                                <input type="file" class="form-control-file" id="img-input1">
-                              </label>
-                            </div>
-                            <div class="form-group d-inline p-2">
-                              <label for="img-input2">
-                                <img src="/images/sem-foto.png" class="shadow mb-1 ml-3">
-                                <input type="file" class="form-control-file" id="img-input2">
-                              </label>
-                            </div>
-                            <div class="form-group d-inline p-2">
-                              <label for="img-input3">
-                                <img src="/images/sem-foto.png" class="shadow mb-1 ml-3">
-                                <input type="file" class="form-control-file" id="img-input3">
-                              </label>
-                            </div>
-                            <div class="form-group d-inline p-2">
-                              <label for="img-input4">
-                                <img src="/images/sem-foto.png" class="shadow mb-1 ml-3">
-                                <input type="file" class="form-control-file" id="img-input4">
-                              </label>
-                            </div>
-                            <div class="form-group d-inline p-2">
-                              <label for="img-input5">
-                                <img src="/images/sem-foto.png" class="shadow mb-1 ml-3">
-                                <input type="file" class="form-control-file" id="img-input5">
-                              </label>
-                            </div>
-                          </form>
-                          <!-- FIM FORMULARIO FOTOS -->
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- FIM CONTAINER FORMULARIO DAS FOTOS -->
-
-              <!-- CONTAINER FORMULARIO -->
-              <div class="tm-container">
+            <div class="tm-container">              
+              <!-- CONTAINER FORMULARIO -->              
                 <div class="tm-inner">
                   <div class="row row-level-1">
                     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                       <div class="row-inner clearfix">
                         <div class="col-inner d-flex justify-content-around">
                           <div id="content" class="col-sm-12 col-md-12 col-lg-12">
-                            <!-- FORMULARIO -->
-                            <form action="/produtos/cadastrar-produto" method="POST"
+                            <!-- FORMULARIO -->                            
+
+                            <form action="/produtos/cadastrar-produto" method="POST" enctype="multipart/form-data"
                               class="bg-light rounded col-sm-12 ml-5 shadow p-3 mb-5 bg-white rounded">
-                              <!-- ID DA LOJA (TESTE) -->
-                              <div class="form-group row">
-                                <label for="idLoja" class="col-sm-3 col-form-label">Id da Loja</label>
-                                <div class="col-sm-9">
-                                  <input type="number" class="form-control" id="idLoja" name="idLoja">
+                              <div class="row" id="form-img">
+                                <div class="col-2 form-group d-inline p-2">
+                                  <label for="img-input1">
+                                    <img src="/images/sem-foto.png" class="shadow mb-1 ml-3 imagem">
+                                    <input type="file" class="form-control-file" name="file" 
+                                    id="img-input1" onchange="carregarImagem(event)" multiple>
+                                  </label>
+                                </div>
+                                <div class="col-2 form-group d-inline p-2">
+                                  <label for="img-input2">
+                                    <img src="/images/sem-foto.png" class="shadow mb-1 ml-3 imagem">
+                                    <input type="file" class="form-control-file" name="file" id="img-input2" >
+                                  </label>
+                                </div>
+                                <div class="col-2 form-group d-inline p-2">
+                                  <label for="img-input3">
+                                    <img src="/images/sem-foto.png" class="shadow mb-1 ml-3">
+                                    <input type="file" class="form-control-file" name="file" id="img-input3">
+                                  </label>
+                                </div>
+                                <div class="col-2 form-group d-inline p-2">
+                                  <label for="img-input4">
+                                    <img src="/images/sem-foto.png" class="shadow mb-1 ml-3">
+                                    <input type="file" class="form-control-file" name="file" id="img-input4">
+                                  </label>
+                                </div>
+                                <div class="col-2 form-group d-inline p-2">
+                                  <label for="img-input5">
+                                    <img src="/images/sem-foto.png" class="shadow mb-1 ml-3">
+                                    <input type="file" class="form-control-file" name="file" id="img-input5">
+                                  </label>
                                 </div>
                               </div>
+                              
+
                               <!-- NOME -->
                               <div class="form-group row">
                                 <label for="nomeP" class="col-sm-3 col-form-label">Nome</label>
@@ -136,27 +114,29 @@
                                   <legend class="col-form-label col-sm-3 pt-0">Disponibilidade</legend>
                                   <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="disponibilidade" id="tem"
-                                      value="opcao1">
+                                      value="true">
                                     <label class="form-check-label" for="tem">Disponível</label>
                                   </div>
                                   <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="disponibilidade" id="naoTem"
-                                      value="opcao2">
+                                      value="false">
                                     <label class="form-check-label" for="naoTem">Indisponível</label>
                                   </div>
                                 </div>
                               </fieldset>
-
+                              
                               <div class="form-group row">
                                 <div class="col-sm-12">
                                   <div class="d-flex justify-content-end">
                                     <button type="submit" class="btn btn-link btn-sm text-success">Cadastrar
                                       Produto</button>
-                                    <button type="button" class="btn btn-link btn-sm text-danger">Cancelar</button>
+                                    <button type="submit" class="btn btn-link btn-sm text-danger">Cancelar</button>
                                   </div>
-
                                 </div>
                               </div>
+                              <% if(err != 0){ %>
+                                <p><%= err%></p>
+                              <% } %>
                             </form>
                             <!-- FIM FORMULARIO -->
                           </div>
@@ -165,13 +145,26 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              
               <!-- FIM CONTAINER -->
             </div>
           </div>
         </div>
-
+        <script>
+          var carregarImagem = function(event) {
+            var imagem = document.querySelector('.imagem');
+            imagem.src = URL.createObjectURL(event.target.files[0]);
+            imagem.onload = function() {
+              URL.revokeObjectURL(imagem.src) // free memory
+            }
+          };
+        </script>
       </div>
     </div>
   </div>
+
+  
+
+  
+  
 </body>
