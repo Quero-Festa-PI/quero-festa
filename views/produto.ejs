@@ -16,7 +16,36 @@
 
                 <!-- imagens -->
                 <div class="carrossel-produto">
-                    <%include partials/carrosel-produto %>
+                    <% if (imagens.length > 1) { %>
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <% for(let i = 0; i < imagens.length; i++) { %>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="<%= i %>"
+                                class="<%= i == 0 ? 'active' : '' %>"></li>
+                            <% } %>
+                        </ol>
+                        <div class="carousel-inner">
+                            <% for(let i = 0; i < imagens.length; i++) { %>
+                            <div class="carousel-item <%= i == 0 ? 'active' : '' %>">
+                                <img class="d-block w-100 img-thumbnail" src="<%= imagens[i].image_url %>"
+                                    alt="Imagem <%= i %>">
+                            </div>
+                            <% } %>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <% } else { %>
+                    <img class="d-block w-100 img-thumbnail" src="<%= imagens[0].image_url %>" alt="Imagem">
+                    <% } %>
                 </div>
 
                 <!-- informações do produto -->
@@ -25,8 +54,8 @@
                     <div class="header-produto">
                         <h4><%= produto.nome %></h4>
                         <div class="avaliacao">
-                            <% const avaliacao = Math.round(Number(media) * 10) / 10; %>
-                            <% const avaliacaoPerc = ((18 * avaliacao) + (4.3875 * Math.trunc(avaliacao))) / 107.550 * 100; %>
+                            <% const avaliacao = avaliacoes.length > 0 ? Math.round(Number(media) * 10) / 10 : 0; %>
+                            <% const avaliacaoPerc = avaliacoes.length > 0 ? ((18 * avaliacao) + (4.3875 * Math.trunc(avaliacao))) / 107.550 * 100 : 100 ; %>
                             <% const quantidade = Number(avaliacoes.length); %>
                             <div class="stars-outer">
                                 <i class="fas fa-star"></i>
@@ -50,7 +79,8 @@
                     <!-- descrição e valor -->
                     <div class="dados-produto">
                         <p><%= produto.descricao %></p>
-                        <span>R$<%= produto.valor.toFixed(2) %></span>
+                        <span class="loja">Vendido por: <a href="/lojas/<%= lojas.id %>"><%= lojas.nome %></a></span>
+                        <span class="preco">R$<%= produto.valor.toFixed(2) %></span>
                         <button>Comprar</button>
                     </div>
 
@@ -84,6 +114,8 @@
                     <% } %>
                 </div>
 
+
+                <% if (comentarios.length > 0) { %>
                 <h4 class="header-comentarios">Comentários</h4>
 
                 <div class="comentarios">
@@ -91,7 +123,7 @@
                     <% const nome = avaliacoes[i].usuarios.nome; const sobrenome = avaliacoes[i].usuarios.sobrenome %>
                     <% const id = avaliacoes[i].usuarios.id %>
 
-                    <div class="comentario <%= i % 4 == 0 || (i-1) % 4 == 0 ? 'branco' : 'branco' %>">
+                    <div class="comentario">
                         <a href="/usuarios/perfil-cliente/<%= id %>"><%= nome %> <%= sobrenome %></a>
                         <div class="avaliacao">
                             <div class="stars-outer">
@@ -111,10 +143,13 @@
                             </div>
                         </div>
                         <span><%= avaliacoes[i].createdAt.toLocaleDateString('pt-BR', { year: 'numeric', month: '2-digit', day: '2-digit' }) %></span>
-                        <p><%= avaliacoes[i].comentario || "Em branco" %></p>
+                        <p><%= avaliacoes[i].comentario %></p>
                     </div>
                     <% } %>
                 </div>
+                <% } else { %>
+                <h4 class="header-comentarios">Este produto ainda não recebeu comentários :(</h4>
+                <% } %>
             </div>
 
             <!-- ### CARD DE MAIS ANUNCIOS -->

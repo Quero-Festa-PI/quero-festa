@@ -39,18 +39,26 @@ div#meio-home{
                 display: flex;
                 flex-flow: row wrap;
                 justify-content: space-evenly;
-                margin-bottom: 16px;
                 p{
                     width: 100%;
                     text-align: left;
                     color: #777;
                 }
-                span{
+                .loja{
+                    font-weight: bold;
+                    color: #777;
+                    width: 100%;
+                    margin-bottom: 16px;
+                    a{
+                        color: $primary;
+                    }
+                }
+                .preco{
                     color: $primary;
                     font-size: 1.5em;
                     font-weight: bold;
                     margin-right: 8px;
-                    max-width: calc(100% / 2);
+                    width: calc(100% / 2);
                 }
                 button{
                     background-color: $primary;
@@ -103,6 +111,7 @@ div#meio-home{
             flex-flow: row wrap;
             justify-content: flex-start;
             div.comentario{
+                background-color: #f8f8f8;
                 max-width: calc((100% - 20px) / 2);
                 display: flex;
                 flex-flow: row wrap;
@@ -130,12 +139,6 @@ div#meio-home{
                     color: #333;
                 }
             }
-        }
-        .cinza{
-            background-color: #efefef;
-        }
-        .branco{
-            background-color: #f8f8f8;
         }
     }
 }

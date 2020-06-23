@@ -24,18 +24,24 @@ div#meio-home {
       div#meio-home div.produto .infos .dados-produto {
         display: flex;
         flex-flow: row wrap;
-        justify-content: space-evenly;
-        margin-bottom: 16px; }
+        justify-content: space-evenly; }
         div#meio-home div.produto .infos .dados-produto p {
           width: 100%;
           text-align: left;
           color: #777; }
-        div#meio-home div.produto .infos .dados-produto span {
+        div#meio-home div.produto .infos .dados-produto .loja {
+          font-weight: bold;
+          color: #777;
+          width: 100%;
+          margin-bottom: 16px; }
+          div#meio-home div.produto .infos .dados-produto .loja a {
+            color: #FF826E; }
+        div#meio-home div.produto .infos .dados-produto .preco {
           color: #FF826E;
           font-size: 1.5em;
           font-weight: bold;
           margin-right: 8px;
-          max-width: calc(100% / 2); }
+          width: calc(100% / 2); }
         div#meio-home div.produto .infos .dados-produto button {
           background-color: #FF826E;
           border: none;
@@ -76,6 +82,7 @@ div#meio-home {
       flex-flow: row wrap;
       justify-content: flex-start; }
       div#meio-home div.avaliacoes div.comentarios div.comentario {
+        background-color: #f8f8f8;
         max-width: calc((100% - 20px) / 2);
         display: flex;
         flex-flow: row wrap;
@@ -98,10 +105,6 @@ div#meio-home {
           margin: 8px 0px 0px 0px;
           padding: 0px 8px;
           color: #333; }
-    div#meio-home div.avaliacoes .cinza {
-      background-color: #efefef; }
-    div#meio-home div.avaliacoes .branco {
-      background-color: #f8f8f8; }
 
 @media screen and (max-width: 991px) {
   div#meio-home div.avaliacoes div.avaliacoes-individuais {
