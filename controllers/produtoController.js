@@ -15,15 +15,20 @@ module.exports = {
         // buscar produtos no banco de dados
         let allProducts = await Produto.findAll({
             where: { nome: { [Op.like]: '%' + search + '%' } },
-            include: {
+            include: [{
                 model: AvaliacoesDeProdutos,
                 as: 'avaliacoes',
                 attributes: [
                     [sequelize.fn('avg', sequelize.col('classificacao')), 'media'],
                     [sequelize.fn('count', sequelize.col('classificacao')), 'quantidade']
                 ],
-            },
-            group: ['produtos_id'],
+            }, {
+                model: ImagensDeProduto,
+                as: 'imagens',
+                attributes: ['image_url'],
+                limit: 1,
+            }],
+            group: ['avaliacoes.produtos_id'],
             attributes: ['id', 'nome', 'valor'],
         });
 
