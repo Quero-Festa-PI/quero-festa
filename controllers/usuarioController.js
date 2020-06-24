@@ -142,28 +142,81 @@ module.exports = {
           res.render('perfil-cliente', { page: 'Perfil Cliente', usuarioPerfil, lojaPerfil, endereco })
 
      },
-     alter: (req, res) => {
-          res.render('editar-cliente', { page: 'Editar Dados' });
+     alter: async (req, res) => {   
+          let usuario = res.locals.usuario;  
+          let endereco = await Endereco.findOne({ where: { usuarios_id: res.locals.usuario.id } });      
+          let err = req.query.error;
+
+          if(err == 1){
+               err = 'Senha inválida';
+          }
+          if(err == 2){
+               err = 'Senhas não conferem';
+          }
+
+          return res.render('editar-cliente', { page: 'Editar Dados', usuario, endereco, err });
      },
      update: async (req, res) => {
+          // Dados do usuario
           let { id } = req.params;
           let { nomeCli, dataCli, cpfCli } = req.body;
           let nomeCompleto = nomeCli;
+          let usuario = res.locals.usuario;
+          
+          // Dados do endereço
+          let {enderecoId, cep, rua, numeral, complemento, cidade, estado} = req.body;  
 
+          // senha
+          let {senhaAtual, novaSenha, confirmarSenha} = req.body;
+            
           // Separar o nome  
           let nome = nomeCompleto.split(' ')[0];
           let sobrenome = nomeCompleto.replace(nome + " ", "");
+
+          if(senhaAtual == null){
+               senhaAtual = usuario.senha;
+               novaSenha = usuario.senha;
+               confirmarSenha = usuario.senha;
+          }
+
+          // verificando senha atual
+          if(!bcrypt.compareSync(senhaAtual, usuario.senha)) {
+               res.redirect('/usuarios/editar-cliente/usuario.id?error=1');
+          }
+          // verificando senhas novas
+          if(novaSenha != confirmarSenha){
+               res.redirect('/usuarios/editar-cliente/usuario.id?error=2');
+          }
+
+          // criptografando nova senha
+          novaSenha = bcrypt.hashSync(novaSenha, 10);
 
           let userNovo = await Usuario.update({
                nome,
                sobrenome,
                data_nasc: dataCli,
-               cpf: cpfCli
-          }, {
-               where: { id }
-          })
+               cpf: cpfCli,
+               senha: novaSenha
+          }, 
+          { where: {id} });
 
-          return res.redirect('/usuarios/perfil-cliente');
+          let endereco = await Endereco.update({
+               estado,
+               cidade,
+               cep,
+               logradouro: rua,
+               numeral,
+               complemento,
+               usuarios_id: userNovo.id
+          },{
+               where: { 
+                    id: enderecoId,
+                    usuarios_id: id
+               }
+          });
+          
+
+          return res.redirect(`/usuarios/perfil-cliente/${res.locals.usuario.id}`);
      },
      dashboard: (req, res, ) => {
           res.render('dashboard', { page: 'dashboard' });
