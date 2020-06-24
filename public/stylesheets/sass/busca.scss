@@ -59,6 +59,8 @@ $secondary-font: #1E1E1E;
             vertical-align: middle;
             height: 48px;
             margin-bottom: 6px;
+            padding: 0px 5px;
+            overflow: hidden;
         }
         preco {
             font-weight: bold;
@@ -156,34 +158,30 @@ $secondary-font: #1E1E1E;
 // alterar direção da para coluna
 
 @media screen and (max-width: 576px) {
-
+    
     .row.infos-resultados {
         font-size: 0.8rem;
-
+        
         .resultado-busca {
             flex-direction: column;
         }
     }
-
+    
     .row.produtos-busca{
         margin: 10px;
     }
-
+    
 }
 
 @media screen and (max-width: 470px) {
-
+    
     .row.infos-resultados {
         .resultado-busca {
             width: 100%;
             margin-bottom: 10px;
         }
     }
-
-}
-
-@media screen and (max-width: 400px) {
-
+    
     .row.produtos-busca{
         card {
             width: 90%;
@@ -191,5 +189,4 @@ $secondary-font: #1E1E1E;
             margin-right: auto;
         }
     }
-
 }
