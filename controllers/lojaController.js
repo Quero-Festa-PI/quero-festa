@@ -2,12 +2,8 @@ const { sequelize, Usuario, Loja, Produto, ImagensDeProduto, AvaliacoesDeProduto
 const bcrypt = require('bcrypt');
 
 module.exports = {
-
-     index: (req, res) => {
-          return res.render('index', { page: 'Home' });
-     },
      // Pagina da loja
-     loja: async (req, res) => {
+     show: async (req, res) => {
           let { id } = req.params;
           let lojaPerfil = await Loja.findByPk(id, {
                include:
@@ -51,11 +47,4 @@ module.exports = {
 
           return res.render('perfil-loja', { page: 'Perfil Loja', lojaPerfil, resultado: produtos, avaliacaoLoja });
      },
-
-     alterarNavegacao: (req, res) => {
-          req.session.navegacaoLoja = !req.session.navegacaoLoja;
-
-          res.redirect(req.headers.referer.replace('http://localhost:3000', ""))
-     }
-
 }
