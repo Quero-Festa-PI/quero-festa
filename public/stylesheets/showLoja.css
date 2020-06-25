@@ -1,0 +1,51 @@
+div.page-loja div#meio-home div.row {
+  margin-bottom: 20px; }
+div.page-loja div#meio-home div.loja {
+  background-color: #fff;
+  border: 1px solid #FF826E;
+  border-radius: 20px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  padding: 1.25rem;
+  margin-left: 0px;
+  margin-right: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+  div.page-loja div#meio-home div.loja img {
+    width: calc((100% - 40px) / 2); }
+  div.page-loja div#meio-home div.loja .infos {
+    width: calc((100% - 40px) / 2 );
+    display: flex;
+    flex-flow: column wrap; }
+    div.page-loja div#meio-home div.loja .infos .header-loja {
+      margin-bottom: 16px; }
+    div.page-loja div#meio-home div.loja .infos .dados-loja p {
+      width: 100%;
+      text-align: left;
+      color: #777; }
+    div.page-loja div#meio-home div.loja .infos .dados-loja .proprietario {
+      font-weight: bold;
+      color: #777;
+      width: 100%;
+      margin-bottom: 16px; }
+      div.page-loja div#meio-home div.loja .infos .dados-loja .proprietario a {
+        color: #FF826E; }
+div.page-loja .row.produtos-loja {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  margin: 0px -10px; }
+
+@media screen and (max-width: 767px) {
+  div.page-loja div#meio-home div.loja {
+    flex-direction: column; }
+    div.page-loja div#meio-home div.loja img {
+      width: 100%;
+      margin-bottom: 16px; }
+    div.page-loja div#meio-home div.loja div.infos {
+      width: 100%; } }
+@media screen and (max-width: 576px) {
+  .row.produtos-loja {
+    margin: 10px; } }
+
+/*# sourceMappingURL=showLoja.css.map */
