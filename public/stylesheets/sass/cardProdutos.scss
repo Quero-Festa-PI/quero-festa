@@ -39,3 +39,31 @@ card.card-produtos {
         }
     }
 }
+
+// diminuir quantidade de produtos por linha
+
+@media screen and (max-width: 990px) {
+    
+    card.card-produtos {
+        width: calc((100% - 60px) / 3);
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+
+    card.card-produtos {
+        width: calc((100% - 40px) / 2);
+    }
+
+}
+
+@media screen and (max-width: 470px) {
+    
+    card.card-produtos {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}

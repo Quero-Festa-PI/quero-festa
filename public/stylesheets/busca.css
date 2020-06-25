@@ -69,12 +69,6 @@
   .row.lista-paginas a:first-child {
     border-left: 1px #c9c9c9 solid; }
 
-@media screen and (max-width: 990px) {
-  .row.produtos-busca card {
-    width: calc((100% - 60px) / 3); } }
-@media screen and (max-width: 767px) {
-  .row.produtos-busca card {
-    width: calc((100% - 40px) / 2); } }
 @media screen and (max-width: 576px) {
   .row.infos-resultados {
     font-size: 0.8rem; }
@@ -86,11 +80,6 @@
 @media screen and (max-width: 470px) {
   .row.infos-resultados .resultado-busca {
     width: 100%;
-    margin-bottom: 10px; }
-
-  .row.produtos-busca card {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto; } }
+    margin-bottom: 10px; } }
 
 /*# sourceMappingURL=busca.css.map */
