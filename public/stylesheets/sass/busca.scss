@@ -49,40 +49,6 @@ $secondary-font: #1E1E1E;
     flex-flow: row wrap;
     justify-content: flex-start;
     margin: 0px -10px;
-    card {
-        display: flex;
-        width: calc((100% - 80px) / 4);
-        margin: 0px 10px 20px 10px;
-        titulo {
-            width: 100%;
-            text-align: center;
-            vertical-align: middle;
-            height: 48px;
-            margin-bottom: 6px;
-            padding: 0px 5px;
-            overflow: hidden;
-        }
-        preco {
-            font-weight: bold;
-            color: $primary;
-            min-width: 0;
-            align-self: center;
-            margin-bottom: 6px;
-        }
-        a {
-            font-weight: bold;
-            color: $primary;
-            position: relative;
-            bottom: 0;
-            align-self: center;
-            margin-bottom: 6px;
-            img {
-                max-width: calc(100% - 20px);
-                height: auto;
-                margin: 10px 10px 0px 10px;
-            }
-        }
-    }
 }
 
 .avaliacao{
