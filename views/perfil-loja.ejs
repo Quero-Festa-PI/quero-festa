@@ -2,7 +2,6 @@
 
 <body>
 
-    <!-- PAGINA COMPLETA -->
     <div class="page-loja">
         <%- include('partials/navbar') %>
 
@@ -18,10 +17,15 @@
                     <div class="header-loja">
                         <h4><%= lojaPerfil.nome %></h4>
                         <div class="avaliacao">
-
-                            <% const mediaAvaliacaoLoja = Math.round(Number(avaliacaoLoja[0].toJSON().media) * 10) / 10; %>
-                            <% const avaliacaoPercLoja = ((18 * mediaAvaliacaoLoja) + (4.3875 * Math.trunc(mediaAvaliacaoLoja))) / 107.550 * 100;; %>
-                            <% const quantidadeAvaliacoesLoja = avaliacaoLoja[0].toJSON().quantidade; %>
+                            <% if (avaliacaoLoja[0].toJSON().quantidade) { %>
+                            <% var mediaAvaliacaoLoja = Math.round(Number(avaliacaoLoja[0].toJSON().media) * 10) / 10; %>
+                            <% var avaliacaoPercLoja = ((18 * mediaAvaliacaoLoja) + (4.3875 * Math.trunc(mediaAvaliacaoLoja))) / 107.550 * 100;; %>
+                            <% var quantidadeAvaliacoesLoja = avaliacaoLoja[0].toJSON().quantidade; %>
+                            <% } else { %>
+                            <% var mediaAvaliacaoLoja = 0; %>
+                            <% var avaliacaoPercLoja = 100; %>
+                            <% var quantidadeAvaliacoesLoja = 0; %>
+                            <% } %>
                             <div class="stars-outer">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -43,13 +47,23 @@
 
                     <div class="dados-loja">
                         <p><%= lojaPerfil.descricao %></p>
+                        <% if (loja) { %>
+                        <% if (loja.id == lojaPerfil.id) { %>
+                        <a href="/lojas/editar-loja/<%= loja.id %>">Alterar Dados</a>
+                        <% } else { %>
                         <span class="proprietario">Proprietário: <a
-                                href="/usuarios/<%= lojaPerfil.usuario.id %>"><%= lojaPerfil.usuario.nome %></a></span>
+                                href="/usuarios/perfil-cliente/<%= lojaPerfil.usuario.id %>"><%= lojaPerfil.usuario.nome %></a></span>
+                        <% } %>
+                        <% } else { %>
+                        <span class="proprietario">Proprietário: <a
+                                href="/usuarios/perfil-cliente/<%= lojaPerfil.usuario.id %>"><%= lojaPerfil.usuario.nome %></a></span>
+                        <% } %>
                     </div>
                 </div>
             </div>
 
             <div class="row produtos-loja">
+                <h4>Produtos</h4>
                 <% for(produto of resultado) { %>
                 <% if(produto.toJSON().avaliacoes[0]) { %>
                 <% var avaliacao = Math.round(Number(produto.toJSON().avaliacoes[0].media) * 10) / 10; %>

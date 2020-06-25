@@ -53,35 +53,35 @@
                 <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     <% if(navegacaoLoja) { %>
-                        <%= loja.nome %>
+                    <%= loja.nome %>
                     <% } else { %>
-                        <%= usuario.nome %>
+                    <%= usuario.nome %>
                     <% } %>
                 </button>
                 <div class="dropdown-menu">
                     <% if(navegacaoLoja){ %>
-                        <a class="dropdown-item" href="/loja/<%= loja.id %>%>">Perfil</a>                        
+                    <a class="dropdown-item" href="/loja/<%= loja.id %>%>">Perfil</a>
                     <% } else { %>
-                        <a class="dropdown-item" href="/usuarios/perfil-cliente/<%= String(usuario.id) %>">Minha Conta</a>                        
-                        <a class="dropdown-item" href="/pedidos/pedido">Meus Pedidos</a>
+                    <a class="dropdown-item" href="/usuarios/perfil-cliente/<%= String(usuario.id) %>">Minha Conta</a>
+                    <a class="dropdown-item" href="/pedidos/pedido">Meus Pedidos</a>
                     <% } %>
-                            
+
                     <% if (loja) { %>
-                        <a class="dropdown-item" href="/loja/<%= loja.id %>">Minha Loja</a>
-                        <% if (navegacaoLoja) { %>
-                            <a class="dropdown-item" href="/alterar-navegacao">Navegar como Cliente</a>
-                        <% } else { %>
-                            <a class="dropdown-item" href="/alterar-navegacao">Navegar como Loja</a>
-                        <% } %>
+                    <a class="dropdown-item" href="/lojas/perfil-loja/<%= loja.id %>">Minha Loja</a>
+                    <% if (navegacaoLoja) { %>
+                    <a class="dropdown-item" href="/alterar-navegacao">Navegar como Cliente</a>
+                    <% } else { %>
+                    <a class="dropdown-item" href="/alterar-navegacao">Navegar como Loja</a>
+                    <% } %>
                     <% } %>
                     <a class="dropdown-item" href="/usuarios/sair">Sair</a>
                 </div>
             </div>
 
             <% if(navegacaoLoja){ %>
-                <img class="rounded-circle" src="/images/deco-avatar.png" width="50px" height="50px" alt="avatar">
+            <img class="rounded-circle" src="/images/deco-avatar.png" width="50px" height="50px" alt="avatar">
             <% } else { %>
-                <img class="rounded-circle" src="/images/perfilCliente.png" width="50px" height="50px" alt="avatar">
+            <img class="rounded-circle" src="/images/perfilCliente.png" width="50px" height="50px" alt="avatar">
             <% } %>
             <% } %>
         </div>

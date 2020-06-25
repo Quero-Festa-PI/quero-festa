@@ -47,4 +47,37 @@ module.exports = {
 
           return res.render('perfil-loja', { page: 'Perfil Loja', lojaPerfil, resultado: produtos, avaliacaoLoja });
      },
+     edit: async (req, res) => {
+
+          const { id } = req.params;
+
+          const lojaLogada = res.locals.loja;
+
+          if (!lojaLogada) {
+               return res.redirect('/');
+          }
+
+          if (lojaLogada.id != id) {
+               return res.redirect(`/lojas/editar-loja/${lojaLogada.id}`);
+          }
+
+          const infosLoja = await Loja.findByPk(id);
+
+          return res.render('editar-loja', { page: 'Editar Loja', infosLoja })
+     },
+     update: async (req, res) => {
+
+          const { id, nome, descricao } = req.body;
+
+          console.log(`${id} ${nome} ${descricao}`);
+
+          let lojaUpdate = await Loja.update({
+               nome,
+               descricao,
+          }, {
+               where: { id }
+          });
+
+          return res.redirect(`/lojas/perfil-loja/${id}`);
+     }
 }

@@ -79,7 +79,8 @@
                     <!-- descrição e valor -->
                     <div class="dados-produto">
                         <p><%= produto.descricao %></p>
-                        <span class="loja">Vendido por: <a href="/lojas/<%= lojas.id %>"><%= lojas.nome %></a></span>
+                        <span class="loja">Vendido por: <a
+                                href="/lojas/perfil-loja/<%= lojas.id %>"><%= lojas.nome %></a></span>
                         <span class="preco">R$<%= produto.valor.toFixed(2) %></span>
                         <button>Comprar</button>
                     </div>
