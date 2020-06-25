@@ -33,6 +33,7 @@ div.page-loja{
                 display: flex;
                 flex-flow: column wrap;
                 .header-loja{
+                    position: relative;
                     margin-bottom: 16px;
                 }
                 .dados-loja{
@@ -46,19 +47,102 @@ div.page-loja{
                         color: #777;
                         width: 100%;
                         margin-bottom: 16px;
-                        a{
-                            color: $primary;
-                        }
                     }
+                    a{
+                        color: $primary;
+                        font-weight: bold;
+                    }
+
                 }
             }
         }
+        .row.produtos-loja{
+            // disposição
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-start;
+            // visual
+            background-color: #fff;
+            border: 1px solid $primary;
+            border-radius: 20px;
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+            padding: 1.25rem;
+            margin-left: 0px;
+            margin-right: 0px;
+            h4{
+                width: 100%;
+                text-align: center;
+                margin-bottom: 16px;
+            }
+        }
     }
-    .row.produtos-loja{
+}
+
+div#page-editar-loja{
+    display: flex;
+    flex-direction: column;
+    div.form-editar-loja{
+        // visual
+        background-color: #fff;
+        border: 1px solid $primary;
+        border-radius: 20px;
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+        padding: 1.25rem;
+        margin-left: 0px;
+        margin-right: 0px;
+        // disposição
+        display: flex;
+        justify-content: center;
+    }
+    form{
+        // visual
+        width: 300px;
+        // disposição
         display: flex;
         flex-flow: row wrap;
-        justify-content: flex-start;
-        margin: 0px -10px;
+        justify-content: center;
+        h4{
+            text-align: center;
+            width: 100%;
+            margin-bottom: 16px;
+        }
+        label{
+            width: 100%;
+            margin-bottom: 16px;
+            input{
+                width: 100%;
+                height: calc(2.25rem + 2px);
+                padding: .375rem .75rem;
+                color: #495057;
+                border: 1px solid #ced4da;
+                border-radius: .25rem;
+                margin-top: 8px;
+            }
+            textarea{
+                height: 158px;
+                width: 100%;
+                padding: .375rem .75rem;
+                color: #495057;
+                border: 1px solid #ced4da;
+                border-radius: .25rem;
+                margin-top: 8px;
+            }
+        }
+        button{
+            background-color: rgba(0,0,0,.5);
+            color: $primary-font;
+            height: 40px;
+            border: none;
+            text-align: center;
+            padding: 0 10px;
+            border-radius: 7px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        button:hover{
+            background-color: $primary;
+            cursor: pointer;
+        }
     }
 }
 
