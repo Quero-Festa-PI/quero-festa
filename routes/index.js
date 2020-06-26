@@ -2,11 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 // Chamando o controller 
-const lojaController = require('../controllers/lojaController');
+const indexController = require('../controllers/indexController');
 
-//Requisições loja
-router.get('/', lojaController.index);
-router.get('/loja/:id', lojaController.loja);
-router.get('/alterar-navegacao', lojaController.alterarNavegacao);
+//Requisições index
+router.get('/', indexController.index);
+router.get('/alterar-navegacao', indexController.alterarNavegacao);
 
 module.exports = router;

@@ -1,0 +1,43 @@
+card.card-produtos {
+  display: flex;
+  width: calc((100% - 80px) / 4);
+  margin: 0px 10px 20px 10px; }
+  card.card-produtos titulo {
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    height: 48px;
+    margin-bottom: 6px;
+    padding: 0px 5px;
+    overflow: hidden; }
+  card.card-produtos preco {
+    font-weight: bold;
+    color: #FF826E;
+    min-width: 0;
+    align-self: center;
+    margin-bottom: 6px; }
+  card.card-produtos a {
+    font-weight: bold;
+    color: #FF826E;
+    position: relative;
+    bottom: 0;
+    align-self: center;
+    margin-bottom: 6px; }
+    card.card-produtos a img {
+      max-width: calc(100% - 20px);
+      height: auto;
+      margin: 10px 10px 0px 10px; }
+
+@media screen and (max-width: 990px) {
+  card.card-produtos {
+    width: calc((100% - 60px) / 3); } }
+@media screen and (max-width: 767px) {
+  card.card-produtos {
+    width: calc((100% - 40px) / 2); } }
+@media screen and (max-width: 470px) {
+  card.card-produtos {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto; } }
+
+/*# sourceMappingURL=cardProdutos.css.map */

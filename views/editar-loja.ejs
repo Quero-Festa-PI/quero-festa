@@ -1,0 +1,21 @@
+<% include partials/header %>
+
+<body>
+    <%- include('partials/navbar') %>
+
+    <div id="page-editar-loja" class="container">
+        <%- include('partials/breadcrumb') %>
+
+        <div class="row form-editar-loja">
+            <form id="form-editar-loja" method="POST" action="/lojas/editar-loja/<%= infosLoja.id %>?_method=PUT">
+                <h4>Editar dados da loja</h4>
+                <input type="hidden" name="id" id="id" value="<%= infosLoja.id %>">
+                <label>Nome:<input type="text" name="nome" id="nome" value="<%= infosLoja.nome %>"></label>
+                <label>Descrição:<textarea name="descricao" id="descricao"><%= infosLoja.descricao %></textarea></label>
+                <button type="submit">Alterar</button>
+            </form>
+        </div>
+    </div>
+    <% include partials/footer-alt %>
+    <% include partials/script %>
+</body>

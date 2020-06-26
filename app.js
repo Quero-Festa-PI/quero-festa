@@ -9,6 +9,7 @@ var methodOverride = require('method-override');
 // Rotas
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var lojaRouter = require('./routes/loja');
 var produtoRouter = require('./routes/produto');
 var pedidoRouter = require('./routes/pedido');
 
@@ -40,6 +41,7 @@ app.use((req, res, next) => {
 
 app.use('/', indexRouter);
 app.use('/usuarios', usersRouter);
+app.use('/lojas', lojaRouter);
 app.use('/produtos', produtoRouter);
 app.use('/pedidos', pedidoRouter);
 

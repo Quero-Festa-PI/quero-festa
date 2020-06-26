@@ -1,219 +1,113 @@
 <% include partials/header %>
 
 <body>
-    <!-- PAGINA COMPLETA -->
-    <div class="page">
+
+    <div class="page-loja">
         <%- include('partials/navbar') %>
 
-        <!-- CONTEÚDO PRINCIPAL -->
         <div id="meio-home" class="container">
-            <div class="row ">
-                <!-- # Inicio Painel -->
-                <div id="painel-publico" class="container">
-                    <!-- CONTAINER CAMINHO DAS PAGINAS -->
-                    <%- include('partials/breadcrumb') %>
-                    <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
 
-                    <!-- ### CARD DE DADOS PROFISSIONAIS -->
+            <%- include('partials/breadcrumb') %>
 
-                    <% if(navegacaoLoja) { %>
-                    <div class="card painel-dash border-left-primary shadow ml-5 mr-5">
-                        <div class="card-body painel-dash">
+            <div class="row loja">
 
-                            <div class="row">
-                                <div class='col-4'>
-                                    <h4>Dados Profissionais</h4>
+                <img class='d-block img-thumbnail' src='/images/deco-avatar.png' width="200px" alt='avatar'>
+
+                <div class='infos'>
+                    <div class="header-loja">
+                        <h4><%= lojaPerfil.nome %></h4>
+                        <div class="avaliacao">
+                            <% if (avaliacaoLoja[0].toJSON().quantidade) { %>
+                            <% var mediaAvaliacaoLoja = Math.round(Number(avaliacaoLoja[0].toJSON().media) * 10) / 10; %>
+                            <% var avaliacaoPercLoja = ((18 * mediaAvaliacaoLoja) + (4.3875 * Math.trunc(mediaAvaliacaoLoja))) / 107.550 * 100;; %>
+                            <% var quantidadeAvaliacoesLoja = avaliacaoLoja[0].toJSON().quantidade; %>
+                            <% } else { %>
+                            <% var mediaAvaliacaoLoja = 0; %>
+                            <% var avaliacaoPercLoja = 100; %>
+                            <% var quantidadeAvaliacoesLoja = 0; %>
+                            <% } %>
+                            <div class="stars-outer">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <div class="stars-inner" style="width: <%= avaliacaoPercLoja %>%">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
                                 </div>
-
                             </div>
-                            <!-- Divider -->
-                            <hr class="sidebar-divider my-0">
-
-                            <div class="painel-dados row">
-
-                                <div class="col-4 text-center">
-                                    <img id='avatar' class='shadow border-bottom-primary rounded'
-                                        src='/images/deco-avatar.png' width="170px" height="170px" alt='avatar'>
-                                    <button class="btn btn-alt text-center">Escolha sua foto!</button>
-                                </div>
-
-                                <div class='col-8'>
-                                    <!-- NOME DA LOJA-->
-                                    <div class="form-group row">
-                                        <label for="inputNomeLoja" class="col-sm-3 col-form-label">Nome da
-                                            Loja</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="inputNomeLoja"
-                                                value="<%= loja.nome %>">
-                                        </div>
-                                    </div>
-                                    <!-- CNPJ-->
-                                    <div class="form-group row">
-                                        <label for="inputCNPJ" class="col-sm-3 col-form-label">CNPJ</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="inputCNPJ"
-                                                value="Não tem no banco">
-                                        </div>
-                                    </div>
-                                    <!-- DESCRIÇÃO -->
-                                    <div class="form-group row">
-                                        <label for="inputDescricaoLoja"
-                                            class="col-sm-3 col-form-label">Descrição</label>
-                                        <div class="col-sm-9">
-                                            <textarea class="form-control" id="inputDescricaoLoja" rows="3">
-                                                        <%= loja.descricao %>
-                                                    </textarea>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
+                            <span><%= mediaAvaliacaoLoja %></span>
+                            <span>(<%= quantidadeAvaliacoesLoja %>)</span>
                         </div>
                     </div>
-                    <% } else { %>
-                    <!-- ### CARD DE DADOS -->
-                    <div class="card painel-dash border-left-primary shadow mx-5">
-                        <div class="card-body painel-dash">
 
-                            <div class="row">
-                                <div class='col-4'>
-                                    <h3><%= loja.nome %></h3>
-                                </div>
-                            </div>
-                            <!-- Divider -->
-                            <hr class="sidebar-divider my-0">
-
-                            <div class="painel-dados row">
-                                <div class="col-4 text-center">
-                                    <img id='avatar' class='shadow border-bottom-primary' src='/images/deco-avatar.png'
-                                        width="200px" height="200px" alt='avatar'>
-                                </div>
-
-                                <div class='col-8'>
-                                    <div class="row text-left">
-                                        <div class="text-left col-3">
-                                            <h6>Descrição:</h6>
-                                            <h6>Vendedor:</h6>
-                                        </div>
-                                        <div class="text-left col-9 text-primary">
-
-                                            <h6><%= loja.descricao %></h6>
-                                            <h6><%= loja.usuario.nome%></h6>
-
-                                        </div>
-                                    </div>
-
-                                    <!-- Divider -->
-                                    <hr class="sidebar-divider my-0">
-
-                                    <div class='row text-left'>
-                                        <div class="text-left col-3">
-                                            <h6>Localização:</h6>
-                                        </div>
-                                        <div class="text-left col-9 text-primary">
-                                            <h6>Guarulhos - SP</h6>
-                                        </div>
-                                    </div>
-                                    <!-- Divider -->
-                                    <hr class="sidebar-divider my-0">
-
-                                    <div class='row text-left'>
-                                        <div class="text-left col-3">
-                                            <h6>Avaliação:</h6>
-
-                                        </div>
-                                        <div class="text-left col-9 text-primary">
-                                            <h6>5.0</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <% } %>
-
-                    <!-- ### Anuncios da Loja -->
-                    <div class="mx-5">
-                        <div class="container">
-                            <anuncio>
-                                <div class="row row-level-1">
-                                    <div class="row-inner clearfix">
-                                        <div class="col-inner d-flex">
-
-                                            <!-- card 1 -->
-                                            <% for(produto of loja.produtos) { %>
-                                            <div class="col-sm-3">
-                                                <card class=" anuncio-box card shadow">
-                                                    <div class="row no-gutters rounded-top">
-                                                        <div class='anuncio text-center'>
-                                                            <div class="m-1">
-                                                                <!-- COMANDO PARA DINAMIZAR FOTO: <%= produto.imagens.image_url%> -->
-                                                                <a href="#"><img src="/images/bodasPapel.png" alt=""
-                                                                        class="img-fluid rounded"></a>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="mt-1 mr-3 mb-2 ml-3">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <titulo class="text-left card-title">
-                                                                        <%= produto.nome%> </titulo>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <preco class="text-left">R$<%= produto.valor%>
-                                                                    </preco>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <info class='card-text text-left'>
-                                                                        <%= produto.descricao%>
-                                                                    </info>
-                                                                </div>
-                                                            </div>
-
-                                                            <% if(navegacaoLoja){ %>
-                                                                <div class="row">
-                                                                    <div class="col-12">
-                                                                        <button type="button"
-                                                                            class="btn-alt btn btn-sm">Editar</button>
-                                                                    </div>
-                                                                </div>
-
-                                                            <% } else { %>
-                                                                <div class="row">
-                                                                    <div class="col-12">
-                                                                        <button type="button"
-                                                                            class="btn-alt btn btn-sm">Ver</button>
-                                                                    </div>
-                                                                </div>
-                                                            <% } %>
-
-
-                                                        </div>
-                                                    </div>
-                                                </card>
-                                            </div>
-                                            <% } %>
-                                            <!-- Fim card 1 -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </anuncio>
-                        </div>
-
+                    <div class="dados-loja">
+                        <p><%= lojaPerfil.descricao %></p>
+                        <% if (loja) { %>
+                        <% if (loja.id == lojaPerfil.id) { %>
+                        <a href="/lojas/editar-loja/<%= loja.id %>">Alterar Dados</a>
+                        <% } else { %>
+                        <span class="proprietario">Proprietário: <a
+                                href="/usuarios/perfil-cliente/<%= lojaPerfil.usuario.id %>"><%= lojaPerfil.usuario.nome %></a></span>
+                        <% } %>
+                        <% } else { %>
+                        <span class="proprietario">Proprietário: <a
+                                href="/usuarios/perfil-cliente/<%= lojaPerfil.usuario.id %>"><%= lojaPerfil.usuario.nome %></a></span>
+                        <% } %>
                     </div>
                 </div>
             </div>
+
+            <div class="row produtos-loja">
+                <h4>Produtos</h4>
+                <% for(produto of resultado) { %>
+                <% if(produto.toJSON().avaliacoes[0]) { %>
+                <% var avaliacao = Math.round(Number(produto.toJSON().avaliacoes[0].media) * 10) / 10; %>
+                <% var avaliacaoPerc = ((18 * avaliacao) + (4.3875 * Math.trunc(avaliacao))) / 107.550 * 100; %>
+                <% var quantidadeAvaliacoes = Number(produto.toJSON().avaliacoes[0].quantidade); %>
+                <% } else { %>
+                <% var avaliacao = 0; %>
+                <% var avaliacaoPerc = 100; %>
+                <% var quantidadeAvaliacoes = 0; %>
+                <% } %>
+                <card class="anuncio-box card shadow card-produtos">
+                    <a href="/produtos/<%= produto.id %>"><img src="<%= produto.toJSON().imagens[0].image_url %>" alt=""
+                            class="img-fluid"></a>
+                    <titulo class="card-text"><%= produto.nome %></titulo>
+                    <div class="avaliacao">
+                        <div class="stars-outer">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <div class="stars-inner" style="width: <%= avaliacaoPerc %>%">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <span><%= avaliacao %></span>
+                        <span>(<%= quantidadeAvaliacoes %>)</span>
+                    </div>
+                    <preco>R$<%= produto.valor.toFixed(2) %></preco>
+
+                    <a href="/produtos/<%= produto.id %>">Saiba Mais...</a>
+                </card>
+                <% } %>
+            </div>
         </div>
     </div>
-    <% include partials/footer-alt %>
 
+    <% include partials/footer-alt %>
     <% include partials/script %>
+
 </body>
 
 </html>
