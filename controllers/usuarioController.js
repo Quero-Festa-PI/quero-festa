@@ -50,7 +50,8 @@ module.exports = {
           res.render('cadastro', { page: 'cadastro', err });
      },
      cadastrar: async (req, res) => {
-          let { nome, senha, email1, email2 } = req.body;
+          let {nome, senha, email1, email2 } = req.body;
+          let endereco;
 
           // tratando string email
           email1 = email1.toLowerCase();
@@ -105,6 +106,15 @@ module.exports = {
                     senha,
                }
           );
+          endereco = await Endereco.create({
+               estado: 'SP',
+               cidade: 'Cidade',
+               cep: '00000000',
+               logradouro: 'Rua, Avenida, Estrada',
+               numeral: 1,
+               complemento: ' ',
+               usuarios_id: usuario.id  
+          })
 
           // iniciando session e redirecionando para a home
           req.session.usuario = usuario;
@@ -112,18 +122,18 @@ module.exports = {
 
      },
      // Perfil cliente
-     perfilCliente: async (req, res) => {
+     // perfilCliente: async (req, res) => {
 
-          let usuario = res.locals.usuario;
+     //      let usuario = res.locals.usuario;
 
-          if (!usuario) {
-               return res.redirect('/usuarios/logar')
-          }
+     //      if (!usuario) {
+     //           return res.redirect('/usuarios/logar')
+     //      }
 
-          let endereco = await Endereco.findOne({ where: { usuarios_id: res.locals.usuario.id } });
+     //      let endereco = await Endereco.findOne({ where: { usuarios_id: res.locals.usuario.id } });
 
-          return res.render('perfil-cliente', { page: 'Perfil', endereco });
-     },
+     //      return res.render('perfil-cliente', { page: 'Perfil', endereco });
+     // },
      perfilClienteId: async (req, res) => {
 
           let usuario = res.locals.usuario;
@@ -135,9 +145,9 @@ module.exports = {
           // capturando id da rota
           let idUsuario = req.params.id;
 
-          let usuarioPerfil = await Usuario.findByPk(idUsuario, { include: ['lojas', 'enderecos'] });
-          let lojaPerfil = usuarioPerfil.lojas
-          let endereco = usuarioPerfil.enderecos[0];
+          let usuarioPerfil = await Usuario.findByPk(idUsuario, { include: ['lojas', 'enderecos']});
+          let lojaPerfil = usuarioPerfil.lojas;
+          let endereco = usuarioPerfil.enderecos[0];         
 
           res.render('perfil-cliente', { page: 'Perfil Cliente', usuarioPerfil, lojaPerfil, endereco })
 
