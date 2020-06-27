@@ -113,7 +113,7 @@ module.exports = {
                logradouro: 'Rua, Avenida, Estrada',
                numeral: 1,
                complemento: ' ',
-               usuarios_id: usuario.id  
+               usuarios_id: res.locals.usuario.id  
           })
 
           // iniciando session e redirecionando para a home
@@ -121,19 +121,6 @@ module.exports = {
           return res.redirect('/');
 
      },
-     // Perfil cliente
-     // perfilCliente: async (req, res) => {
-
-     //      let usuario = res.locals.usuario;
-
-     //      if (!usuario) {
-     //           return res.redirect('/usuarios/logar')
-     //      }
-
-     //      let endereco = await Endereco.findOne({ where: { usuarios_id: res.locals.usuario.id } });
-
-     //      return res.render('perfil-cliente', { page: 'Perfil', endereco });
-     // },
      perfilClienteId: async (req, res) => {
 
           let usuario = res.locals.usuario;
