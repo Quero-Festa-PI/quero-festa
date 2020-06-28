@@ -77,8 +77,7 @@ module.exports = {
         let file = req.files[0].originalname;
         let img = `/uploads/${file}`;               
         let {nomeP, preco, descricaoP, disponibilidade} = req.body;
-        
-       
+               
         if(nomeP.length <= 3){
             res.redirect('/produtos/cadastrar-produto?error=1')
         }
@@ -102,7 +101,7 @@ module.exports = {
             image_url: img,
             produtos_id: produto.id
         })
-        res.redirect(`/loja/${req.session.loja.id}`);
+        res.redirect(`/lojas/${req.session.loja.id}`);
     },
     produto: (req, res) => {
         res.render('produto', { page: 'produto' });
