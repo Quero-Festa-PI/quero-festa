@@ -24,14 +24,18 @@
         </form>
 
         <!-- carrinho -->
-        <a href="/pedidos/carrinho" class="carrinho">
-            <img src="/images/carro-vazio.png" alt="">
-            <div>
-                <span>Meu carrinho</span>
-                <span>Itens</span>
-                <span>R$0,00</span>
+        <div class="carrinho dropdown-carrinho">
+            <img src="../images/carro-vazio.png" height="38px" width="38px" alt="">
+            <div id="lista-carrinho" class="dropdown-content-carrinho shadow">
+                <div class="carrinho-cabeçalho">
+                    <h5>Meu carrinho</h5>
+                </div>
+                <div class="carrinho-produtos"></div>
+                <a href="/pedidos/carrinho" id="ver-carrinho" type="button" class="btn-alt btn btn-sm">Ver carrinho</a>
+                <a href="#" id="esvaziar-carrinho" type="button" class="btn-alt btn btn-sm">Esvaziar
+                    carrinho</a>
             </div>
-        </a>
+        </div>
 
         <!-- botões de usuário -->
         <div class="usuario">
@@ -40,9 +44,9 @@
                 <button onclick="redirecionarCadastro()">Cadastrar</button>
                 <button onclick="redirecionarLogin()">Entrar</button>
             </div>
-            <div class="icone dropdown">
+            <div class="icone dropdown-usuario">
                 <img src="/images/icon-login.png" alt="">
-                <div class="dropdown-content">
+                <div class="dropdown-content-usuario">
                     <a href="/usuarios/cadastro">Cadastrar</a>
                     <a href="/usuarios/logar">Entrar</a>
                 </div>
@@ -82,7 +86,7 @@
             <img class="rounded-circle" src="/images/deco-avatar.png" width="50px" height="50px" alt="avatar">
             <% } else { %>
             <img class="rounded-circle" src="/images/perfilCliente.png" width="50px" height="50px" alt="avatar">
-            <% } %>
+            <% } %>%
             <% } %>
         </div>
 
