@@ -67,17 +67,50 @@ module.exports = {
      },
      update: async (req, res) => {
 
-          const { id, nome, descricao } = req.body;
+          const { id, nome, descricao, telefone, email } = req.body;
 
           console.log(`${id} ${nome} ${descricao}`);
 
           let lojaUpdate = await Loja.update({
                nome,
                descricao,
+               telefone,
+               email
           }, {
                where: { id }
           });
 
           return res.redirect(`/lojas/perfil-loja/${id}`);
+     },
+     cadastro: (req, res) => {
+          let err = req.query.error
+          if(err == 1){
+               err = 'Informe um nome para sua loja'
+          }
+          return res.render('cadastrar-loja',{page: 'Cadastrar Loja', err});
+     },
+     cadastrar: async (req, res) => {
+          let {nome, telefone, email, descricao} = req.body;
+          // let image = req.files.originalname;
+          // let img = `/uploads/${image}`;
+          let usuario = req.session.usuario;
+
+          if(!usuario){
+               return res.redirect('/usuarios/logar');
+          }
+
+          if(!nome){
+               return res.redirect('/lojas/cadastrar-loja?error=1');
+          }
+
+          let novaLoja = await Loja.create({
+               // imagem: img,
+               nome,
+               telefone,
+               email,
+               descricao,
+               usuarios_id: usuario.id
+          })
+          return res.redirect(`/lojas/perfil-loja/${novaLoja.id}`);
      }
 }
