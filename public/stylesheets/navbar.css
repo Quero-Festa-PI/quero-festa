@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -53,23 +54,85 @@
         .navbar .navbar-row1 .busca button img {
           height: auto;
           width: 60%; }
+      .navbar .navbar-row1 .busca button:hover {
+        cursor: pointer; }
     .navbar .navbar-row1 .carrinho {
       height: 36px;
-      width: 140px;
       display: flex;
       align-items: center;
-      text-decoration: none; }
+      text-decoration: none;
+      position: relative;
+      display: inline-block; }
       .navbar .navbar-row1 .carrinho img {
-        height: 100%;
+        height: auto;
         margin-right: 8px; }
-      .navbar .navbar-row1 .carrinho div {
-        display: flex;
-        flex-flow: row wrap;
-        color: #1E1E1E; }
-        .navbar .navbar-row1 .carrinho div :nth-child(1) {
-          width: 100%; }
-        .navbar .navbar-row1 .carrinho div :nth-child(2) {
-          margin-right: 5px; }
+      .navbar .navbar-row1 .carrinho div.dropdown-content-carrinho {
+        position: absolute;
+        left: 0;
+        transform: translate(-50%, 0px);
+        z-index: 1;
+        display: none;
+        background-color: #f1f1f1;
+        border-radius: 5px;
+        width: 408px; }
+        .navbar .navbar-row1 .carrinho div.dropdown-content-carrinho .carrinho-cabeçalho {
+          display: flex;
+          flex-direction: row; }
+          .navbar .navbar-row1 .carrinho div.dropdown-content-carrinho .carrinho-cabeçalho h5 {
+            padding: 8px;
+            color: #FF826E;
+            margin: 0; }
+        .navbar .navbar-row1 .carrinho div.dropdown-content-carrinho .carrinho-produtos {
+          display: flex;
+          flex-direction: column; }
+          .navbar .navbar-row1 .carrinho div.dropdown-content-carrinho .carrinho-produtos .carrinho-produto {
+            display: flex;
+            flex-flow: column wrap;
+            height: 60px;
+            align-content: flex-start; }
+            .navbar .navbar-row1 .carrinho div.dropdown-content-carrinho .carrinho-produtos .carrinho-produto .carrinho-imagem {
+              padding: 5px; }
+              .navbar .navbar-row1 .carrinho div.dropdown-content-carrinho .carrinho-produtos .carrinho-produto .carrinho-imagem img {
+                width: 50px;
+                margin: 0; }
+            .navbar .navbar-row1 .carrinho div.dropdown-content-carrinho .carrinho-produtos .carrinho-produto div.nome-quantidade {
+              height: 60px;
+              width: 200px;
+              padding: 5px;
+              margin-right: 16px; }
+              .navbar .navbar-row1 .carrinho div.dropdown-content-carrinho .carrinho-produtos .carrinho-produto div.nome-quantidade .carrinho-nome {
+                position: relative;
+                overflow: hidden;
+                height: 50%;
+                text-align: left;
+                padding-right: 12px; }
+              .navbar .navbar-row1 .carrinho div.dropdown-content-carrinho .carrinho-produtos .carrinho-produto div.nome-quantidade .carrinho-quantidade {
+                height: 50%;
+                text-align: left; }
+            .navbar .navbar-row1 .carrinho div.dropdown-content-carrinho .carrinho-produtos .carrinho-produto div.carrinho-valor {
+              height: 60px;
+              width: 80px;
+              color: #FF826E;
+              text-align: center;
+              padding: 16px 0px;
+              margin-right: 16px; }
+            .navbar .navbar-row1 .carrinho div.dropdown-content-carrinho .carrinho-produtos .carrinho-produto .carrinho-deletar {
+              height: 60px;
+              display: flex;
+              align-items: center; }
+              .navbar .navbar-row1 .carrinho div.dropdown-content-carrinho .carrinho-produtos .carrinho-produto .carrinho-deletar button {
+                border: none;
+                border-radius: 7px;
+                background-color: #FF826E;
+                color: #F8F8F8;
+                font-weight: bold;
+                padding: 4px 6px; }
+              .navbar .navbar-row1 .carrinho div.dropdown-content-carrinho .carrinho-produtos .carrinho-produto .carrinho-deletar button:hover {
+                background-color: #777;
+                cursor: pointer; }
+    .navbar .navbar-row1 .dropdown-carrinho:hover .dropdown-content-carrinho {
+      display: flex;
+      flex-direction: column; }
     .navbar .navbar-row1 .usuario .botoes button {
       border: none;
       text-align: center;
@@ -135,8 +198,6 @@
 @media screen and (max-width: 768px) {
   .navbar .navbar-row1 .carrinho {
     width: 36px; }
-    .navbar .navbar-row1 .carrinho div {
-      display: none; }
     .navbar .navbar-row1 .carrinho img {
       margin: 0; }
   .navbar .navbar-row1 .usuario {
@@ -145,26 +206,26 @@
     height: 36px; }
     .navbar .navbar-row1 .usuario .botoes {
       display: none; }
-    .navbar .navbar-row1 .usuario .dropdown {
+    .navbar .navbar-row1 .usuario div.dropdown-usuario {
       position: relative;
       display: inline-block; }
-      .navbar .navbar-row1 .usuario .dropdown .dropdown-content {
+      .navbar .navbar-row1 .usuario div.dropdown-usuario div.dropdown-content-usuario {
         display: none;
         position: absolute;
         left: 0;
-        transform: translate(-32px, 58px);
+        transform: translate(-32px, 0px);
         background-color: #f1f1f1;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
         text-align: center; }
-        .navbar .navbar-row1 .usuario .dropdown .dropdown-content a {
+        .navbar .navbar-row1 .usuario div.dropdown-usuario div.dropdown-content-usuario a {
           color: black;
           padding: 8px 12px;
           text-decoration: none;
           display: block; }
-    .navbar .navbar-row1 .usuario .dropdown-content a:hover {
+    .navbar .navbar-row1 .usuario .dropdown-content-usuario a:hover {
       background-color: #ddd; }
-    .navbar .navbar-row1 .usuario .dropdown:hover .dropdown-content {
+    .navbar .navbar-row1 .usuario .dropdown-usuario:hover .dropdown-content-usuario {
       display: block; }
     .navbar .navbar-row1 .usuario .icone {
       height: 100%;
