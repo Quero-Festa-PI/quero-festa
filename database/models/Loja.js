@@ -1,3 +1,5 @@
+// const { Sequelize } = require("sequelize/types");
+
 let Loja = (sequelize, DataTypes) => {
     let loja = sequelize.define(
         'Loja',
@@ -21,6 +23,17 @@ let Loja = (sequelize, DataTypes) => {
             },
             avaliacao: {
                 type: DataTypes.FLOAT
+            },
+            imagem: {
+                type: DataTypes.STRING
+            },
+            telefone: {
+                type: DataTypes.STRING(14),
+                unique: true
+            },
+            email: {
+                type: DataTypes.STRING,
+                unique: true
             }
         },
         {

@@ -28,6 +28,17 @@ module.exports = {
       },
       avaliacao: {
         type: Sequelize.FLOAT
+      },
+      imagem: {
+        type:Sequelize.STRING
+      },
+      telefone: {
+        type: Sequelize.STRING(14),
+        unique: true
+      }, 
+      email: {
+        type: Sequelize.STRING,
+        unique: true
       }
     });
   },
