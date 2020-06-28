@@ -113,7 +113,7 @@ module.exports = {
                logradouro: 'Rua, Avenida, Estrada',
                numeral: 1,
                complemento: ' ',
-               usuarios_id: res.locals.usuario.id  
+               usuarios_id: usuario.id  
           })
 
           // iniciando session e redirecionando para a home
