@@ -208,6 +208,27 @@
                                     </div>
                                 </div>        
                             </div>
+
+                            <% if (usuario.id === usuarioPerfil.id) { %>
+                                <div class="row mt-2">
+                                    <% if(!loja){ %>
+                                        <div class='col-10 text-right'>
+                                            <a href="/lojas/cadastrar-loja"
+                                                class="btn btn-alt" id="dados">Tornar-se Vendedor</a>
+                                        </div>
+                                        <div class='col-2 text-right'>
+                                            <a href="/"
+                                                class="btn btn-alt" id="dados">Excluir Conta</a>
+                                        </div>
+                                    <% } else { %>
+                                        <div class='col-12 text-right'>
+                                            <a href="/"
+                                                class="btn btn-alt" id="dados">Excluir Conta</a>
+                                        </div>
+                                    <% } %> 
+                                </div>
+                            <% } %>
+
                             
                         </div>
                     </div>
