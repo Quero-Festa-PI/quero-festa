@@ -11,6 +11,8 @@
                 <h4>Editar dados da loja</h4>
                 <input type="hidden" name="id" id="id" value="<%= infosLoja.id %>">
                 <label>Nome:<input type="text" name="nome" id="nome" value="<%= infosLoja.nome %>"></label>
+                <label>Telefone: <input type="text" name="tel" id="tel" value="<%= infosLoja.telefone %>"></label>
+                <label>Email: <input type="email" name="email" id="email" value="<%= infosLoja.email %>"></label>
                 <label>Descrição:<textarea name="descricao" id="descricao"><%= infosLoja.descricao %></textarea></label>
                 <button type="submit">Alterar</button>
             </form>
