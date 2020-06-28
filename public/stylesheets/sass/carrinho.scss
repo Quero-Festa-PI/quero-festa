@@ -1,0 +1,145 @@
+// variáveis
+
+$primary: #FF826E;
+$primary-font: #F8F8F8;
+$secondary: #FFFFFF;
+$secondary-font: #1E1E1E;
+
+div.page-carrinho {
+    .container {
+        flex-direction: column;
+        div.row.produtos {
+            display: flex;
+            flex-direction: column;
+            margin: 10px 0px;
+            background-color: #fff;
+            border: 1px solid $primary;
+            border-radius: .25rem;
+            h5 {
+                padding: 10px 0px 0px 10px;
+            }
+            div.page-carrinho-produtos {
+                display: flex;
+                flex-direction: column;
+                div.carrinho-produto {
+                    display: flex;
+                    flex-direction: row;
+                    // todas as divs
+                    div {
+                    }
+                    // todos os buttons
+                    button {
+                        border: none;
+                    }
+                    div.produto-imagem {
+                        padding: 10px;
+                        img {
+                            width: 75px;
+                        }
+                    }
+                    div.nome-loja {
+                        padding: 10px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-evenly;
+                        flex-grow: 1;
+                        a {
+                            color: $primary;
+                        }
+                    }
+                    div.preco-quantidade {
+                        padding: 10px;
+                        display: flex;
+                        flex-direction: row;
+                        div {
+                            padding: 10px;
+                            display: flex;
+                            align-items: center;
+                        }
+                        div.produto-quantidade {
+                            display: flex;
+                            flex-flow: column wrap;
+                            justify-content: space-evenly;
+                            padding: 0;
+                            width: 75px;
+                            div.input-quantidade {
+                                display: flex;
+                                flex-direction: row;
+                                height: 40px;
+                                padding: 0px;
+                                input {
+                                    height: 100%;
+                                    padding: 5px;
+                                    width: 50px;
+                                    text-align: center;
+                                }
+                                div.buttons{
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: flex-start;
+                                    justify-content: center;
+                                    padding: 0;
+                                    margin-left: 2px;
+                                    button {
+                                        font-size: .75rem;
+                                        background-color: #777;
+                                        color: #fff;
+                                        padding: 0px 5px;
+                                        font-weight: bold;
+                                        border-bottom: 1px solid #FFF;
+                                        width: 100%;
+                                    }
+                                    button:hover {
+                                        cursor: pointer;
+                                        background-color: $primary;
+                                    }
+                                }
+                            }
+                        }
+                        div.produto-valor {
+                            display: flex;
+                            justify-content: center;
+                            color: $primary;
+                            font-weight: bold;
+                            width: 100px;
+                        }
+                        div.produto-deletar {
+                            button {
+                                background-color: #777;
+                                color: #fff;
+                                padding: 4px 8px;
+                                font-weight: bold;
+                                border-radius: 7px;
+                            }
+                            button:hover {
+                                background-color: $primary;
+                                color: $primary-font;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+            div.fechamento {
+                align-self: flex-end;
+                padding: 0px 20px 10px 0px;
+                span{
+                    margin: 3px 10px 0px 0px;
+                    font-size: 1.25rem;
+                }
+                button {
+                    border: none;
+                    background-color: $primary;
+                    color: #fff;
+                    padding: 4px 8px;
+                    font-weight: bold;
+                    border-radius: 7px;
+                } 
+                button:hover {
+                    background-color: #ff5a41;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
