@@ -44,8 +44,10 @@
                             <span>(<%= quantidadeAvaliacoesLoja %>)</span>
                         </div>
                     </div>
-
+                    
                     <div class="dados-loja">
+                        <p><%= lojaPerfil.telefone%></p>
+                        <p><%= lojaPerfil.email%></p>
                         <p><%= lojaPerfil.descricao %></p>
                         <% if (loja) { %>
                         <% if (loja.id == lojaPerfil.id) { %>
