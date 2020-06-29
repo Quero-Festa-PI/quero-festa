@@ -75,9 +75,13 @@ const alterarQuantidade = (id, quantidade) => {
         localStorage.setItem("@quero-festa:carrinho", JSON.stringify(produtos));
 
         input.value = produtos[indice].quantidade;
+        let divQuantidade = document.querySelector(`div.navbar-produto-${id} .carrinho-quantidade`);
+        divQuantidade.innerText = `Quantidade: ${produtos[indice].quantidade}`;
 
         let span = document.querySelector(`.produto-valor .span-${id}`);
         span.innerText = `R$${novoValor.toFixed(2)}`
+        let div = document.querySelector(`div.navbar-produto-${id} .carrinho-valor`);
+        div.innerText = `R$${novoValor.toFixed(2)}`
 
         alterarValorTotal();
     }
@@ -106,9 +110,13 @@ const definirQuantidade = (id, quantidade) => {
 
         let input = document.querySelector(`.input-quantidade .input-${id}`);
         input.value = produtos[indice].quantidade;
+        let divQuantidade = document.querySelector(`div.navbar-produto-${id} .carrinho-quantidade`);
+        divQuantidade.innerText = `Quantidade: ${produtos[indice].quantidade}`;
 
         let span = document.querySelector(`.produto-valor .span-${id}`);
         span.innerText = `R$${novoValor.toFixed(2)}`
+        let div = document.querySelector(`div.navbar-produto-${id} .carrinho-valor`);
+        div.innerText = `R$${novoValor.toFixed(2)}`
 
         alterarValorTotal();
 
@@ -199,26 +207,28 @@ const renderizar = () => {
 
             divPage.innerHTML = `
             <div class="produto-imagem">
-            <img src="${produto.imagem}">
+                <img src="${produto.imagem}">
             </div>
-            <div class="nome-loja">
-            <a href="/produtos/${produto.id}" class="produto-nome">${produto.nome}</a>
-            <span class="produto-loja">Vendido por: ${produto.loja}</span>
-            </div>
-            <div class="preco-quantidade">
-            <div class="produto-quantidade">
-            <div class="input-quantidade">
-            <input onchange="definirQuantidade(${produto.id}, this.value)" class="input-${produto.id}" type="text" value="${produto.quantidade}" />
-            <div class="buttons">
-            <button onclick="alterarQuantidade(${produto.id}, 1)">+</button>
-            <button onclick="alterarQuantidade(${produto.id}, -1)">-</button>
-            </div>
-            </div>
-            </div>
-            <div class="produto-valor"><span class="span-${produto.id}">R$${produto.valor.toFixed(2)}</span></div>
-            <div class="produto-deletar">
-            <button value="${produto.id}" onclick="deletarProduto(${produto.id})">X</button>
-            </div>
+            <div class="infos-produto">
+                <div class="nome-loja">
+                    <a href="/produtos/${produto.id}" class="produto-nome">${produto.nome}</a>
+                    <span class="produto-loja">Vendido por: ${produto.loja}</span>
+                </div>
+                <div class="preco-quantidade">
+                    <div class="produto-quantidade">
+                        <div class="input-quantidade">
+                            <input onchange="definirQuantidade(${produto.id}, this.value)" class="input-${produto.id}" type="text" value="${produto.quantidade}" />
+                            <div class="buttons">
+                                <button onclick="alterarQuantidade(${produto.id}, 1)">+</button>
+                                <button onclick="alterarQuantidade(${produto.id}, -1)">-</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="produto-valor"><span class="span-${produto.id}">R$${produto.valor.toFixed(2)}</span></div>
+                    <div class="produto-deletar">
+                        <button value="${produto.id}" onclick="deletarProduto(${produto.id})">X</button>
+                    </div>
+                </div>
             </div>
             `
 
