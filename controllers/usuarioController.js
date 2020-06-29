@@ -211,8 +211,6 @@ module.exports = {
                     usuarios_id: id
                }
           });
-          
-
           return res.redirect(`/usuarios/perfil-cliente/${res.locals.usuario.id}`);
      },
      dashboard: (req, res, ) => {
@@ -221,5 +219,31 @@ module.exports = {
      sair: (req, res) => {
           req.session.destroy();
           res.redirect('/');
+     },
+     endereco: async (req, res) => {
+          let usuario = res.locals.usuario; 
+          let endereco = await Endereco.findOne({ where: { usuarios_id: usuario.id } });
+          res.render('editar-endereco', {page: 'Editar Endereço', endereco, usuario});
+     },
+     editarEndereco: async (req, res) => {
+          let usuario = res.locals.usuario; 
+          // Dados do endereço
+          let {enderecoId, cep, rua, numeral, complemento, cidade, estado} = req.body;  
+          console.log('não alterou');
+          let endereco = await Endereco.update({
+               estado,
+               cidade,
+               cep,
+               logradouro: rua,
+               numeral,
+               complemento,
+               usuarios_id: usuario.id
+          },{
+               where: { 
+                    id: enderecoId,
+                    usuarios_id: usuario.id
+               }
+          });
+          return res.redirect('/pedidos/checkout');
      }
 }

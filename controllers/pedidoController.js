@@ -38,8 +38,20 @@ module.exports = {
     carrinho: (req, res) => {
         res.render('carrinho', { page: 'carrinho' });
     },
-    checkout: (req, res) => {
-        res.render('checkout', { page: 'checkout' });
+    checkout: async (req, res) => {
+        let usuario = req.session.usuario;
+        let endereco = await Endereco.findOne({
+            where: {usuarios_id: usuario.id}
+        })
+
+        let pedido = await Pedido.findOne({
+            include: {
+                model: Produto,
+                as: 'produtos',
+                through: {attributes: []}
+            }
+        })
+        res.render('checkout', { page: 'checkout', endereco, pedido });
     },
     confirmacao: (req, res) => {
         res.render('confirmacao', { page: 'confirmacao' });

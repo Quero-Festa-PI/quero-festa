@@ -14,6 +14,8 @@ router.get('/editar-cliente/:id', usuarioController.alter);
 router.put('/editar-cliente/:id', usuarioController.update);
 router.get('/dashboard', usuarioController.dashboard);
 router.get('/sair', usuarioController.sair);
+router.get('/editar-endereco/:id', usuarioController.endereco);
+router.put('/editar-endereco/:id', usuarioController.editarEndereco);
 
 
 /* GET users listing. */
