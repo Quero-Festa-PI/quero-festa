@@ -1,0 +1,193 @@
+div.page-carrinho .container {
+  flex-direction: column; }
+  div.page-carrinho .container div.row.produtos {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
+    background-color: #fff;
+    border: 1px solid #FF826E;
+    border-radius: .25rem; }
+    div.page-carrinho .container div.row.produtos h5 {
+      padding: 10px 0px 0px 10px; }
+    div.page-carrinho .container div.row.produtos div.page-carrinho-produtos {
+      display: flex;
+      flex-direction: column; }
+      div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto {
+        display: flex;
+        flex-direction: row; }
+        div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto button {
+          border: none; }
+        div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.produto-imagem {
+          padding: 10px; }
+          div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.produto-imagem img {
+            width: 75px; }
+        div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto {
+          display: flex;
+          flex-direction: row;
+          flex-grow: 1; }
+          div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.nome-loja {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            flex-grow: 1; }
+            div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.nome-loja a {
+              color: #FF826E; }
+          div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade {
+            padding: 10px;
+            display: flex;
+            flex-direction: row; }
+            div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade div {
+              padding: 10px;
+              display: flex;
+              align-items: center; }
+            div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade div.produto-quantidade {
+              display: flex;
+              flex-flow: column wrap;
+              justify-content: space-evenly;
+              padding: 0;
+              width: 75px; }
+              div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade div.produto-quantidade div.input-quantidade {
+                display: flex;
+                flex-direction: row;
+                height: 40px;
+                padding: 0px; }
+                div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade div.produto-quantidade div.input-quantidade input {
+                  height: 100%;
+                  padding: 5px;
+                  width: 50px;
+                  text-align: center; }
+                div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade div.produto-quantidade div.input-quantidade div.buttons {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: flex-start;
+                  justify-content: center;
+                  padding: 0;
+                  margin-left: 2px; }
+                  div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade div.produto-quantidade div.input-quantidade div.buttons button {
+                    font-size: .75rem;
+                    background-color: #777;
+                    color: #fff;
+                    padding: 0px 5px;
+                    font-weight: bold;
+                    border-bottom: 1px solid #FFF;
+                    width: 100%; }
+                  div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade div.produto-quantidade div.input-quantidade div.buttons button:hover {
+                    cursor: pointer;
+                    background-color: #FF826E; }
+            div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade div.produto-valor {
+              display: flex;
+              justify-content: center;
+              color: #FF826E;
+              font-weight: bold;
+              width: 100px; }
+            div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade div.produto-deletar button {
+              background-color: #777;
+              color: #fff;
+              padding: 4px 8px;
+              font-weight: bold;
+              border-radius: 7px; }
+            div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade div.produto-deletar button:hover {
+              background-color: #FF826E;
+              color: #F8F8F8;
+              cursor: pointer; }
+    div.page-carrinho .container div.row.produtos div.fechamento {
+      align-self: flex-end;
+      padding: 0px 20px 10px 0px; }
+      div.page-carrinho .container div.row.produtos div.fechamento span {
+        margin: 3px 10px 0px 0px;
+        font-size: 1.25rem; }
+      div.page-carrinho .container div.row.produtos div.fechamento button {
+        border: none;
+        background-color: #FF826E;
+        color: #fff;
+        padding: 4px 8px;
+        font-weight: bold;
+        border-radius: 7px; }
+      div.page-carrinho .container div.row.produtos div.fechamento button:hover {
+        background-color: #ff5a41;
+        cursor: pointer; }
+
+@media screen and (max-width: 575px) {
+  div.page-carrinho .container {
+    padding: 0px 10px; }
+    div.page-carrinho .container div.row.produtos h5 {
+      text-align: center; }
+    div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto {
+      flex-direction: column;
+      align-items: center; }
+      div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.produto-imagem {
+        height: 100%;
+        width: 95px; }
+      div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto {
+        display: flex;
+        flex-direction: column; }
+        div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.nome-loja {
+          width: 100%;
+          text-align: center; }
+        div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade {
+          width: 100%;
+          align-self: flex-end;
+          padding: 10px;
+          display: flex;
+          flex-direction: row;
+          justify-content: center; }
+          div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade div {
+            padding: 10px;
+            display: flex;
+            align-items: center; }
+          div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade div.produto-quantidade {
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: space-evenly;
+            padding: 0;
+            width: 75px; }
+            div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade div.produto-quantidade div.input-quantidade {
+              display: flex;
+              flex-direction: row;
+              height: 40px;
+              padding: 0px; }
+              div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade div.produto-quantidade div.input-quantidade input {
+                height: 100%;
+                padding: 5px;
+                width: 50px;
+                text-align: center; }
+              div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade div.produto-quantidade div.input-quantidade div.buttons {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                padding: 0;
+                margin-left: 2px; }
+                div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade div.produto-quantidade div.input-quantidade div.buttons button {
+                  font-size: .75rem;
+                  background-color: #777;
+                  color: #fff;
+                  padding: 0px 5px;
+                  font-weight: bold;
+                  border-bottom: 1px solid #FFF;
+                  width: 100%; }
+                div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade div.produto-quantidade div.input-quantidade div.buttons button:hover {
+                  cursor: pointer;
+                  background-color: #FF826E; }
+          div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade div.produto-valor {
+            display: flex;
+            justify-content: center;
+            color: #FF826E;
+            font-weight: bold;
+            width: 100px; }
+          div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade div.produto-deletar button {
+            background-color: #777;
+            color: #fff;
+            padding: 4px 8px;
+            font-weight: bold;
+            border-radius: 7px; }
+          div.page-carrinho .container div.row.produtos div.page-carrinho-produtos div.carrinho-produto div.infos-produto div.preco-quantidade div.produto-deletar button:hover {
+            background-color: #FF826E;
+            color: #F8F8F8;
+            cursor: pointer; }
+    div.page-carrinho .container div.row.produtos div.fechamento {
+      align-self: center;
+      padding: 0px 0px 10px 10px; } }
+
+/*# sourceMappingURL=carrinho.css.map */

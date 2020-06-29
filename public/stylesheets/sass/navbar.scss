@@ -97,12 +97,14 @@ $secondary-font: #1E1E1E;
             div.dropdown-content-carrinho {
                 position: absolute;
                 left: 0;
+                padding: 0px 8px;
                 transform: translate(-50%, 0px);
                 z-index: 1;
                 display: none;
                 background-color: #f1f1f1;
                 border-radius: 5px;
-                width: 408px;
+                width: 616px;
+                border: 1px solid #777;
                 .carrinho-cabeçalho {
                     display: flex;
                     flex-direction: row;
@@ -129,15 +131,18 @@ $secondary-font: #1E1E1E;
                         }
                         div.nome-quantidade {
                             height: 60px;
-                            width: 200px;
+                            width: 400px;
+                            overflow: hidden;
                             padding: 5px;
                             margin-right: 16px;
+                            flex-grow: 5;
                             .carrinho-nome {
                                 position: relative;
-                                overflow: hidden;
                                 height: 50%;
+                                white-space: nowrap;
                                 text-align: left;
                                 padding-right: 12px;
+                                color: $primary;
                             }
                             .carrinho-quantidade {                            
                                 height: 50%;
@@ -265,6 +270,16 @@ $secondary-font: #1E1E1E;
 }
 ::-webkit-input-placeholder {
     letter-spacing: 1px;
+}
+
+@media screen and (max-width: 991px) {
+    .navbar {
+        .navbar-row1 {    
+            .dropdown-carrinho:hover .dropdown-content-carrinho {
+                display: none;
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 768px) {
