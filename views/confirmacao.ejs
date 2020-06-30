@@ -5,46 +5,47 @@
     <%- include('partials/navbar') %>
 
     <!-- CONTEÚDO PRINCIPAL -->
-    <div class="container">
+    <div id="meio-home" class="container">
       <div class="row">
+        <%- include('partials/breadcrumb') %>
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <div class="homebuilder clearfix">
-            <!-- CONTAINER CAMINHO DAS PAGINAS -->
-            <%- include('partials/breadcrumb') %>
-            <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
+          <div id="painel-cliente" class="container center">
 
-            <!-- CONFIRMAÇÃO DO PEDIDO -->
-            <div id="confirmar-pedido" class="col-12">
-
-              <br>
-              <!-- Card Confirmação do Pedido -->
-              <div class="card confirmacao border-left-primary shadow ml-3">
-                <div class="card-body confirmacao">
-                  <div class="row">
-                    <div class='col-5'>
-                      <h6>Confirmação do Pedido</h6>
-                    </div>
-                  </div>
-                  <!-- Divider -->
-                  <hr class="sidebar-divider my-0">
-                  <div class="row">
-                    <a href="#" class="mt-2 ml-4">Pedido Nº XXXXXXXXXXXXX</a>
-                  </div>
-                  <div class="row">
-                    <p class="mt-2 ml-4">Seu pedido foi finalizado com sucesso. <br>
-                      Enviaremos um email com as informações da sua compra.<br>
-                      Obrigada pela preferencia</p>
-                  </div>
+            <!-- Confirmação do pedido -->
+            <div class="card card-body painel-dash" id="borda">
+              <div class="row">
+                <div class='col-12'>
+                  <h4>Confirmação do Pedido</h4>
                 </div>
               </div>
-              <!-- Fim Card Confirmação do Pedido -->
-            </div>
-            <!-- FIM DE CONFIRMAÇÃO DO PEDIDO -->
+              <!-- Divider -->
+              <hr class="sidebar-divider my-0">
 
-            <div class="row my-3 float-right">
-              <button type="button" class="btn btn-voltar shadow px-4 py-2 mb-5 mr-4 bg-white rounded">Voltar</button>
+              <div class="row">
+                <a href="#" class="mt-3 ml-4"><h5 id="corRosa"><strong>Pedido Nº XXXXXXXXXXXXX</strong></h5></a>
+              </div>
+              <div class="row">
+                <div class="col-12 text-center">
+                  <h5 id="cinza"><strong> Seu pedido foi realizado com sucesso.</strong></h5>
+                </div>
+                <div class="col-12 mt-2 ">                   
+                  <p id="letraP"  class="ml-3 mr-3" > Obrigado por comprar conosco! Em breve enviaremos um email com 
+                  as informações do seu pedido. E fique a vontande para entrar em 
+                  contato com a gente através do email <a id="cinza" href="#"><strong> (email@email.com)</strong></a> ou
+                  pelo telefone <strong> (xx) X xxxx-xxxx </strong>
+                  </p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12 text-right">
+                  <a type="button" href="/"
+                  class="btn btn-link btn-voltar">Voltar</a>
+                </div>
+              </div>
             </div>
+
 
           </div>
         </div>
