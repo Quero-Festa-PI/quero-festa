@@ -2,11 +2,15 @@
 .containerGrafico {
     max-width: 900px;
     max-height: 650;
-    margin: 0 auto;
-    border: 1px solid #ccc;
+    margin: 0 auto; 
+    
+    border: #E67E22 1px solid;   
 }
 
 .grafico { 
     text-align: center;
-    margin-top: 50px;
  } 
+
+ #laranja {
+    border-color: #E67E22 1px solid;
+ }

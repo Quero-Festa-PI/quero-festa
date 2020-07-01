@@ -45,3 +45,12 @@
     font-size: 20px;
     color: #777777;
 }
+
+#bordaVerde {
+    border: 1px #44D19E solid;
+}
+
+#bordaAzul {
+    border: 1px #36B9CC solid;
+    
+}
