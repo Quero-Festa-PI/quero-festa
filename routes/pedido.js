@@ -8,6 +8,7 @@ const pedidoController = require('../controllers/pedidoController');
 router.get('/pedido', pedidoController.pedido);
 router.get('/carrinho', pedidoController.carrinho);
 router.get('/checkout', pedidoController.checkout);
+router.post('/cadastrar', pedidoController.cadastrar);
 router.get('/confirmacao', pedidoController.confirmacao);
 
 

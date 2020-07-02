@@ -23,25 +23,29 @@
               <hr class="sidebar-divider my-0">
 
               <div class="row">
-                <a href="#" class="mt-3 ml-4"><h5 id="corRosa"><strong>Pedido Nº XXXXXXXXXXXXX</strong></h5></a>
+                <a href="#" class="mt-3 ml-4">
+                  <% for (id of ids) { %>
+                  <h5 id="corRosa"><strong>Pedido Nº <%= id %></strong></h5>
+                  <% } %>
+                </a>
               </div>
               <div class="row">
                 <div class="col-12 text-center">
                   <h5 id="cinza"><strong> Seu pedido foi realizado com sucesso.</strong></h5>
                 </div>
-                <div class="col-12 mt-2 ">                   
-                  <p id="letraP"  class="ml-3 mr-3" > Obrigado por comprar conosco! Em breve enviaremos um email com 
-                  as informações do seu pedido. E fique a vontande para entrar em 
-                  contato com a gente através do email <a id="cinza" href="#"><strong> (email@email.com)</strong></a> ou
-                  pelo telefone <strong> (xx) X xxxx-xxxx </strong>
+                <div class="col-12 mt-2 ">
+                  <p id="letraP" class="ml-3 mr-3"> Obrigado por comprar conosco! Em breve enviaremos um email com
+                    as informações do seu pedido. E fique a vontande para entrar em
+                    contato com a gente através do email <a id="cinza" href="#"><strong> (email@email.com)</strong></a>
+                    ou
+                    pelo telefone <strong> (xx) X xxxx-xxxx </strong>
                   </p>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-12 text-right">
-                  <a type="button" href="/"
-                  class="btn btn-link btn-voltar">Voltar</a>
+                  <a type="button" href="/" class="btn btn-link btn-voltar">Voltar</a>
                 </div>
               </div>
             </div>
