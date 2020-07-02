@@ -1,4 +1,5 @@
 <%- include('partials/header') %>
+
 <body>
     <!-- Pagina Completa -->
     <div class="page">
@@ -15,46 +16,46 @@
                             <!-- Foto -->
                             <div class="col-4 text-center mt-3">
                                 <img name="imagem" id='avatar' class='shadow border-bottom-primary'
-                                    src='/images/sem-foto.png' width="200px" height="200px"
-                                    alt='avatar'>
+                                    src='/images/sem-foto.png' width="200px" height="200px" alt='avatar'>
                                 <button class="btn btn-alt text-center">Escolha sua foto!</button>
-                            </div> 
+                            </div>
                             <div class="col-8 mt-2">
                                 <!-- Nome da Loja-->
                                 <div class="form-group row">
                                     <label for="nome" class="col-sm-3 col-form-label">Nome</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="nome"
-                                            name="nome" placeholder="Doces Mania">
+                                        <input type="text" class="form-control" id="nome" name="nome"
+                                            placeholder="Doces Mania">
                                     </div>
                                 </div>
                                 <!-- Telefone-->
                                 <div class="form-group row">
                                     <label for="telefone" class="col-sm-3 col-form-label">Telefone</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="telefone"
-                                            name="telefone" placeholder="(xx)xxxxx-xxxx">
+                                        <input type="text" class="form-control" id="telefone" name="telefone"
+                                            placeholder="(xx)xxxxx-xxxx">
                                     </div>
-                                </div>  
+                                </div>
                                 <!-- Email-->
                                 <div class="form-group row">
                                     <label for="email" class="col-sm-3 col-form-label">Email</label>
                                     <div class="col-sm-9">
-                                        <input type="email" class="form-control" id="email"
-                                            name="email" placeholder="fulano@email.com">
+                                        <input type="email" class="form-control" id="email" name="email"
+                                            placeholder="fulano@email.com">
                                     </div>
-                                </div>                               
+                                </div>
                                 <!-- Descrição-->
                                 <div class="form-group row">
                                     <label for="descricao" class="col-sm-3 col-form-label">Descrição</label>
                                     <div class="col-sm-9">
-                                      <textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
+                                        <textarea class="form-control" id="descricao" name="descricao"
+                                            rows="3"></textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <% if(err > 0){ %>
-                            <%= err %>
+                        <%= err %>
                         <% } %>
                         <div class="row">
                             <div class="col-12 text-right mt-2">
@@ -65,8 +66,8 @@
                     </form>
                 </div>
             </div>
-            
+
         </div>
     </div>
-
+    <%- include('partials/script') %>
 </body>
