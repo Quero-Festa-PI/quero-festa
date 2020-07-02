@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 
 module.exports = {
      //Pagina Login
-     login: (req, res, ) => {
+     login: (req, res,) => {
           let err = 0;
           if (req.query.error == 1) {
                err = "Usuário e/ou senha incorreto(s)."
@@ -50,7 +50,7 @@ module.exports = {
           res.render('cadastro', { page: 'cadastro', err });
      },
      cadastrar: async (req, res) => {
-          let {nome, senha, email1, email2 } = req.body;
+          let { nome, senha, email1, email2 } = req.body;
           let endereco;
 
           // tratando string email
@@ -113,7 +113,7 @@ module.exports = {
                logradouro: 'Rua, Avenida, Estrada',
                numeral: 1,
                complemento: ' ',
-               usuarios_id: usuario.id  
+               usuarios_id: usuario.id
           })
 
           // iniciando session e redirecionando para a home
@@ -132,22 +132,26 @@ module.exports = {
           // capturando id da rota
           let idUsuario = req.params.id;
 
-          let usuarioPerfil = await Usuario.findByPk(idUsuario, { include: ['lojas', 'enderecos']});
+          let usuarioPerfil = await Usuario.findByPk(idUsuario, { include: ['lojas', 'enderecos'] });
           let lojaPerfil = usuarioPerfil.lojas;
-          let endereco = usuarioPerfil.enderecos[0];         
+          let endereco = usuarioPerfil.enderecos[0];
 
           res.render('perfil-cliente', { page: 'Perfil Cliente', usuarioPerfil, lojaPerfil, endereco })
 
      },
-     alter: async (req, res) => {   
-          let usuario = res.locals.usuario;  
-          let endereco = await Endereco.findOne({ where: { usuarios_id: res.locals.usuario.id } });      
+     alter: async (req, res) => {
+          let usuario = res.locals.usuario;
+          if (!usuario) {
+               res.redirect('/usuarios/logar');
+          }
+
+          let endereco = await Endereco.findOne({ where: { usuarios_id: res.locals.usuario.id } });
           let err = req.query.error;
 
-          if(err == 1){
+          if (err == 1) {
                err = 'Senha inválida';
           }
-          if(err == 2){
+          if (err == 2) {
                err = 'Senhas não conferem';
           }
 
@@ -159,29 +163,29 @@ module.exports = {
           let { nomeCli, dataCli, cpfCli } = req.body;
           let nomeCompleto = nomeCli;
           let usuario = res.locals.usuario;
-          
+
           // Dados do endereço
-          let {enderecoId, cep, rua, numeral, complemento, cidade, estado} = req.body;  
+          let { enderecoId, cep, rua, numeral, complemento, cidade, estado } = req.body;
 
           // senha
-          let {senhaAtual, novaSenha, confirmarSenha} = req.body;
-            
+          let { senhaAtual, novaSenha, confirmarSenha } = req.body;
+
           // Separar o nome  
           let nome = nomeCompleto.split(' ')[0];
           let sobrenome = nomeCompleto.replace(nome + " ", "");
 
-          if(senhaAtual == null){
+          if (senhaAtual == null) {
                senhaAtual = usuario.senha;
                novaSenha = usuario.senha;
                confirmarSenha = usuario.senha;
           }
 
           // verificando senha atual
-          if(!bcrypt.compareSync(senhaAtual, usuario.senha)) {
+          if (!bcrypt.compareSync(senhaAtual, usuario.senha)) {
                res.redirect('/usuarios/editar-cliente/usuario.id?error=1');
           }
           // verificando senhas novas
-          if(novaSenha != confirmarSenha){
+          if (novaSenha != confirmarSenha) {
                res.redirect('/usuarios/editar-cliente/usuario.id?error=2');
           }
 
@@ -194,8 +198,8 @@ module.exports = {
                data_nasc: dataCli,
                cpf: cpfCli,
                senha: novaSenha
-          }, 
-          { where: {id} });
+          },
+               { where: { id } });
 
           let endereco = await Endereco.update({
                estado,
@@ -205,15 +209,15 @@ module.exports = {
                numeral,
                complemento,
                usuarios_id: userNovo.id
-          },{
-               where: { 
+          }, {
+               where: {
                     id: enderecoId,
                     usuarios_id: id
                }
           });
           return res.redirect(`/usuarios/perfil-cliente/${res.locals.usuario.id}`);
      },
-     dashboard: (req, res, ) => {
+     dashboard: (req, res,) => {
           res.render('dashboard', { page: 'dashboard' });
      },
      sair: (req, res) => {
@@ -221,14 +225,14 @@ module.exports = {
           res.redirect('/');
      },
      endereco: async (req, res) => {
-          let usuario = res.locals.usuario; 
+          let usuario = res.locals.usuario;
           let endereco = await Endereco.findOne({ where: { usuarios_id: usuario.id } });
-          res.render('editar-endereco', {page: 'Editar Endereço', endereco, usuario});
+          res.render('editar-endereco', { page: 'Editar Endereço', endereco, usuario });
      },
      editarEndereco: async (req, res) => {
-          let usuario = res.locals.usuario; 
+          let usuario = res.locals.usuario;
           // Dados do endereço
-          let {enderecoId, cep, rua, numeral, complemento, cidade, estado} = req.body;  
+          let { enderecoId, cep, rua, numeral, complemento, cidade, estado } = req.body;
           console.log('não alterou');
           let endereco = await Endereco.update({
                estado,
@@ -238,8 +242,8 @@ module.exports = {
                numeral,
                complemento,
                usuarios_id: usuario.id
-          },{
-               where: { 
+          }, {
+               where: {
                     id: enderecoId,
                     usuarios_id: usuario.id
                }

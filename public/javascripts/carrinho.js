@@ -9,7 +9,7 @@ function setLocalStorage(produtos) {
 }
 
 // adicionar produto à localStorage
-const adicionarProduto = (id, nome, valor, imagem, quantidade, loja) => {
+const adicionarProduto = (id, nome, valor, imagem, quantidade, loja, loja_id) => {
 
     let produtos = getLocalStorage();
 
@@ -19,7 +19,7 @@ const adicionarProduto = (id, nome, valor, imagem, quantidade, loja) => {
         produtos[indice].quantidade += quantidade;
         alert(`Adicionado mais um produto ao carrinho! Total: ${produtos[indice].quantidade}`);
     } else {
-        produtos.push({ id, nome, valor, imagem, quantidade, loja });
+        produtos.push({ id, nome, valor, imagem, quantidade, loja, loja_id });
         alert("Produto adicionado ao carrinho!");
     }
 
@@ -181,7 +181,6 @@ const renderizar = () => {
         // multiplicando o valor do produto
         produto.valor = produto.valor * produto.quantidade;
 
-        // criar linha de tabela
         let div = document.createElement("div");
         div.setAttribute("class", `carrinho-produto navbar-produto-${produto.id}`)
 
