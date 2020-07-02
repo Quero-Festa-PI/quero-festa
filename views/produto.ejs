@@ -83,7 +83,7 @@
                                 href="/lojas/perfil-loja/<%= lojas.id %>"><%= lojas.nome %></a></span>
                         <span class="preco">R$<%= produto.valor.toFixed(2) %></span>
                         <button
-                            onclick="adicionarProduto(<%= produto.id %>, '<%= produto.nome %>', <%= produto.valor %>, '<%= imagens[0].image_url %>', 1, '<%= lojas.nome %>')">Comprar</button>
+                            onclick="adicionarProduto(<%= produto.id %>, '<%= produto.nome %>', <%= produto.valor %>, '<%= imagens[0].image_url %>', 1, '<%= lojas.nome %>', '<%= lojas.id %>')">Comprar</button>
                     </div>
 
                     <!-- botão comprar -->

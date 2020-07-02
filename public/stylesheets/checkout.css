@@ -1,47 +1,76 @@
-#confirmar-endereco {
-    position: relative;
-    display: grid;
-    flex-wrap: wrap;
-    gap: 1.5%;
-    margin-inline: 3%;    
-}
+div.page-checkout .container {
+  display: flex;
+  flex-direction: column; }
+  div.page-checkout .container .row.dados-pedido {
+    margin: 0px;
+    width: 100%;
+    margin-bottom: 16px; }
+    div.page-checkout .container .row.dados-pedido .dados-endereco {
+      width: calc((100% - 16px) / 2);
+      border: 1px solid #FF826E;
+      border-radius: 7px;
+      background-color: #FFF;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      margin-right: 16px; }
+      div.page-checkout .container .row.dados-pedido .dados-endereco .header-endereco {
+        display: flex;
+        flex-direction: row; }
+        div.page-checkout .container .row.dados-pedido .dados-endereco .header-endereco h5 {
+          width: 75%; }
+        div.page-checkout .container .row.dados-pedido .dados-endereco .header-endereco a {
+          width: 25%;
+          padding: 0px; }
+      div.page-checkout .container .row.dados-pedido .dados-endereco .infos-endereco {
+        padding-top: 8px;
+        display: flex;
+        flex-flow: column wrap; }
+    div.page-checkout .container .row.dados-pedido .dados-pagamento {
+      width: calc((100% - 16px) / 2);
+      border: 1px solid #FF826E;
+      border-radius: 7px;
+      background-color: #FFF;
+      padding: 16px;
+      display: flex;
+      flex-direction: column; }
+      div.page-checkout .container .row.dados-pedido .dados-pagamento h6 {
+        margin-top: 8px;
+        margin-bottom: 0px; }
+      div.page-checkout .container .row.dados-pedido .dados-pagamento span {
+        color: #FF826E;
+        font-weight: 600; }
+  div.page-checkout .container .row.botoes {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    margin: 0px; }
+    div.page-checkout .container .row.botoes button {
+      border: none;
+      padding: 4px 8px;
+      background-color: rgba(0, 0, 0, 0.43);
+      color: #FFF;
+      font-weight: bold;
+      border-radius: 7px; }
+    div.page-checkout .container .row.botoes button:hover {
+      cursor: pointer;
+      background-color: #FF826E;
+      color: #F8F8F8; }
+    div.page-checkout .container .row.botoes .botao-carrinho {
+      margin-right: 16px; }
 
-.checkout {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-    display: grid;
-}
+@media screen and (max-width: 991px) {
+  div.page-checkout .container .row.dados-pedido .dados-pagamento .opcoes-pagamento {
+    display: flex;
+    flex-direction: column; } }
+@media screen and (max-width: 575px) {
+  div.page-checkout .container {
+    padding: 0px 10px; }
+    div.page-checkout .container .row.dados-pedido .dados-endereco {
+      width: 100%;
+      margin-right: 0px;
+      margin-bottom: 16px; }
+    div.page-checkout .container .row.dados-pedido .dados-pagamento {
+      width: 100%; } }
 
-.checkout h6 {
-    color: #6887E3;
-}
-
-.btn-cancelar {
-    color: #F64343; 
-}
-
-.btn-comprando {
-    color: #36B9CC; 
-}
-
-.btn-confirmar {
-    color: #44D19E; 
-}
-
-#cinza {
-    color: #777777;
-}
-
-.btn-voltar {
-    background-color: #FFFFFF;
-    color: #44D19E;
-}
-
-#corRosa {
-    color: #FF826E;
-}
-
-#letraP {
-    font-size: 20px;
-    color: #777777;
-}
+/*# sourceMappingURL=checkout.css.map */
