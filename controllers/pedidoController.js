@@ -108,6 +108,8 @@ module.exports = {
         res.send(numerosDosPedidos);
     },
     confirmacao: (req, res) => {
-        res.render('confirmacao', { page: 'Confirmacao' });
+        let { ids } = req.query
+        ids = ids.split(',');
+        res.render('confirmacao', { page: 'Confirmacao', ids });
     }
 }
