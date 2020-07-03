@@ -2,34 +2,71 @@
 
 <body>
   <!-- PAGINA COMPLETA -->
-  <div class="page">
+  <div class="page-index">
     <%- include('partials/navbar.ejs') %>
 
     <!-- CONTEÚDO PRINCIPAL -->
     <div id="meio-home" class="container">
-      <div class="row ">
 
-        <div id="content" class="col-sm-12 col-md-12 col-lg-12">
-          <div class="homebuilder clearfix">
-            <div class="tm-container">
-              <div class="tm-inner">
-                <div class="row row-level-1">
-                  <div class="row-inner clearfix">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                      <div class="col-inner">
-                        <%include partials/carrosel %>
-                      </div>
-                    </div>
+      <div class="homebuilder clearfix">
+        <div class="tm-container">
+          <div class="tm-inner">
+            <div class="row row-level-1">
+              <div class="row-inner clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="col-inner">
+                    <%include partials/carrosel %>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <%include partials/categorias %>
-          <%include partials/anuncios %>
         </div>
       </div>
     </div>
+    <%include partials/categorias %>
+    <div class="row produtos-index">
+      <h3>Produtos queridinhos</h3>
+      <div class="produtos">
+        <% for (produto of produtos) { %>
+        <% if(produto.avaliacoes) { %>
+        <% var avaliacao = Math.round(Number(produto.avaliacoes.media) * 10) / 10; %>
+        <% var avaliacaoPerc = ((18 * avaliacao) + (4.3875 * Math.trunc(avaliacao))) / 107.550 * 100; %>
+        <% var quantidadeAvaliacoes = Number(produto.avaliacoes.quantidadeAvaliacoes); %>
+        <% } else { %>
+        <% var avaliacao = 0; %>
+        <% var avaliacaoPerc = 100; %>
+        <% var quantidadeAvaliacoes = 0; %>
+        <% } %>
+        <card class="anuncio-box card shadow card-produtos">
+          <a href="/produtos/<%= produto.id %>"><img src="<%= produto.imagem %>" class="img-fluid"></a>
+          <titulo class="card-text"><%= produto.nome %></titulo>
+          <div class="avaliacao">
+            <div class="stars-outer">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <div class="stars-inner" style="width: <%= avaliacaoPerc %>%">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+            <span><%= avaliacao %></span>
+            <span>(<%= quantidadeAvaliacoes %>)</span>
+          </div>
+          <preco>R$<%= produto.valor.toFixed(2) %></preco>
+
+          <a href="/produtos/<%= produto.id %>">Saiba Mais...</a>
+        </card>
+        <% } %>
+      </div>
+    </div>
+  </div>
   </div>
   <% include partials/footer %>
   <%- include('partials/script') %>
