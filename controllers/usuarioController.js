@@ -1,4 +1,4 @@
-const { sequelize, Usuario, Endereco, Pagamento, PedidoProduto, Entrega, Loja, Produto, Pedido } = require('../database/models');
+const { sequelize, Sequelize, Usuario, Endereco, Pagamento, PedidoProduto, Entrega, Loja, Produto, Pedido } = require('../database/models');
 const bcrypt = require('bcrypt');
 
 module.exports = {
@@ -160,7 +160,7 @@ module.exports = {
      update: async (req, res) => {
           // Dados do usuario
           let { id } = req.params;
-          let { nomeCli, dataCli, cpfCli } = req.body;
+          let { nomeCli, dataCli, cpfCli, celular } = req.body;
           let nomeCompleto = nomeCli;
           let usuario = res.locals.usuario;
 
@@ -174,13 +174,12 @@ module.exports = {
           let nome = nomeCompleto.split(' ')[0];
           let sobrenome = nomeCompleto.replace(nome + " ", "");
 
-          if (senhaAtual == null) {
+          if (!senhaAtual) {
                senhaAtual = usuario.senha;
                novaSenha = usuario.senha;
                confirmarSenha = usuario.senha;
           }
-
-          // verificando senha atual
+          
           if (!bcrypt.compareSync(senhaAtual, usuario.senha)) {
                res.redirect('/usuarios/editar-cliente/usuario.id?error=1');
           }
@@ -197,6 +196,7 @@ module.exports = {
                sobrenome,
                data_nasc: dataCli,
                cpf: cpfCli,
+               celular,
                senha: novaSenha
           },
                { where: { id } });
@@ -220,7 +220,7 @@ module.exports = {
      dashboard: async (req, res,) => { 
           let {id} = req.params;          
 
-          let pedidos = await Pedido.findOne({
+          let pedidos = await Pedido.findAll({
                include: [{
                     model: Produto,
                     as: 'produtos',
@@ -232,23 +232,27 @@ module.exports = {
                }, {
                     model: Usuario,
                     as: 'usuario',
-                    attributes: ['nome', 'sobrenome']
+                    attributes: ['nome', 'sobrenome', 'celular']
                }, {
                     model: Pagamento,
                     as: 'pagamento',
                     attributes: ['status']
-               }, {
+               },{
                     model: PedidoProduto,
                     as: 'listaDeProdutos',
-                    attributes: ['pedidos_id', 'produtos_id', 'quantidade']
+                    attributes: ['produtos_id', 'quantidade']
                }],
-               attributes: [ 'id', 'valor_total', 'lojas_id',
-                    [sequelize.fn('sum', sequelize.col('valor_total')), 'vendas']
+               attributes: [ //'id', 'valor_total', 'lojas_id',
+                    // [sequelize.fn('sum', sequelize.col('valor_total')), 'vendas'],
+                    [Sequelize.literal('MONTH(`entrega`.`data_prev`)'), 'date'],
+                    [Sequelize.literal('COUNT(*)'), 'count']
                ],
-               where: {lojas_id: id}
+               where: {lojas_id: id},
+               group
           }); 
 
-          console.log(JSON.stringify(pedidos[0]));
+          return res.send(JSON.stringify(pedidos));
+          // console.log(JSON.stringify(pedidos));
 
           res.render('dashboard', { page: 'dashboard', pedidos});
      },

@@ -12,7 +12,8 @@
  } 
 
  #laranja {
-    border-color: #E67E22 1px solid;
+    border-color: rgb(230, 126, 34) 1px solid;
+    color: rgb(230, 33, 33);
  }
 
  #bordaVerde {
@@ -20,5 +21,8 @@
 }
 
 #verde {
-    color: #44D19E;
+    color: rgb(68, 209, 158);
+}
+#azul{
+    color: rgb(54, 185, 204);
 }

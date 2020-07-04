@@ -36,6 +36,10 @@ let Usuario = (sequelize, DataTypes) => {
                 type: DataTypes.ENUM('M', 'F'),
                 defaultValue: null
             },
+            celular: {
+                type: DataTypes.STRING(14),
+                unique: true
+            },
             imagem: {
                 type: DataTypes.STRING
             }

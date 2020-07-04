@@ -37,6 +37,10 @@ module.exports = {
         type: Sequelize.ENUM('M', 'F'),
         defaultValue: null
       },
+      celular: {
+          type: Sequelize.STRING(14),
+          unique: true
+      },
       imagem: {
         type: Sequelize.STRING,
       }
