@@ -220,7 +220,7 @@ module.exports = {
      dashboard: async (req, res,) => { 
           let {id} = req.params;          
 
-          let pedidos = await Pedido.findAll({
+          let pedidos = await Pedido.findOne({
                include: [{
                     model: Produto,
                     as: 'produtos',
@@ -242,16 +242,15 @@ module.exports = {
                     as: 'listaDeProdutos',
                     attributes: ['produtos_id', 'quantidade']
                }],
-               attributes: [ //'id', 'valor_total', 'lojas_id',
-                    // [sequelize.fn('sum', sequelize.col('valor_total')), 'vendas'],
-                    [Sequelize.literal('MONTH(`entrega`.`data_prev`)'), 'date'],
-                    [Sequelize.literal('COUNT(*)'), 'count']
+               attributes: [ 'id', 'valor_total', 'lojas_id',
+                    [sequelize.fn('sum', sequelize.col('valor_total')), 'vendas'],
+                    // [Sequelize.literal('MONTH(`entrega`.`data_prev`)'), 'date'],
+                    // [Sequelize.literal('COUNT(*)'), 'count']
                ],
                where: {lojas_id: id},
-               group
           }); 
 
-          return res.send(JSON.stringify(pedidos));
+          // return res.send(JSON.stringify(pedidos));
           // console.log(JSON.stringify(pedidos));
 
           res.render('dashboard', { page: 'dashboard', pedidos});
