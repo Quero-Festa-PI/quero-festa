@@ -1,4 +1,4 @@
-const { sequelize, Usuario, Endereco, Loja } = require('../database/models');
+const { sequelize, Usuario, Endereco, Pagamento, PedidoProduto, Entrega, Loja, Produto, Pedido } = require('../database/models');
 const bcrypt = require('bcrypt');
 
 module.exports = {
@@ -217,8 +217,40 @@ module.exports = {
           });
           return res.redirect(`/usuarios/perfil-cliente/${res.locals.usuario.id}`);
      },
-     dashboard: (req, res,) => {
-          res.render('dashboard', { page: 'dashboard' });
+     dashboard: async (req, res,) => { 
+          let {id} = req.params;          
+
+          let pedidos = await Pedido.findOne({
+               include: [{
+                    model: Produto,
+                    as: 'produtos',
+                    attributes: ['nome']
+               }, {
+                    model: Entrega,
+                    as: 'entrega',
+                    attributes: ['data_prev', 'data_real']
+               }, {
+                    model: Usuario,
+                    as: 'usuario',
+                    attributes: ['nome', 'sobrenome']
+               }, {
+                    model: Pagamento,
+                    as: 'pagamento',
+                    attributes: ['status']
+               }, {
+                    model: PedidoProduto,
+                    as: 'listaDeProdutos',
+                    attributes: ['pedidos_id', 'produtos_id', 'quantidade']
+               }],
+               attributes: [ 'id', 'valor_total', 'lojas_id',
+                    [sequelize.fn('sum', sequelize.col('valor_total')), 'vendas']
+               ],
+               where: {lojas_id: id}
+          }); 
+
+          console.log(JSON.stringify(pedidos[0]));
+
+          res.render('dashboard', { page: 'dashboard', pedidos});
      },
      sair: (req, res) => {
           req.session.destroy();

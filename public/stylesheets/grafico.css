@@ -14,3 +14,11 @@
  #laranja {
     border-color: #E67E22 1px solid;
  }
+
+ #bordaVerde {
+    border: 1px #44D19E solid;
+}
+
+#verde {
+    color: #44D19E;
+}
