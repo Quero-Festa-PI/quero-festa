@@ -60,36 +60,36 @@ module.exports = {
     },
     cadastrar: (req, res) => {
         let err = req.query.error;
-        if(err == 1){
+        if (err == 1) {
             err = 'Digite o nome do produto';
         }
-        if(err == 2){
+        if (err == 2) {
             err = 'informe o preço';
         }
-        if(err == 4){
+        if (err == 4) {
             err = 'Esta disponível para compra?';
-        }          
-        
-        res.render('cadastrar-produto', { page: 'cadastrar-produto', err});
+        }
+
+        res.render('cadastrar-produto', { page: 'Cadastrar Produto', err });
     },
     cadastro: async (req, res) => {
 
         let file = req.files[0].originalname;
-        let img = `/uploads/${file}`;               
-        let {nomeP, preco, descricaoP, disponibilidade} = req.body;
-               
-        if(nomeP.length <= 3){
+        let img = `/uploads/${file}`;
+        let { nomeP, preco, descricaoP, disponibilidade } = req.body;
+
+        if (nomeP.length <= 3) {
             res.redirect('/produtos/cadastrar-produto?error=1')
         }
 
-        if(preco.length < 3){
+        if (preco.length < 3) {
             res.redirect('/produtos/cadastrar-produto?error=2');
         }
 
-        if(disponibilidade == null){
+        if (disponibilidade == null) {
             res.redirect('/produtos/cadastrar-produto?error=4');
         }
-        
+
         let produto = await Produto.create({
             lojas_id: req.session.loja.id,
             nome: nomeP,

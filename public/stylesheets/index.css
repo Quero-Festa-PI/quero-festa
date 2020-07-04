@@ -1,0 +1,15 @@
+.page-index div#meio-home .row.produtos-index {
+  display: flex;
+  flex-direction: column;
+  margin: 0px -10px;
+  background-color: #FFF;
+  padding: 16px; }
+  .page-index div#meio-home .row.produtos-index h3 {
+    margin-left: 10px;
+    font-weight: 500; }
+  .page-index div#meio-home .row.produtos-index .produtos {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start; }
+
+/*# sourceMappingURL=index.css.map */

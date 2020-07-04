@@ -1,0 +1,27 @@
+// variáveis
+
+$primary: #FF826E;
+$primary-font: #F8F8F8;
+$secondary: #FFFFFF;
+$secondary-font: #1E1E1E;
+
+.page-index {
+    div#meio-home {
+        .row.produtos-index {
+            display: flex;
+            flex-direction: column;
+            margin: 0px -10px;
+            background-color: #FFF;
+            padding: 16px;
+            h3 {
+                margin-left: 10px;
+                font-weight: 500;
+            }
+            .produtos {
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: flex-start;
+            }
+        }
+    }
+}
