@@ -7,11 +7,15 @@
         <%- include('partials/breadcrumb') %>
 
         <div class="row form-editar-loja">
-            <form id="form-editar-loja" method="POST" action="/lojas/editar-loja/<%= infosLoja.id %>?_method=PUT">
+            <form id="form-editar-loja" enctype="multipart/form-data"
+            method="POST" action="/lojas/editar-loja/<%= infosLoja.id %>?_method=PUT">
                 <h4>Editar dados da loja</h4>
+                <img class='d-block img-thumbnail' src='<%= infosLoja.imagem %>' width="200px" alt='avatar'>
+
+                <input type="file" name="file">
                 <input type="hidden" name="id" id="id" value="<%= infosLoja.id %>">
                 <label>Nome:<input type="text" name="nome" id="nome" value="<%= infosLoja.nome %>"></label>
-                <label>Telefone: <input type="text" name="tel" id="tel" value="<%= infosLoja.telefone %>"></label>
+                <label>Telefone: <input type="text" name="telefone" id="telefone" value="<%= infosLoja.telefone %>"></label>
                 <label>Email: <input type="email" name="email" id="email" value="<%= infosLoja.email %>"></label>
                 <label>Descrição:<textarea name="descricao" id="descricao"><%= infosLoja.descricao %></textarea></label>
                 <button type="submit">Alterar</button>
@@ -19,5 +23,5 @@
         </div>
     </div>
     <% include partials/footer-alt %>
-    <% include partials/script %>
+    <% include partials/script %>    
 </body>

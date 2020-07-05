@@ -44,6 +44,7 @@ module.exports = {
                group: ['avaliacoes.produtos_id'],
                attributes: ['id', 'nome', 'valor'],
           });
+          console.log(lojaPerfil.imagem);
 
           return res.render('perfil-loja', { page: 'Perfil Loja', lojaPerfil, resultado: produtos, avaliacaoLoja });
      },
@@ -66,12 +67,16 @@ module.exports = {
           return res.render('editar-loja', { page: 'Editar Loja', infosLoja })
      },
      update: async (req, res) => {
+          const {id} = req.params;
 
-          const { id, nome, descricao, telefone, email } = req.body;
+          let file = req.file.originalname;
+          let img = `/uploads/loja/${file}`;
+          const { nome, descricao, telefone, email } = req.body;
 
           console.log(`${id} ${nome} ${descricao}`);
 
-          let lojaUpdate = await Loja.update({
+          let lojaUpdate = await Loja.update({ 
+               imagem: img,              
                nome,
                descricao,
                telefone,
@@ -80,6 +85,7 @@ module.exports = {
                where: { id }
           });
 
+          console.log(req.file);
           return res.redirect(`/lojas/perfil-loja/${id}`);
      },
      cadastro: (req, res) => {
