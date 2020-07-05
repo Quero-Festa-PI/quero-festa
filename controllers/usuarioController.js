@@ -102,7 +102,6 @@ module.exports = {
 
           req.session.usuario = usuario;
           return res.redirect('/');
-
      },
      perfilClienteId: async (req, res) => {
 
@@ -124,12 +123,24 @@ module.exports = {
 
      },
      alter: async (req, res) => {
-          let usuario = res.locals.usuario;
-          if (!usuario) {
+
+          const { id } = req.params;
+
+          var usuarioLogado = res.locals.usuario
+
+          if (!usuarioLogado) {
+               req.session.urlPosLogin = req.originalUrl;
                res.redirect('/usuarios/logar');
           }
+          if (usuarioLogado.id != id) {
+               return res.redirect(`/usuarios/editar-cliente/${usuarioLogado.id}`);
+          }
 
-          let endereco = await Endereco.findOne({ where: { usuarios_id: res.locals.usuario.id } });
+          usuarioLogado = await Usuario.findByPk(id, { include: ['enderecos'] });
+          usuarioLogado = usuarioLogado.toJSON();
+          let endereco;
+          usuarioLogado.enderecos ? endereco = usuarioLogado.enderecos[0] : ''
+
           let err = req.query.error;
 
           if (err == 1) {
@@ -139,7 +150,7 @@ module.exports = {
                err = 'Senhas não conferem';
           }
 
-          return res.render('editar-cliente', { page: 'Editar Dados', usuario, endereco, err });
+          return res.render('editar-cliente', { page: 'Editar Dados', usuarioLogado, endereco, err });
      },
      update: async (req, res) => {
           // Dados do usuario
