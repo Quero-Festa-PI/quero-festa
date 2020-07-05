@@ -5,14 +5,15 @@ module.exports = {
      //Pagina Login
      login: (req, res,) => {
           let err = 0;
+          let link = req.session.urlPosLogin;
           if (req.query.error == 1) {
                err = "Usuário e/ou senha incorreto(s)."
           };
-          res.render('logar', { page: 'Login', err });
+          res.render('logar', { page: 'Logar', err, link });
      },
      logar: async (req, res) => {
 
-          let { email, senha } = req.body;
+          let { email, senha, url } = req.body;
 
           email = email.toLowerCase();
 
@@ -34,7 +35,7 @@ module.exports = {
                req.session.loja = loja;
           }
 
-          return res.redirect('/');
+          return url ? res.redirect(url) : res.redirect('/');
      },
      cadastro: (req, res) => {
           let err = req.query.error

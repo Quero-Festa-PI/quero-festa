@@ -2,23 +2,20 @@
 
 <div class="wrapper fadeInDown">
     <div id="formContent">
-        <!-- Tabs Titles -->
-        <!-- Icon -->
         <div class="fadeIn first mt-5 mb-3">
             <img src="/images/logo-desktop.png" id="icon" alt="User Icon" />
         </div>
 
-        <!-- Login Form -->
         <form action="/usuarios/logar" method="POST">
             <input type="text" id="email" class="fadeIn second" name="email" placeholder="login">
             <input type="password" id="senha" class="fadeIn third" name="senha" placeholder="password">
             <input type="submit" class="fadeIn fourth bt-5 btn-cheio" value="Enviar">
+            <input type="hidden" name="url" id="url" value="<%= link ? link : '' %>">
             <% if(err) { %>
             <p><%= err %></p>
             <% } %>
         </form>
 
-        <!-- Remind Passowrd -->
         <div id="formFooter">
             <a class="underlineHover" href="/usuarios/cadastro">Não possuo cadastro</a>
         </div>
