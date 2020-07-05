@@ -1,5 +1,6 @@
 const { sequelize, Sequelize, Usuario, Endereco, Pagamento, PedidoProduto, Entrega, Loja, Produto, Pedido } = require('../database/models');
 const bcrypt = require('bcrypt');
+const apiCep = require('awesome-cep');
 
 module.exports = {
      //Pagina Login
@@ -48,7 +49,7 @@ module.exports = {
           if (err == 3) {
                err = "Por favor, insira o seu nome completo."
           }
-          res.render('cadastro', { page: 'cadastro', err });
+          res.render('cadastro', { page: 'Cadastrar', err });
      },
      cadastrar: async (req, res) => {
           let { nome, senha, email1, email2 } = req.body;
@@ -102,6 +103,7 @@ module.exports = {
 
           req.session.usuario = usuario;
           return res.redirect('/');
+
      },
      perfilClienteId: async (req, res) => {
 
@@ -225,12 +227,28 @@ module.exports = {
           let endereco = await Endereco.findOne({ where: { usuarios_id: usuario.id } });
           res.render('editar-endereco', { page: 'Editar Endereço', endereco, usuario });
      },
+     consultaCep: async (req, res) => {
+          var { cep } = req.body;
+          cep = cep.replace("-", "")
+          const retorno = await apiCep.findCEP(req.body.cep)
+               .then(resp => resp)
+               .catch(error => error);
+          res.send(retorno);
+     },
      cadastrarEndereco: async (req, res) => {
           let { usuarioId, cep, rua, numeral, complemento, cidade, estado } = req.body;
 
           if (!estado) {
                console.log(estado);
                return res.send('Estado não pode ser nulo');
+          }
+
+          cep = cep.replace("-", "");
+          const retornoConsultaCep = await apiCep.findCEP(req.body.cep)
+               .then(resp => resp)
+               .catch(error => error);
+          if (retornoConsultaCep.message) {
+               res.send(retornoConsultaCep.message);
           }
 
           if (!Number(numeral)) {
@@ -262,6 +280,14 @@ module.exports = {
           if (!estado) {
                console.log(estado);
                return res.send('Estado não pode ser nulo');
+          }
+
+          cep = cep.replace("-", "");
+          const retornoConsultaCep = await apiCep.findCEP(req.body.cep)
+               .then(resp => resp)
+               .catch(error => error);
+          if (retornoConsultaCep.message) {
+               res.send(retornoConsultaCep.message);
           }
 
           if (!Number(numeral)) {
