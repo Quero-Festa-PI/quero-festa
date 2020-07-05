@@ -179,7 +179,7 @@ module.exports = {
                novaSenha = usuario.senha;
                confirmarSenha = usuario.senha;
           }
-          
+
           if (!bcrypt.compareSync(senhaAtual, usuario.senha)) {
                res.redirect('/usuarios/editar-cliente/usuario.id?error=1');
           }
@@ -216,44 +216,6 @@ module.exports = {
                }
           });
           return res.redirect(`/usuarios/perfil-cliente/${res.locals.usuario.id}`);
-     },
-     dashboard: async (req, res,) => { 
-          let {id} = req.params;          
-
-          let pedidos = await Pedido.findOne({
-               include: [{
-                    model: Produto,
-                    as: 'produtos',
-                    attributes: ['nome']
-               }, {
-                    model: Entrega,
-                    as: 'entrega',
-                    attributes: ['data_prev', 'data_real']
-               }, {
-                    model: Usuario,
-                    as: 'usuario',
-                    attributes: ['nome', 'sobrenome', 'celular']
-               }, {
-                    model: Pagamento,
-                    as: 'pagamento',
-                    attributes: ['status']
-               },{
-                    model: PedidoProduto,
-                    as: 'listaDeProdutos',
-                    attributes: ['produtos_id', 'quantidade']
-               }],
-               attributes: [ 'id', 'valor_total', 'lojas_id',
-                    [sequelize.fn('sum', sequelize.col('valor_total')), 'vendas'],
-                    // [Sequelize.literal('MONTH(`entrega`.`data_prev`)'), 'date'],
-                    // [Sequelize.literal('COUNT(*)'), 'count']
-               ],
-               where: {lojas_id: id},
-          }); 
-
-          // return res.send(JSON.stringify(pedidos));
-          // console.log(JSON.stringify(pedidos));
-
-          res.render('dashboard', { page: 'dashboard', pedidos});
      },
      sair: (req, res) => {
           req.session.destroy();
