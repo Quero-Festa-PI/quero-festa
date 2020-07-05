@@ -3,7 +3,7 @@
 var express = require('express');
 var router = express.Router();
 const multer = require('multer');
-const upload = multer({dest:'../public/uploads/'});
+const upload = multer({dest:'./public/uploads/'});
 
 // Chamando o controller
 const produtoController = require('../controllers/produtoController');
