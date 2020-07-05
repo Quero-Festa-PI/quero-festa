@@ -32,7 +32,7 @@ let Pedido = (sequelize, DataTypes) => {
         },
         {
             tableName: 'pedidos',
-            timestamps: false
+            timestamps: true
         }
     )
 
