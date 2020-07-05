@@ -5,15 +5,15 @@
 
 <body>
     <!-- PAGINA COMPLETA -->
-    <div class="page">       
+    <div class="page">
         <%- include('partials/navbar') %>
-        
+
         <div id="meio-home" class="container">
             <div class="row mt-3">
                 <div id="painel-cliente" class="container center">
                     <div class="card p-3">
-                        
-                        <div class="row ">                        
+
+                        <div class="row ">
                             <div class="col-6">
                                 <div class="card card-body border-left-primary rounder" id="borda">
                                     <div class="row">
@@ -21,95 +21,114 @@
                                             <h5>Próximas Encomendas</h5>
                                         </div>
                                     </div>
-    
+
                                     <!-- Divider -->
                                     <hr class="sidebar-divider my-0">
-    
+
                                     <table class="table table-sm">
                                         <thead>
-                                          <tr>
-                                            <th scope="col">Data</th> <!-- orderar por data de entrega -->
-                                            <th scope="col">Pedido</th>
-                                            <th scope="col">Cliente</th>
-                                            <th scope="col">Telefone</th>
-                                          </tr>
+                                            <tr>
+                                                <th scope="col">Data</th> <!-- orderar por data de entrega -->
+                                                <th scope="col">Pedido</th>
+                                                <th scope="col">Cliente</th>
+                                                <th scope="col">Telefone</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                          <tr>
-                                            <th scope="row"> <%= pedidos.entrega.data_real %> </th>
-                                            <td> <%= pedidos.id %> </td>
-                                            <td> <%= pedidos.usuario.nome + ' ' + pedidos.usuario.sobrenome %> </td>
-                                            <td> <%= pedidos.usuario.celular %> </td>
-                                            <td>
-                                                <button type="button" class="btn btn-alt" data-toggle="modal" data-target="#ExemploModalCentralizado" data-id="<%= pedidos.id %>">Detalhes</button>
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                        <h5 class="modal-title" id="TituloModalCentralizado">Cliente: <%= pedidos.usuario.nome + ' ' + pedidos.usuario.sobrenome%> </h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="card-body border">
+                                            <% for (pedido of pedidos) { %>
+                                            <tr>
+                                                <th scope="row"> <%= pedido.entrega.data_real.toLocaleDateString() %>
+                                                </th>
+                                                <td> <%= pedido.id %> </td>
+                                                <td> <%= pedido.usuario.nome + ' ' + pedido.usuario.sobrenome %> </td>
+                                                <td> <%= pedido.usuario.celular %> </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-alt" data-toggle="modal"
+                                                        data-target=<%= `#ExemploModalCentralizado${pedido.id}` %>
+                                                        data-id="pedidos.id ">Detalhes</button>
+                                                    <!-- Modal -->
+                                                    <div class="modal fade"
+                                                        id=<%= `ExemploModalCentralizado${pedido.id}` %> tabindex="-1"
+                                                        role="dialog" aria-labelledby="TituloModalCentralizado"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title"
+                                                                        id="TituloModalCentralizado">Cliente:
+                                                                        <%= pedido.usuario.nome + ' ' + pedido.usuario.sobrenome %>
+                                                                    </h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Fechar">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="card-body border">
 
-                                                            <table class="table table-sm">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th scope="col">Realizado</th>
-                                                                    <th scope="col">Entrega</th>
-                                                                    <th scope="col">Descrição</th>
-                                                                    <th scope="col">Qtde</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                <tr>
-                                                                    <td> <%= pedidos.entrega.data_prev %> </td>
-                                                                    <td> <%= pedidos.entrega.data_real %> </td>
-                                                                    <td> <%= pedidos.produtos[0].toJSON().nome %> </td>
-                                                                    <td> <%= pedidos.listaDeProdutos[0].toJSON().quantidade %> </td>
-                                                                </tr>                                                
-                                                                </tbody>
-                                                            </table>
-                                                            </div>                              
-                                                        
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                        <button type="button" class="btn btn-alt" data-dismiss="modal">Fechar</button>
+                                                                        <table class="table table-sm">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th scope="col">Realizado</th>
+                                                                                    <th scope="col">Entrega</th>
+                                                                                    <th scope="col">Descrição</th>
+                                                                                    <th scope="col">Qtde</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td> <%= pedido.entrega.data_prev.toLocaleDateString() %>
+                                                                                    </td>
+                                                                                    <td> <%= pedido.entrega.data_real.toLocaleDateString() %>
+                                                                                    </td>
+                                                                                    <td> <% for (produto of pedido.listaDeProdutos) { %>
+                                                                                        <%= produto.nome %>
+                                                                                        <% } %></td>
+                                                                                    <td> <%= pedido.listaDeProdutos[0].quantidade %>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-alt"
+                                                                        data-dismiss="modal">Fechar</button>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Fim modal -->
-                                            </td>
-                                          </tr>                                      
+                                                    <!-- Fim modal -->
+                                                </td>
+                                            </tr>
+                                            <% } %>
                                         </tbody>
-                                      </table>                                
+                                    </table>
                                 </div>
-    
+
                                 <!-- Total de vendas e Lucro -->
-                                <div class="row mt-3">                        
+                                <div class="row mt-3">
                                     <div class="col-12">
                                         <div class="card card-body border-left-primary rounder" id="bordaVerde">
                                             <div class="row">
                                                 <div class="col-12">
                                                     <h5>Total de Vendas</h5>
                                                 </div>
-                                            </div>    
-    
+                                            </div>
+
                                             <div class="row">
                                                 <div class="col-12 text-right">
-                                                    <strong> R$ <%= pedidos.toJSON().vendas %></strong>
+                                                    <strong> Quantidade total de pedidos: <%= totalVendido.qtd %>
+                                                        Receita total: R$<%= totalVendido.soma.toFixed(2) %> </strong>
                                                 </div>
-                                            </div> 
-    
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-    
+
                             <!-- Grafico de avaliações -->
                             <div class="col-6">
                                 <div class="card containerGrafico">
@@ -118,63 +137,64 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>                    
-    
+                        </div>
+
                         <!-- Pedidos -->
                         <div class="row">
-                            <div class="col-12">                            
+                            <div class="col-12">
                                 <div class="card card-body border-left-primary rounder" id="borda">
                                     <div class="row">
                                         <div class="col-12">
-                                           <h5>Pedidos</h5>
+                                            <h5>Pedidos</h5>
                                         </div>
                                     </div>
                                     <table class="table table-sm">
                                         <thead>
-                                          <tr>
-                                            <th scope="col">Pedido</th>
-                                            <th scope="col">Nome</th>
-                                            <th scope="col">Quantidade</th>
-                                            <th scope="col">Total</th>
-                                            <th scope="col">Entrega</th> <!-- ordem por data de entrega-->
-                                            <th scope="col">Cliente</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col"></th>
-                                          </tr>
+                                            <tr>
+                                                <th scope="col">Pedido</th>
+                                                <th scope="col">Nome</th>
+                                                <th scope="col">Quantidade</th>
+                                                <th scope="col">Total</th>
+                                                <th scope="col">Entrega</th> <!-- ordem por data de entrega-->
+                                                <th scope="col">Cliente</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col"></th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                          <tr>
-                                            <th scope="row"> <%= pedidos.id %> </th>
-                                            <td> <%= pedidos.produtos[0].toJSON().nome %></td>
-                                            <td> <%= pedidos.listaDeProdutos[0].toJSON().quantidade %> </td>
-                                            <td>R$ <%= pedidos.valor_total %> </td>
-                                            <td> <%= pedidos.entrega.data_real %> </td>
-                                            <td> <%= pedidos.usuario.nome + ' ' + pedidos.usuario.sobrenome %></td>
-                                            <td> <%= pedidos.pagamento.status %> </td>
-                                            <td>
-                                                <button class="btn btn-alt" type="submit">pagamento</button>
-                                                <button class="btn btn-alt" id="verde" type="submit">Entregue</button>
-                                            </td>
-            
-                                          </tr>                            
+                                            <% for (pedido of pedidos) { %>
+                                            <tr>
+                                                <th scope="row"> <%= pedido.id %> </th>
+                                                <td> <%= pedido.listaDeProdutos[0].nome %> </td>
+                                                <td> <%= pedido.listaDeProdutos[0].quantidade %> </td>
+                                                <td>R$ <%= pedido.valor_total %> </td>
+                                                <td> <%= pedido.entrega.data_real.toLocaleDateString() %> </td>
+                                                <td> <%= pedido.usuario.nome + ' ' + pedido.usuario.sobrenome %> </td>
+                                                <td> <%= pedido.pagamento %> </td>
+                                                <td>
+                                                    <button class="btn btn-alt" type="submit">pagamento</button>
+                                                    <button class="btn btn-alt" id="verde"
+                                                        type="submit">Entregue</button>
+                                                </td>
+                                            </tr>
+                                            <% } %>
                                         </tbody>
-                                      </table>
-            
+                                    </table>
+
                                 </div>
-                            </div>    
+                            </div>
                         </div>
-    
+
                         <div class="row">
                             <div class="col-6">
                                 <!-- Grafico de pedidos -->
-                        
                                 <div class="card containerGrafico">
                                     <div class="grafico">
-                                        <canvas class="line-chart"> </canvas>
+                                        <canvas class="line-chart"></canvas>
                                     </div>
                                 </div>
                             </div>
-                
+
                             <div class="col-6">
                                 <!-- Grafico Financeiro -->
                                 <div class="card containerGrafico">
@@ -184,7 +204,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>                 
+                    </div>
 
                 </div>
             </div>
@@ -196,80 +216,79 @@
 
             var ctx = document.getElementsByClassName("line-chart");
 
-            // tipo, data e opções
             var chartGraph1 = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Out","Nov","Dez"],
-            datasets:[
-                {
-                borderAlign: "center",
-                label: "Visão geral dos pedidos no ano",
-                data: [30,10,50,35],
-                borderWidth: 4,
-                borderColor: 'rgba(77,166,253,0.85)',
-                backgroundColor: "transparent",
+                type: 'line',
+                data: {
+                    labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Out", "Nov", "Dez"],
+                    datasets: [
+                        {
+                            borderAlign: "center",
+                            label: "Total de Pedidos",
+                            data: [],
+                            borderWidth: 4,
+                            borderColor: 'rgba(77,166,253,0.85)',
+                            backgroundColor: "transparent",
+                        },
+                        {
+                            label: "Total Vendido (R$)",
+                            data: [],
+                            borderWidth: 4,
+                            borderColor: 'rgba(230, 33, 33,0.85)',
+                            backgroundColor: "transparent",
+                        },
+                    ]
                 },
-                {
-                label: "Pedidos Cancelados",
-                data: [10,40,150,35,470,75],
-                borderWidth: 4,
-                borderColor: 'rgba(230, 33, 33,0.85)',
-                backgroundColor: "transparent",
-                },
-            ]
-        },
-            options:{
-                title:{
-                    display: true,
-                    fontSize:20,
-                    text: "Relatório de Vendas"
-                },
-                labels:{
-                    fontStyle:"bold"
-                }
-            
-            }
-        });
+                options: {
+                    title: {
+                        display: true,
+                        fontSize: 20,
+                        text: "Relatório de Vendas"
+                    },
+                    labels: {
+                        fontStyle: "bold"
+                    }
 
-                // Grafico de barras
+                }
+            });
+
+            // Grafico de barras
 
             var ctx = document.getElementsByClassName("bar-chart");
 
             // tipo, data e opções
             var chartGraph2 = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Out","Nov","Dez"],
-            datasets:[
-                {
-                label: "Ganho Anual",
-                data: [30,10,50,35],
-                borderWidth: 6,
-                borderColor: 'rgba(77,166,253,0.85)',
-                backgroundColor: "transparent",
+                type: 'bar',
+                data: {
+                    labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Out", "Nov", "Dez"],
+                    datasets: [
+                        {
+                            label: "Ganho Anual",
+                            data: [30, 10, 50, 35],
+                            borderWidth: 6,
+                            borderColor: 'rgba(77,166,253,0.85)',
+                            backgroundColor: "transparent",
+                        },
+                        {
+                            label: "Ganho Mensal",
+                            data: [10, 40, 150, 35, 470, 75],
+                            borderWidth: 6,
+                            borderColor: 'rgba(6,204,6,0.85)',
+                            backgroundColor: "transparent",
+                        },
+                    ]
                 },
-                {
-                label: "Ganho Mensal",
-                data: [10,40,150,35,470,75],
-                borderWidth: 6,
-                borderColor: 'rgba(6,204,6,0.85)',
-                backgroundColor: "transparent",
-                },
-            ]
-        },
-            options:{
-                title:{
-                    display: true,
-                    fontSize:20,
-                    text: "Relatório Financeiro"
-                },
-                labels:{
-                    fontStyle:"bold"
+                options: {
+                    title: {
+                        display: true,
+                        fontSize: 20,
+                        text: "Relatório Financeiro"
+                    },
+                    labels: {
+                        fontStyle: "bold"
+                    }
+
                 }
-            
-            }
-        });
+            });
 
             // Grafico de rosquinha
 
@@ -280,23 +299,23 @@
             var chartGraph3 = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: ["Positivas", "Negativas", ],
-                datasets:[
-                    {
-                    label: "Points",
-                    data: [10,90],
-                    backgroundColor: ['#e67e22','#FF3D67'],
-                    },
-                   
-                ]
-            },
-                    options:{
-                        title:{
+                    labels: ["Positivas", "Negativas",],
+                    datasets: [
+                        {
+                            label: "Points",
+                            data: [10, 90],
+                            backgroundColor: ['#e67e22', '#FF3D67'],
+                        },
+
+                    ]
+                },
+                options: {
+                    title: {
                         animateScale: true,
                         text: "Avaliações",
                     },
                 }
-        });
+            });
 
         </script>
 
