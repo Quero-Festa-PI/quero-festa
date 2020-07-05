@@ -1,5 +1,17 @@
 var express = require('express');
 var router = express.Router();
+const path = require('path');
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './public/uploads/perfil/');
+    },
+    filename: (req, file, cb) => {
+        const {name, ext} = path.parse(file.originalname);
+        cb(null, `${name}${ext}`)
+    }
+})
+const upload = multer({storage});
 
 // Chamando o controller
 const usuarioController = require('../controllers/usuarioController');
@@ -11,7 +23,7 @@ router.get('/cadastro', usuarioController.cadastro);
 router.post('/cadastro', usuarioController.cadastrar);
 router.get('/perfil-cliente/:id', usuarioController.perfilClienteId)
 router.get('/editar-cliente/:id', usuarioController.alter);
-router.put('/editar-cliente/:id', usuarioController.update);
+router.put('/editar-cliente/:id', upload.single('img'), usuarioController.update);
 router.get('/sair', usuarioController.sair);
 router.get('/editar-endereco/:id', usuarioController.endereco);
 router.put('/editar-endereco/:id', usuarioController.editarEndereco);

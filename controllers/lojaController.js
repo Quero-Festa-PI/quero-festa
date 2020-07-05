@@ -85,7 +85,6 @@ module.exports = {
                where: { id }
           });
 
-          console.log(req.file);
           return res.redirect(`/lojas/perfil-loja/${id}`);
      },
      cadastro: (req, res) => {

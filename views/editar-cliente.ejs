@@ -20,7 +20,8 @@
                                     <h4>Dados Pessoais</h4>
                                 </div>
                             </div>
-                            <form action="/usuarios/editar-cliente/<%= usuario.id %>?_method=PUT" method="POST">
+                            <form enctype="multipart/form-data" method="POST"
+                            action="/usuarios/editar-cliente/<%= usuario.id %>?_method=PUT">
                                 <div class="card card-body painel-dash border-left-primary shadow ml-2 mr-2">
                                     <div class="row">
                                         <div class='col-8'>
@@ -92,9 +93,9 @@
                                         <!-- FOTO -->
                                         <div class="col-4 text-right">
                                             <img id='avatar' class='shadow border-bottom-primary rounded-circle'
-                                                src='/images/perfilCliente.png' width="160px" height="160px"
+                                                src='<%= usuario.imagem %>' width="160px" height="160px"
                                                 alt='avatar'>
-                                            <button class="btn btn-alt text-center">Escolha sua foto!</button>
+                                                <input type="file" name="img">
                                         </div> 
                                     </div>
                                 </div>                                    

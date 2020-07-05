@@ -14,7 +14,7 @@ module.exports = {
       cpf: '12312312312',
       data_nasc: '1995-12-22',
       sexo: 'F',
-      imagem: null
+      imagem: '/uploads/perfil/user.png'
     }, {
       id: 2,
       nome: 'Leonardo',
@@ -25,7 +25,7 @@ module.exports = {
       cpf: '43200227850',
       data_nasc: '2000-03-12',
       sexo: 'M',
-      imagem: null
+      imagem: '/uploads/perfil/navarro.png'
     }, {
       id: 3,
       nome: 'Leonardo',
@@ -36,7 +36,7 @@ module.exports = {
       cpf: '32132132132',
       data_nasc: '1990-04-01',
       sexo: 'M',
-      imagem: null
+      imagem: '/uploads/perfil/carvalho.png'
     }, {
       id: 4,
       nome: 'Melody',
@@ -47,7 +47,7 @@ module.exports = {
       cpf: '21321321321',
       data_nasc: '1995-08-01',
       sexo: 'F',
-      imagem: null
+      imagem: '/uploads/perfil/melody.png'
     }]);
   },
 

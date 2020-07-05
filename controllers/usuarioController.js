@@ -160,6 +160,11 @@ module.exports = {
      update: async (req, res) => {
           // Dados do usuario
           let { id } = req.params;
+
+          let file = req.file.originalname;
+          let img = `/uploads/perfil/${file}`;
+          console.log(req.file);
+
           let { nomeCli, dataCli, cpfCli, celular } = req.body;
           let nomeCompleto = nomeCli;
           let usuario = res.locals.usuario;
@@ -174,7 +179,7 @@ module.exports = {
           let nome = nomeCompleto.split(' ')[0];
           let sobrenome = nomeCompleto.replace(nome + " ", "");
 
-          if (!senhaAtual) {
+          if (senhaAtual == null || senhaAtual == undefined) {
                senhaAtual = usuario.senha;
                novaSenha = usuario.senha;
                confirmarSenha = usuario.senha;
@@ -192,6 +197,7 @@ module.exports = {
           novaSenha = bcrypt.hashSync(novaSenha, 10);
 
           let userNovo = await Usuario.update({
+               imagem: img,
                nome,
                sobrenome,
                data_nasc: dataCli,
