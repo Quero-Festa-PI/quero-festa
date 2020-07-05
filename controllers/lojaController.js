@@ -171,5 +171,43 @@ module.exports = {
           totalVendido = totalVendido.toJSON();
 
           res.render('dashboard', { page: 'Dashboard', pedidos, totalVendido });
+     },
+     dashboardGrafico: async (req, res) => {
+
+          let { grafico } = req.params;
+          let { ano } = req.query;
+
+          if (grafico == "vendasAnuais") {
+               let resultadosMensais = await Pedido.findAll({
+                    attributes: [
+                         [Sequelize.literal('YEAR(`createdAt`)'), 'ano'],
+                         [Sequelize.literal('MONTH(`createdAt`)'), 'mes'],
+                         [Sequelize.literal('SUM(`valor_total`)'), 'soma'],
+                         [Sequelize.literal(`COUNT(*)`), 'qtdVendas']
+                    ],
+                    group: ['mes', 'ano'],
+                    where: { lojas_id: 1 }
+               })
+
+               // montar dicionário com relação de vendas por mes/ano
+               var mapResultadosMensais = new Map();
+               resultadosMensais.forEach(resultado => {
+                    resultado = resultado.toJSON();
+                    mapResultadosMensais.set(`${resultado.ano}-${resultado.mes}`, {
+                         soma: resultado.soma,
+                         qtdVendas: resultado.qtdVendas
+                    });
+               })
+
+               let qtdVendas = [];
+               let somaVendas = [];
+
+               for (let i = 1; i < 13; i++) {
+                    qtdVendas.push(mapResultadosMensais.has(`${ano}-${i}`) ? mapResultadosMensais.get(`${ano}-${i}`).qtdVendas : 0);
+                    somaVendas.push(mapResultadosMensais.has(`${ano}-${i}`) ? mapResultadosMensais.get(`${ano}-${i}`).soma : 0);
+               }
+
+               return res.send({ qtdVendas, somaVendas });
+          }
      }
 }

@@ -11,5 +11,6 @@ router.put('/editar-loja/:id', lojaController.update);
 router.get('/cadastrar-loja', lojaController.cadastro);
 router.post('/cadastrar-loja', lojaController.cadastrar);
 router.get('/dashboard/:id', lojaController.dashboard);
+router.post('/dashboardGrafico/:grafico', lojaController.dashboardGrafico);
 
 module.exports = router;
