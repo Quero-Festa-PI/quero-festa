@@ -52,26 +52,21 @@ module.exports = {
      },
      cadastrar: async (req, res) => {
           let { nome, senha, email1, email2 } = req.body;
-          let endereco;
 
-          // tratando string email
           email1 = email1.toLowerCase();
           email2 = email2.toLowerCase();
 
-          // verificando existencia do email no banco
           let usuario = await Usuario.findOne({ where: { email: email1 } });
           if (!(usuario == null)) {
                return res.redirect('/usuarios/cadastro?error=1');
           };
 
-          // verificando correspondencia de emails
           if (!(email1 == email2)) {
                return res.redirect('/usuarios/cadastro?error=2');
           }
 
           let nomeCompleto = nome;
 
-          // verificando se o usuario inseriu o nome completo
           if (nomeCompleto.split(" ").length <= 1) {
                return res.redirect('/usuarios/cadastro?error=3');
           };
@@ -90,15 +85,12 @@ module.exports = {
                return words.join(" ");
           }
 
-          // tratando string nome
           nomeCompleto = titleize(nomeCompleto);
           nome = nomeCompleto.split(" ")[0];
           let sobrenome = nomeCompleto.replace(nome + " ", "");
 
-          // criptografando senha
           senha = bcrypt.hashSync(senha, 10);
 
-          // criando usuario
           usuario = await Usuario.create(
                {
                     nome,
@@ -107,17 +99,7 @@ module.exports = {
                     senha,
                }
           );
-          endereco = await Endereco.create({
-               estado: 'SP',
-               cidade: 'Cidade',
-               cep: '00000000',
-               logradouro: 'Rua, Avenida, Estrada',
-               numeral: 1,
-               complemento: ' ',
-               usuarios_id: usuario.id
-          })
 
-          // iniciando session e redirecionando para a home
           req.session.usuario = usuario;
           return res.redirect('/');
 
