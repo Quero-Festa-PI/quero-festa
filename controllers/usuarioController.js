@@ -218,14 +218,57 @@ module.exports = {
      },
      endereco: async (req, res) => {
           let usuario = res.locals.usuario;
+          if (!usuario) {
+               req.session.urlPosLogin = req.originalUrl;
+               res.redirect('/usuarios/logar');
+          }
           let endereco = await Endereco.findOne({ where: { usuarios_id: usuario.id } });
           res.render('editar-endereco', { page: 'Editar Endereço', endereco, usuario });
      },
+     cadastrarEndereco: async (req, res) => {
+          let { usuarioId, cep, rua, numeral, complemento, cidade, estado } = req.body;
+
+          if (!estado) {
+               console.log(estado);
+               return res.send('Estado não pode ser nulo');
+          }
+
+          if (!Number(numeral)) {
+               console.log(numeral);
+               return res.send('número não é numérico');
+          }
+
+          let endereco = Endereco.create({
+               estado,
+               cidade,
+               cep,
+               logradouro: rua,
+               numeral,
+               complemento,
+               usuarios_id: usuarioId,
+          })
+
+          if (endereco) {
+               return res.redirect('/usuarios/editar-endereco');
+          } else {
+               return res.send("Erro na criação do banco")
+          }
+
+     },
      editarEndereco: async (req, res) => {
-          let usuario = res.locals.usuario;
-          // Dados do endereço
+
           let { enderecoId, cep, rua, numeral, complemento, cidade, estado } = req.body;
-          console.log('não alterou');
+
+          if (!estado) {
+               console.log(estado);
+               return res.send('Estado não pode ser nulo');
+          }
+
+          if (!Number(numeral)) {
+               console.log(numeral);
+               return res.send('número não é numérico');
+          }
+
           let endereco = await Endereco.update({
                estado,
                cidade,
@@ -233,13 +276,12 @@ module.exports = {
                logradouro: rua,
                numeral,
                complemento,
-               usuarios_id: usuario.id
           }, {
                where: {
-                    id: enderecoId,
-                    usuarios_id: usuario.id
+                    id: enderecoId
                }
           });
-          return res.redirect('/pedidos/checkout');
+
+          return res.redirect('/usuarios/editar-endereco');
      }
 }
