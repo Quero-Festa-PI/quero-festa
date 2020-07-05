@@ -127,15 +127,16 @@ module.exports = {
           let usuario = res.locals.usuario;
 
           if (!usuario) {
+               req.session.urlPosLogin = req.originalUrl;
                return res.redirect('/usuarios/logar')
           }
 
-          // capturando id da rota
           let idUsuario = req.params.id;
 
           let usuarioPerfil = await Usuario.findByPk(idUsuario, { include: ['lojas', 'enderecos'] });
           let lojaPerfil = usuarioPerfil.lojas;
-          let endereco = usuarioPerfil.enderecos[0];
+          let endereco;
+          usuario.id == usuarioPerfil.id ? endereco = usuarioPerfil.enderecos[0] : ''
 
           res.render('perfil-cliente', { page: 'Perfil Cliente', usuarioPerfil, lojaPerfil, endereco })
 
