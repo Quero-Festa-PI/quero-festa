@@ -25,41 +25,19 @@
                         <div id="content" class="col-sm-12 col-md-12 col-lg-12">
                           <!-- FORMULARIO -->
 
-                          <form action="/produtos/cadastrar-produto" method="POST" enctype="multipart/form-data"
+                          <form id="form" action="/produtos/cadastrar-produto" method="POST" enctype="multipart/form-data"
                             class="bg-light rounded col-sm-12 ml-5 shadow p-3 mb-5 bg-white rounded" id="borda">
-                            <div class="row" id="form-img">
-                              <div class="col-2 form-group d-inline p-2">
+
+                            <!-- <div class="col-2 form-group d-inline p-2">
                                 <label for="img-input1">
                                   <img src="/images/sem-foto.png" class="shadow mb-1 ml-3 imagem">
                                   <input type="file" class="form-control-file" name="file" id="img-input1"
-                                    onchange="carregarImagem(event)" multiple>
+                                  onchange="newInput(this)" multiple='multiple'>
                                 </label>
-                              </div>
-                              <div class="col-2 form-group d-inline p-2">
-                                <label for="img-input2">
-                                  <img src="/images/sem-foto.png" class="shadow mb-1 ml-3 imagem">
-                                  <input type="file" class="form-control-file" name="file" id="img-input2">
-                                </label>
-                              </div>
-                              <div class="col-2 form-group d-inline p-2">
-                                <label for="img-input3">
-                                  <img src="/images/sem-foto.png" class="shadow mb-1 ml-3">
-                                  <input type="file" class="form-control-file" name="file" id="img-input3">
-                                </label>
-                              </div>
-                              <div class="col-2 form-group d-inline p-2">
-                                <label for="img-input4">
-                                  <img src="/images/sem-foto.png" class="shadow mb-1 ml-3">
-                                  <input type="file" class="form-control-file" name="file" id="img-input4">
-                                </label>
-                              </div>
-                              <div class="col-2 form-group d-inline p-2">
-                                <label for="img-input5">
-                                  <img src="/images/sem-foto.png" class="shadow mb-1 ml-3">
-                                  <input type="file" class="form-control-file" name="file" id="img-input5">
-                                </label>
-                              </div>
-                            </div>
+                              </div> -->
+                            
+                            <input id='file-input' class='file-input' type='file' name='file' onchange="newInput(this)" multiple='multiple'>                   
+                                              
 
 
                             <!-- NOME -->
@@ -138,13 +116,29 @@
           </div>
         </div>
         <script>
-          var carregarImagem = function (event) {
-            var imagem = document.querySelector('.imagem');
-            imagem.src = URL.createObjectURL(event.target.files[0]);
-            imagem.onload = function () {
-              URL.revokeObjectURL(imagem.src) // free memory
+
+          var inputFiles = [];
+
+          function newInput(input) {
+            var filesStr = "";
+
+            for (let i = 0; i < input.files.length; i++) {
+              inputFiles.push(input.files[i]);
+              filesStr += "<li>" + input.files[i].name + "<button onclick='removeLi(this)'>Remover</button>" + "</li>";
             }
-          };
+
+            document.getElementById("img-input1").value = "";
+
+            document.getElementById("dp-files").innerHTML += filesStr;
+          }
+
+          function removeLi(e) {
+            inputFiles = inputFiles.filter(function(file) {
+              return file.name !== e.parentNode.innerHTML.split("<button")[0];
+            })
+            e.parentNode.parentNode.removeChild(e.parentNode);
+          }
+
         </script>
       </div>
     </div>

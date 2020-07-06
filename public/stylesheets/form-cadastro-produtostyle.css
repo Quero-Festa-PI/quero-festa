@@ -1,13 +1,13 @@
-#form-img label img{
-	width: 85%;
+/* #form label img{
+	width: 20%;
 	margin-top: 10px;
 	display: block;
 	cursor: pointer;
-}
+} */
 
-#form-img label input[type="file"]{
+/* #form label input[type="file"]{
 	display: none;
-}
+} */
 
 nav li a span {    
     color: #FFFBFB;            

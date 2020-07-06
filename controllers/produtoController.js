@@ -66,6 +66,9 @@ module.exports = {
         if (err == 2) {
             err = 'informe o preço';
         }
+        if (err == 3) {
+            err = 'adicione uma foto';
+        }
         if (err == 4) {
             err = 'Esta disponível para compra?';
         }
@@ -74,16 +77,20 @@ module.exports = {
     },
     cadastro: async (req, res) => {
 
-        let file = req.files[0].originalname;
-        let img = `/uploads/${file}`;
+        let file = req.files;
+                                  
         let { nomeP, preco, descricaoP, disponibilidade } = req.body;
 
-        if (nomeP.length <= 3) {
+        if (nomeP.length <= 1) {
             res.redirect('/produtos/cadastrar-produto?error=1')
         }
 
-        if (preco.length < 3) {
+        if (preco.length < 2) {
             res.redirect('/produtos/cadastrar-produto?error=2');
+        }
+
+        if (!file) {
+            res.redirect('/produtos/cadastrar-produto?error=3');
         }
 
         if (disponibilidade == null) {
@@ -97,11 +104,18 @@ module.exports = {
             descricao: descricaoP,
             disponibilidade
         })
-        let imagens = await ImagensDeProduto.create({
-            image_url: img,
-            produtos_id: produto.id
-        })
-        res.redirect(`/lojas/${req.session.loja.id}`);
+
+        let img;
+
+        for(let arquivo of file){            
+            img = `/uploads/produtos/${arquivo.originalname}`
+            let imagens = await ImagensDeProduto.create({
+                image_url: img,
+                produtos_id: produto.id
+            })                       
+        }         
+        console.log('DEU CERTO')
+        return res.redirect(`/lojas/${req.session.loja.id}`);
     },
     produto: (req, res) => {
         res.render('produto', { page: 'produto' });
@@ -144,8 +158,6 @@ module.exports = {
             },
             attributes: ['image_url'],
         })
-
-        // return res.send(imagens);
 
         const { lojas, avaliacoes } = produto;
 
