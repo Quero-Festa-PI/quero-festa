@@ -25,7 +25,9 @@ router.get('/perfil-cliente/:id', usuarioController.perfilClienteId)
 router.get('/editar-cliente/:id', usuarioController.alter);
 router.put('/editar-cliente/:id', upload.single('img'), usuarioController.update);
 router.get('/sair', usuarioController.sair);
-router.get('/editar-endereco/:id', usuarioController.endereco);
+router.post('/consultar-cep', usuarioController.consultaCep);
+router.get('/editar-endereco', usuarioController.endereco);
+router.post('/editar-endereco', usuarioController.cadastrarEndereco);
 router.put('/editar-endereco/:id', usuarioController.editarEndereco);
 
 
