@@ -6,138 +6,177 @@
     <%- include('partials/navbar') %>
 
     <!-- CONTEÚDO PRINCIPAL -->
-    <div class="container">
+    <div id="meio-home" class="container">
       <div class="row ">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <div class="homebuilder clearfix">
-            <!-- CONTAINER CAMINHO DAS PAGINAS -->
-            <%- include('partials/breadcrumb') %>
-            <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
+        <!-- Caminho pagina -->
+        <%- include('partials/breadcrumb') %>
 
+        <div id="content" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-            <div class="tm-container">
-              <!-- CONTAINER FORMULARIO -->
-              <div class="tm-inner">
-                <div class="row row-level-1">
-                  <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                    <div class="row-inner clearfix">
-                      <div class="col-inner d-flex justify-content-around">
-                        <div id="content" class="col-sm-12 col-md-12 col-lg-12">
-                          <!-- FORMULARIO -->
+          <div id="painel-cliente" class="container center">
 
-                          <form id="form" action="/produtos/cadastrar-produto" method="POST" enctype="multipart/form-data"
-                            class="bg-light rounded col-sm-12 ml-5 shadow p-3 mb-5 bg-white rounded" id="borda">
+            <div class="card card-body ml-5 mr-5" id="borda">
 
-                            <!-- <div class="col-2 form-group d-inline p-2">
-                                <label for="img-input1">
-                                  <img src="/images/sem-foto.png" class="shadow mb-1 ml-3 imagem">
-                                  <input type="file" class="form-control-file" name="file" id="img-input1"
-                                  onchange="newInput(this)" multiple='multiple'>
-                                </label>
-                              </div> -->
-                            
-                            <input id='file-input' class='file-input' type='file' name='file' onchange="newInput(this)" multiple='multiple'>                   
-                                              
+              <div class="text-right">
+                <!-- Formulário -->
+                <form id="form" action="/produtos/cadastrar-produto" method="POST" enctype="multipart/form-data">
+  
 
+                  <div class="row ml-2">
+                    <div class="col-3">
+                      
+                      <label for="file-input">
+                        <img src="/images/quadro.png" alt="">
+                        <input id='file-input' class='file-input' type='file' name='file' onchange="newInput(this)" multiple='multiple' >                        
+                      </label>
+                    </div>
 
-                            <!-- NOME -->
-                            <div class="form-group row">
-                              <label for="nomeP" class="col-sm-3 col-form-label">Nome</label>
-                              <div class="col-sm-9">
-                                <input type="text" class="form-control" id="nomeP" name="nomeP">
-                              </div>
-                            </div>
-                            <!-- PREÇO -->
-                            <div class="form-group row">
-                              <label for="preco" class="col-sm-3 col-form-label">Preço</label>
-                              <div class="col-sm-9">
-                                <input type="number" class="form-control" id="preco" name="preco">
-                              </div>
-                            </div>
-                            <!-- CATEGORIA -->
-                            <!-- <div class="form-group row">
-                                <label for="inputCategorias" class="col-sm-3 col-form-label">Categorias</label>
-                                <div class="col-sm-9">
-                                  <select class="form-control" id="inputCategorias">
-                                    <option>Aniversario</option>
-                                    <option>Bodas de Casamento</option>
-                                    <option>Datas Especiais</option>
-                                    <option>Comemorações</option>
-                                  </select>
-                                </div>
-                              </div> -->
-                            <!-- DESCRIÇÃO -->
-                            <div class="form-group row">
-                              <label for="descricaoP" class="col-sm-3 col-form-label">Descrição</label>
-                              <div class="col-sm-9">
-                                <textarea class="form-control" id="descricaoP" name="descricaoP" rows="3"></textarea>
-                              </div>
-                            </div>
-                            <!-- DISPONIBILIDADE -->
-                            <fieldset class="form-group">
-                              <div class="row">
-                                <legend class="col-form-label col-sm-3 pt-0">Disponibilidade</legend>
-                                <div class="form-check form-check-inline">
-                                  <input class="form-check-input" type="radio" name="disponibilidade" id="tem"
-                                    value="true">
-                                  <label class="form-check-label" for="tem">Disponível</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                  <input class="form-check-input" type="radio" name="disponibilidade" id="naoTem"
-                                    value="false">
-                                  <label class="form-check-label" for="naoTem">Indisponível</label>
-                                </div>
-                              </div>
-                            </fieldset>
-
-                            <div class="form-group row">
-                              <div class="col-sm-12">
-                                <div class="d-flex justify-content-end">
-                                  <button type="submit" class="btn btn-link btn-sm text-success">Cadastrar
-                                    Produto</button>
-                                  <button type="submit" class="btn btn-link btn-sm text-danger">Cancelar</button>
-                                </div>
-                              </div>
-                            </div>
-                            <% if(err != 0){ %>
-                            <p><%= err%></p>
-                            <% } %>
-                          </form>
-                          <!-- FIM FORMULARIO -->
+                    <div class="col-8">
+                      <div class="col-12">
+                        <div id="preview">
+                          
                         </div>
                       </div>
                     </div>
+                  </div>      
+    
+                  <!-- NOME -->
+                  <div class="form-group row">
+                    <label for="nomeP" class="col-3 col-form-label">Nome</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="nomeP" name="nomeP">
+                    </div>
                   </div>
-                </div>
+                  <!-- PREÇO -->
+                  <div class="form-group row">
+                    <label for="preco" class="col-3 col-form-label">Preço</label>
+                    <div class="col-sm-8">
+                      <input type="number" class="form-control" id="preco" name="preco">
+                    </div>
+                  </div>
+                  <!-- CATEGORIA -->
+                  <!-- <div class="form-group row">
+                      <label for="inputCategorias" class="col-3 col-form-label">Categorias</label>
+                      <div class="col-sm-8">
+                        <select class="form-control" id="inputCategorias" name="categorias">
+                          <option>Aniversario</option>
+                          <option>Bodas de Casamento</option>
+                          <option>Datas Especiais</option>
+                          <option>Comemorações</option>
+                        </select>
+                      </div>
+                    </div> -->
+                  <!-- DESCRIÇÃO -->
+                  <div class="form-group row">
+                    <label for="descricaoP" class="col-3 col-form-label">Descrição</label>
+                    <div class="col-sm-8">
+                      <textarea class="form-control" id="descricaoP" name="descricaoP" rows="3"></textarea>
+                    </div>
+                  </div>
+                  <!-- DISPONIBILIDADE -->
+                  <fieldset class="form-group">
+                    <div class="row">
+                      <legend class="col-form-label col-3 pt-0">Disponibilidade</legend>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="disponibilidade" id="tem"
+                          value="true">
+                        <label class="form-check-label" for="tem">Disponível</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="disponibilidade" id="naoTem"
+                          value="false">
+                        <label class="form-check-label" for="naoTem">Indisponível</label>
+                      </div>
+                    </div>
+                  </fieldset>
+  
+                  <div class="form-group row">
+                    <div class="col-sm-12">
+                      <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-link btn-sm text-success">Cadastrar
+                          Produto</button>
+                        <button type="submit" class="btn btn-link btn-sm text-danger">Cancelar</button>
+                      </div>
+                    </div>
+                  </div>
+                  <% if(err != 0){ %>
+                  <p><%= err%></p>
+                  <% } %>
+                </form>
               </div>
 
-              <!-- FIM CONTAINER -->
             </div>
           </div>
+         
         </div>
-        <script>
+        <script>      
+        function previewImages() {
 
-          var inputFiles = [];
+          var preview = document.querySelector('#preview');
 
-          function newInput(input) {
-            var filesStr = "";
-
-            for (let i = 0; i < input.files.length; i++) {
-              inputFiles.push(input.files[i]);
-              filesStr += "<li>" + input.files[i].name + "<button onclick='removeLi(this)'>Remover</button>" + "</li>";
-            }
-
-            document.getElementById("img-input1").value = "";
-
-            document.getElementById("dp-files").innerHTML += filesStr;
+          if (this.files) {
+            [].forEach.call(this.files, readAndPreview);
           }
 
-          function removeLi(e) {
-            inputFiles = inputFiles.filter(function(file) {
-              return file.name !== e.parentNode.innerHTML.split("<button")[0];
-            })
-            e.parentNode.parentNode.removeChild(e.parentNode);
+          function readAndPreview(file) {
+
+            // Make sure `file.name` matches our extensions criteria
+            if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+              return alert(file.name + " is not an image");
+            } // else...
+            
+            var reader = new FileReader();
+            
+            reader.addEventListener("load", function() {
+              var image = new Image();
+              image.height = 100;
+              image.title  = file.name;
+              image.src    = this.result;
+              preview.appendChild(image);              
+            });
+            
+            reader.readAsDataURL(file);            
           }
+
+        }
+
+        document.querySelector('#file-input').addEventListener("change", previewImages);   
+
+
+
+
+          // var inputFiles = [];
+
+          // function newInput(input) {
+          //   var filesStr = "";
+            
+
+          //   for (let i = 0; i < input.files.length; i++) {
+
+          //     var file = new FileReader();
+          //     file.onload = function(e){
+                
+          //       document.getElementById('preview').src = e.target.result;
+                
+          //     }
+          //     file.readAsDataURL(input.files[i]);
+          //     inputFiles.push(input.files[i]);
+          //     filesStr += "<li><div id='img-container'><img id='preview' src=''>" + input.files[i].name + "<button onclick='removeLi(this)'>Remover</button>" + "</div></li>";
+              
+          //   }
+
+          //   document.getElementById("file-input").value = "";
+
+          //   document.getElementById("dp-files").innerHTML += filesStr;
+            
+          // }
+              
+          // function removeLi(e) {
+          //   inputFiles = inputFiles.filter(function(file) {
+          //     return file.name !== e.parentNode.innerHTML.split("<button")[0];
+          //   })
+          //   e.parentNode.parentNode.removeChild(e.parentNode);
+          // }
 
         </script>
       </div>

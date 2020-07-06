@@ -1,4 +1,4 @@
-const { sequelize, Sequelize, Produto, AvaliacoesDeProdutos, Usuario, Loja, PedidoProduto, ImagensDeProduto } = require('../database/models')
+const { sequelize, Sequelize, Produto, AvaliacoesDeProdutos, Usuario, Loja, PedidoProduto, Categoria, ImagensDeProduto } = require('../database/models')
 const Op = Sequelize.Op;
 
 module.exports = {
@@ -80,6 +80,7 @@ module.exports = {
         let file = req.files;
                                   
         let { nomeP, preco, descricaoP, disponibilidade } = req.body;
+        
 
         if (nomeP.length <= 1) {
             res.redirect('/produtos/cadastrar-produto?error=1')
@@ -100,10 +101,15 @@ module.exports = {
         let produto = await Produto.create({
             lojas_id: req.session.loja.id,
             nome: nomeP,
-            valor: preco,
+            valor: preco,            
             descricao: descricaoP,
             disponibilidade
         })
+
+        // let categoria = await Categoria.create({
+        //     nome: categorias,
+        //     where: { }
+        // })
 
         let img;
 
@@ -114,8 +120,7 @@ module.exports = {
                 produtos_id: produto.id
             })                       
         }         
-        console.log('DEU CERTO')
-        return res.redirect(`/lojas/${req.session.loja.id}`);
+        return res.redirect(`/lojas/perfil-loja/${req.session.loja.id}`);
     },
     produto: (req, res) => {
         res.render('produto', { page: 'produto' });

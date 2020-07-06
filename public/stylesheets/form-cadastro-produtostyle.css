@@ -1,22 +1,31 @@
-/* #form label img{
-	width: 20%;
+#form label img{
+	width: 30%;
 	margin-top: 10px;
+	margin-left: 5px;
 	display: block;
 	cursor: pointer;
-} */
-
-/* #form label input[type="file"]{
-	display: none;
-} */
-
-nav li a span {    
-    color: #FFFBFB;            
 }
 
-.form-group label {
+#form label input[type="file"]{
+	display: none;
+}
+
+ul {
+	list-style-type: none;
+}
+
+li { 
+	display: inline; 
+}
+
+/* nav li a span {    
+    color: #FFFBFB;            
+} */
+
+/* .form-group label {
 	color: #6887E3;
 }
 
 .form-group legend {
 	color: #6887E3;
-}
+} */
