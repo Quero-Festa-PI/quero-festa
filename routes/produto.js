@@ -9,17 +9,18 @@ const storage = multer.diskStorage({
         cb(null, './public/uploads/produtos/');
     },
     filename: (req, file, cb) => {
-        const {name, ext} = path.parse(file.originalname);
+        const { name, ext } = path.parse(file.originalname);
         cb(null, `${name}${ext}`)
     }
 })
-const upload = multer({storage});
+const upload = multer({ storage });
 
 // Chamando o controller
 const produtoController = require('../controllers/produtoController');
 
 // Requisições produto
 router.get('/buscar', produtoController.buscar);
+router.get('/categorias', produtoController.categorias);
 router.get('/cadastrar-produto', produtoController.cadastrar);
 router.post('/cadastrar-produto', upload.array('file', 5), produtoController.cadastro);
 

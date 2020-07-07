@@ -58,6 +58,74 @@ module.exports = {
 
         res.render('buscar', { page: 'Resultado da Busca', resultado, search, quantidade, totalPage, pageActual });
     },
+    categorias: async (req, res) => {
+        let { categoria } = req.query;
+        let pageActual = req.query.page;
+
+        // pagina e limite padrões
+        if (!pageActual) { pageActual = 1; }
+        let limitProducts = 12;
+
+        let allProducts = await Produto.findAll({
+            include: [{
+                model: AvaliacoesDeProdutos,
+                as: 'avaliacoes',
+                attributes: [
+                    [sequelize.fn('avg', sequelize.col('classificacao')), 'media'],
+                    [sequelize.fn('count', sequelize.col('classificacao')), 'quantidade']
+                ],
+            }, {
+                model: ImagensDeProduto,
+                as: 'imagens',
+                attributes: ['image_url'],
+                limit: 1,
+            }, {
+                model: Categoria,
+                as: 'categorias',
+                attributes: ['id', 'nome'],
+            }],
+            group: ['avaliacoes.produtos_id'],
+            attributes: ['id', 'nome', 'valor'],
+            where: Sequelize.literal('`categorias`.`id` = ' + categoria),
+        });
+
+        let totalPage = Math.ceil(allProducts.length / limitProducts);
+
+        // fazer paginação dos produtos encontrados
+        function listProducts(allProducts, pageActual, limitProducts) {
+            let result = [];
+            let count = (pageActual * limitProducts) - limitProducts;
+            let delimiter = count + limitProducts;
+
+            if (pageActual <= totalPage) {
+                for (let i = count; i < delimiter; i++) {
+                    if (allProducts[i]) {
+                        result.push(allProducts[i]);
+                    }
+                }
+            } else {
+                res.redirect('/produtos/categorias?categoria=' + categoria + '&page=' + totalPage);
+            }
+
+            return result;
+        };
+
+        var resultado = listProducts(allProducts, pageActual, limitProducts);
+        resultado = resultado.map(produto => {
+            produto = produto.toJSON();
+            produto.categoria = produto.categorias[0].nome;
+            produto.categoriaId = produto.categorias[0].id;
+            produto.imagem = produto.imagens[0].image_url;
+            delete produto.categorias;
+            delete produto.imagens;
+            return produto;
+        })
+        const quantidade = allProducts.length;
+        categoria = resultado[0].categoria;
+        categoriaId = resultado[0].categoriaId;
+
+        res.render('categorias', { page: `${categoria}`, resultado, categoria, quantidade, totalPage, pageActual });
+    },
     cadastrar: (req, res) => {
         let err = req.query.error;
         if (err == 1) {

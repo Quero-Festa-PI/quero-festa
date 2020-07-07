@@ -93,7 +93,7 @@ module.exports = {
                err = 'Informe um nome para sua loja'
           }
 
-          if(err == 2) {
+          if (err == 2) {
                err = 'email já existe';
           }
 
@@ -107,7 +107,7 @@ module.exports = {
           let { nome, telefone, email, descricao } = req.body;
           let usuario = req.session.usuario;
 
-          let user = await Usuario.findOne({where: {email}});
+          let user = await Usuario.findOne({ where: { email } });
           if (!usuario) {
                return res.redirect('/usuarios/logar');
           }
@@ -168,7 +168,7 @@ module.exports = {
                     }]
                }],
                attributes: ['id', 'lojas_id'],
-               where: Sequelize.literal('`Pedido`.`lojas_id` = 3 AND `entrega`.`data_real` IS NULL'),
+               where: Sequelize.literal('`Pedido`.`lojas_id` = ' + lojaLogada.id + ' AND `entrega`.`data_real` IS NULL'),
           });
 
           let atrasados = [];
