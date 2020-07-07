@@ -158,13 +158,19 @@ module.exports = {
      update: async (req, res) => {
           // Dados do usuario
           let { id } = req.params;
-
-          let file = req.file.originalname;
-          let img = `/uploads/perfil/${file}`;
+          let arquivo = req.file
+          let img;
 
           let { nomeCli, dataCli, cpfCli, celular } = req.body;
           let nomeCompleto = nomeCli;
           let usuario = res.locals.usuario;
+
+          if(!arquivo){
+               img = usuario.imagem; 
+          } else {
+               let file = req.file.originalname;
+               img = `/uploads/perfil/${file}`;
+          }
 
           // Dados do endereço
           let { enderecoId, cep, rua, numeral, complemento, cidade, estado } = req.body;
@@ -176,7 +182,8 @@ module.exports = {
           let nome = nomeCompleto.split(' ')[0];
           let sobrenome = nomeCompleto.replace(nome + " ", "");
 
-          if (senhaAtual == null || senhaAtual == undefined) {
+          console.log('OK MAN');
+          if (!senhaAtual) {
                senhaAtual = usuario.senha;
                novaSenha = usuario.senha;
                confirmarSenha = usuario.senha;
@@ -189,6 +196,8 @@ module.exports = {
           if (novaSenha != confirmarSenha) {
                res.redirect('/usuarios/editar-cliente/usuario.id?error=2');
           }
+
+          console.log('OK MAN');
 
           // criptografando nova senha
           novaSenha = bcrypt.hashSync(novaSenha, 10);

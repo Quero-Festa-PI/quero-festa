@@ -68,9 +68,18 @@ module.exports = {
      },
      update: async (req, res) => {
           const { id } = req.params;
+          
+          let arquivo = req.file;
+          let img; 
+          let infosLoja = await Loja.findByPk(id);
 
-          let file = req.file.originalname;
-          let img = `/uploads/loja/${file}`;
+          if(!arquivo){
+               img = infosLoja.imagem;
+          } else {
+               let file = req.file.originalname;
+               img = `/uploads/loja/${file}`;
+          }
+
           const { nome, descricao, telefone, email } = req.body;
 
           console.log(`${id} ${nome} ${descricao}`);
