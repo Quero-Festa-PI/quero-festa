@@ -1,337 +1,130 @@
-<% include partials/header %>
+<%- include('partials/header') %>
 
 <!-- incluindo charts js -->
 <script src="https://cdn.jsdelivr.net/combine/npm/chart.js@2.9.3,npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
 <body>
     <!-- PAGINA COMPLETA -->
-    <div class="page">
-        <%- include('partials/navbar') %>
+    <%- include('partials/navbar') %>
+    <div class="page-dashboard container">
 
-        <div id="meio-home" class="container">
-            <div class="row mt-3">
-                <div id="painel-cliente" class="container center">
-                    <div class="card p-3">
-
-                        <div class="row ">
-                            <div class="col-6">
-                                <div class="card card-body border-left-primary rounder" id="borda">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h5>Próximas Encomendas</h5>
-                                        </div>
-                                    </div>
-
-                                    <!-- Divider -->
-                                    <hr class="sidebar-divider my-0">
-
-                                    <table class="table table-sm">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Data</th> <!-- orderar por data de entrega -->
-                                                <th scope="col">Pedido</th>
-                                                <th scope="col">Cliente</th>
-                                                <th scope="col">Telefone</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <% for (pedido of pedidos) { %>
-                                            <tr>
-                                                <th scope="row"> <%= pedido.entrega.data_real.toLocaleDateString() %>
-                                                </th>
-                                                <td> <%= pedido.id %> </td>
-                                                <td> <%= pedido.usuario.nome + ' ' + pedido.usuario.sobrenome %> </td>
-                                                <td> <%= pedido.usuario.celular %> </td>
-                                                <td>
-                                                    <button type="button" class="btn btn-alt" data-toggle="modal"
-                                                        data-target=<%= `#ExemploModalCentralizado${pedido.id}` %>
-                                                        data-id="pedidos.id ">Detalhes</button>
-                                                    <!-- Modal -->
-                                                    <div class="modal fade"
-                                                        id=<%= `ExemploModalCentralizado${pedido.id}` %> tabindex="-1"
-                                                        role="dialog" aria-labelledby="TituloModalCentralizado"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title"
-                                                                        id="TituloModalCentralizado">Cliente:
-                                                                        <%= pedido.usuario.nome + ' ' + pedido.usuario.sobrenome %>
-                                                                    </h5>
-                                                                    <button type="button" class="close"
-                                                                        data-dismiss="modal" aria-label="Fechar">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <div class="card-body border">
-
-                                                                        <table class="table table-sm">
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th scope="col">Realizado</th>
-                                                                                    <th scope="col">Entrega</th>
-                                                                                    <th scope="col">Descrição</th>
-                                                                                    <th scope="col">Qtde</th>
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td> <%= pedido.entrega.data_prev.toLocaleDateString() %>
-                                                                                    </td>
-                                                                                    <td> <%= pedido.entrega.data_real.toLocaleDateString() %>
-                                                                                    </td>
-                                                                                    <td> <% for (produto of pedido.listaDeProdutos) { %>
-                                                                                        <%= produto.nome %>
-                                                                                        <% } %></td>
-                                                                                    <td> <%= pedido.listaDeProdutos[0].quantidade %>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-alt"
-                                                                        data-dismiss="modal">Fechar</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Fim modal -->
-                                                </td>
-                                            </tr>
-                                            <% } %>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <!-- Total de vendas e Lucro -->
-                                <div class="row mt-3">
-                                    <div class="col-12">
-                                        <div class="card card-body border-left-primary rounder" id="bordaVerde">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <h5>Total de Vendas</h5>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-12 text-right">
-                                                    <strong> Quantidade total de pedidos: <%= totalVendido.qtd %>
-                                                        Receita total: R$<%= totalVendido.soma.toFixed(2) %> </strong>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Grafico de avaliações -->
-                            <div class="col-6">
-                                <div class="card containerGrafico">
-                                    <div class="grafico mt-5 mb-4">
-                                        <canvas class="doughnut-chart"> </canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pedidos -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card card-body border-left-primary rounder" id="borda">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h5>Pedidos</h5>
-                                        </div>
-                                    </div>
-                                    <table class="table table-sm">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Pedido</th>
-                                                <th scope="col">Nome</th>
-                                                <th scope="col">Quantidade</th>
-                                                <th scope="col">Total</th>
-                                                <th scope="col">Entrega</th> <!-- ordem por data de entrega-->
-                                                <th scope="col">Cliente</th>
-                                                <th scope="col">Status</th>
-                                                <th scope="col"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <% for (pedido of pedidos) { %>
-                                            <tr>
-                                                <th scope="row"> <%= pedido.id %> </th>
-                                                <td> <%= pedido.listaDeProdutos[0].nome %> </td>
-                                                <td> <%= pedido.listaDeProdutos[0].quantidade %> </td>
-                                                <td>R$ <%= pedido.valor_total %> </td>
-                                                <td> <%= pedido.entrega.data_real.toLocaleDateString() %> </td>
-                                                <td> <%= pedido.usuario.nome + ' ' + pedido.usuario.sobrenome %> </td>
-                                                <td> <%= pedido.pagamento %> </td>
-                                                <td>
-                                                    <button class="btn btn-alt" type="submit">pagamento</button>
-                                                    <button class="btn btn-alt" id="verde"
-                                                        type="submit">Entregue</button>
-                                                </td>
-                                            </tr>
-                                            <% } %>
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-6">
-                                <!-- Grafico de pedidos -->
-                                <div class="card containerGrafico">
-                                    <div class="grafico">
-                                        <select name="vendasAnuais" id="vendasAnuais">
-                                            <option value="2020" selected>2020</option>
-                                            <option value="2019">2019</option>
-                                            <option value="2018">2018</option>
-                                            <option value="2017">2017</option>
-                                            <option value="2016">2016</option>
-                                        </select>
-                                        <canvas class="line-chart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-6">
-                                <!-- Grafico Financeiro -->
-                                <div class="card containerGrafico">
-                                    <div class="grafico">
-                                        <canvas class="bar-chart"> </canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+        <div class="row pedidos">
+            <div class="pedidos-atrasados">
+                <h4>Pedidos Atrasados</h4>
+                <% if (atrasados.length > 0) { %>
+                <table class="table table-striped table-bordered table-responsive-lg">
+                    <thead>
+                        <tr>
+                            <th scope="col">N° do Pedido</th>
+                            <th scope="col">Data de Entrega</th>
+                            <th scope="col">Produtos do Pedido</th>
+                            <th scope="col">Dados do Cliente</th>
+                            <th scope="col">Status do Pagamento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (atrasado of atrasados) { %>
+                        <tr>
+                            <td scope="row"><%= atrasado.id %></td>
+                            <td><%= atrasado.entrega.toISOString().substr(0, 10).split('-').reverse().join('/'); %></td>
+                            <td>
+                                <ul class="list-group list-group-flush">
+                                    <% for (produto of atrasado.listaDeProdutos) { %>
+                                    <li class="list-group-item"><%= produto.quantidade %>x <%= produto.nome %></li>
+                                    <% } %>
+                                </ul>
+                            </td>
+                            <td><%= atrasado.usuario.nome %><br><%= atrasado.usuario.celular %></td>
+                            <td><%= atrasado.pagamento %></td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+                <% } else { %>
+                <% if (proximos.length > 0) { %>
+                <p>Parabéns! Todos os seus pedidos estão em dia :)</p>
+                <% } else { %>
+                <p>Você não possui pedidos em aberto.</p>
+                <% } %>
+                <% } %>
+            </div>
+            <div class="pedidos-futuros">
+                <h4>Próximos Pedidos</h4>
+                <% if (proximos.length > 0) { %>
+                <table class="table table-striped table-bordered table-responsive-lg">
+                    <thead>
+                        <tr>
+                            <th scope="col">N° do Pedido</th>
+                            <th scope="col">Data de Entrega</th>
+                            <th scope="col">Produtos do Pedido</th>
+                            <th scope="col">Dados do Cliente</th>
+                            <th scope="col">Status do Pagamento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (proximo of proximos) { %>
+                        <tr>
+                            <td scope="row"><%= proximo.id %></td>
+                            <td><%= proximo.entrega.toISOString().substr(0, 10).split('-').reverse().join('/'); %></td>
+                            <td>
+                                <ul class="list-group list-group-flush">
+                                    <% for (produto of proximo.listaDeProdutos) { %>
+                                    <li class="list-group-item"><%= produto.quantidade %>x <%= produto.nome %></li>
+                                    <% } %>
+                                </ul>
+                            </td>
+                            <td><%= proximo.usuario.nome %><br><%= proximo.usuario.celular %></td>
+                            <td><%= proximo.pagamento %></td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+                <% } else { %>
+                <p>Você não possui pedidos em aberto.</p>
+                <% } %>
             </div>
         </div>
 
-        <script>
-
-            // Grafico de linhas 
-
-            var ctx = document.getElementsByClassName("line-chart");
-
-            var chartGraph1 = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Out", "Nov", "Dez"],
-                    datasets: [
-                        {
-                            borderAlign: "center",
-                            label: "Total de Pedidos",
-                            data: [],
-                            borderWidth: 4,
-                            borderColor: 'rgba(77,166,253,0.85)',
-                            backgroundColor: "transparent",
-                        },
-                        {
-                            label: "Total Vendido (R$)",
-                            data: [],
-                            borderWidth: 4,
-                            borderColor: 'rgba(230, 33, 33,0.85)',
-                            backgroundColor: "transparent",
-                        },
-                    ]
-                },
-                options: {
-                    title: {
-                        display: true,
-                        fontSize: 20,
-                        text: "Relatório de Vendas"
-                    },
-                    labels: {
-                        fontStyle: "bold"
-                    }
-
-                }
-            });
-
-            // Grafico de barras
-
-            var ctx = document.getElementsByClassName("bar-chart");
-
-            // tipo, data e opções
-            var chartGraph2 = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Out", "Nov", "Dez"],
-                    datasets: [
-                        {
-                            label: "Ganho Anual",
-                            data: [30, 10, 50, 35],
-                            borderWidth: 6,
-                            borderColor: 'rgba(77,166,253,0.85)',
-                            backgroundColor: "transparent",
-                        },
-                        {
-                            label: "Ganho Mensal",
-                            data: [10, 40, 150, 35, 470, 75],
-                            borderWidth: 6,
-                            borderColor: 'rgba(6,204,6,0.85)',
-                            backgroundColor: "transparent",
-                        },
-                    ]
-                },
-                options: {
-                    title: {
-                        display: true,
-                        fontSize: 20,
-                        text: "Relatório Financeiro"
-                    },
-                    labels: {
-                        fontStyle: "bold"
-                    }
-
-                }
-            });
-
-            // Grafico de rosquinha
-
-            var ctx = document.getElementsByClassName("doughnut-chart");
-
-            // tipo, data e opções
-
-            var chartGraph3 = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ["Positivas", "Negativas",],
-                    datasets: [
-                        {
-                            label: "Points",
-                            data: [10, 90],
-                            backgroundColor: ['#e67e22', '#FF3D67'],
-                        },
-
-                    ]
-                },
-                options: {
-                    title: {
-                        animateScale: true,
-                        text: "Avaliações",
-                    },
-                }
-            });
-
-        </script>
-
-        <!-- Incluindo o footer -->
-
-        <% include partials/footer-alt %>
+        <div class="row graficos">
+            <input id="id-loja" type="hidden" value="<%= loja.id %>">
+            <div class="container-vendas-loja">
+                <select id="select-vendas-loja">
+                    <option value="2020" selected>2020</option>
+                    <option value="2019">2019</option>
+                </select>
+                <canvas id="vendas-loja"></canvas>
+            </div>
+            <div class="container-vendas-produtos">
+                <select id="select-vendas-produtos">
+                    <option value="1" selected>Geral</option>
+                    <option value="2020">Geral 2020</option>
+                    <option value="20207">Jul 2020</option>
+                    <option value="20206">Jun 2020</option>
+                    <option value="20205">Mai 2020</option>
+                    <option value="20204">Abr 2020</option>
+                    <option value="20203">Mar 2020</option>
+                    <option value="20202">Fev 2020</option>
+                    <option value="20201">Jan 2020</option>
+                    <option value="2019">Geral 2019</option>
+                    <option value="201912">Dez 2019</option>
+                    <option value="201911">Nov 2019</option>
+                    <option value="201910">Out 2019</option>
+                    <option value="20199">Set 2019</option>
+                    <option value="20198">Ago 2019</option>
+                    <option value="20197">Jul 2019</option>
+                    <option value="20196">Jun 2019</option>
+                    <option value="20195">Mai 2019</option>
+                    <option value="20194">Abr 2019</option>
+                    <option value="20193">Mar 2019</option>
+                    <option value="20192">Fev 2019</option>
+                    <option value="20191">Jan 2019</option>
+                </select>
+                <canvas id="vendas-produtos"></canvas>
+            </div>
+        </div>
     </div>
 </body>
 
-<% include partials/script %>
+<%- include('partials/script') %>
 
 </html>
