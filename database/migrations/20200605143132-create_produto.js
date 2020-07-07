@@ -27,10 +27,6 @@ module.exports = {
         type: Sequelize.FLOAT.UNSIGNED,
         allowNull: false
       },
-      disponibilidade: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-      },
       descricao: {
         type: Sequelize.STRING
       },

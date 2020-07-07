@@ -20,10 +20,6 @@ let Produto = (sequelize, DataTypes) => {
                 type: DataTypes.FLOAT.UNSIGNED,
                 allowNull: false
             },
-            disponibilidade: {
-                type: DataTypes.BOOLEAN,
-                allowNull: false,
-            },
             descricao: {
                 type: DataTypes.STRING
             },

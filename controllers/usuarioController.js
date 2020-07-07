@@ -98,6 +98,7 @@ module.exports = {
                     sobrenome,
                     email: email1,
                     senha,
+                    imagem: '/images/novo-usuario.png'
                }
           );
 
@@ -160,7 +161,6 @@ module.exports = {
 
           let file = req.file.originalname;
           let img = `/uploads/perfil/${file}`;
-          console.log(req.file);
 
           let { nomeCli, dataCli, cpfCli, celular } = req.body;
           let nomeCompleto = nomeCli;

@@ -10,9 +10,19 @@
             <form id="form-editar-loja" enctype="multipart/form-data"
             method="POST" action="/lojas/editar-loja/<%= infosLoja.id %>?_method=PUT">
                 <h4>Editar dados da loja</h4>
-                <img class='d-block img-thumbnail' src='<%= infosLoja.imagem %>' width="200px" alt='avatar'>
 
-                <input type="file" name="file">
+                <% if(infosLoja.imagem == null){ %>
+                    <img src="/images/sem-foto.png" alt="">
+                <% } else { %>
+                    <img class='d-block img-thumbnail imagem' src='<%= infosLoja.imagem %>' width="200px" alt='avatar'>                    
+                <% } %>               
+
+                <label for="img-input1">
+                    <img src="/images/camera.png" alt="" >
+                    <input type="file" class="form-control-file" name="file" id="img-input1"
+                    onchange="carregarImagem(event)" multiple>            
+                </label>          
+                
                 <input type="hidden" name="id" id="id" value="<%= infosLoja.id %>">
                 <label>Nome:<input type="text" name="nome" id="nome" value="<%= infosLoja.nome %>"></label>
                 <label>Telefone: <input type="text" name="telefone" id="telefone" value="<%= infosLoja.telefone %>"></label>
@@ -23,5 +33,15 @@
         </div>
     </div>
     <% include partials/footer-alt %>
-    <% include partials/script %>    
+    <% include partials/script %> 
+    
+    <script>
+        var carregarImagem = function (event) {
+            var imagem = document.querySelector('.imagem');
+            imagem.src = URL.createObjectURL(event.target.files[0]);
+            imagem.onload = function () {
+                URL.revokeObjectURL(imagem.src) 
+            }
+        }
+    </script>   
 </body>

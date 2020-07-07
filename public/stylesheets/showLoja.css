@@ -103,6 +103,18 @@ div#page-editar-loja {
       background-color: #FF826E;
       cursor: pointer; }
 
+      /* imagem */
+      div#page-editar-loja form label img{
+        width: 10%;
+        margin-top: 10px;
+        margin-left: 5px;
+        display: block;
+        cursor: pointer;
+      }
+      div#page-editar-loja form label input[type='file']{
+        display: none;
+      }
+
 @media screen and (max-width: 767px) {
   div.page-loja div#meio-home div.loja {
     flex-direction: column; }

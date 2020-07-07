@@ -21,7 +21,7 @@ router.get('/perfil-loja/:id', lojaController.show);
 router.get('/editar-loja/:id', lojaController.edit);
 router.put('/editar-loja/:id', upload.single('file'), lojaController.update);
 router.get('/cadastrar-loja', lojaController.cadastro);
-router.post('/cadastrar-loja', lojaController.cadastrar);
+router.post('/cadastrar-loja', upload.single('file'), lojaController.cadastrar);
 router.get('/dashboard/:id', lojaController.dashboard);
 router.post('/dashboardGrafico/:grafico', lojaController.dashboardGrafico);
 

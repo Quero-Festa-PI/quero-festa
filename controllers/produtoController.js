@@ -79,7 +79,7 @@ module.exports = {
 
         let file = req.files;
                                   
-        let { nomeP, preco, descricaoP, disponibilidade } = req.body;
+        let { nomeP, preco, descricaoP } = req.body;
         
 
         if (nomeP.length <= 1) {
@@ -102,14 +102,8 @@ module.exports = {
             lojas_id: req.session.loja.id,
             nome: nomeP,
             valor: preco,            
-            descricao: descricaoP,
-            disponibilidade
+            descricao: descricaoP
         })
-
-        // let categoria = await Categoria.create({
-        //     nome: categorias,
-        //     where: { }
-        // })
 
         let img;
 

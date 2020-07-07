@@ -92,30 +92,47 @@ module.exports = {
           if (err == 1) {
                err = 'Informe um nome para sua loja'
           }
+
+          if(err == 2) {
+               err = 'email já existe';
+          }
+
           return res.render('cadastrar-loja', { page: 'Cadastrar Loja', err });
      },
      cadastrar: async (req, res) => {
+          let file = req.file.originalname;
+          let img = `/uploads/loja/${file}`;
+          console.log(img);
+
           let { nome, telefone, email, descricao } = req.body;
-          // let image = req.files.originalname;
-          // let img = `/uploads/${image}`;
           let usuario = req.session.usuario;
 
+          let user = await Usuario.findOne({where: {email}});
           if (!usuario) {
                return res.redirect('/usuarios/logar');
           }
+
+          if (!(user.name == null)) {
+               return res.redirect('/usuarios/cadastro?error=2');
+          };
+
+          console.log('chegou');
+          console.log(usuario);
 
           if (!nome) {
                return res.redirect('/lojas/cadastrar-loja?error=1');
           }
 
           let novaLoja = await Loja.create({
-               // imagem: img,
+               imagem: img,
                nome,
                telefone,
                email,
                descricao,
-               usuarios_id: usuario.id
+               usuarios_id: req.session.usuario.id
           })
+          console.log('tudo ok');
+          console.log(novaLoja);
           return res.redirect(`/lojas/perfil-loja/${novaLoja.id}`);
      },
      dashboard: async (req, res,) => {

@@ -11,13 +11,18 @@
                 <!-- Caminho das Páginas -->
                 <%- include('partials/breadcrumb') %>
                 <div class="card card-body ml-5 mr-5" id="borda">
-                    <form action="/lojas/cadastrar-loja" method="POST">
+                    <form action="/lojas/cadastrar-loja" method="POST" enctype="multipart/form-data">
                         <div class="row">
                             <!-- Foto -->
                             <div class="col-4 text-center mt-3">
-                                <img name="imagem" id='avatar' class='shadow border-bottom-primary'
-                                    src='/images/sem-foto.png' width="200px" height="200px" alt='avatar'>
-                                <button class="btn btn-alt text-center">Escolha sua foto!</button>
+                                
+                                <img src="/images/photo.png" alt="" class="imagem w-75 h-75" >
+                                
+                                <label for="img-input1">
+                                    <img src="/images/quadro.png" alt="" >
+                                    <input type="file" class="form-control-file" name="file" id="img-input1"
+                                    onchange="carregarImagem(event)" multiple>            
+                                </label> 
                             </div>
                             <div class="col-8 mt-2">
                                 <!-- Nome da Loja-->
@@ -70,4 +75,13 @@
         </div>
     </div>
     <%- include('partials/script') %>
+    <script>
+        var carregarImagem = function (event) {
+            var imagem = document.querySelector('.imagem');
+            imagem.src = URL.createObjectURL(event.target.files[0]);
+            imagem.onload = function () {
+                URL.revokeObjectURL(imagem.src) 
+            }
+        }
+    </script>
 </body>
