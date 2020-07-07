@@ -1,13 +1,21 @@
-let selecionarAnoVendasAnuais = document.getElementById("vendasAnuais");
+let selecionarAnoVendasLoja = document.getElementById("select-vendas-loja");
+let selecionarPeriodoVendasProduto = document.getElementById("select-vendas-produtos");
 
-if (selecionarAnoVendasAnuais) {
-    selecionarAnoVendasAnuais.addEventListener("change", (evento) => {
+if (selecionarAnoVendasLoja) {
+    const idLoja = document.getElementById("id-loja").value;
+
+    selecionarAnoVendasLoja.addEventListener("change", (evento) => {
         const ano = evento.target.value;
-        getVendasAnuais(ano);
+        getVendasLoja(ano);
     })
 
-    function getVendasAnuais(ano) {
-        fetch(`http://localhost:3000/lojas/dashboardGrafico/vendasAnuais?ano=${ano}`, {
+    selecionarPeriodoVendasProduto.addEventListener("change", (evento) => {
+        const periodo = evento.target.value;
+        getVendasProdutos(periodo);
+    })
+
+    function getVendasLoja(ano) {
+        fetch(`http://localhost:3000/lojas/dashboardGrafico/vendasLoja?ano=${ano}&id=${idLoja}`, {
             method: 'post',
         })
             .then((resposta) => {
@@ -16,12 +24,167 @@ if (selecionarAnoVendasAnuais) {
             })
             .then((dado) => {
                 const { qtdVendas, somaVendas } = dado;
-                chartGraph1.data.datasets[0].data = qtdVendas;
-                chartGraph1.data.datasets[1].data = somaVendas;
-                chartGraph1.update();
+                chartVendasLoja.data.datasets[0].data = qtdVendas;
+                chartVendasLoja.data.datasets[1].data = somaVendas;
+                chartVendasLoja.update();
             })
 
     }
 
-    getVendasAnuais(selecionarAnoVendasAnuais.value);
+    function getVendasProdutos(periodo) {
+        fetch(`http://localhost:3000/lojas/dashboardGrafico/vendasProduto?periodo=${periodo}&id=${idLoja}`, {
+            method: 'post',
+        })
+            .then((resposta) => {
+                resposta = resposta.json()
+                return resposta;
+            })
+            .then((dado) => {
+                const { labels, datasetGanhos, datasetQuantidade, datasetPedidos } = dado;
+                chartVendasProdutos.data.labels = labels;
+                chartVendasProdutos.data.datasets[0].data = datasetGanhos;
+                chartVendasProdutos.data.datasets[1].data = datasetQuantidade;
+                chartVendasProdutos.data.datasets[2].data = datasetPedidos;
+                chartVendasProdutos.update();
+            })
+    }
+
+    let canvas = document.getElementById("vendas-loja");
+
+    var chartVendasLoja = new Chart(canvas, {
+        type: 'line',
+        data: {
+            labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Out", "Nov", "Dez"],
+            datasets: [{
+                label: "Qtd de Vendas",
+                data: [],
+                borderColor: "#FF826E",
+                backgroundColor: "transparent",
+                pointBackgroundColor: "#FF826E",
+                pointRadius: 4,
+                yAxisID: "y-axis-B",
+                fill: false,
+            }, {
+                label: "Qtd de Ganhos (R$)",
+                data: [],
+                borderColor: "#6B8E23",
+                backgroundColor: "transparent",
+                pointBackgroundColor: "#6B8E23",
+                pointRadius: 4,
+                yAxisID: "y-axis-A",
+                fill: false,
+            }],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            hoverMode: 'index',
+            stacked: false,
+            title: {
+                display: true,
+                text: 'Resultados x Loja'
+            },
+            scales: {
+                yAxes: [{
+                    type: "linear",
+                    display: true,
+                    position: "left",
+                    id: "y-axis-A",
+                    ticks: {
+                        beginAtZero: true
+                    },
+                }, {
+                    type: "linear",
+                    display: true,
+                    position: "right",
+                    id: "y-axis-B",
+                    ticks: {
+                        beginAtZero: true
+                    },
+                    gridLines: {
+                        drawOnChartArea: false,
+                    },
+                }],
+            }
+        }
+    });
+
+    canvas = document.getElementById("vendas-produtos");
+
+    var chartVendasProdutos = new Chart(canvas, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [{
+                label: "Total de Ganhos (R$)",
+                data: [],
+                borderColor: "#6B8E23",
+                backgroundColor: "transparent",
+                pointBackgroundColor: "#6B8E23",
+                pointRadius: 4,
+                yAxisID: "y-axis-A",
+                fill: false,
+            }, {
+                label: "Quantidade Vendida",
+                data: [],
+                borderColor: "#FF826E",
+                backgroundColor: "transparent",
+                pointBackgroundColor: "#FF826E",
+                pointRadius: 4,
+                yAxisID: "y-axis-A",
+                fill: false,
+            }, {
+                label: "Total de Pedidos",
+                data: [],
+                borderColor: "#a00000",
+                backgroundColor: "transparent",
+                pointBackgroundColor: "#a00000",
+                pointRadius: 4,
+                yAxisID: "y-axis-B",
+                fill: false,
+            }],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            hoverMode: 'index',
+            stacked: false,
+            title: {
+                display: true,
+                text: 'Resultados x Produtos'
+            },
+            scales: {
+                yAxes: [{
+                    type: "linear",
+                    display: true,
+                    position: "left",
+                    id: "y-axis-A",
+                    ticks: {
+                        beginAtZero: true
+                    },
+                }, {
+                    type: "linear",
+                    display: true,
+                    position: "right",
+                    id: "y-axis-B",
+                    ticks: {
+                        beginAtZero: true
+                    },
+                    gridLines: {
+                        drawOnChartArea: false,
+                    },
+                }],
+                xAxes: [{
+                    ticks: {
+                        autoSkip: false,
+                        minRotation: 90,
+                        maxRotation: 90,
+                    }
+                }]
+            }
+        }
+    });
+
+    getVendasLoja(selecionarAnoVendasLoja.value);
+    getVendasProdutos(selecionarPeriodoVendasProduto.value);
 }

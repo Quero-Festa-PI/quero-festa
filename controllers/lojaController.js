@@ -224,5 +224,77 @@ module.exports = {
 
                return res.send({ qtdVendas, somaVendas });
           }
+
+          if (grafico == "vendasProduto") {
+               var { periodo, id } = req.query;
+               var whereString;
+               var groupString;
+               var ano;
+               var mes;
+
+               if (periodo != 1) {
+                    ano = periodo.slice(0, 4);
+                    mes = periodo.slice(4, 5);
+                    if (mes) {
+                         whereString = '`pedidos`.`lojas_id` = ' + id + ' AND YEAR(createdAt) = ' + ano + ' AND MONTH(createdAt) = ' + mes;
+                         groupString = 'YEAR(createdAt), MONTH(createdAt), `produtos_id`'
+                    } else {
+                         whereString = '`pedidos`.`lojas_id` = ' + id + ' AND YEAR(createdAt) = ' + ano;
+                         groupString = 'YEAR(createdAt), `produtos_id`'
+                    }
+               } else {
+                    whereString = '`pedidos`.`lojas_id` = ' + id;
+                    groupString = '`produtos_id`'
+               }
+
+               let resultados = await PedidoProduto.findAll({
+                    include: [{
+                         model: Produto,
+                         as: 'produtos',
+                         attributes: ['id', 'nome', 'valor'],
+                    }, {
+                         model: Pedido,
+                         as: 'pedidos',
+                         attributes: [
+                              'lojas_id',
+                              'createdAt',
+                              [Sequelize.literal('MONTH(createdAt)'), 'mes'],
+                              [Sequelize.literal('YEAR(createdAt)'), 'ano'],
+                         ]
+                    }],
+                    attributes: [
+                         'produtos_id',
+                         [Sequelize.literal('COUNT(produtos_id)'), 'contador'],
+                         [Sequelize.literal('SUM(quantidade)'), 'soma'],
+                         [Sequelize.literal('SUM(quantidade) * `produtos`.`valor`'), 'total'],
+                    ],
+                    group: [Sequelize.literal(groupString)],
+                    where: Sequelize.literal(whereString),
+                    order: Sequelize.literal('`total` DESC'),
+               });
+
+               let labels = [];
+               let datasetGanhos = [];
+               let datasetQuantidade = [];
+               let datasetPedidos = [];
+
+               for (let i = 0; i < resultados.length; i++) {
+                    var produto = resultados[i];
+                    produto = produto.toJSON();
+                    labels.push(produto.produtos.nome);
+                    datasetGanhos.push(produto.total);
+                    datasetQuantidade.push(produto.soma);
+                    datasetPedidos.push(produto.contador);
+               }
+
+               resultados = {
+                    labels,
+                    datasetGanhos,
+                    datasetQuantidade,
+                    datasetPedidos,
+               }
+
+               return res.send(resultados)
+          }
      }
 }
