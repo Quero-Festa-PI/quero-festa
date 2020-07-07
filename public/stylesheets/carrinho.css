@@ -1,5 +1,20 @@
 div.page-carrinho .container {
   flex-direction: column; }
+  div.page-carrinho .container .row.compre-tambem {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px;
+    border: 1px solid #FF826E;
+    border-radius: 8px;
+    background-color: #FFF;
+    padding: 16px; }
+    div.page-carrinho .container .row.compre-tambem h3 {
+      margin-left: 10px;
+      font-weight: 500; }
+    div.page-carrinho .container .row.compre-tambem .produtos {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: flex-start; }
   div.page-carrinho .container div.row.produtos {
     display: flex;
     flex-direction: column;

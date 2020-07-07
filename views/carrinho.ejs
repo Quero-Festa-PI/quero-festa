@@ -20,8 +20,47 @@
         </div>
       </div>
 
+      <div class="row compre-tambem">
+        <h3>Compre Também</h3>
+        <div class="produtos">
+          <% for (produto of produtos) { %>
+          <% if(produto.avaliacoes) { %>
+          <% var avaliacao = Math.round(Number(produto.avaliacoes.media) * 10) / 10; %>
+          <% var avaliacaoPerc = ((18 * avaliacao) + (4.3875 * Math.trunc(avaliacao))) / 107.550 * 100; %>
+          <% var quantidadeAvaliacoes = Number(produto.avaliacoes.quantidadeAvaliacoes); %>
+          <% } else { %>
+          <% var avaliacao = 0; %>
+          <% var avaliacaoPerc = 100; %>
+          <% var quantidadeAvaliacoes = 0; %>
+          <% } %>
+          <card class="anuncio-box card shadow card-produtos">
+            <a href="/produtos/<%= produto.id %>"><img src="<%= produto.imagem %>" class="img-fluid"></a>
+            <titulo class="card-text"><%= produto.nome %></titulo>
+            <div class="avaliacao">
+              <div class="stars-outer">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <div class="stars-inner" style="width: <%= avaliacaoPerc %>%">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+              <span><%= avaliacao %></span>
+              <span>(<%= quantidadeAvaliacoes %>)</span>
+            </div>
+            <preco>R$<%= produto.valor.toFixed(2) %></preco>
+            <a href="/produtos/<%= produto.id %>">Saiba Mais...</a>
+          </card>
+          <% } %>
+        </div>
+      </div>
     </div>
-  </div>
 </body>
 <%include partials/footer-alt %>
 <%include partials/script %>
