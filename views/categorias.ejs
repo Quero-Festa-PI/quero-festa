@@ -1,0 +1,89 @@
+<%- include('partials/header') %>
+
+<body>
+    <div class="page">
+        <%- include('partials/navbar') %>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <div class="container d-flex flex-column">
+            <%- include('partials/breadcrumb') %>
+            <div class="row infos-resultados">
+                <div class="resultado-busca">
+                    <strong><%= categoria %></strong>
+                    <p>(<%= quantidade %> produtos encontrados)</p>
+                </div>
+                <div class="select-ordenar d-flex flex-column">
+                    <label>Ordenar por</label>
+                    <select name="ordenar" id="ordenar" class="submit-on-change">
+                        <option value="">Todos os produtos</option>
+                        <option value="">Menor Preço</option>
+                        <option value="">Maior Preço</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row produtos-busca">
+                <% for (produto of resultado) { %>
+                <% if(produto.avaliacoes[0]) { %>
+                <% var avaliacao = Math.round(Number(produto.avaliacoes[0].media) * 10) / 10; %>
+                <% var avaliacaoPerc = ((18 * avaliacao) + (4.3875 * Math.trunc(avaliacao))) / 107.550 * 100; %>
+                <% var quantidadeAvaliacoes = Number(produto.avaliacoes[0].quantidade); %>
+                <% } else { %>
+                <% var avaliacao = 0; %>
+                <% var avaliacaoPerc = 100; %>
+                <% var quantidadeAvaliacoes = 0; %>
+                <% } %>
+                <card class="anuncio-box card shadow card-produtos">
+                    <a href="/produtos/<%= produto.id %>"><img src="<%= produto.imagem %>" alt="" class="img-fluid"></a>
+                    <titulo class="card-text"><%= produto.nome %></titulo>
+                    <div class="avaliacao">
+                        <div class="stars-outer">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <div class="stars-inner" style="width: <%= avaliacaoPerc %>%">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <span><%= avaliacao %></span>
+                        <span>(<%= quantidadeAvaliacoes %>)</span>
+                    </div>
+                    <preco>R$<%= produto.valor.toFixed(2) %></preco>
+
+                    <a href="/produtos/<%= produto.id %>">Saiba Mais...</a>
+                </card>
+                <% } %>
+            </div>
+            <p>Exibindo <%= resultado.length %> de <%= quantidade %> resultados.</p>
+            <div class="row lista-paginas">
+                <% if(pageActual > 1) { %>
+                <a href="/produtos/categorias?categoria=<%= categoriaId %>&page=<%= (Number(pageActual) - 1) %>">
+                    <img src="/images/previous-page.png" alt="Ir para a página anterior.">
+                </a>
+                <% } %>
+                <% let inicio; let fim; %>
+                <% (pageActual <= 3) ? inicio = 1 : inicio = Math.max(1, Math.min((pageActual - 2), (totalPage - 4))) %>
+                <% (pageActual <= 3) ? fim = Math.min(5, totalPage) : fim = Math.min((pageActual + 2), totalPage) %>
+                <% for (let i = inicio; i <= fim; i++) { %>
+                <% if (i == pageActual) { %>
+                <a class="active" href="/produtos/categorias?categoria=<%= categoriaId %>&page=<%= i %>"><%= i %></a>
+                <% } else { %>
+                <a href="/produtos/categorias?categoria=<%= categoriaId %>&page=<%= i %>"><%= i %></a>
+                <% } %>
+                <% } %>
+                <% if(pageActual < totalPage) { %>
+                <a href="/produtos/categorias?categoria=<%= categoriaId %>&page=<%= (Number(pageActual) + 1) %>">
+                    <img src="/images/next-page.png" alt="Ir para a página posterior.">
+                </a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <%- include('partials/footer') %>
+    <%- include('partials/script') %>
+</body>
