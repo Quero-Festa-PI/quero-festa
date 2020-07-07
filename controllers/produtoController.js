@@ -78,9 +78,9 @@ module.exports = {
     cadastro: async (req, res) => {
 
         let file = req.files;
-                                  
+
         let { nomeP, preco, descricaoP } = req.body;
-        
+
 
         if (nomeP.length <= 1) {
             res.redirect('/produtos/cadastrar-produto?error=1')
@@ -101,19 +101,19 @@ module.exports = {
         let produto = await Produto.create({
             lojas_id: req.session.loja.id,
             nome: nomeP,
-            valor: preco,            
+            valor: preco,
             descricao: descricaoP
         })
 
         let img;
 
-        for(let arquivo of file){            
+        for (let arquivo of file) {
             img = `/uploads/produtos/${arquivo.originalname}`
             let imagens = await ImagensDeProduto.create({
                 image_url: img,
                 produtos_id: produto.id
-            })                       
-        }         
+            })
+        }
         return res.redirect(`/lojas/perfil-loja/${req.session.loja.id}`);
     },
     produto: (req, res) => {
@@ -125,7 +125,7 @@ module.exports = {
 
         // buscar produto no bd
         let produto = await Produto.findByPk(id, {
-            attributes: ['id', 'nome', 'valor', 'disponibilidade', 'descricao'],
+            attributes: ['id', 'nome', 'valor', 'descricao'],
             include: [{
                 model: Loja,
                 as: 'lojas',
