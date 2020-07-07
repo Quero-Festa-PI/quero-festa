@@ -67,7 +67,7 @@ module.exports = {
           return res.render('editar-loja', { page: 'Editar Loja', infosLoja })
      },
      update: async (req, res) => {
-          const {id} = req.params;
+          const { id } = req.params;
 
           let file = req.file.originalname;
           let img = `/uploads/loja/${file}`;
@@ -75,8 +75,8 @@ module.exports = {
 
           console.log(`${id} ${nome} ${descricao}`);
 
-          let lojaUpdate = await Loja.update({ 
-               imagem: img,              
+          let lojaUpdate = await Loja.update({
+               imagem: img,
                nome,
                descricao,
                telefone,
@@ -120,13 +120,19 @@ module.exports = {
           return res.redirect(`/lojas/perfil-loja/${novaLoja.id}`);
      },
      dashboard: async (req, res,) => {
-          let { id } = req.params;
+
+          let lojaLogada = res.locals.loja;
+
+          if (!lojaLogada) {
+               req.session.urlPosLogin = req.originalUrl;
+               res.redirect('/usuarios/logar');
+          }
 
           let pedidos = await Pedido.findAll({
                include: [{
                     model: Entrega,
                     as: 'entrega',
-                    attributes: ['data_prev', 'data_real']
+                    attributes: ['data_prev'],
                }, {
                     model: Usuario,
                     as: 'usuario',
@@ -145,45 +151,48 @@ module.exports = {
                          attributes: ['nome']
                     }]
                }],
-               attributes: ['id', 'valor_total', 'lojas_id'],
-               where: { lojas_id: id },
+               attributes: ['id', 'lojas_id'],
+               where: Sequelize.literal('`Pedido`.`lojas_id` = 3 AND `entrega`.`data_real` IS NULL'),
           });
 
-          pedidos = pedidos.map(pedido => pedido.toJSON());
+          let atrasados = [];
+          let proximos = [];
 
-          function formatarObjetos(objetos) {
-
-               objetos = objetos.map(objeto => {
-                    objeto.listaDeProdutos.forEach(produto => {
+          function formatarObjetos(pedidos) {
+               pedidos.forEach(pedido => {
+                    pedido = pedido.toJSON();
+                    delete pedido.lojas_id;
+                    pedido.entrega = pedido.entrega.data_prev;
+                    pedido.pagamento = pedido.pagamento.status;
+                    pedido.listaDeProdutos = pedido.listaDeProdutos.map(produto => {
                          produto.nome = produto.produtos.nome;
-                         delete produto.produtos
+                         delete produto.produtos;
+                         return produto;
                     });
-                    objeto.pagamento = objeto.pagamento.status;
-                    return objeto;
+                    pedido.entrega > new Date() ? proximos.push(pedido) : atrasados.push(pedido);
                });
-               return objetos;
           }
 
-          pedidos = formatarObjetos(pedidos);
+          formatarObjetos(pedidos);
 
           let totalVendido = await Pedido.findOne({
                attributes: [
                     [Sequelize.literal('SUM(`valor_total`)'), 'soma'],
                     [Sequelize.literal(`COUNT(*)`), 'qtd']
                ],
-               where: { lojas_id: id }
+               where: { lojas_id: 3 }
           });
 
           totalVendido = totalVendido.toJSON();
 
-          res.render('dashboard', { page: 'Dashboard', pedidos, totalVendido });
+          res.render('dashboard', { page: 'Dashboard', totalVendido, proximos, atrasados });
      },
      dashboardGrafico: async (req, res) => {
 
           let { grafico } = req.params;
-          let { ano } = req.query;
 
-          if (grafico == "vendasAnuais") {
+          if (grafico == "vendasLoja") {
+               let { ano, id } = req.query;
                let resultadosMensais = await Pedido.findAll({
                     attributes: [
                          [Sequelize.literal('YEAR(`createdAt`)'), 'ano'],
@@ -192,7 +201,7 @@ module.exports = {
                          [Sequelize.literal(`COUNT(*)`), 'qtdVendas']
                     ],
                     group: ['mes', 'ano'],
-                    where: { lojas_id: 1 }
+                    where: { lojas_id: id }
                })
 
                // montar dicionário com relação de vendas por mes/ano
