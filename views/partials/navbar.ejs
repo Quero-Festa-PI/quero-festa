@@ -82,16 +82,16 @@
                     <% } %>
                     <a class="dropdown-item" href="/usuarios/sair">Sair</a>
                 </div>
-            </div>            
-                      
+            </div>
+
             <% if(navegacaoLoja){ %>
-                <img class="rounded-circle" src="<%= loja.imagem %>" width="50px" height="50px" alt="avatar">
+            <img class="rounded-circle" src="<%= loja.imagem %>" width="50px" height="50px" alt="avatar">
             <% } else { %>
-                <img class="rounded-circle" src="<%= usuario.imagem %>" width="50px" height="50px" alt="avatar">
+            <img class="rounded-circle" src="<%= usuario.imagem %>" width="50px" height="50px" alt="avatar">
             <% } %>
             <% } %>
         </div>
-        
+
 
     </div>
     <div class="navbar-row2">
@@ -102,10 +102,10 @@
             <li><a href="/produtos/cadastrar-produto">Cadastrar Produtos</a></li>
             <li><a href="/lojas/dashboard">Dashboard</a></li>
             <% } else { %>
-            <li><a href="">Aniversário</a></li>
+            <li><a href="/produtos/categorias/1">Aniversário</a></li>
+            <li><a href="/produtos/categorias/2">Festa Junina</a></li>
             <li><a href="">Bodas</a></li>
-            <li><a href="">Datas especiais</a></li>
-            <li><a href="">Comemorações</a></li>
+            <li><a href="">Carnaval</a></li>
             <% } %>
         </ul>
     </div>

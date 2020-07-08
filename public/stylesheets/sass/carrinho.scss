@@ -8,6 +8,24 @@ $secondary-font: #1E1E1E;
 div.page-carrinho {
     .container {
         flex-direction: column;
+        .row.compre-tambem {
+            display: flex;
+            flex-direction: column;
+            margin: 0px 0px;
+            border: 1px solid $primary;
+            border-radius: 8px;
+            background-color: #FFF;
+            padding: 16px;
+            h3 {
+                margin-left: 10px;
+                font-weight: 500;
+            }
+            .produtos {
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: flex-start;
+            }
+        }
         div.row.produtos {
             display: flex;
             flex-direction: column;

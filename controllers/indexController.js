@@ -48,8 +48,12 @@ module.exports = {
                 avaliacao = avaliacao.toJSON();
                 return avaliacao.id == produto.produtos_id;
             })
-            avaliacaoP = avaliacaoP.avaliacoes;
-            produto.avaliacoes = avaliacaoP[0];
+            if (avaliacaoP) {
+                avaliacaoP = avaliacaoP.avaliacoes;
+                produto.avaliacoes = avaliacaoP[0];
+            } else {
+                produtos.avaliacoes = '';
+            }
             return produto;
         });
 
@@ -62,9 +66,13 @@ module.exports = {
                 delete objeto.produtos_id;
                 objeto.nome = objeto.produtos.nome;
                 objeto.valor = objeto.produtos.valor;
-                objeto.imagem = objeto.produtos.imagens[0].image_url;
+                if (objeto.produtos.imagens[0]) {
+                    objeto.imagem = objeto.produtos.imagens[0].image_url;
+                }
                 delete objeto.produtos;
-                objeto.avaliacoes = objeto.avaliacoes.toJSON();
+                if (objeto.avaliacoes) {
+                    objeto.avaliacoes = objeto.avaliacoes.toJSON();
+                }
                 return objeto;
             })
             return objetos;
