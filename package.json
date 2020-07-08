@@ -3,7 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www -e js,mjs,json,ejs,css"
+    "dev": "nodemon ./bin/www -e js,mjs,json,ejs,css",
+    "db:migrate:undoAll": "sequelize-cli db:migrate:undo:all",
+    "db:migrate": "sequelize db:migrate",
+    "db:seed:undoAll": "sequelize-cli db:seed:undo:all",
+    "db:seed": "sequelize db:seed:all",
+    "predev": "npm run db:migrate:undoAll && npm run db:migrate && npm run db:seed:undoAll && npm run db:seed"
+
   },
   "dependencies": {
     "awesome-cep": "^1.1.3",
