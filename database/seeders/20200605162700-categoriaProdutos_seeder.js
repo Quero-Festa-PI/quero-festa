@@ -5,19 +5,115 @@ module.exports = {
     return queryInterface.bulkInsert('produtos_categorias', [{
       id: 1,
       categorias_id: 1,
-      produtos_id: 1
+      produtos_id: 1,
     }, {
       id: 2,
       categorias_id: 1,
-      produtos_id: 2
+      produtos_id: 2,
     }, {
       id: 3,
       categorias_id: 1,
-      produtos_id: 3
+      produtos_id: 3,
     }, {
       id: 4,
-      categorias_id: 3,
-      produtos_id: 3
+      categorias_id: 1,
+      produtos_id: 4,
+    }, {
+      id: 5,
+      categorias_id: 1,
+      produtos_id: 5,
+    }, {
+      id: 6,
+      categorias_id: 1,
+      produtos_id: 6,
+    }, {
+      id: 7,
+      categorias_id: 1,
+      produtos_id: 7,
+    }, {
+      id: 8,
+      categorias_id: 1,
+      produtos_id: 8,
+    }, {
+      id: 9,
+      categorias_id: 1,
+      produtos_id: 9,
+    }, {
+      id: 10,
+      categorias_id: 1,
+      produtos_id: 10,
+    }, {
+      id: 11,
+      categorias_id: 1,
+      produtos_id: 11,
+    }, {
+      id: 12,
+      categorias_id: 1,
+      produtos_id: 12,
+    }, {
+      id: 13,
+      categorias_id: 2,
+      produtos_id: 13,
+    }, {
+      id: 14,
+      categorias_id: 2,
+      produtos_id: 14,
+    }, {
+      id: 15,
+      categorias_id: 2,
+      produtos_id: 15,
+    }, {
+      id: 16,
+      categorias_id: 2,
+      produtos_id: 16,
+    }, {
+      id: 17,
+      categorias_id: 2,
+      produtos_id: 17,
+    }, {
+      id: 18,
+      categorias_id: 2,
+      produtos_id: 18,
+    }, {
+      id: 19,
+      categorias_id: 2,
+      produtos_id: 19,
+    }, {
+      id: 20,
+      categorias_id: 2,
+      produtos_id: 20,
+    }, {
+      id: 21,
+      categorias_id: 2,
+      produtos_id: 21,
+    }, {
+      id: 22,
+      categorias_id: 2,
+      produtos_id: 22,
+    }, {
+      id: 23,
+      categorias_id: 2,
+      produtos_id: 23,
+    }, {
+      id: 24,
+      categorias_id: 2,
+      produtos_id: 24,
+    }, {
+      id: 25,
+      categorias_id: 2,
+      produtos_id: 25,
+    }, {
+      id: 26,
+      categorias_id: 2,
+      produtos_id: 26,
+    }, {
+      id: 27,
+      categorias_id: 2,
+      produtos_id: 27,
+    }, {
+      id: 28,
+      categorias_id: 2,
+      produtos_id: 28,
     },]);
   },
 

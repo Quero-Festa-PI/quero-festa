@@ -19,7 +19,15 @@ module.exports = {
       avaliacao: 2.3,
       imagem: '/uploads/loja/brigadeiro.png',
       telefone: '(11)92121-2121',
-      email: 'brigadeiro@querofesta.com'
+      email: 'brigadeiros@querofesta.com'
+    }, {
+      id: 3,
+      usuarios_id: 4,
+      nome: 'Artigos para Festa Junina',
+      descricao: 'Tudo para você fazer uma festa junina top.',
+      imagem: '/uploads/loja/junina.png',
+      telefone: '(11)99254-2548',
+      email: 'junina@querofesta.com.br',
     }]);
   },
 

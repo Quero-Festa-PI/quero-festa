@@ -7,10 +7,10 @@ module.exports = {
       nome: 'Aniversário'
     }, {
       id: 2,
-      nome: 'Bodas'
+      nome: 'Festa Junina'
     }, {
       id: 3,
-      nome: 'Festa Junina'
+      nome: 'Bodas'
     }, {
       id: 4,
       nome: 'Natal'

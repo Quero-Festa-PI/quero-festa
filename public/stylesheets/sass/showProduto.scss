@@ -110,6 +110,7 @@ div#meio-home{
             display: flex;
             flex-flow: row wrap;
             justify-content: flex-start;
+            width: 100%;
             div.comentario{
                 background-color: #f8f8f8;
                 max-width: calc((100% - 20px) / 2);
@@ -133,6 +134,7 @@ div#meio-home{
                     color: #333;
                 }
                 p{
+                    width: 100%;
                     text-align: center;
                     margin: 8px 0px 0px 0px;
                     padding: 0px 8px;

@@ -10,4 +10,21 @@
 	display: none;
 }
 
+form#form div.col-12 {
+	padding-right: 2px;
+}
+
+div#preview {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+
+div#preview img {
+	margin-left: 8px;
+	padding: .25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+}
 

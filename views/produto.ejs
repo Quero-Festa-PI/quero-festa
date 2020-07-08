@@ -125,6 +125,7 @@
                     <% const nome = avaliacoes[i].usuarios.nome; const sobrenome = avaliacoes[i].usuarios.sobrenome %>
                     <% const id = avaliacoes[i].usuarios.id %>
 
+                    <% if(avaliacoes[i].comentario) { %>
                     <div class="comentario">
                         <a href="/usuarios/perfil-cliente/<%= id %>"><%= nome %> <%= sobrenome %></a>
                         <div class="avaliacao">
@@ -147,6 +148,7 @@
                         <span><%= avaliacoes[i].createdAt.toLocaleDateString('pt-BR', { year: 'numeric', month: '2-digit', day: '2-digit' }) %></span>
                         <p><%= avaliacoes[i].comentario %></p>
                     </div>
+                    <% } %>
                     <% } %>
                 </div>
                 <% } else { %>
