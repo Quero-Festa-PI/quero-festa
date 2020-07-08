@@ -91,11 +91,18 @@
                                             </fieldset>
                                         </div>
                                         <!-- FOTO -->
-                                        <div class="col-4 text-right">
-                                            <img id='avatar' class='shadow border-bottom-primary rounded-circle'
-                                                src='<%= usuario.imagem %>' width="160px" height="160px"
-                                                alt='avatar'>
-                                                <input type="file" name="img">
+                                        <div class="col-4 text-center">
+                                            <% if(usuario.imagem == null){ %>
+                                                <img src="/images/novo-usuario.png" alt="">
+                                            <% } else { %>
+                                                <img class='d-block img-thumbnail imagem' src='<%= usuario.imagem %>' width="200px" alt='avatar'>                    
+                                            <% } %>               
+                            
+                                            <label for="img-input1">
+                                                <img src="/images/camera.png" alt="" >
+                                                <input type="file" class="form-control-file" name="img" id="img-input1"
+                                                onchange="carregarImagem(event)" value="<%= usuario.imagem %>" multiple>            
+                                            </label>                                              
                                         </div> 
                                     </div>
                                 </div>
@@ -242,7 +249,7 @@
                                                                     class="col-sm-3 col-form-label">Senha Atual:</label>
                                                                 <div class="col-sm-4">
                                                                     <input type="password" class="form-control"
-                                                                        name="senhaAtual" id="senhaAtual">
+                                                                        name="senhaAtual" id="senhaAtual" >
                                                                 </div>
                                                             </div>
                                                             <!-- Nova Senha -->
@@ -262,7 +269,7 @@
                                                                     Senha:</label>
                                                                 <div class="col-sm-4">
                                                                     <input type="password" class="form-control"
-                                                                        name="confirmarSenha" id="confirmarSenha">
+                                                                        name="confirmarSenha" id="confirmarSenha" >
                                                                 </div>
                                                             </div>
                                                             <!-- Fim senha -->
@@ -297,4 +304,13 @@
     </div>
     <% include partials/footer-alt %>
     <% include partials/script %>
+    <script>
+        var carregarImagem = function (event) {
+            var imagem = document.querySelector('.imagem');
+            imagem.src = URL.createObjectURL(event.target.files[0]);
+            imagem.onload = function () {
+                URL.revokeObjectURL(imagem.src) 
+            }
+        }
+    </script>
 </body>

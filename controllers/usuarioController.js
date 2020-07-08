@@ -183,12 +183,15 @@ module.exports = {
           let sobrenome = nomeCompleto.replace(nome + " ", "");
 
           console.log('OK MAN');
-          if (!senhaAtual) {
+          console.log(usuario.senha);
+          console.log(senhaAtual);
+
+          if (!senhaAtual && !novaSenha && !confirmarSenha) {
                senhaAtual = usuario.senha;
                novaSenha = usuario.senha;
                confirmarSenha = usuario.senha;
           }
-
+          
           if (!bcrypt.compareSync(senhaAtual, usuario.senha)) {
                res.redirect('/usuarios/editar-cliente/usuario.id?error=1');
           }
@@ -196,11 +199,16 @@ module.exports = {
           if (novaSenha != confirmarSenha) {
                res.redirect('/usuarios/editar-cliente/usuario.id?error=2');
           }
-
-          console.log('OK MAN');
+    
+          
+          console.log('OK MAN 2');
 
           // criptografando nova senha
-          novaSenha = bcrypt.hashSync(novaSenha, 10);
+          if(novaSenha != null){
+               return novaSenha = bcrypt.hashSync(novaSenha, 10);
+          }
+          console.log('OK MAN 3');
+          console.log(novaSenha);
 
           let userNovo = await Usuario.update({
                imagem: img,
@@ -213,6 +221,7 @@ module.exports = {
           },
                { where: { id } });
 
+          console.log('OK MAN 4')
           let endereco = await Endereco.update({
                estado,
                cidade,
@@ -227,7 +236,8 @@ module.exports = {
                     usuarios_id: id
                }
           });
-          return res.redirect(`/usuarios/perfil-cliente/${res.locals.usuario.id}`);
+          console.log('OK MAN ULTIMO');
+          return res.redirect(`/usuarios/perfil-cliente/${usuario.id}`);
      },
      sair: (req, res) => {
           req.session.destroy();
