@@ -65,22 +65,25 @@
                     <% } %>
                 </button>
                 <div class="dropdown-menu">
-                    <% if(navegacaoLoja){ %>
-                    <a class="dropdown-item" href="/lojas/perfil-loja/<%= loja.id %>">Perfil</a>
+                    <% if (loja) { %>
+                    <% if (navegacaoLoja) { %>
+                    <a class="dropdown-item" href="/usuarios/perfil-cliente/<%= String(usuario.id) %>">Minha Conta</a>
+                    <a class="dropdown-item" href="/lojas/perfil-loja/<%= loja.id %>">Minha Loja</a>
+                    <a class="dropdown-item" href="/lojas/dashboard">Dashboard</a>
+                    <a class="dropdown-item" href="/alterar-navegacao">Navegar como Cliente</a>
+                    <a class="dropdown-item" href="/usuarios/sair">Sair</a>
                     <% } else { %>
                     <a class="dropdown-item" href="/usuarios/perfil-cliente/<%= String(usuario.id) %>">Minha Conta</a>
                     <a class="dropdown-item" href="/pedidos/pedido">Meus Pedidos</a>
-                    <% } %>
-
-                    <% if (loja) { %>
-                    <% if (navegacaoLoja) { %>
-                    <a class="dropdown-item" href="/lojas/perfil-loja/<%= loja.id %>">Minha Loja</a>
-                    <a class="dropdown-item" href="/alterar-navegacao">Navegar como Cliente</a>
-                    <% } else { %>
                     <a class="dropdown-item" href="/alterar-navegacao">Navegar como Loja</a>
-                    <% } %>
-                    <% } %>
                     <a class="dropdown-item" href="/usuarios/sair">Sair</a>
+                    <% } %>
+                    <% } else { %>
+                    <a class="dropdown-item" href="/usuarios/perfil-cliente/<%= String(usuario.id) %>">Minha Conta</a>
+                    <a class="dropdown-item" href="/pedidos/pedido">Meus Pedidos</a>
+                    <a class="dropdown-item" href="/lojas/cadastrar-loja">Criar uma loja</a>
+                    <a class="dropdown-item" href="/usuarios/sair">Sair</a>
+                    <% } %>
                 </div>
             </div>
 
