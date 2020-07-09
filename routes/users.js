@@ -7,11 +7,11 @@ const storage = multer.diskStorage({
         cb(null, './public/uploads/perfil/');
     },
     filename: (req, file, cb) => {
-        const {name, ext} = path.parse(file.originalname);
+        const { name, ext } = path.parse(file.originalname);
         cb(null, `${name}${ext}`)
     }
 })
-const upload = multer({storage});
+const upload = multer({ storage });
 
 // Chamando o controller
 const usuarioController = require('../controllers/usuarioController');
@@ -29,7 +29,7 @@ router.post('/consultar-cep', usuarioController.consultaCep);
 router.get('/editar-endereco', usuarioController.endereco);
 router.post('/editar-endereco', usuarioController.cadastrarEndereco);
 router.put('/editar-endereco/:id', usuarioController.editarEndereco);
-
+router.delete('/deletar/:id', usuarioController.deletar);
 
 /* GET users listing. */
 // router.get('/', function(req, res, next) {

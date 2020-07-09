@@ -293,5 +293,13 @@ module.exports = {
           } else {
                return res.redirect('/usuarios/editar-endereco?mensagem=3');
           }
+     },
+     deletar: async (req, res) => {
+          const { id } = req.params;
+
+          await Usuario.destroy({ where: { id } });
+          req.session.usuario = null; res.locals.loja = null; req.session.navegacaoLoja = false; res.locals.navegacaoLoja = false;
+
+          return res.redirect('/');
      }
 }

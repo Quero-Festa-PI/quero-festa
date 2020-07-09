@@ -204,11 +204,13 @@
                                         Vendedor</a>
                                 </div>
                                 <div class='col-2 text-right'>
-                                    <a href="/" class="btn btn-alt" id="dados">Excluir Conta</a>
+                                    <a id="deletar-usuario" href="/usuarios/deletar/<%= usuario.id %>?_method=DELETE"
+                                        class="btn btn-alt" id="dados">Excluir Conta</a>
                                 </div>
                                 <% } else { %>
                                 <div class='col-12 text-right'>
-                                    <a href="/" class="btn btn-alt" id="dados">Excluir Conta</a>
+                                    <a id="deletar-usuario" href="/usuarios/deletar/<%= usuario.id %>?_method=DELETE"
+                                        class="btn btn-alt" id="dados">Excluir Conta</a>
                                 </div>
                                 <% } %>
                             </div>
@@ -224,6 +226,15 @@
     <% include partials/footer-alt %>
     </div>
     <% include partials/script %>
+    <script>
+        const botaoDeletar = document.getElementById("deletar-usuario");
+        botaoDeletar.addEventListener("click", (ev) => {
+            if (!confirm("Tem certeza que deseja excluir a sua conta?")) {
+                ev.preventDefault;
+            }
+        })
+    </script>
+
 </body>
 
 </html>
