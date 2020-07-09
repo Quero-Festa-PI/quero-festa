@@ -68,12 +68,12 @@ module.exports = {
      },
      update: async (req, res) => {
           const { id } = req.params;
-          
+
           let arquivo = req.file;
-          let img; 
+          let img;
           let infosLoja = await Loja.findByPk(id);
 
-          if(!arquivo){
+          if (!arquivo) {
                img = infosLoja.imagem;
           } else {
                let file = req.file.originalname;
@@ -111,22 +111,18 @@ module.exports = {
      cadastrar: async (req, res) => {
           let file = req.file.originalname;
           let img = `/uploads/loja/${file}`;
-          console.log(img);
 
           let { nome, telefone, email, descricao } = req.body;
           let usuario = req.session.usuario;
 
-          let user = await Usuario.findOne({ where: { email } });
           if (!usuario) {
                return res.redirect('/usuarios/logar');
           }
 
-          if (!(user.name == null)) {
+          let lojaExistente = await Loja.findOne({ where: { email } });
+          if ((lojaExistente)) {
                return res.redirect('/usuarios/cadastro?error=2');
           };
-
-          console.log('chegou');
-          console.log(usuario);
 
           if (!nome) {
                return res.redirect('/lojas/cadastrar-loja?error=1');
@@ -140,8 +136,7 @@ module.exports = {
                descricao,
                usuarios_id: req.session.usuario.id
           })
-          console.log('tudo ok');
-          console.log(novaLoja);
+
           return res.redirect(`/lojas/perfil-loja/${novaLoja.id}`);
      },
      dashboard: async (req, res,) => {

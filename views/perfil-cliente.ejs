@@ -127,11 +127,6 @@
                                                                 value="<%= endereco.cep%>" readonly>
                                                         </div>
 
-                                                        <div class=" text-left col-sm-2">
-                                                            <button
-                                                                class="btn btn-sm btn-outline-secondary">Buscar</button>
-                                                        </div>
-
                                                     </div>
                                                     <!-- RUA -->
                                                     <div class="form-group row">
@@ -172,7 +167,7 @@
                                                             class="col-sm-2 col-form-label">Estado</label>
                                                         <div class="col-sm-5">
                                                             <select id="inputEstado" class="form-control" name="estado"
-                                                                <%= (usuario.id !== usuarioPerfil.id) ? 'disabled' : '' %>>
+                                                                disabled>
                                                                 <option
                                                                     <%= (endereco.estado == null)? 'selected' : '' %>>
                                                                     Escolher...</option>

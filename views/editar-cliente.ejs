@@ -4,7 +4,7 @@
     <div class="page">
         <%- include('partials/navbar') %>
 
-        <div id="meio-home" class="container">
+        <div id="meio-home-perfil-cliente" class="container">
             <div class="row">
                 <%- include('partials/breadcrumb') %>
 
@@ -19,12 +19,13 @@
                                 <div class="col-4">
                                     <h4>Dados Pessoais</h4>
                                 </div>
+
                             </div>
                             <form enctype="multipart/form-data" method="POST"
-                            action="/usuarios/editar-cliente/<%= usuario.id %>?_method=PUT">
+                                action="/usuarios/editar-cliente/<%= usuario.id %>?_method=PUT">
                                 <div class="card card-body painel-dash border-left-primary shadow ml-2 mr-2">
                                     <div class="row">
-                                        <div class='col-8'>
+                                        <div class='col-9'>
                                             <input type="hidden" name="id" value="<%= usuario.id %>">
                                             <!-- NOME COMPLETO-->
                                             <div class="form-group row">
@@ -61,16 +62,8 @@
                                                         value="<%= usuario.celular %>">
                                                 </div>
                                             </div>
-                                            <!-- EMAIL -->
-                                            <div class="form-group row">
-                                                <label for="inputEmail" class="col-sm-3 col-form-label">Email</label>
-                                                <div class="col-sm-9">
-                                                    <input type="email" class="form-control" id="inputEmail"
-                                                        name="emailCli" value="<%= usuario.email %>">
-                                                </div>
-                                            </div>
                                             <!-- SEXO -->
-                                            <fieldset class="form-group">
+                                            <div class="form-group">
                                                 <div class="row">
                                                     <legend class="col-form-label col-sm-3 pt-0">Sexo</legend>
                                                     <div class="form-check form-check-inline">
@@ -82,217 +75,43 @@
                                                     </div>
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio" name="radioSexo"
-                                                            id="radioSexoM" disabled value="M"
+                                                            id="radioSexoM" value="M"
                                                             <%= (usuario.sexo == 'M')? 'checked' : '' %>>
                                                         <label class="form-check-label"
                                                             for="radioSexoM">Masculino</label>
                                                     </div>
                                                 </div>
-                                            </fieldset>
+                                            </div>
                                         </div>
                                         <!-- FOTO -->
-                                        <div class="col-4 text-center">
+                                        <div class="col-3 text-center">
                                             <% if(usuario.imagem == null){ %>
-                                                <img src="/images/novo-usuario.png" alt="">
+                                            <img src="/images/novo-usuario.png" alt="">
                                             <% } else { %>
-                                                <img class='d-block img-thumbnail imagem' src='<%= usuario.imagem %>' width="200px" alt='avatar'>                    
-                                            <% } %>               
-                            
+                                            <img class='d-block img-thumbnail imagem' src='<%= usuario.imagem %>'
+                                                width="200px" alt='avatar'>
+                                            <% } %>
+
                                             <label for="img-input1">
-                                                <img src="/images/camera.png" alt="" >
+                                                <img src="/images/camera.png" alt="">
                                                 <input type="file" class="form-control-file" name="img" id="img-input1"
-                                                onchange="carregarImagem(event)" value="<%= usuario.imagem %>" multiple>            
-                                            </label>                                              
-                                        </div> 
-                                    </div>
-                                </div>
-
-                                <!-- ENDERECO -->
-                                <% if (endereco) { %>
-                                <div class="card painel-dash border-left-primary shadow mt-2 ml-2 mr-2">
-                                    <div class="card-body ">
-                                        <div class="row">
-                                            <div class='col-4'>
-                                                <h5>Endereço</h5>
-                                            </div>
+                                                    onchange="carregarImagem(event)" value="<%= usuario.imagem %>"
+                                                    multiple>
+                                            </label>
                                         </div>
-                                        <!-- Divider -->
-                                        <hr class="sidebar-divider my-0">
-
-                                        <div class="painel-dados row">
-                                            <div class='col-12'>
-                                                <div class="row text-left">
-                                                    <div class="row col-12">
-                                                        <!-- Dados -->
-                                                        <div class='col-11'>
-                                                            <!-- ID -->
-                                                            <div class="form-group row">
-                                                                <input type="hidden" class="form-control"
-                                                                    name="enderecoId" value="<%= endereco.id %>">
-                                                            </div>
-                                                            <!-- CEP-->
-                                                            <div class="form-group row">
-                                                                <label for="inputRua"
-                                                                    class="col-sm-2 col-form-label">CEP</label>
-                                                                <div class="col-sm-5">
-                                                                    <input type="text" class="form-control" name="cep"
-                                                                        id="inputCep" value="<%= endereco.cep %>">
-                                                                </div>
-
-                                                                <div class=" text-left col-sm-2">
-                                                                    <button
-                                                                        class="btn btn-sm btn-outline-secondary">Buscar</button>
-                                                                </div>
-
-                                                            </div>
-                                                            <!-- RUA -->
-                                                            <div class="form-group row">
-                                                                <label for="inputRua"
-                                                                    class="col-sm-2 col-form-label">Rua</label>
-                                                                <div class="col-sm-5">
-                                                                    <input type="text" class="form-control" name="rua"
-                                                                        id="inputRua"
-                                                                        value="<%= endereco.logradouro %>">
-                                                                </div>
-                                                                <label for="inputNum"
-                                                                    class="col-sm-1 col-form-label">Nº</label>
-                                                                <div class="col-sm-2">
-                                                                    <input type="text" class="form-control"
-                                                                        name="numeral" id="inputNum"
-                                                                        value="<%= endereco.numeral %>">
-                                                                </div>
-                                                            </div>
-                                                            <!-- COMPLEMENTO -->
-                                                            <div class="form-group row">
-                                                                <label for="inputComplemento"
-                                                                    class="col-sm-2 col-form-label">Complemento</label>
-                                                                <div class="col-sm-8">
-                                                                    <input type="text" class="form-control"
-                                                                        name="complemento" id="inputComplemento"
-                                                                        value="<%= endereco.complemento %>">
-                                                                </div>
-                                                            </div>
-                                                            <!-- CIDADE -->
-                                                            <div class="form-group row">
-                                                                <label for="inputCidade"
-                                                                    class="col-sm-2 col-form-label">Cidade</label>
-                                                                <div class="col-sm-5">
-                                                                    <input type="text" class="form-control"
-                                                                        name="cidade" id="inputCidade"
-                                                                        value="<%= endereco.cidade %>">
-                                                                </div>
-                                                            </div>
-                                                            <!-- ESTADO -->
-                                                            <div class="form-group row">
-                                                                <label for="inputEstado"
-                                                                    class="col-sm-2 col-form-label">Estado</label>
-                                                                <div class="col-sm-5">
-                                                                    <select id="inputEstado" class="form-control"
-                                                                        name="estado">
-                                                                        <option
-                                                                            <%= (endereco.estado == null)? 'selected' : '' %>>
-                                                                            Escolher...</option>
-                                                                        <option value="SP"
-                                                                            <%= (endereco.estado == 'SP')? 'selected' : '' %>>
-                                                                            SP
-                                                                        </option>
-                                                                        <option value="RJ"
-                                                                            <%= (endereco.estado == 'RJ')? 'selected' : '' %>>
-                                                                            RJ
-                                                                        </option>
-                                                                        <option value="MG"
-                                                                            <%= (endereco.estado == 'MG')? 'selected' : '' %>>
-                                                                            MG
-                                                                        </option>
-                                                                        <option value="RS"
-                                                                            <%= (endereco.estado == 'RS')? 'selected' : '' %>>
-                                                                            RS
-                                                                        </option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                        <!-- Fim dados -->
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <!-- BOTÂO ALTERAR-->
+                                        <div class="text-right col-12">
+                                            <!-- ENDERECO -->
+                                            <% if (endereco) { %>
+                                            <a class="btn btn-alt" href="/usuarios/editar-endereco">Alterar
+                                                endereço</a>
+                                            <% } else { %>
+                                            <a class="btn btn-alt" href="/usuarios/editar-endereco">Cadastrar
+                                                endereço</a>
+                                            <% } %>
+                                            <button type="submit" class="btn btn-alt">Salvar</button>
                                         </div>
                                     </div>
-                                </div>
-                                <% } else { %>
-                                <div class="card painel-dash border-left-primary shadow mt-2 ml-2 mr-2">
-                                    <a href="/usuarios/editar-endereco">Cadastrar
-                                        endereço</a>
-                                </div>
-                                <% } %>
-
-                                <!-- MUDAR SENHA -->
-                                <div class="card painel-dash border-left-primary shadow mt-2 ml-2 mr-2">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class='col-4'>
-                                                <h5>Mudar Senha</h5>
-                                            </div>
-                                        </div>
-                                        <!-- Divider -->
-                                        <hr class="sidebar-divider my-0">
-
-                                        <div class="painel-dados row">
-                                            <div class='col-12'>
-                                                <div class="row text-left">
-                                                    <div class="row col-12">
-                                                        <div class='col-11'>
-                                                            <!-- Senha-->
-                                                            <div class="form-group row">
-                                                                <label for="senhaAtual"
-                                                                    class="col-sm-3 col-form-label">Senha Atual:</label>
-                                                                <div class="col-sm-4">
-                                                                    <input type="password" class="form-control"
-                                                                        name="senhaAtual" id="senhaAtual" >
-                                                                </div>
-                                                            </div>
-                                                            <!-- Nova Senha -->
-                                                            <div class="form-group row">
-                                                                <label for="novaSenha"
-                                                                    class="col-sm-3 col-form-label">Nova
-                                                                    Senha:</label>
-                                                                <div class="col-sm-4">
-                                                                    <input type="password" class="form-control"
-                                                                        name="novaSenha" id="novaSenha">
-                                                                </div>
-                                                            </div>
-                                                            <!-- Confirmar Senha -->
-                                                            <div class="form-group row">
-                                                                <label for="corfirmarSenha"
-                                                                    class="col-sm-3 col-form-label">Confirmar
-                                                                    Senha:</label>
-                                                                <div class="col-sm-4">
-                                                                    <input type="password" class="form-control"
-                                                                        name="confirmarSenha" id="confirmarSenha" >
-                                                                </div>
-                                                            </div>
-                                                            <!-- Fim senha -->
-                                                        </div>
-                                                        <% if(err != 0){ %>
-                                                        <p><%= err %></p>
-                                                        <% } %>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <!-- senha -->
-
-
-
-                                    </div>
-                                </div>
-
-                                <!-- BOTÂO ALTERAR-->
-                                <div class="text-right mt-2">
-                                    <button type="submit" class="btn btn-alt">Salvar</button>
                                 </div>
                             </form>
                         </div>
@@ -309,7 +128,7 @@
             var imagem = document.querySelector('.imagem');
             imagem.src = URL.createObjectURL(event.target.files[0]);
             imagem.onload = function () {
-                URL.revokeObjectURL(imagem.src) 
+                URL.revokeObjectURL(imagem.src)
             }
         }
     </script>

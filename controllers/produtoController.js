@@ -147,7 +147,7 @@ module.exports = {
 
         let file = req.files;
 
-        let { nomeP, preco, descricaoP } = req.body;
+        let { nomeP, preco } = req.body;
 
 
         if (nomeP.length <= 1) {
@@ -162,15 +162,10 @@ module.exports = {
             res.redirect('/produtos/cadastrar-produto?error=3');
         }
 
-        if (disponibilidade == null) {
-            res.redirect('/produtos/cadastrar-produto?error=4');
-        }
-
         let produto = await Produto.create({
             lojas_id: req.session.loja.id,
             nome: nomeP,
             valor: preco,
-            descricao: descricaoP
         })
 
         let img;

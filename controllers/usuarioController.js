@@ -161,82 +161,28 @@ module.exports = {
           let arquivo = req.file
           let img;
 
-          let { nomeCli, dataCli, cpfCli, celular } = req.body;
+          let { nomeCli, dataCli, cpfCli, celular, radioSexo } = req.body;
           let nomeCompleto = nomeCli;
           let usuario = res.locals.usuario;
 
-          if (!arquivo) {
-               img = usuario.imagem;
-          } else {
-               let file = req.file.originalname;
-               img = `/uploads/perfil/${file}`;
-          }
-
-          // Dados do endereço
-          let { enderecoId, cep, rua, numeral, complemento, cidade, estado } = req.body;
-
-          // senha
-          let { senhaAtual, novaSenha, confirmarSenha } = req.body;
+          !arquivo ? img = usuario.imagem : img = `/uploads/perfil/${req.file.originalname}`
 
           // Separar o nome  
           let nome = nomeCompleto.split(' ')[0];
           let sobrenome = nomeCompleto.replace(nome + " ", "");
 
-          console.log('OK MAN');
-          console.log(usuario.senha);
-          console.log(senhaAtual);
-
-          if (!senhaAtual && !novaSenha && !confirmarSenha) {
-               senhaAtual = usuario.senha;
-               novaSenha = usuario.senha;
-               confirmarSenha = usuario.senha;
-          }
-
-          if (!bcrypt.compareSync(senhaAtual, usuario.senha)) {
-               res.redirect('/usuarios/editar-cliente/usuario.id?error=1');
-          }
-          // verificando senhas novas
-          if (novaSenha != confirmarSenha) {
-               res.redirect('/usuarios/editar-cliente/usuario.id?error=2');
-          }
-
-
-          console.log('OK MAN 2');
-
-          // criptografando nova senha
-          if (novaSenha != null) {
-               return novaSenha = bcrypt.hashSync(novaSenha, 10);
-          }
-          console.log('OK MAN 3');
-          console.log(novaSenha);
-
-          let userNovo = await Usuario.update({
+          await Usuario.update({
                imagem: img,
                nome,
                sobrenome,
                data_nasc: dataCli,
                cpf: cpfCli,
                celular,
-               senha: novaSenha
-          },
-               { where: { id } });
-
-          console.log('OK MAN 4')
-          let endereco = await Endereco.update({
-               estado,
-               cidade,
-               cep,
-               logradouro: rua,
-               numeral,
-               complemento,
-               usuarios_id: userNovo.id
+               sexo: radioSexo,
           }, {
-               where: {
-                    id: enderecoId,
-                    usuarios_id: id
-               }
+               where: { id }
           });
-          console.log('OK MAN ULTIMO');
+
           return res.redirect(`/usuarios/perfil-cliente/${usuario.id}`);
      },
      sair: (req, res) => {
@@ -245,12 +191,27 @@ module.exports = {
      },
      endereco: async (req, res) => {
           let usuario = res.locals.usuario;
+          let { mensagem } = req.query;
+          switch (Number(mensagem)) {
+               case 1:
+                    mensagem = 'Endereço cadastrado'
+                    break;
+               case 2:
+                    mensagem = 'Endereço alterado'
+                    break;
+               case 3:
+                    mensagem = 'Erro ao alterar'
+                    break;
+               default:
+                    mensagem = null;
+                    break;
+          }
           if (!usuario) {
                req.session.urlPosLogin = req.originalUrl;
                res.redirect('/usuarios/logar');
           }
           let endereco = await Endereco.findOne({ where: { usuarios_id: usuario.id } });
-          res.render('editar-endereco', { page: 'Editar Endereço', endereco, usuario });
+          res.render('editar-endereco', { page: 'Editar Endereço', endereco, usuario, mensagem });
      },
      consultaCep: async (req, res) => {
           var { cep } = req.body;
@@ -264,7 +225,6 @@ module.exports = {
           let { usuarioId, cep, rua, numeral, complemento, cidade, estado } = req.body;
 
           if (!estado) {
-               console.log(estado);
                return res.send('Estado não pode ser nulo');
           }
 
@@ -277,11 +237,10 @@ module.exports = {
           }
 
           if (!Number(numeral)) {
-               console.log(numeral);
-               return res.send('número não é numérico');
+               return res.send('Número não é numérico');
           }
 
-          let endereco = Endereco.create({
+          let endereco = await Endereco.create({
                estado,
                cidade,
                cep,
@@ -292,18 +251,16 @@ module.exports = {
           })
 
           if (endereco) {
-               return res.redirect('/usuarios/editar-endereco');
+               return res.redirect('/usuarios/editar-endereco?mensagem=1');
           } else {
-               return res.send("Erro na criação do banco")
+               return res.redirect('/usuarios/editar-endereco?mensagem=3');
           }
-
      },
      editarEndereco: async (req, res) => {
 
           let { enderecoId, cep, rua, numeral, complemento, cidade, estado } = req.body;
 
           if (!estado) {
-               console.log(estado);
                return res.send('Estado não pode ser nulo');
           }
 
@@ -312,12 +269,11 @@ module.exports = {
                .then(resp => resp)
                .catch(error => error);
           if (retornoConsultaCep.message) {
-               res.send(retornoConsultaCep.message);
+               return res.send(retornoConsultaCep.message);
           }
 
           if (!Number(numeral)) {
-               console.log(numeral);
-               return res.send('número não é numérico');
+               return res.send('Número não é numérico');
           }
 
           let endereco = await Endereco.update({
@@ -333,6 +289,10 @@ module.exports = {
                }
           });
 
-          return res.redirect('/usuarios/editar-endereco');
+          if (endereco) {
+               return res.redirect('/usuarios/editar-endereco?mensagem=2');
+          } else {
+               return res.redirect('/usuarios/editar-endereco?mensagem=3');
+          }
      }
 }
