@@ -11,7 +11,8 @@
 
             <div class="row loja">
 
-                <img class='d-block img-thumbnail' src='<%= lojaPerfil.toJSON().imagem %>' width="200px" alt='perfil Loja'>
+                <img class='d-block img-thumbnail' src='<%= lojaPerfil.toJSON().imagem %>' width="200px"
+                    alt='perfil Loja'>
 
                 <div class='infos'>
                     <div class="header-loja">
@@ -44,7 +45,7 @@
                             <span>(<%= quantidadeAvaliacoesLoja %>)</span>
                         </div>
                     </div>
-                    
+
                     <div class="dados-loja">
                         <p><%= lojaPerfil.telefone%></p>
                         <p><%= lojaPerfil.email%></p>
@@ -52,8 +53,9 @@
                         <% if (loja) { %>
                         <% if (loja.id == lojaPerfil.id) { %>
                         <a href="/lojas/editar-loja/<%= loja.id %>">Alterar Dados</a>
+                        <a id="deletar-loja" href="/lojas/deletar/<%= loja.id %>?_method=DELETE">Deletar Loja</a>
                         <% } else { %>
-                        <span class="proprietario">Proprietário: <a
+                        <span class=" proprietario">Proprietário: <a
                                 href="/usuarios/perfil-cliente/<%= lojaPerfil.usuario.id %>"><%= lojaPerfil.usuario.nome %></a></span>
                         <% } %>
                         <% } else { %>
@@ -65,6 +67,7 @@
             </div>
 
             <div class="row produtos-loja">
+                <% if(resultado.length > 0) { %>
                 <h4>Produtos</h4>
                 <% for(produto of resultado) { %>
                 <% if(produto.toJSON().avaliacoes[0]) { %>
@@ -103,12 +106,23 @@
                     <a href="/produtos/<%= produto.id %>">Saiba Mais...</a>
                 </card>
                 <% } %>
+                <% } else { %>
+                <h4>Esta loja ainda não cadastrou nenhum produto :(</h4>
+                <% } %>
             </div>
         </div>
     </div>
 
     <% include partials/footer-alt %>
     <% include partials/script %>
+    <script>
+        const botaoDeletar = document.getElementById("deletar-loja");
+        botaoDeletar.addEventListener("click", (ev) => {
+            if (!confirm("Tem certeza que deseja excluir a sua loja?")) {
+                ev.preventDefault;
+            }
+        })
+    </script>
 
 </body>
 

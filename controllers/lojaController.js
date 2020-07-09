@@ -103,7 +103,7 @@ module.exports = {
           }
 
           if (err == 2) {
-               err = 'email já existe';
+               err = 'Email já existe';
           }
 
           return res.render('cadastrar-loja', { page: 'Cadastrar Loja', err });
@@ -121,7 +121,7 @@ module.exports = {
 
           let lojaExistente = await Loja.findOne({ where: { email } });
           if ((lojaExistente)) {
-               return res.redirect('/usuarios/cadastro?error=2');
+               return res.redirect('/lojas/cadastrar-loja?error=2');
           };
 
           if (!nome) {
@@ -136,6 +136,8 @@ module.exports = {
                descricao,
                usuarios_id: req.session.usuario.id
           })
+
+          req.session.loja = novaLoja;
 
           return res.redirect(`/lojas/perfil-loja/${novaLoja.id}`);
      },
@@ -316,5 +318,14 @@ module.exports = {
 
                return res.send(resultados)
           }
-     }
+     },
+     deletar: async (req, res) => {
+          const { id } = req.params;
+
+          await Loja.destroy({ where: { id } });
+          req.session.loja = null; res.locals.loja = null; req.session.navegacaoLoja = false; res.locals.navegacaoLoja = false;
+
+          const idUsuario = res.locals.usuario.id;
+          return res.redirect(`/usuarios/perfil-cliente/${idUsuario}`)
+     },
 }

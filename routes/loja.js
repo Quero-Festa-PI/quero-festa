@@ -24,5 +24,6 @@ router.get('/cadastrar-loja', lojaController.cadastro);
 router.post('/cadastrar-loja', upload.single('file'), lojaController.cadastrar);
 router.get('/dashboard', lojaController.dashboard);
 router.post('/dashboardGrafico/:grafico', lojaController.dashboardGrafico);
+router.delete('/deletar/:id', lojaController.deletar);
 
 module.exports = router;

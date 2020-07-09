@@ -117,12 +117,11 @@ module.exports = {
 
           let idUsuario = req.params.id;
 
-          let usuarioPerfil = await Usuario.findByPk(idUsuario, { include: ['lojas', 'enderecos'] });
-          let lojaPerfil = usuarioPerfil.lojas;
+          let usuarioPerfil = await Usuario.findByPk(idUsuario, { include: ['enderecos'] });
           let endereco;
           usuario.id == usuarioPerfil.id ? endereco = usuarioPerfil.enderecos[0] : ''
 
-          res.render('perfil-cliente', { page: 'Perfil Cliente', usuarioPerfil, lojaPerfil, endereco })
+          res.render('perfil-cliente', { page: 'Perfil Cliente', usuarioPerfil, endereco })
 
      },
      alter: async (req, res) => {
