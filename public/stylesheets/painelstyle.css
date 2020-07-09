@@ -73,7 +73,12 @@ form label img{
     margin-left: 5px;
     display: block;
     cursor: pointer;
-  }
-  form label input[type='file']{
-    display: none;
-  }
+}
+
+form label input[type='file']{
+display: none;
+}
+
+#borda div.card.card-body fieldset span{
+    padding-left: 15px;
+} 

@@ -165,8 +165,8 @@ module.exports = {
           let nomeCompleto = nomeCli;
           let usuario = res.locals.usuario;
 
-          if(!arquivo){
-               img = usuario.imagem; 
+          if (!arquivo) {
+               img = usuario.imagem;
           } else {
                let file = req.file.originalname;
                img = `/uploads/perfil/${file}`;
@@ -191,7 +191,7 @@ module.exports = {
                novaSenha = usuario.senha;
                confirmarSenha = usuario.senha;
           }
-          
+
           if (!bcrypt.compareSync(senhaAtual, usuario.senha)) {
                res.redirect('/usuarios/editar-cliente/usuario.id?error=1');
           }
@@ -199,12 +199,12 @@ module.exports = {
           if (novaSenha != confirmarSenha) {
                res.redirect('/usuarios/editar-cliente/usuario.id?error=2');
           }
-    
-          
+
+
           console.log('OK MAN 2');
 
           // criptografando nova senha
-          if(novaSenha != null){
+          if (novaSenha != null) {
                return novaSenha = bcrypt.hashSync(novaSenha, 10);
           }
           console.log('OK MAN 3');
