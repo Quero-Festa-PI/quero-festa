@@ -39,7 +39,7 @@
                                                 <tr class="mt-2">
                                                     <th scope="row">
                                                         <% if(pedido.entrega.data_real){ %>
-                                                            <%= pedido.entrega.data_real %>
+                                                            <%= moment(pedido.entrega.data_real).format('DD-MM-YYYY') %>
                                                         <% } else { %>
                                                             Aguardando
                                                         <% } %>
@@ -48,9 +48,9 @@
                                                         <img src="<%= produto.produtos.imagens[0].image_url %>" width="110px" height="100px" alt="">
                                                     </td>
                                                     <td class="mt-2"><%= produto.produtos.nome %></td>
-                                                    <td class="align-middle text-center"><%= produto.produtos.valor.toFixed(2) %></td>
+                                                    <td class="align-middle text-center">R$ <%= ' ' + produto.produtos.valor.toFixed(2) %></td>
                                                     <td class="align-middle text-center"><%= produto.quantidade %></td>            
-                                                    <td class="align-middle text-center"><%= produto.produtos.valor.toFixed(2) * produto.quantidade %></td>                        
+                                                    <td class="align-middle text-center">R$ <%= ' ' + produto.produtos.valor.toFixed(2) * produto.quantidade %></td>                        
                                                 </tr>                                          
                                             <% } %>                                           
                                         </tbody>
