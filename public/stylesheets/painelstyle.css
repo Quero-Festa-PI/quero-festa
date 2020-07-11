@@ -58,6 +58,10 @@ p {
     border-radius: 10px;
     border: 1px #FF826E solid;   
 }
+.painel-endereco {
+    border-radius: 10px;
+    border: 1px #FF826E solid;   
+}
 
 .painel-dados {
     display: flex;
