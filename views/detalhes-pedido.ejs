@@ -1,0 +1,132 @@
+<% include partials/header %>
+<body>
+    <div class="page">
+        <%- include('partials/navbar') %>
+
+        <!-- Conteúdo Principal -->
+        <div class="container" id="meio-home">
+            <div class="row">
+                
+                <!-- Painel -->                
+                <div class="container" id="painel-publico">                   
+    
+                    <div class="card card-body painel-dash-pedido mt-2">
+                        <div class="row">
+                            <div class='col-12'>
+                                <h4>Detalhes do Pedido Nº <%= pedido.id %> </h4>
+                            </div>
+                        </div>
+
+                        <div class="card border-left-primary ml-2 mr-2">
+                            <div class="card-body row">
+                                <div class="col-12">
+
+                                    <h5 id="nomeLojaPedido">Loja: <%= pedido.loja.nome %></h5>
+
+                                    <table class="table table-sm mt-2">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Data Entrega</th>
+                                                <th scope="col" class="text-center">Imagem</th>
+                                                <th scope="col">Descrição</th>
+                                                <th scope="col" class="text-center">Preço</th>
+                                                <th scope="col" class="text-center">Quantidade</th>
+                                                <th scope="col" class="text-center">Subtotal</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody> 
+                                            <% for(let produto of listaProdutos){ %>
+                                                <tr class="mt-2">
+                                                    <th scope="row">
+                                                        <% if(pedido.entrega.data_real){ %>
+                                                            <%= pedido.entrega.data_real %>
+                                                        <% } else { %>
+                                                            Aguardando
+                                                        <% } %>
+                                                    </th>
+                                                    <td class="align-middle text-center">
+                                                        <img src="<%= produto.produtos.imagens[0].image_url %>" width="110px" height="100px" alt="">
+                                                    </td>
+                                                    <td class="mt-2"><%= produto.produtos.nome %></td>
+                                                    <td class="align-middle text-center"><%= produto.produtos.valor.toFixed(2) %></td>
+                                                    <td class="align-middle text-center"><%= produto.quantidade %></td>            
+                                                    <td class="align-middle text-center"><%= produto.produtos.valor.toFixed(2) * produto.quantidade %></td>                        
+                                                </tr>                                          
+                                            <% } %>                                           
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-left-primary mt-2 ml-2 mr-2 ">
+                            <div class="row ml-2 mt-3">
+                                <div class="col-12">
+                                    <h5>Endereço de Entrega</h5>
+                                </div>
+                            </div>
+
+                            <div class="ml-4 ">
+                                <table id="endereco" class="table table-sm table-borderless ">
+                                    <tbody>                                             
+                                        <tr><td><strong><%= pedido.usuario.nome + ' ' + pedido.usuario.sobrenome %></strong></td></tr>                                          
+                                        <tr><td><strong><%= pedido.endereco.cep %></strong></td></tr>                                          
+                                        <tr><td><%= pedido.endereco.logradouro + ', ' + pedido.endereco.numeral %></td></tr>                                          
+                                        <% if(pedido.endereco.complemento){ %>
+                                            <tr><td><%= pedido.endereco.complemento %></td></tr>
+                                            <tr><td><%= pedido.endereco.cidade + ' - ' + pedido.endereco.estado %></td></tr>
+                                            <% } else { %>
+                                                <tr><td><%= pedido.endereco.cidade + ' - ' + pedido.endereco.estado %></td></tr>
+                                            <% } %>                                         
+                                                                                    
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="card border-left-primary mt-2 ml-2 mr-2" id="borda">
+                            <div class="ml-2 mt-3 row">
+                                <div class="col-12">
+                                    <h5>Pagamento</h5>
+                                </div>
+                            </div>
+
+                            <div class="mt-2 mx-3">
+                                <table class="table table-sm">                      
+        
+                                    <tbody class="text-right">
+                                        <tr>
+                                            <th scope="row">Subtotal</th>
+                                            <td>R$ <%= pedido.valor_total.toFixed(2) %></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Taxa de Entrega</th>
+                                            <td>R$ 0,00</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Total de Pedido</th>
+                                            <td>R$ <%= pedido.valor_total.toFixed(2) %></td>
+                                        </tr>
+                                        <tr>
+                                            <th id="pagamentoCor" colspan="2" scope="row" class="text-center mt-2">                                                 
+                                                <% if(pedido.pagamento.status == 'Efetuado'){ %>
+                                                    Pagamento realizado via: <%= pedido.pagamento.forma_pagamento %>
+                                                <% } else { %>
+                                                    Aguardando Pagamento
+                                                <% } %>
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <a href="/pedidos/pedido/<%= usuario.id %>" class="btn btn-alt mt-2">Voltar</a> 
+                    </div>                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

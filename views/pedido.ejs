@@ -1,5 +1,7 @@
 <% include partials/header %>
-<link rel="stylesheet" href="./stylesheets/pedidostyle.css">
+<link rel="stylesheet" 
+
+href="./stylesheets/pedidostyle.css">
 
 <body>
   <!-- PAGINA COMPLETA -->
@@ -13,7 +15,6 @@
         <div id="painel-publico" class="container">
           <!-- CONTAINER CAMINHO DAS PAGINAS -->
           <%- include('partials/breadcrumb') %>
-          <!-- FIM CONTAINER CAMINHO DAS PAGINAS -->
           
           <div class="card card-body painel-dash-pedido ml-5 mr-5">
             <div class="row">
@@ -21,10 +22,11 @@
                 <h4>Pedidos</h4>
               </div>
             </div>
-            <div class="card border-left-primary ml-2 mr-2">
-              <div class="card-body row ">
-                <div class="col-12">
 
+            <div class="card border-left-primary ml-2 mr-2">
+              <div class="card-body row">
+                <div class="col-12">
+                  
                   <table class="table mt-2">
                     <thead>
                       <tr>
@@ -37,135 +39,40 @@
                         <th scope="col"></th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><%= pedido.id %></th>
-                        <td><%= pedido.entrega.data_prev %></td>
-                        <td>R$ <%= pedido.produtos[0].toJSON().valor %></td>
-                        <td class="text-center"><%= pedido.listaDeProdutos[0].toJSON().quantidade %></td>
-                        <td><%= pedido.produtos[0].toJSON().valor * pedido.listaDeProdutos[0].toJSON().quantidade %></td>
-                        <td>
-                          <% if(pedido.entrega.data_real){ %>
-                                Entregue
+                    <tbody>                   
+               
+                      <% for(let pedido of pedidosRealizados){ %>
+                        <tr>
+                          <th scope="row"><%= pedido.id %></th>
+                          <td><%= pedido.entrega %></td> 
+                          <% for(let produto of pedido.listaDeProdutos){ %> 
+                            <td><%= produto.valor %></td> 
+                            <td><%= produto.quantidade %></td>                  
                           <% } %>
-                        </td>
-                        <td>
-                          <button type="button" class="btn btn-alt" data-toggle="modal" data-target="#ExemploModalCentralizado" data-id="<%= pedido.id %>">Detalhes</button>
-                          <!-- Modal -->
-                          <div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="TituloModalCentralizado">Nº do Pedido: <%= pedido.id %></h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="card-body border">
-                                      <h6><%= pedido.loja.nome %></h6>
+                          <td><%= pedido.valor_total %></td>
+                          <td><%= pedido.pagamento %></td>                         
 
-                                      <table class="table table-sm">
-                                        <thead>
-                                          <tr>
-                                            <th scope="col">img</th>
-                                            <th scope="col">Descrição</th>
-                                            <th scope="col">Preço</th>
-                                            <th scope="col">Qtde</th>
-                                          <th scope="col">Subtotal</tr>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr>
-                                            <td>.png</td>
-                                            <td><%= pedido.produtos[0].toJSON().nome%></td>
-                                            <td><%= pedido.produtos[0].toJSON().valor %></td>
-                                            <td><%= pedido.listaDeProdutos[0].toJSON().quantidade %></td>
-                                            <td><%= pedido.produtos[0].toJSON().valor * pedido.listaDeProdutos[0].toJSON().quantidade %></td>
-                                          </tr>                                                
-                                        </tbody>
-                                      </table>
-                                    </div>
-
-                                    <!-- Status -->
-                                  <div class="card-body border mt-2">
-                                    <h6>Status do pedido</h6> 
-                                    <div class="row">
-                                      Pagamento Efetuado
-                                    </div>                                    
-                                  </div>                                  
-                                  
-                                  <div class="card-body border mt-2">                          
-                                    <table class="table table-sm table-borderless">
-                                      <thead>
-                                        <tr>
-                                          <th scope="col">Endereço de entrega</th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <tr>
-                                          <th scope="row"><%= pedido.usuario.nome + ' ' + pedido.usuario.sobrenome %></th>
-                                        </tr>
-                                        <tr>
-                                          <td><%= pedido.endereco.logradouro + ', ' + pedido.endereco.numeral%></td>
-                                        </tr>
-                                        <tr>
-                                          <td><%= pedido.endereco.cidade + ' ' + pedido.endereco.estado %></td>
-                                        </tr>
-                                        <tr>
-                                          <td><%= pedido.endereco.cep %></td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </div>
-                                  
-                                  <div class="card-body mt-2" id="borda">
-                                    <table class="table table-sm">
-                                      <thead>
-                                        <tr>
-                                          <th scope="col">Pagamento</th>
-                                          <th scope="col"></th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <tr>
-                                          <th scope="row">Subtotal</th>
-                                          <td>R$ <%=' '+ pedido.produtos[0].toJSON().valor * pedido.listaDeProdutos[0].toJSON().quantidade %></td>
-                                        </tr>
-                                        <tr>
-                                          <th scope="row">Frete</th>
-                                          <td>R$ 10,00 </td>
-                                        </tr>                                            
-                                        <tr>
-                                          <th scope="row">Total do Pedido</th>
-                                          <td>R$<%=' ' + pedido.produtos[0].toJSON().valor * pedido.listaDeProdutos[0].toJSON().quantidade %></td>
-                                        </tr>
-                                        <tr>
-                                          <th colspan="2" scope="row" class="text-center">Pagamento realizado via 
-                                            <% if(pedido.pagamento.forma_pagamento){ %>
-                                              <%= pedido.pagamento.forma_pagamento %>
-                                            <% } %>
-                                          </th>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </div>
-
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-alt" data-dismiss="modal">Fechar</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <!-- Fim modal -->                          
-                        </td>                           
-                      </tr>                        
+                          <!-- Botão: Detalhes do Pedido -->
+                          <td>
+                            <a href="/pedidos/pedido/detalhes-pedido/<%= pedido.id %>" type="button" class="btn btn-alt">Detalhes</a>
+                          </td>  
+                        </tr>
+                      <% } %>
                     </tbody>
-                  </table>
+                  </table>                  
+
                 </div>
               </div>
             </div>
+
+            <div class="row">
+              <div class="col-12 text-center mt-2">
+                <% if(pedidosRealizados <= 0){ %>
+                  <h6>Não há pedidos</h6>
+                <% } %>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

@@ -1,7 +1,90 @@
-const { sequelize, ImagensDeProduto, AvaliacoesDeProdutos, Pedido, Usuario, Loja, Endereco, Pagamento, Entrega, PedidoProduto, Produto } = require('../database/models');
+const { sequelize, ImagensDeProduto, AvaliacoesDeProdutos, Pedido, Usuario, Loja, 
+    Endereco, Pagamento, Entrega, PedidoProduto, Produto } = require('../database/models');
 
 module.exports = {
     pedido: async (req, res) => {
+        let usuario = req.session.usuario;
+
+        if(!usuario){
+            return res.redirect('/usuarios/logar');
+        }
+
+        let pedidos = await Pedido.findAll({
+            include: [{
+                model: Usuario,
+                as: 'usuario',
+                attributes: ['nome', 'sobrenome']
+            }, {
+                model: Loja,
+                as: 'loja',
+                attributes: ['nome']
+            }, {
+                model: Endereco,
+                as: 'endereco',
+                attributes: ['estado', 'cidade', 'cep', 'logradouro', 'numeral', 'complemento']
+            }, {
+                model: Pagamento,
+                as: 'pagamento',
+                attributes: ['forma_pagamento', 'status']
+            }, {
+                model: Entrega,
+                as: 'entrega',
+                attributes: ['data_prev']
+            }, {
+                model: PedidoProduto,
+                as: 'listaDeProdutos',
+                attributes: ['produtos_id', 'quantidade'],
+                include: [{
+                     model: Produto,
+                     as: 'produtos',
+                     attributes: ['nome', 'valor']
+                }]
+           }],
+            where: {usuarios_id: usuario.id}
+        });
+
+        let pedidosRealizados = [];
+        
+        function lerPedidos(pedidos) {
+            pedidos.forEach(pedido => {
+                pedido = pedido.toJSON();
+                delete pedido.usuarios_id;
+                delete pedido.lojas_id;
+                delete pedido.enderecos_id;
+                delete pedido.pagamentos_id;
+                delete pedido.entregas_id;
+                pedido.loja = pedido.loja.nome;
+                pedido.endereco = pedido.endereco.logradouro +', '+ pedido.endereco.numeral +' '+
+                pedido.endereco.complemento +' '+ pedido.endereco.cidade +' - '+ 
+                pedido.endereco.estado +' '+ pedido.endereco.cep;
+                pedido.usuario = pedido.usuario.nome +' '+ pedido.usuario.sobrenome;
+                pedido.pagamento = pedido.pagamento.status;
+                pedido.entrega = pedido.entrega.data_prev;
+                pedido.listaDeProdutos = pedido.listaDeProdutos.map(produto => {
+                    produto.nome = produto.produtos.nome;
+                    produto.valor = produto.produtos.valor;
+                    delete produto.produtos_id;
+                    delete produto.produtos;
+
+                    return produto;  
+                });
+                    
+                pedidosRealizados.push(pedido);
+            }) 
+        }
+
+        lerPedidos(pedidos);
+
+        res.render('pedido', { page: 'Meus Pedidos', usuario, pedidosRealizados: pedidosRealizados });
+    },
+    detalhesPedido: async (req, res) => {
+        let usuario = req.session.usuario;
+        let {id} = req.params;
+
+        if(!usuario){
+            return res.redirect('/usuarios/logar');
+        }
+
         let pedido = await Pedido.findOne({
             include: [{
                 model: Usuario,
@@ -23,17 +106,26 @@ module.exports = {
                 model: Entrega,
                 as: 'entrega',
                 attributes: ['data_prev', 'data_real']
-            }, {
-                model: PedidoProduto,
-                as: 'listaDeProdutos',
-                attributes: ['pedidos_id', 'produtos_id', 'quantidade']
-            }, {
+            }],
+            where: {id}
+        });
+
+        let listaProdutos = await PedidoProduto.findAll ({
+            include: [{
                 model: Produto,
                 as: 'produtos',
-                through: { attributes: [] }
-            }]
-        });
-        res.render('pedido', { page: 'pedido', pedido });
+                attributes: ['nome', 'valor'],
+                include:[{
+                    model: ImagensDeProduto,
+                    as: 'imagens',
+                    attributes: ['image_url']
+                }]
+           }],
+           where: { pedidos_id: id }
+
+        })
+
+        res.render('detalhes-pedido', {page: 'Detalhes do Pedido', usuario, pedido, listaProdutos});
     },
     carrinho: async (req, res) => {
 

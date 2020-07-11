@@ -160,8 +160,8 @@ module.exports = {
       pagamentos_id: 16,
       entregas_id: 16,
       valor_total: 7,
-      createdAt: new Date('2019-16-01T12:00:00'),
-      updatedAt: new Date('2019-16-01T12:00:00'),
+      createdAt: new Date('2019-12-01T12:00:00'),
+      updatedAt: new Date('2019-12-01T12:00:00'),
     }, {
       id: 17,
       usuarios_id: 3,

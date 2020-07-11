@@ -16,6 +16,18 @@
     border: 1px #FF826E solid;
 }
 
+#nomeLojaPedido {
+    color: #FF826E;
+}
+
+#pagamentoCor {
+    color: #FF826E;
+}
+
+#endereco tbody tr td{
+    font-size: 18px;
+}
+
 #painel-publico {
     position: relative;
     display: grid;
