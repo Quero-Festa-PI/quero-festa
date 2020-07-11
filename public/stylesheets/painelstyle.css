@@ -24,6 +24,18 @@
     color: #FF826E;
 }
 
+#corRosa {
+    color: #FF826E;
+}
+
+#cinza {
+    color: #7f7f7f;
+}
+
+p {
+    font-size: 18px;
+}
+
 #endereco tbody tr td{
     font-size: 18px;
 }

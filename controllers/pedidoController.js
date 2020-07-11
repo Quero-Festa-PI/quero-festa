@@ -278,9 +278,25 @@ module.exports = {
         console.log(numerosDosPedidos);
         res.send(numerosDosPedidos);
     },
-    confirmacao: (req, res) => {
+    confirmacao: async (req, res) => {
+        let usuario = req.session.usuario;
+
+        if(!usuario){
+            return res.redirect('/usuarios/logar');
+        }
+
         let { ids } = req.query
         ids = ids.split(',');
-        res.render('confirmacao', { page: 'Confirmacao', ids });
+
+        let pedidos = await Pedido.findAll({
+            include: {
+                model: Loja,
+                as: 'loja',
+                attributes: ['nome', 'email', 'telefone']
+            },
+            where: { id: ids }
+        })
+        // return res.send(pedido[0].loja);
+        res.render('confirmacao', { page: 'Confirmacao', ids, pedidos });
     }
 }
