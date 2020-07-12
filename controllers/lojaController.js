@@ -1,5 +1,8 @@
-const { sequelize, Sequelize, Usuario, Loja, Pedido, Produto, ImagensDeProduto, AvaliacoesDeProdutos, Entrega, Pagamento, PedidoProduto } = require('../database/models')
+const { sequelize, Sequelize, Usuario, Loja, Pedido, Produto, ImagensDeProduto, 
+     AvaliacoesDeProdutos, Entrega, Pagamento, PedidoProduto } = require('../database/models')
 const bcrypt = require('bcrypt');
+
+var moment = require('moment');
 
 module.exports = {
      // Pagina da loja
@@ -206,7 +209,7 @@ module.exports = {
 
           totalVendido = totalVendido.toJSON();
 
-          res.render('dashboard', { page: 'Dashboard', totalVendido, proximos, atrasados });
+          res.render('dashboard', { page: 'Dashboard', totalVendido, proximos, atrasados, moment: moment });
      },
      dashboardGrafico: async (req, res) => {
 

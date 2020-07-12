@@ -25,8 +25,8 @@
                     <tbody>
                         <% for (atrasado of atrasados) { %>
                         <tr>
-                            <td scope="row"><%= atrasado.id %></td>
-                            <td><%= atrasado.entrega.toISOString().substr(0, 10).split('-').reverse().join('/'); %></td>
+                            <td scope="row"><strong><%= atrasado.id %></strong></td>
+                            <td><strong><%= moment(atrasado.entrega).format('DD/MM/YYYY')%></strong></td>
                             <td>
                                 <ul class="list-group list-group-flush">
                                     <% for (produto of atrasado.listaDeProdutos) { %>
@@ -64,8 +64,8 @@
                     <tbody>
                         <% for (proximo of proximos) { %>
                         <tr>
-                            <td scope="row"><%= proximo.id %></td>
-                            <td><%= proximo.entrega.toISOString().substr(0, 10).split('-').reverse().join('/'); %></td>
+                            <td scope="row"><strong><%= proximo.id %></strong></td>
+                            <td><strong><%= moment(proximo.entrega).format('DD-MM-YYYY'); %></strong></td>
                             <td>
                                 <ul class="list-group list-group-flush">
                                     <% for (produto of proximo.listaDeProdutos) { %>
