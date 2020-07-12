@@ -82,11 +82,18 @@
                         <span class="loja">Vendido por: <a
                                 href="/lojas/perfil-loja/<%= lojas.id %>"><%= lojas.nome %></a></span>
                         <span class="preco">R$<%= produto.valor.toFixed(2) %></span>
+                        <% if(loja) { %>
+                        <% if(loja.id == lojas.id) { %>
+                        <a href="/produtos/editar-produto/<%= produto.id %>">Editar Produto</a>
+                        <% } else { %>
                         <button
                             onclick="adicionarProduto(<%= produto.id %>, '<%= produto.nome %>', <%= produto.valor %>, '<%= imagens[0].image_url %>', 1, '<%= lojas.nome %>', '<%= lojas.id %>')">Comprar</button>
+                        <% } %>
+                        <% } else { %>
+                        <button
+                            onclick="adicionarProduto(<%= produto.id %>, '<%= produto.nome %>', <%= produto.valor %>, '<%= imagens[0].image_url %>', 1, '<%= lojas.nome %>', '<%= lojas.id %>')">Comprar</button>
+                        <% } %>
                     </div>
-
-                    <!-- botão comprar -->
                 </div>
             </div>
 

@@ -52,6 +52,9 @@ div#meio-home {
           border-radius: 7px;
           max-width: 92px;
           width: calc(100% / 2); }
+        div#meio-home div.produto .infos .dados-produto a {
+          color: #FF826E;
+          font-weight: 500; }
   div#meio-home div.avaliacoes {
     margin-left: 0px;
     margin-right: 0px;

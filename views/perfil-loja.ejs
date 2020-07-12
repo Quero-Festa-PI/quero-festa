@@ -53,7 +53,6 @@
                         <% if (loja) { %>
                         <% if (loja.id == lojaPerfil.id) { %>
                         <a href="/lojas/editar-loja/<%= loja.id %>">Alterar Dados</a>
-                        <a id="deletar-loja" href="/lojas/deletar/<%= loja.id %>?_method=DELETE">Deletar Loja</a>
                         <% } else { %>
                         <span class=" proprietario">Proprietário: <a
                                 href="/usuarios/perfil-cliente/<%= lojaPerfil.usuario.id %>"><%= lojaPerfil.usuario.nome %></a></span>
@@ -115,14 +114,6 @@
 
     <% include partials/footer-alt %>
     <% include partials/script %>
-    <script>
-        const botaoDeletar = document.getElementById("deletar-loja");
-        botaoDeletar.addEventListener("click", (ev) => {
-            if (!confirm("Tem certeza que deseja excluir a sua loja?")) {
-                ev.preventDefault;
-            }
-        })
-    </script>
 
 </body>
 

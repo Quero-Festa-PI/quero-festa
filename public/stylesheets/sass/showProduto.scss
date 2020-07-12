@@ -71,6 +71,10 @@ div#meio-home{
                     max-width: 92px;
                     width: calc(100% / 2);
                 }
+                a {
+                    color: $primary;
+                    font-weight: 500;
+                }
             }
         }
     }

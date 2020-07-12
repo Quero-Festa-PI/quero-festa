@@ -229,6 +229,48 @@ module.exports = {
         let { quantidades, media } = await contarAvaliacoes(avaliacoes);
 
         return res.render('produto', { page: produto.nome, produto, lojas, avaliacoes, comentarios, quantidadeVendida, quantidades, media, imagens });
+    },
+    editar: async (req, res) => {
+
+        const { id } = req.params;
+
+        if (!res.locals.loja) {
+            req.session.urlPosLogin = req.originalUrl;
+            return res.redirect('/usuarios/logar');
+        }
+
+        const idLojaLogada = res.locals.loja.id;
+
+        const produto = await Produto.findByPk(id, {
+            attributes: ['id', 'nome', 'valor', 'descricao'],
+            include: {
+                model: Loja,
+                as: 'lojas',
+                attributes: ['id'],
+            },
+        })
+
+        if (idLojaLogada != produto.lojas.id) {
+            return res.redirect(`/lojas/perfil-loja/${idLojaLogada}`);
+        }
+
+        return res.render('editar-produto', { page: 'Editar Produto', produto })
+
+    },
+    update: async (req, res) => {
+        const { id } = req.params;
+
+        const { nome, descricao, valor } = req.body;
+
+        await Produto.update({
+            nome,
+            descricao,
+            valor,
+        }, {
+            where: { id },
+        })
+
+        return res.redirect(`/produtos/${id}`)
     }
 }
 

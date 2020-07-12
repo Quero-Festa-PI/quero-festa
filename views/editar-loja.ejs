@@ -7,41 +7,49 @@
         <%- include('partials/breadcrumb') %>
 
         <div class="row form-editar-loja">
-            <form id="form-editar-loja" enctype="multipart/form-data"
-            method="POST" action="/lojas/editar-loja/<%= infosLoja.id %>?_method=PUT">
+            <form id="form-editar-loja" enctype="multipart/form-data" method="POST"
+                action="/lojas/editar-loja/<%= infosLoja.id %>?_method=PUT">
                 <h4>Editar dados da loja</h4>
 
                 <% if(infosLoja.imagem == null){ %>
-                    <img src="/images/sem-foto.png" alt="">
+                <img src="/images/sem-foto.png" alt="">
                 <% } else { %>
-                    <img class='d-block img-thumbnail imagem' src='<%= infosLoja.imagem %>' width="200px" alt='avatar'>                    
-                <% } %>               
+                <img class='d-block img-thumbnail imagem' src='<%= infosLoja.imagem %>' width="200px" alt='avatar'>
+                <% } %>
 
                 <label for="img-input1">
-                    <img src="/images/camera.png" alt="" >
+                    <img src="/images/camera.png" alt="">
                     <input type="file" class="form-control-file" name="file" id="img-input1"
-                    onchange="carregarImagem(event)" multiple>            
-                </label>          
-                
+                        onchange="carregarImagem(event)" multiple>
+                </label>
+
                 <input type="hidden" name="id" id="id" value="<%= infosLoja.id %>">
                 <label>Nome:<input type="text" name="nome" id="nome" value="<%= infosLoja.nome %>"></label>
-                <label>Telefone: <input type="text" name="telefone" id="telefone" value="<%= infosLoja.telefone %>"></label>
+                <label>Telefone: <input type="text" name="telefone" id="telefone"
+                        value="<%= infosLoja.telefone %>"></label>
                 <label>Email: <input type="email" name="email" id="email" value="<%= infosLoja.email %>"></label>
                 <label>Descrição:<textarea name="descricao" id="descricao"><%= infosLoja.descricao %></textarea></label>
                 <button type="submit">Alterar</button>
             </form>
+            <a id="deletar-loja" href="/lojas/deletar/<%= loja.id %>?_method=DELETE">Deletar Loja</a>
         </div>
     </div>
     <% include partials/footer-alt %>
-    <% include partials/script %> 
-    
+    <% include partials/script %>
     <script>
+        const botaoDeletar = document.getElementById("deletar-loja");
+        botaoDeletar.addEventListener("click", (ev) => {
+            if (!confirm("Tem certeza que deseja excluir a sua loja?")) {
+                ev.preventDefault;
+            }
+        })
+
         var carregarImagem = function (event) {
             var imagem = document.querySelector('.imagem');
             imagem.src = URL.createObjectURL(event.target.files[0]);
             imagem.onload = function () {
-                URL.revokeObjectURL(imagem.src) 
+                URL.revokeObjectURL(imagem.src)
             }
         }
-    </script>   
+    </script>
 </body>
