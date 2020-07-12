@@ -5,6 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var methodOverride = require('method-override');
+var moment = require('moment');
+
+moment().format();
 
 // Rotas
 var indexRouter = require('./routes/index');

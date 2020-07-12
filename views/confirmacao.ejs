@@ -30,17 +30,25 @@
                 </a>
               </div>
               <div class="row">
-                <div class="col-12 text-center">
-                  <h5 id="cinza"><strong> Seu pedido foi realizado com sucesso.</strong></h5>
+                <div class="col-12 text-center mb-3">
+                  <h4 id="cinza"><strong> Seu pedido foi realizado com sucesso.</strong></h4>
                 </div>
                 <div class="col-12 mt-2 ">
-                  <p id="letraP" class="ml-3 mr-3"> Obrigado por comprar conosco! Em breve enviaremos um email com
-                    as informações do seu pedido. E fique a vontande para entrar em
-                    contato com a gente através do email <a id="cinza" href="#"><strong> (email@email.com)</strong></a>
-                    ou
-                    pelo telefone <strong> (xx) X xxxx-xxxx </strong>
-                  </p>
+                  <p> Agradecemos pela preferência e em breve entraremos em contato
+                    para acertarmos os detalhes do seu pedido.</p> 
+                    <p>Para mais informações entre em contato conosco:</p>
                 </div>
+                <div class="col-12 mt-2">
+                  <% for(let dados of pedidos){ %>                      
+                    <p><a id="cinza" href=""><strong> Pedido: </strong><strong id="corRosa"><%= dados.id %></strong></a> <br>
+                      <a id="corRosa" href=""><strong>Loja: </strong><strong id="corRosa"> <%= dados.loja.nome %></strong></a> <br>
+                    <a id="cinza" href=""><strong>Email: <%= dados.loja.email %></strong></a> <br>
+                    <a id="cinza" href=""><strong>Celular: <%= dados.loja.telefone %></strong></a></p>
+                  <% } %>
+                </div>
+                   
+                    
+                  
               </div>
 
               <div class="row">

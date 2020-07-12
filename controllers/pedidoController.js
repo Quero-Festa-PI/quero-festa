@@ -1,6 +1,8 @@
 const { sequelize, ImagensDeProduto, AvaliacoesDeProdutos, Pedido, Usuario, Loja, 
     Endereco, Pagamento, Entrega, PedidoProduto, Produto } = require('../database/models');
 
+var moment = require('moment');
+
 module.exports = {
     pedido: async (req, res) => {
         let usuario = req.session.usuario;
@@ -75,7 +77,7 @@ module.exports = {
 
         lerPedidos(pedidos);
 
-        res.render('pedido', { page: 'Meus Pedidos', usuario, pedidosRealizados: pedidosRealizados });
+        res.render('pedido', { page: 'Meus Pedidos', usuario, pedidosRealizados: pedidosRealizados, moment: moment });
     },
     detalhesPedido: async (req, res) => {
         let usuario = req.session.usuario;
@@ -125,7 +127,7 @@ module.exports = {
 
         })
 
-        res.render('detalhes-pedido', {page: 'Detalhes do Pedido', usuario, pedido, listaProdutos});
+        res.render('detalhes-pedido', {page: 'Detalhes do Pedido', usuario, pedido, listaProdutos, moment: moment});
     },
     carrinho: async (req, res) => {
 
@@ -276,9 +278,25 @@ module.exports = {
         console.log(numerosDosPedidos);
         res.send(numerosDosPedidos);
     },
-    confirmacao: (req, res) => {
+    confirmacao: async (req, res) => {
+        let usuario = req.session.usuario;
+
+        if(!usuario){
+            return res.redirect('/usuarios/logar');
+        }
+
         let { ids } = req.query
         ids = ids.split(',');
-        res.render('confirmacao', { page: 'Confirmacao', ids });
+
+        let pedidos = await Pedido.findAll({
+            include: {
+                model: Loja,
+                as: 'loja',
+                attributes: ['nome', 'email', 'telefone']
+            },
+            where: { id: ids }
+        })
+        // return res.send(pedido[0].loja);
+        res.render('confirmacao', { page: 'Confirmacao', ids, pedidos });
     }
 }

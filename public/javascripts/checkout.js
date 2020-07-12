@@ -72,7 +72,7 @@ const renderizarCheckout = () => {
         valorTotal += produto.valor;
     }
 
-    spanValorTotal.innerText = `R$${valorTotal.toFixed(2)}`;
+    spanValorTotal.innerText = `R$ ${valorTotal.toFixed(2)}`;
 }
 
 renderizarCheckout();
