@@ -126,7 +126,6 @@ module.exports = {
      },
      alter: async (req, res) => {
 
-          const { id } = req.params;
 
           var usuarioLogado = res.locals.usuario
 
@@ -258,11 +257,13 @@ module.exports = {
      editarEndereco: async (req, res) => {
 
           let { enderecoId, cep, rua, numeral, complemento, cidade, estado } = req.body;
+          console.log('TESTE 1');
 
           if (!estado) {
                return res.send('Estado não pode ser nulo');
           }
 
+          console.log('TESTE 2');
           cep = cep.replace("-", "");
           const retornoConsultaCep = await apiCep.findCEP(req.body.cep)
                .then(resp => resp)
@@ -270,10 +271,12 @@ module.exports = {
           if (retornoConsultaCep.message) {
                return res.send(retornoConsultaCep.message);
           }
+          console.log('TESTE 3');
 
           if (!Number(numeral)) {
                return res.send('Número não é numérico');
           }
+          console.log('TESTE 4');
 
           let endereco = await Endereco.update({
                estado,
@@ -287,6 +290,7 @@ module.exports = {
                     id: enderecoId
                }
           });
+          console.log('TESTE 5');
 
           if (endereco) {
                return res.redirect('/usuarios/editar-endereco?mensagem=2');
@@ -298,7 +302,8 @@ module.exports = {
           const { id } = req.params;
 
           await Usuario.destroy({ where: { id } });
-          req.session.usuario = null; res.locals.loja = null; req.session.navegacaoLoja = false; res.locals.navegacaoLoja = false;
+          req.session.usuario = null; res.locals.loja = null; 
+          req.session.navegacaoLoja = false; res.locals.navegacaoLoja = false;
 
           return res.redirect('/');
      }

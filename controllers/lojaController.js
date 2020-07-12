@@ -118,15 +118,16 @@ module.exports = {
           if (!usuario) {
                return res.redirect('/usuarios/logar');
           }
-
+          
+          if (!nome) {
+               return res.redirect('/lojas/cadastrar-loja?error=1');
+          }
+          
           let lojaExistente = await Loja.findOne({ where: { email } });
           if ((lojaExistente)) {
                return res.redirect('/lojas/cadastrar-loja?error=2');
           };
 
-          if (!nome) {
-               return res.redirect('/lojas/cadastrar-loja?error=1');
-          }
 
           let novaLoja = await Loja.create({
                imagem: img,
@@ -134,9 +135,9 @@ module.exports = {
                telefone,
                email,
                descricao,
-               usuarios_id: req.session.usuario.id
+               usuarios_id: usuario.id
           })
-
+          
           req.session.loja = novaLoja;
 
           return res.redirect(`/lojas/perfil-loja/${novaLoja.id}`);
