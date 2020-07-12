@@ -125,7 +125,7 @@ module.exports = {
 
      },
      alter: async (req, res) => {
-
+          let {id} = req.params;
 
           var usuarioLogado = res.locals.usuario
 

@@ -11,18 +11,17 @@
                 <div id="painel-cliente" class="container">
 
                     <!-- Card Dados Pessoais -->
-                    <div class="card card-body painel-dash" id="borda">
+                    <div class="card card-body" id="borda">
 
                         <!-- Form dos dados -->
                         <div class="row">
                             <div class="col-4">
                                 <h4>Dados Pessoais</h4>
                             </div>
-
                         </div>
                         <form enctype="multipart/form-data" method="POST"
                             action="/usuarios/editar-cliente/<%= usuario.id %>?_method=PUT">
-                            <div class="card card-body painel-dash border-left-primary shadow ml-2 mr-2">
+                            <div class="card card-body border ml-2 mr-2">
                                 <div class="row">
                                     <div class='col-9'>
                                         <input type="hidden" name="id" value="<%= usuario.id %>">
@@ -108,6 +107,7 @@
                                         <a class="btn btn-alt" href="/usuarios/editar-endereco">Cadastrar
                                             endereço</a>
                                         <% } %>
+                                        <a id="cinza" href="/usuarios/perfil-cliente/<%= usuario.id %>" type="button" class="btn btn-alt">Voltar</a>
                                         <button type="submit" class="btn btn-alt">Salvar</button>
                                     </div>
                                 </div>
