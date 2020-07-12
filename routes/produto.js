@@ -23,6 +23,8 @@ router.get('/buscar', produtoController.buscar);
 router.get('/categorias', produtoController.categorias);
 router.get('/cadastrar-produto', produtoController.cadastrar);
 router.post('/cadastrar-produto', upload.array('file', 5), produtoController.cadastro);
+router.get('/editar-produto/:id', produtoController.editar);
+router.put('/editar-produto/:id', produtoController.update);
 
 router.get('/:id', produtoController.show);
 

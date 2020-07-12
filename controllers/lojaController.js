@@ -82,8 +82,6 @@ module.exports = {
 
           const { nome, descricao, telefone, email } = req.body;
 
-          console.log(`${id} ${nome} ${descricao}`);
-
           let lojaUpdate = await Loja.update({
                imagem: img,
                nome,
