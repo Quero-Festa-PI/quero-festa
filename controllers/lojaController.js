@@ -85,7 +85,7 @@ module.exports = {
 
           const { nome, descricao, telefone, email } = req.body;
 
-          let lojaUpdate = await Loja.update({
+          await Loja.update({
                imagem: img,
                nome,
                descricao,
@@ -94,6 +94,10 @@ module.exports = {
           }, {
                where: { id }
           });
+
+          infosLoja = await Loja.findByPk(id);
+
+          req.session.loja = infosLoja;
 
           return res.redirect(`/lojas/perfil-loja/${id}`);
      },
