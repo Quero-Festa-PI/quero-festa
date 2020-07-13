@@ -1,4 +1,4 @@
-const { sequelize, Sequelize, Usuario, Loja, Pedido, Produto, ImagensDeProduto, 
+const { sequelize, Sequelize, Usuario, Loja, Pedido, Produto, ImagensDeProduto,
      AvaliacoesDeProdutos, Entrega, Pagamento, PedidoProduto } = require('../database/models')
 const bcrypt = require('bcrypt');
 
@@ -102,7 +102,7 @@ module.exports = {
           if (err == 1) {
                err = 'Adicione uma foto';
           }
-          
+
           if (err == 2) {
                err = 'Informe um nome para sua loja'
           }
@@ -116,11 +116,11 @@ module.exports = {
      },
      cadastrar: async (req, res) => {
           let arquivo = req.file;
-          
+
           let img;
-          if(!arquivo){
+          if (!arquivo) {
                return res.redirect('/lojas/cadastrar-loja?error=1');
-          } else {               
+          } else {
                let file = req.file.originalname;
                img = `/uploads/loja/${file}`;
           }
@@ -131,11 +131,11 @@ module.exports = {
           if (!usuario) {
                return res.redirect('/usuarios/logar');
           }
-          
+
           if (!nome) {
                return res.redirect('/lojas/cadastrar-loja?error=2');
           }
-          
+
           let lojaExistente = await Loja.findOne({ where: { email } });
           if ((lojaExistente)) {
                return res.redirect('/lojas/cadastrar-loja?error=3');
@@ -150,7 +150,7 @@ module.exports = {
                descricao,
                usuarios_id: usuario.id
           })
-          
+
           req.session.loja = novaLoja;
 
           return res.redirect(`/lojas/perfil-loja/${novaLoja.id}`);
@@ -332,14 +332,5 @@ module.exports = {
 
                return res.send(resultados)
           }
-     },
-     deletar: async (req, res) => {
-          const { id } = req.params;
-
-          await Loja.destroy({ where: { id } });
-          req.session.loja = null; res.locals.loja = null; req.session.navegacaoLoja = false; res.locals.navegacaoLoja = false;
-
-          const idUsuario = res.locals.usuario.id;
-          return res.redirect(`/usuarios/perfil-cliente/${idUsuario}`)
      },
 }

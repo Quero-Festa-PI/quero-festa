@@ -31,19 +31,11 @@
                 <label>Descrição:<textarea name="descricao" id="descricao"><%= infosLoja.descricao %></textarea></label>
                 <button type="submit">Alterar</button>
             </form>
-            <a id="deletar-loja" href="/lojas/deletar/<%= loja.id %>?_method=DELETE">Deletar Loja</a>
         </div>
     </div>
     <% include partials/footer-alt %>
     <% include partials/script %>
     <script>
-        const botaoDeletar = document.getElementById("deletar-loja");
-        botaoDeletar.addEventListener("click", (ev) => {
-            if (!confirm("Tem certeza que deseja excluir a sua loja?")) {
-                ev.preventDefault;
-            }
-        })
-
         var carregarImagem = function (event) {
             var imagem = document.querySelector('.imagem');
             imagem.src = URL.createObjectURL(event.target.files[0]);
