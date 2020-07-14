@@ -249,7 +249,83 @@ module.exports = {
         // contabilizar avaliações
         let { quantidades, media } = await contarAvaliacoes(avaliacoes);
 
-        return res.render('produto', { page: produto.nome, produto, lojas, avaliacoes, comentarios, quantidadeVendida, quantidades, media, imagens });
+        var produtosLoja = await PedidoProduto.findAll({
+            attributes: [
+                [sequelize.fn('sum', sequelize.col('quantidade')), 'quantidade_vendida'],
+                'produtos_id',
+            ],
+            order: sequelize.literal('sum(quantidade) DESC'),
+            group: ['produtos_id'],
+            limit: 4,
+            include: [{
+                model: Produto,
+                as: 'produtos',
+                attributes: ['id', 'nome', 'valor'],
+                include: [{
+                    model: ImagensDeProduto,
+                    as: 'imagens',
+                    attributes: ['image_url'],
+                    limit: 1,
+                }],
+                where: sequelize.literal('`produtos`.`id` <> ' + produto.id),
+            }]
+        })
+
+        let avaliacoesProdutosLoja = await Produto.findAll({
+            include: [{
+                model: AvaliacoesDeProdutos,
+                as: 'avaliacoes',
+                attributes: [
+                    [sequelize.fn('avg', sequelize.col('classificacao')), 'media'],
+                    [sequelize.fn('count', sequelize.col('classificacao')), 'quantidadeAvaliacoes']
+                ],
+            }],
+            group: ['avaliacoes.produtos_id'],
+            attributes: ['id'],
+        });
+
+        produtosLoja = produtosLoja.map(produtoLoja => {
+            produtoLoja = produtoLoja.toJSON();
+            let avaliacaoP = avaliacoesProdutosLoja.find(avaliacao => {
+                avaliacao = avaliacao.toJSON();
+                return avaliacao.id == produtoLoja.produtos_id;
+            })
+            if (avaliacaoP) {
+                avaliacaoP = avaliacaoP.avaliacoes;
+                produtoLoja.avaliacoes = avaliacaoP[0];
+            } else {
+                produtoLoja.avaliacoes = '';
+            }
+            return produtoLoja;
+        });
+
+        // formatar objeto de resposta para o front-end
+        function formatarObjeto(objetos) {
+            objetos = objetos.map(objeto => {
+                delete objeto.produtos.id;
+                delete objeto.quantidade_vendida;
+                objeto.id = objeto.produtos_id;
+                delete objeto.produtos_id;
+                objeto.nome = objeto.produtos.nome;
+                objeto.valor = objeto.produtos.valor;
+                if (objeto.produtos.imagens[0]) {
+                    objeto.imagem = objeto.produtos.imagens[0].image_url;
+                }
+                delete objeto.produtos;
+                if (objeto.avaliacoes) {
+                    objeto.avaliacoes = objeto.avaliacoes.toJSON();
+                }
+                return objeto;
+            })
+            return objetos;
+        }
+
+        // formatar objeto de resposta para o front-end
+        produtosLoja = formatarObjeto(produtosLoja);
+
+        // return res.send(produtosLoja);
+
+        return res.render('produto', { page: produto.nome, produto, lojas, avaliacoes, comentarios, quantidadeVendida, quantidades, media, imagens, produtosLoja });
     },
     editar: async (req, res) => {
 

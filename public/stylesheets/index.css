@@ -1,15 +1,23 @@
-.page-index div#meio-home .row.produtos-index {
+.page-index div#meio-home .row.produtos-index, .page-index div#meio-home .produtos-produto, .page-produto div#meio-home .row.produtos-index, .page-produto div#meio-home .produtos-produto {
   display: flex;
   flex-direction: column;
   margin: 0px -10px;
   background-color: #FFF;
   padding: 16px; }
-  .page-index div#meio-home .row.produtos-index h3 {
+  .page-index div#meio-home .row.produtos-index h3, .page-index div#meio-home .produtos-produto h3, .page-produto div#meio-home .row.produtos-index h3, .page-produto div#meio-home .produtos-produto h3 {
     margin-left: 10px;
     font-weight: 500; }
-  .page-index div#meio-home .row.produtos-index .produtos {
+  .page-index div#meio-home .row.produtos-index .produtos, .page-index div#meio-home .produtos-produto .produtos, .page-produto div#meio-home .row.produtos-index .produtos, .page-produto div#meio-home .produtos-produto .produtos {
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start; }
+.page-index div#meio-home .produtos-produto, .page-produto div#meio-home .produtos-produto {
+  margin-left: 0px;
+  margin-right: 0px;
+  background-color: #fff;
+  border: 1px solid #FF826E;
+  border-radius: 20px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  padding: 1.25rem; }
 
 /*# sourceMappingURL=index.css.map */

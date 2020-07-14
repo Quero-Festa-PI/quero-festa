@@ -3,7 +3,7 @@
 <body>
 
     <!-- PAGINA COMPLETA -->
-    <div class="page">
+    <div class="page page-produto">
         <%- include('partials/navbar') %>
 
         <!-- CONTEÚDO PRINCIPAL -->
@@ -177,18 +177,55 @@
                 <% } %>
             </div>
 
-            <!-- ### CARD DE MAIS ANUNCIOS -->
-            <div class=" row card-body ">
+            <div class="row produtos-produto">
 
-                <div class=" row">
-                    <div class='col-7 mx-5'>
-                        <h4>Mais Anuncios deste Vendedor</h4>
-                    </div>
+                <h3>Produtos relacionados</h3>
+
+                <div class="produtos">
+                    <% for (produtoLoja of produtosLoja) { %>
+                    <% if(produtoLoja.avaliacoes) { %>
+                    <% var avaliacaoProdutoLoja = Math.round(Number(produtoLoja.avaliacoes.media) * 10) / 10; %>
+                    <% var avaliacaoPercProdutoLoja = ((18 * avaliacaoProdutoLoja) + (4.3875 * Math.trunc(avaliacaoProdutoLoja))) / 107.550 * 100; %>
+                    <% var quantidadeAvaliacoesProdutoLoja = Number(produtoLoja.avaliacoes.quantidadeAvaliacoes); %>
+                    <% } else { %>
+                    <% var avaliacaoProdutoLoja = 0; %>
+                    <% var avaliacaoPercProdutoLoja = 100; %>
+                    <% var quantidadeAvaliacoesProdutoLoja = 0; %>
+                    <% } %>
+                    <card class="anuncio-box card shadow card-produtos">
+                        <div class="imagem-produto">
+                            <button onclick="adicionarProdutoFetch(
+                        <%= produtoLoja.id %>, 
+                        1, 
+                        0)">
+                                Adicionar ao carrinho</button>
+                            <img src="<%= produtoLoja.imagem %>" class="img-fluid">
+                        </div>
+                        <titulo class="card-text"><%= produtoLoja.nome %></titulo>
+                        <div class="avaliacao">
+                            <div class="stars-outer">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <div class="stars-inner" style="width: <%= avaliacaoPercProdutoLoja %>%">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <span><%= avaliacaoProdutoLoja %></span>
+                            <span>(<%= quantidadeAvaliacoesProdutoLoja %>)</span>
+                        </div>
+                        <preco>R$<%= produtoLoja.valor.toFixed(2) %></preco>
+                        <a href="/produtos/<%= produtoLoja.id %>">Saiba Mais...</a>
+                    </card>
+                    <% } %>
                 </div>
-                <!-- Divider -->
-                <hr class="sidebar-divider my-0">
 
-                <% include partials/anuncios-vendedor %>
             </div>
         </div>
     </div>

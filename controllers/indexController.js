@@ -52,7 +52,7 @@ module.exports = {
                 avaliacaoP = avaliacaoP.avaliacoes;
                 produto.avaliacoes = avaliacaoP[0];
             } else {
-                produtos.avaliacoes = '';
+                produto.avaliacoes = '';
             }
             return produto;
         });
