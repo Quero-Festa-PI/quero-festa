@@ -125,7 +125,7 @@ module.exports = {
 
      },
      alter: async (req, res) => {
-          let {id} = req.params;
+          let { id } = req.params;
 
           var usuarioLogado = res.locals.usuario
 
@@ -180,6 +180,10 @@ module.exports = {
           }, {
                where: { id }
           });
+
+          usuario = await Usuario.findByPk(id);
+
+          req.session.usuario = usuario;
 
           return res.redirect(`/usuarios/perfil-cliente/${usuario.id}`);
      },
@@ -302,7 +306,7 @@ module.exports = {
           const { id } = req.params;
 
           await Usuario.destroy({ where: { id } });
-          req.session.usuario = null; res.locals.loja = null; 
+          req.session.usuario = null; res.locals.loja = null;
           req.session.navegacaoLoja = false; res.locals.navegacaoLoja = false;
 
           return res.redirect('/');

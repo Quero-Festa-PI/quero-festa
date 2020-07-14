@@ -271,7 +271,7 @@ module.exports = {
         })
 
         return res.redirect(`/produtos/${id}`)
-    }
+    },
 }
 
 function contarAvaliacoes(avaliacoes) {
