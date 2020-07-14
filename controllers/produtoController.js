@@ -179,8 +179,29 @@ module.exports = {
         }
         return res.redirect(`/lojas/perfil-loja/${req.session.loja.id}`);
     },
-    produto: (req, res) => {
-        res.render('produto', { page: 'produto' });
+    fetchCarrinho: async (req, res) => {
+        let { id } = req.params;
+
+        // buscar produto no bd
+        let produto = await Produto.findByPk(id, {
+            attributes: ['id', 'nome', 'valor', 'descricao'],
+            include: [{
+                model: Loja,
+                as: 'lojas',
+                attributes: ['id', 'nome']
+            }],
+        });
+
+        const { lojas } = produto;
+
+        let imagem = await ImagensDeProduto.findOne({
+            where: {
+                produtos_id: id,
+            },
+            attributes: ['image_url'],
+        })
+
+        res.send({ produto, lojas, imagem });
     },
     show: async (req, res) => {
         // capturar o id do param

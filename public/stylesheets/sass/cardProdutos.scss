@@ -25,18 +25,50 @@ card.card-produtos {
         align-self: center;
         margin-bottom: 6px;
     }
-    a {
-        font-weight: bold;
-        color: $primary;
+    div.imagem-produto {
         position: relative;
-        bottom: 0;
-        align-self: center;
         margin-bottom: 6px;
         img {
             max-width: calc(100% - 20px);
             height: auto;
             margin: 10px 10px 0px 10px;
         }
+    }
+    a {
+        font-weight: bold;
+        color: $primary;
+        bottom: 0;
+        align-self: center;
+        margin-bottom: 6px;
+    }
+
+    button{
+        position: absolute;
+        bottom: 0;
+        width: calc(100% - 20px);
+        margin: 0px 10px;
+        background-color: #777;
+        border: none;
+        color: #FFF;
+        padding: 4px 8px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.2s linear;
+        outline: none;
+    }
+}
+
+card.card-produtos:hover {
+    button{
+        background-color: rgba(119, 119, 119, 0.7);
+        opacity: 1;
+    }
+    
+    button:hover{
+     background-color: rgba(255, 130, 110, 0.9);
+     color: $primary-font;
     }
 }
 

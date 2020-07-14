@@ -25,6 +25,7 @@ router.get('/cadastrar-produto', produtoController.cadastrar);
 router.post('/cadastrar-produto', upload.array('file', 5), produtoController.cadastro);
 router.get('/editar-produto/:id', produtoController.editar);
 router.put('/editar-produto/:id', produtoController.update);
+router.post('/fetch-carrinho/:id', produtoController.fetchCarrinho)
 
 router.get('/:id', produtoController.show);
 

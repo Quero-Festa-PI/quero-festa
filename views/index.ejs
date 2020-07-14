@@ -39,7 +39,14 @@
         <% var quantidadeAvaliacoes = 0; %>
         <% } %>
         <card class="anuncio-box card shadow card-produtos">
-          <a href="/produtos/<%= produto.id %>"><img src="<%= produto.imagem %>" class="img-fluid"></a>
+          <div class="imagem-produto">
+            <button onclick="adicionarProdutoFetch(
+            <%= produto.id %>, 
+            1, 
+            0)">
+              Adicionar ao carrinho</button>
+            <img src="<%= produto.imagem %>" class="img-fluid">
+          </div>
           <titulo class="card-text"><%= produto.nome %></titulo>
           <div class="avaliacao">
             <div class="stars-outer">
@@ -60,7 +67,6 @@
             <span>(<%= quantidadeAvaliacoes %>)</span>
           </div>
           <preco>R$<%= produto.valor.toFixed(2) %></preco>
-
           <a href="/produtos/<%= produto.id %>">Saiba Mais...</a>
         </card>
         <% } %>

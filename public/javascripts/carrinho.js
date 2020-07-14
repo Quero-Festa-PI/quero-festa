@@ -4,12 +4,14 @@ function getLocalStorage() {
 }
 
 function setLocalStorage(produtos) {
-    localStorage.setItem("@quero-festa:carrinho", JSON.stringify(produtos));
+    produtos = JSON.stringify(produtos);
+    localStorage.removeItem("@quero-festa:carrinho");
+    localStorage.setItem("@quero-festa:carrinho", produtos);
     renderizar();
 }
 
 // adicionar produto à localStorage
-const adicionarProduto = (id, nome, valor, imagem, quantidade, loja, loja_id) => {
+const adicionarProduto = (id, nome, valor, imagem, quantidade, loja, loja_id, redirecionar) => {
 
     let produtos = getLocalStorage();
 
@@ -19,11 +21,52 @@ const adicionarProduto = (id, nome, valor, imagem, quantidade, loja, loja_id) =>
         produtos[indice].quantidade += quantidade;
         alert(`Adicionado mais um produto ao carrinho! Total: ${produtos[indice].quantidade}`);
     } else {
+        console.log({ id, nome, valor, imagem, quantidade, loja, loja_id });
         produtos.push({ id, nome, valor, imagem, quantidade, loja, loja_id });
         alert("Produto adicionado ao carrinho!");
     }
 
     setLocalStorage(produtos);
+
+    if (redirecionar == 1) {
+        window.location.href = "http://localhost:3000/pedidos/carrinho";
+    }
+}
+
+const adicionarProdutoFetch = (id, quantidade, redirecionar) => {
+
+    let produtos = getLocalStorage();
+
+    let indice = produtos.findIndex(produto => produto.id == id);
+
+    if (indice >= 0) {
+        produtos[indice].quantidade += quantidade;
+        setLocalStorage(produtos);
+        alert(`Adicionado mais um produto ao carrinho! Total: ${produtos[indice].quantidade}`);
+    } else {
+        // realizar consulta fetch
+        fetch(`http://localhost:3000/produtos/fetch-carrinho/${id}`, {
+            method: 'post',
+        })
+            .then((resposta) => {
+                resposta = resposta.json();
+                return resposta;
+            })
+            .then((dado) => {
+                const { lojas, produto, imagem } = dado;
+                const { nome, valor } = produto;
+                const { image_url } = imagem;
+                const nomeLoja = lojas.nome;
+                const idLoja = lojas.id;
+                produtos.push({ id, nome, valor, imagem: image_url, quantidade, loja: nomeLoja, loja_id: idLoja });
+                setLocalStorage(produtos);
+                alert("Produto adicionado ao carrinho!");
+            })
+    }
+
+    if (redirecionar == 1) {
+        window.location.href = "http://localhost:3000/pedidos/carrinho";
+    }
 
 }
 

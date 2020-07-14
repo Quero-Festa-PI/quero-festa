@@ -86,12 +86,26 @@
                         <% if(loja.id == lojas.id) { %>
                         <a href="/produtos/editar-produto/<%= produto.id %>">Editar Produto</a>
                         <% } else { %>
-                        <button
-                            onclick="adicionarProduto(<%= produto.id %>, '<%= produto.nome %>', <%= produto.valor %>, '<%= imagens[0].image_url %>', 1, '<%= lojas.nome %>', '<%= lojas.id %>')">Comprar</button>
+                        <button class="addCarrinho" onclick="adicionarProduto(
+                                <%= produto.id %>, 
+                                '<%= produto.nome %>', 
+                                <%= produto.valor %>, 
+                                '<%= imagens[0].image_url %>', 
+                                1, 
+                                '<%= lojas.nome %>', 
+                                '<%= lojas.id %>', 0)">
+                            Adicionar ao carrinho</button>
                         <% } %>
                         <% } else { %>
-                        <button
-                            onclick="adicionarProduto(<%= produto.id %>, '<%= produto.nome %>', <%= produto.valor %>, '<%= imagens[0].image_url %>', 1, '<%= lojas.nome %>', '<%= lojas.id %>')">Comprar</button>
+                        <button onclick="adicionarProduto(
+                                    <%= produto.id %>, 
+                                    '<%= produto.nome %>', 
+                                    <%= produto.valor %>, 
+                                    '<%= imagens[0].image_url %>', 
+                                    1, 
+                                    '<%= lojas.nome %>', 
+                                    '<%= lojas.id %>', 0)">
+                            Adicionar ao carrinho</button>
                         <% } %>
                     </div>
                 </div>

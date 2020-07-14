@@ -58,9 +58,8 @@ div#meio-home{
                     font-size: 1.5em;
                     font-weight: bold;
                     margin-right: 8px;
-                    width: calc(100% / 2);
                 }
-                button{
+                button {
                     background-color: $primary;
                     border: none;
                     height: 40px;
@@ -68,8 +67,9 @@ div#meio-home{
                     font-weight: 700;
                     letter-spacing: 1px;
                     border-radius: 7px;
-                    max-width: 92px;
-                    width: calc(100% / 2);
+                    padding: 4px 8px;
+                    outline: none;
+                    cursor: pointer;
                 }
                 a {
                     color: $primary;
@@ -153,6 +153,18 @@ div#meio-home{
 
     // estrelas avaliações display column
     div#meio-home{
+        // div.produto{
+        //     .infos{
+        //         .dados-produto{
+        //             flex-flow: column nowrap;
+        //             align-items: flex-start;
+        //             button.addCarrinho {
+        //                 margin-bottom: 6px;
+        //             }
+        //         }
+        //     }
+        // }
+
         div.avaliacoes{
             div.avaliacoes-individuais{
                 flex-direction: column;
