@@ -310,5 +310,28 @@ module.exports = {
         })
         // return res.send(pedido[0].loja);
         res.render('confirmacao', { page: 'Confirmacao', ids, pedidos });
+    },
+    alterarPagamento: async (req, res) => {
+
+        let { id } = req.params;
+
+        let pagamentoId = await Pedido.findByPk(id, {
+            include: [{
+                model: Pagamento,
+                as: 'pagamento',
+                attributes: ['id'],
+            }]
+        });
+
+        pagamentoId = pagamentoId.pagamento.id;
+
+        await Pagamento.update({
+            status: 'Efetuado',
+        }, {
+            where: { id: pagamentoId },
+        })
+
+        return res.send({ id });
+
     }
 }

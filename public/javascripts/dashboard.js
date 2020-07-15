@@ -185,6 +185,28 @@ if (selecionarAnoVendasLoja) {
         }
     });
 
+    const alterarPagamentos = document.getElementsByClassName("alterar-pagamento");
+    for (let i = 0; i < alterarPagamentos.length; i++) {
+        const botao = alterarPagamentos[i];
+        botao.addEventListener("click", (evento) => {
+            id = evento.target.attributes[0].nodeValue;
+            alterarPagamento(id);
+            evento.target.parentNode.innerHTML = 'Efetuado';
+        })
+    }
+
+    function alterarPagamento(id) {
+        fetch(`http://localhost:3000/pedidos/alterar-pagamento/${id}?_method=PUT`, {
+            method: 'post',
+        })
+            .then((resposta) => {
+                resposta = resposta.json()
+                return resposta;
+            })
+            .then((dado) => {
+            })
+    }
+
     getVendasLoja(selecionarAnoVendasLoja.value);
     getVendasProdutos(selecionarPeriodoVendasProduto.value);
 }

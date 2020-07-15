@@ -35,7 +35,12 @@
                                 </ul>
                             </td>
                             <td><%= atrasado.usuario.nome %><br><%= atrasado.usuario.celular %></td>
+                            <% if(atrasado.pagamento == 'Pendente') { %>
+                            <td><%= atrasado.pagamento %><img value="<%= atrasado.id %>" class="alterar-pagamento"
+                                    src="/images/caneta.png"></td>
+                            <% } else { %>
                             <td><%= atrasado.pagamento %></td>
+                            <% } %>
                         </tr>
                         <% } %>
                     </tbody>
@@ -74,7 +79,12 @@
                                 </ul>
                             </td>
                             <td><%= proximo.usuario.nome %><br><%= proximo.usuario.celular %></td>
+                            <% if(proximo.pagamento == 'Pendente') { %>
+                            <td><%= proximo.pagamento %><img value="<%= proximo.id %>" class="alterar-pagamento"
+                                    src="/images/caneta.png"></td>
+                            <% } else { %>
                             <td><%= proximo.pagamento %></td>
+                            <% } %>
                         </tr>
                         <% } %>
                     </tbody>

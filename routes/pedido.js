@@ -13,5 +13,6 @@ router.post('/compre-tambem', pedidoController.compreTambem);
 router.get('/checkout', pedidoController.checkout);
 router.post('/cadastrar', pedidoController.cadastrar);
 router.get('/confirmacao', pedidoController.confirmacao);
+router.put('/alterar-pagamento/:id', pedidoController.alterarPagamento);
 
 module.exports = router;
