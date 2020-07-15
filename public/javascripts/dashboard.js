@@ -207,6 +207,28 @@ if (selecionarAnoVendasLoja) {
             })
     }
 
+    const alterarEntregas = document.getElementsByClassName("caminhao");
+    for (let i = 0; i < alterarEntregas.length; i++) {
+        const botao = alterarEntregas[i];
+        botao.addEventListener("click", (evento) => {
+            id = evento.target.attributes[0].nodeValue;
+            alterarEntrega(id);
+            evento.target.parentNode.parentNode.remove();
+        })
+    }
+
+    function alterarEntrega(id) {
+        fetch(`http://localhost:3000/pedidos/alterar-entrega/${id}?_method=PUT`, {
+            method: 'post',
+        })
+            .then((resposta) => {
+                resposta = resposta.json()
+                return resposta;
+            })
+            .then((dado) => {
+            })
+    }
+
     getVendasLoja(selecionarAnoVendasLoja.value);
     getVendasProdutos(selecionarPeriodoVendasProduto.value);
 }

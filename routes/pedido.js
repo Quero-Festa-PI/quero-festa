@@ -14,5 +14,6 @@ router.get('/checkout', pedidoController.checkout);
 router.post('/cadastrar', pedidoController.cadastrar);
 router.get('/confirmacao', pedidoController.confirmacao);
 router.put('/alterar-pagamento/:id', pedidoController.alterarPagamento);
+router.put('/alterar-entrega/:id', pedidoController.alterarEntrega);
 
 module.exports = router;

@@ -332,6 +332,28 @@ module.exports = {
         })
 
         return res.send({ id });
+    },
+    alterarEntrega: async (req, res) => {
+
+        let { id } = req.params;
+
+        let entregaId = await Pedido.findByPk(id, {
+            include: [{
+                model: Entrega,
+                as: 'entrega',
+                attributes: ['id'],
+            }]
+        })
+
+        entregaId = entregaId.entrega.id;
+
+        await Entrega.update({
+            data_real: moment(new Date).format('YYYY-MM-DD'),
+        }, {
+            where: { id: entregaId },
+        })
+
+        return res.send({ id });
 
     }
 }

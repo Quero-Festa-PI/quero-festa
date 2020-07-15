@@ -28,6 +28,8 @@
           .page-dashboard .row.pedidos div.pedidos-atrasados table tr td img, .page-dashboard .row.pedidos div.pedidos-atrasados table tr th img, .page-dashboard .row.pedidos div.pedidos-futuros table tr td img, .page-dashboard .row.pedidos div.pedidos-futuros table tr th img {
             width: 12px;
             margin-left: 4px; }
+          .page-dashboard .row.pedidos div.pedidos-atrasados table tr td img.caminhao, .page-dashboard .row.pedidos div.pedidos-atrasados table tr th img.caminhao, .page-dashboard .row.pedidos div.pedidos-futuros table tr td img.caminhao, .page-dashboard .row.pedidos div.pedidos-futuros table tr th img.caminhao {
+            width: 36px; }
     .page-dashboard .row.pedidos .pedidos-atrasados {
       margin-bottom: 8px; }
   .page-dashboard div.graficos {

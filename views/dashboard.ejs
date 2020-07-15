@@ -20,6 +20,7 @@
                             <th scope="col">Produtos do Pedido</th>
                             <th scope="col">Dados do Cliente</th>
                             <th scope="col">Status do Pagamento</th>
+                            <th scope="col">Entregue</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,6 +42,9 @@
                             <% } else { %>
                             <td><%= atrasado.pagamento %></td>
                             <% } %>
+                            <td>
+                                <img value="<%= atrasado.id %>" class="caminhao" src="/images/caminhao-entrega.png">
+                            </td>
                         </tr>
                         <% } %>
                     </tbody>
@@ -64,6 +68,7 @@
                             <th scope="col">Produtos do Pedido</th>
                             <th scope="col">Dados do Cliente</th>
                             <th scope="col">Status do Pagamento</th>
+                            <th scope="col">Entregue</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -85,6 +90,9 @@
                             <% } else { %>
                             <td><%= proximo.pagamento %></td>
                             <% } %>
+                            <td>
+                                <img value="<%= proximo.id %>" class="caminhao" src="/images/caminhao-entrega.png">
+                            </td>
                         </tr>
                         <% } %>
                     </tbody>
