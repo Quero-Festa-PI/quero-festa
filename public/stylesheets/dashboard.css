@@ -41,7 +41,7 @@
       padding: 16px 72px 32px 72px;
       border-radius: 8px; }
       .page-dashboard div.graficos div.container-vendas-loja select, .page-dashboard div.graficos div.container-vendas-produtos select {
-        width: 60px;
+        width: 120px;
         align-self: center; }
     .page-dashboard div.graficos div.container-vendas-loja {
       height: 350px;

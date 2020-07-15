@@ -26,7 +26,7 @@
         <!-- carrinho -->
         <div class="carrinho dropdown-carrinho">
             <a href="/pedidos/carrinho">
-                <img src="../images/carro-vazio.png" height="38px" width="38px" alt="">
+                <img src="/images/carro-vazio.png" height="38px" width="38px" alt="">
             </a>
             <div id="lista-carrinho" class="dropdown-content-carrinho shadow">
                 <div class="carrinho-cabeçalho">
@@ -100,7 +100,7 @@
         <ul class="menu">
             <% if (navegacaoLoja) { %>
             <li><a href="">Novos Pedidos</a></li>
-            <li><a href="">Alguma Função</a></li>
+            <li><a href="/lojas/perfil-loja/<%= loja.id %>">Minha Loja</a></li>
             <li><a href="/produtos/cadastrar-produto">Cadastrar Produtos</a></li>
             <li><a href="/lojas/dashboard">Dashboard</a></li>
             <% } else { %>

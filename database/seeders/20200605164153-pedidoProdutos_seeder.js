@@ -85,57 +85,57 @@ module.exports = {
     }, {
       id: 17,
       pedidos_id: 17,
-      produtos_id: 2,
-      quantidade: 10,
+      produtos_id: 27,
+      quantidade: 5,
     }, {
       id: 18,
       pedidos_id: 18,
-      produtos_id: 3,
-      quantidade: 11,
+      produtos_id: 18,
+      quantidade: 30,
     }, {
       id: 19,
       pedidos_id: 19,
-      produtos_id: 4,
-      quantidade: 12,
+      produtos_id: 13,
+      quantidade: 20,
     }, {
       id: 20,
       pedidos_id: 20,
-      produtos_id: 5,
-      quantidade: 13,
+      produtos_id: 20,
+      quantidade: 40,
     }, {
       id: 21,
       pedidos_id: 21,
-      produtos_id: 6,
-      quantidade: 1,
+      produtos_id: 25,
+      quantidade: 3,
     }, {
       id: 22,
       pedidos_id: 22,
-      produtos_id: 7,
+      produtos_id: 17,
       quantidade: 20,
     }, {
       id: 23,
       pedidos_id: 23,
-      produtos_id: 8,
+      produtos_id: 19,
       quantidade: 15,
     }, {
       id: 24,
       pedidos_id: 24,
-      produtos_id: 9,
+      produtos_id: 28,
       quantidade: 100,
     }, {
       id: 25,
       pedidos_id: 25,
-      produtos_id: 10,
-      quantidade: 90,
+      produtos_id: 16,
+      quantidade: 40,
     }, {
       id: 26,
       pedidos_id: 26,
-      produtos_id: 11,
-      quantidade: 110,
+      produtos_id: 22,
+      quantidade: 4,
     }, {
       id: 27,
       pedidos_id: 27,
-      produtos_id: 12,
+      produtos_id: 24,
       quantidade: 75,
     }, {
       id: 28,
@@ -257,11 +257,6 @@ module.exports = {
       pedidos_id: 1,
       produtos_id: 27,
       quantidade: 5,
-    }, {
-      id: 52,
-      pedidos_id: 2,
-      produtos_id: 6,
-      quantidade: 2,
     }]);
   },
 

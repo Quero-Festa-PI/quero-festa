@@ -209,7 +209,7 @@ module.exports = {
                          delete produto.produtos;
                          return produto;
                     });
-                    pedido.entrega > new Date() ? proximos.push(pedido) : atrasados.push(pedido);
+                    pedido.entrega > moment(new Date).format("YYYY-MM-DD") ? proximos.push(pedido) : atrasados.push(pedido);
                });
           }
 

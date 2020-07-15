@@ -147,25 +147,26 @@ module.exports = {
 
         let file = req.files;
 
-        let { nomeP, preco } = req.body;
+        let { nomeP, preco, descricaoP } = req.body;
 
 
         if (nomeP.length <= 1) {
-            res.redirect('/produtos/cadastrar-produto?error=1')
+            return res.redirect('/produtos/cadastrar-produto?error=1')
         }
 
-        if (preco.length < 2) {
-            res.redirect('/produtos/cadastrar-produto?error=2');
+        if (!preco) {
+            return res.redirect('/produtos/cadastrar-produto?error=2');
         }
 
         if (!file) {
-            res.redirect('/produtos/cadastrar-produto?error=3');
+            return res.redirect('/produtos/cadastrar-produto?error=3');
         }
 
         let produto = await Produto.create({
             lojas_id: req.session.loja.id,
             nome: nomeP,
             valor: preco,
+            descricao: descricaoP,
         })
 
         let img;

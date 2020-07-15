@@ -14,6 +14,4 @@ router.get('/checkout', pedidoController.checkout);
 router.post('/cadastrar', pedidoController.cadastrar);
 router.get('/confirmacao', pedidoController.confirmacao);
 
-
-
 module.exports = router;

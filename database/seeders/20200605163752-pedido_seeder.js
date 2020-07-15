@@ -19,7 +19,7 @@ module.exports = {
       enderecos_id: 3,
       pagamentos_id: 2,
       entregas_id: 2,
-      valor_total: 190,
+      valor_total: 100,
       createdAt: new Date('2019-02-01T12:00:00'),
       updatedAt: new Date('2019-02-01T12:00:00'),
     }, {
@@ -155,7 +155,7 @@ module.exports = {
     }, {
       id: 16,
       usuarios_id: 3,
-      lojas_id: 3,
+      lojas_id: 1,
       enderecos_id: 3,
       pagamentos_id: 16,
       entregas_id: 16,
@@ -169,7 +169,7 @@ module.exports = {
       enderecos_id: 3,
       pagamentos_id: 17,
       entregas_id: 17,
-      valor_total: 75,
+      valor_total: 100,
       createdAt: new Date('2020-01-01T12:00:00'),
       updatedAt: new Date('2020-01-01T12:00:00'),
     }, {
@@ -179,7 +179,7 @@ module.exports = {
       enderecos_id: 3,
       pagamentos_id: 18,
       entregas_id: 18,
-      valor_total: 82.5,
+      valor_total: 90,
       createdAt: new Date('2020-01-01T12:00:00'),
       updatedAt: new Date('2020-01-01T12:00:00'),
     }, {
@@ -189,7 +189,7 @@ module.exports = {
       enderecos_id: 3,
       pagamentos_id: 19,
       entregas_id: 19,
-      valor_total: 60,
+      valor_total: 140,
       createdAt: new Date('2020-01-01T12:00:00'),
       updatedAt: new Date('2020-01-01T12:00:00'),
     }, {
@@ -199,7 +199,7 @@ module.exports = {
       enderecos_id: 3,
       pagamentos_id: 20,
       entregas_id: 20,
-      valor_total: 65,
+      valor_total: 120,
       createdAt: new Date('2020-01-01T12:00:00'),
       updatedAt: new Date('2020-01-01T12:00:00'),
     }, {
@@ -219,7 +219,7 @@ module.exports = {
       enderecos_id: 3,
       pagamentos_id: 22,
       entregas_id: 22,
-      valor_total: 170,
+      valor_total: 90,
       createdAt: new Date('2020-02-01T12:00:00'),
       updatedAt: new Date('2020-02-01T12:00:00'),
     }, {
@@ -229,7 +229,7 @@ module.exports = {
       enderecos_id: 3,
       pagamentos_id: 23,
       entregas_id: 23,
-      valor_total: 75,
+      valor_total: 45,
       createdAt: new Date('2020-03-01T12:00:00'),
       updatedAt: new Date('2020-03-01T12:00:00'),
     }, {
@@ -239,7 +239,7 @@ module.exports = {
       enderecos_id: 3,
       pagamentos_id: 24,
       entregas_id: 24,
-      valor_total: 200,
+      valor_total: 150,
       createdAt: new Date('2020-03-01T12:00:00'),
       updatedAt: new Date('2020-03-01T12:00:00'),
     }, {
@@ -249,7 +249,7 @@ module.exports = {
       enderecos_id: 3,
       pagamentos_id: 25,
       entregas_id: 25,
-      valor_total: 180,
+      valor_total: 140,
       createdAt: new Date('2020-03-01T12:00:00'),
       updatedAt: new Date('2020-03-01T12:00:00'),
     }, {
@@ -259,7 +259,7 @@ module.exports = {
       enderecos_id: 3,
       pagamentos_id: 26,
       entregas_id: 26,
-      valor_total: 220,
+      valor_total: 100,
       createdAt: new Date('2020-04-01T12:00:00'),
       updatedAt: new Date('2020-04-01T12:00:00'),
     }, {
@@ -269,7 +269,7 @@ module.exports = {
       enderecos_id: 3,
       pagamentos_id: 27,
       entregas_id: 27,
-      valor_total: 187.5,
+      valor_total: 75,
       createdAt: new Date('2020-04-01T12:00:00'),
       updatedAt: new Date('2020-04-01T12:00:00'),
     }, {
