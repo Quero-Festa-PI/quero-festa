@@ -4,7 +4,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('imagensDeProduto', [{
       id: 1,
-      image_url: '/uploads/produtos/bolo-pote-morango1.jpg',
+      image_url: '/uploads/produtos/bolo-marvel.png',
       produtos_id: 1
     }, {
       id: 2,
@@ -12,7 +12,7 @@ module.exports = {
       produtos_id: 5
     }, {
       id: 3,
-      image_url: '/uploads/produtos/bolo-pote-prestigio1.jpg',
+      image_url: '/uploads/produtos/bolo-sereia.png',
       produtos_id: 2
     }, {
       id: 4,

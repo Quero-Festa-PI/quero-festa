@@ -159,7 +159,7 @@ module.exports = {
       enderecos_id: 3,
       pagamentos_id: 16,
       entregas_id: 16,
-      valor_total: 100,
+      valor_total: 70,
       createdAt: new Date('2019-12-01T12:00:00'),
       updatedAt: new Date('2019-12-01T12:00:00'),
     }, {
@@ -169,7 +169,11 @@ module.exports = {
       enderecos_id: 3,
       pagamentos_id: 17,
       entregas_id: 17,
+<<<<<<< HEAD
       valor_total: 100,
+=======
+      valor_total: 60,
+>>>>>>> 34a1c93739752352278fef34914f925e0ffdc009
       createdAt: new Date('2020-01-01T12:00:00'),
       updatedAt: new Date('2020-01-01T12:00:00'),
     }, {
