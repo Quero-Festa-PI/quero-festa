@@ -16,6 +16,9 @@ $secondary-font: #1E1E1E;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI';
+    button {
+        outline: none;
+    }
 }
 
 .navbar {

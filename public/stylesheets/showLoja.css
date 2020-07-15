@@ -47,6 +47,10 @@ div.page-loja div#meio-home .row.produtos-loja {
     width: 100%;
     text-align: center;
     margin-bottom: 16px; }
+  div.page-loja div#meio-home .row.produtos-loja a.cadastre-produto {
+    width: 100%;
+    text-align: center;
+    color: #FF826E; }
 
 div#page-editar-loja {
   display: flex;
