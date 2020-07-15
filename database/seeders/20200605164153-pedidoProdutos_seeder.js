@@ -81,12 +81,12 @@ module.exports = {
       id: 16,
       pedidos_id: 16,
       produtos_id: 1,
-      quantidade: 20,
+      quantidade: 1,
     }, {
       id: 17,
       pedidos_id: 17,
       produtos_id: 2,
-      quantidade: 10,
+      quantidade: 1,
     }, {
       id: 18,
       pedidos_id: 18,

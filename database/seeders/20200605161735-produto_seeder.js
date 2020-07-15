@@ -5,14 +5,14 @@ module.exports = {
     return queryInterface.bulkInsert('produtos', [{
       id: 1,
       lojas_id: 1,
-      nome: 'Bolo de Pote - Morango',
-      valor: 5,
+      nome: 'Bolo Marvel',
+      valor: 70,
       descricao: 'Bolo de pote de 250g sabor morango. Uma delícia!',
     }, {
       id: 2,
       lojas_id: 1,
-      nome: 'Bolo de Pote - Prestígio',
-      valor: 7.5,
+      nome: 'Bolo Pequena Sereia',
+      valor: 60,
       descricao: 'Bolo de pote de 250g sabor prestígio. O queridinho!',
     }, {
       id: 3,
