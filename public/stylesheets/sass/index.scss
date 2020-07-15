@@ -5,9 +5,9 @@ $primary-font: #F8F8F8;
 $secondary: #FFFFFF;
 $secondary-font: #1E1E1E;
 
-.page-index {
+.page-index, .page-produto {
     div#meio-home {
-        .row.produtos-index {
+        .row.produtos-index, .produtos-produto {
             display: flex;
             flex-direction: column;
             margin: 0px -10px;
@@ -22,6 +22,16 @@ $secondary-font: #1E1E1E;
                 flex-flow: row wrap;
                 justify-content: flex-start;
             }
+        }
+        .produtos-produto {
+            margin-left: 0px;
+            margin-right: 0px;
+            // visual
+            background-color: #fff;
+            border: 1px solid $primary;
+            border-radius: 20px;
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+            padding: 1.25rem;
         }
     }
 }
