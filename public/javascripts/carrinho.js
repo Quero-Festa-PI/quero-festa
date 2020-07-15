@@ -60,9 +60,12 @@ const adicionarProdutoFetch = (id, quantidade, redirecionar) => {
                 const idLoja = lojas.id;
                 produtos.push({ id, nome, valor, imagem: image_url, quantidade, loja: nomeLoja, loja_id: idLoja });
                 setLocalStorage(produtos);
-                alert("Produto adicionado ao carrinho!");
+                if (document.title == "Quero Festas | Carrinho") {
+                    compreTambem();
+                }
             })
     }
+
 
     if (redirecionar == 1) {
         window.location.href = "http://localhost:3000/pedidos/carrinho";
@@ -283,9 +286,82 @@ const renderizar = () => {
     }
 }
 
+const compreTambem = () => {
+
+    if (document.title == "Quero Festas | Carrinho") {
+
+        let produtos = getLocalStorage();
+
+        if (produtos == []) {
+            return;
+        }
+
+        let ids = produtos.map(produto => produto.id);
+        let idLoja = produtos[0].loja_id;
+
+        var row = document.querySelector('div.compre-tambem');
+        row = row.querySelector('div.produtos');
+
+        row.innerHTML = '';
+
+        fetch(`http://localhost:3000/pedidos/compre-tambem?ids=${ids}&idLoja=${idLoja}`, {
+            method: 'post',
+        })
+            .then((resposta) => {
+                resposta = resposta.json();
+                return resposta;
+            })
+            .then((dado) => {
+                dado.forEach((produto) => {
+
+                    let avaliacao = 0;
+                    let avaliacaoPerc = 100;
+                    let quantidadeAvaliacoes = 0;
+                    if (produto.avaliacoes) {
+                        avaliacao = produto.avaliacoes.media;
+                        avaliacaoPerc = ((18 * avaliacao) + (4.3875 * Math.trunc(avaliacao))) / 107.550 * 100;
+                        quantidadeAvaliacoes = produto.avaliacoes.quantidadeAvaliacoes;
+                    }
+                    let cardProduto = document.createElement("card");
+                    cardProduto.setAttribute("class", "anuncio-box card shadow card-produtos");
+
+                    cardProduto.innerHTML = `
+                        <div class="imagem-produto">
+                          <button onclick="adicionarProdutoFetch(${produto.id},1,0)">Adicionar ao carrinho</button>
+                          <img src="${produto.imagem}" class="img-fluid">
+                        </div>
+                        <titulo class="card-text">${produto.nome}</titulo>
+                        <div class="avaliacao">
+                          <div class="stars-outer">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <div class="stars-inner" style="width: ${avaliacaoPerc}%">
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                              <i class="fas fa-star"></i>
+                            </div>
+                          </div>
+                          <span>${avaliacao}</span>
+                          <span>(${quantidadeAvaliacoes})</span>
+                        </div>
+                        <preco>R$${produto.valor.toFixed(2)}</preco>
+                        <a href="/produtos/${produto.id}">Saiba Mais...</a>`
+                    row.appendChild(cardProduto);
+                })
+            })
+    }
+
+}
+
 const navegarCheckout = () => {
     window.location.href = "http://localhost:3000/pedidos/checkout";
 }
 
 adicionarListeners();
 renderizar();
+compreTambem();

@@ -1,4 +1,4 @@
-const { sequelize, ImagensDeProduto, AvaliacoesDeProdutos, Pedido, Usuario, Loja, 
+const { sequelize, ImagensDeProduto, AvaliacoesDeProdutos, Pedido, Usuario, Loja,
     Endereco, Pagamento, Entrega, PedidoProduto, Produto } = require('../database/models');
 
 var moment = require('moment');
@@ -7,7 +7,7 @@ module.exports = {
     pedido: async (req, res) => {
         let usuario = req.session.usuario;
 
-        if(!usuario){
+        if (!usuario) {
             return res.redirect('/usuarios/logar');
         }
 
@@ -37,16 +37,16 @@ module.exports = {
                 as: 'listaDeProdutos',
                 attributes: ['produtos_id', 'quantidade'],
                 include: [{
-                     model: Produto,
-                     as: 'produtos',
-                     attributes: ['nome', 'valor']
+                    model: Produto,
+                    as: 'produtos',
+                    attributes: ['nome', 'valor']
                 }]
-           }],
-            where: {usuarios_id: usuario.id}
+            }],
+            where: { usuarios_id: usuario.id }
         });
 
         let pedidosRealizados = [];
-        
+
         function lerPedidos(pedidos) {
             pedidos.forEach(pedido => {
                 pedido = pedido.toJSON();
@@ -56,10 +56,10 @@ module.exports = {
                 delete pedido.pagamentos_id;
                 delete pedido.entregas_id;
                 pedido.loja = pedido.loja.nome;
-                pedido.endereco = pedido.endereco.logradouro +', '+ pedido.endereco.numeral +' '+
-                pedido.endereco.complemento +' '+ pedido.endereco.cidade +' - '+ 
-                pedido.endereco.estado +' '+ pedido.endereco.cep;
-                pedido.usuario = pedido.usuario.nome +' '+ pedido.usuario.sobrenome;
+                pedido.endereco = pedido.endereco.logradouro + ', ' + pedido.endereco.numeral + ' ' +
+                    pedido.endereco.complemento + ' ' + pedido.endereco.cidade + ' - ' +
+                    pedido.endereco.estado + ' ' + pedido.endereco.cep;
+                pedido.usuario = pedido.usuario.nome + ' ' + pedido.usuario.sobrenome;
                 pedido.pagamento = pedido.pagamento.status;
                 pedido.entrega = pedido.entrega.data_prev;
                 pedido.listaDeProdutos = pedido.listaDeProdutos.map(produto => {
@@ -68,11 +68,11 @@ module.exports = {
                     delete produto.produtos_id;
                     delete produto.produtos;
 
-                    return produto;  
+                    return produto;
                 });
-                    
+
                 pedidosRealizados.push(pedido);
-            }) 
+            })
         }
 
         lerPedidos(pedidos);
@@ -81,9 +81,9 @@ module.exports = {
     },
     detalhesPedido: async (req, res) => {
         let usuario = req.session.usuario;
-        let {id} = req.params;
+        let { id } = req.params;
 
-        if(!usuario){
+        if (!usuario) {
             return res.redirect('/usuarios/logar');
         }
 
@@ -109,29 +109,33 @@ module.exports = {
                 as: 'entrega',
                 attributes: ['data_prev', 'data_real']
             }],
-            where: {id}
+            where: { id }
         });
 
-        let listaProdutos = await PedidoProduto.findAll ({
+        let listaProdutos = await PedidoProduto.findAll({
             include: [{
                 model: Produto,
                 as: 'produtos',
                 attributes: ['nome', 'valor'],
-                include:[{
+                include: [{
                     model: ImagensDeProduto,
                     as: 'imagens',
                     attributes: ['image_url']
                 }]
-           }],
-           where: { pedidos_id: id }
+            }],
+            where: { pedidos_id: id }
 
         })
 
-        res.render('detalhes-pedido', {page: 'Detalhes do Pedido', usuario, pedido, listaProdutos, moment: moment});
+        res.render('detalhes-pedido', { page: 'Detalhes do Pedido', usuario, pedido, listaProdutos, moment: moment });
     },
     carrinho: async (req, res) => {
+        res.render('carrinho', { page: 'Carrinho' });
+    },
+    compreTambem: async (req, res) => {
 
-        // consultar os 12 produtos mais vendidos do site
+        let { ids, idLoja } = req.query;
+
         let produtos = await PedidoProduto.findAll({
             attributes: [
                 [sequelize.fn('sum', sequelize.col('quantidade')), 'quantidade_vendida'],
@@ -144,11 +148,17 @@ module.exports = {
                 model: Produto,
                 as: 'produtos',
                 attributes: ['id', 'nome', 'valor'],
+                where: sequelize.literal('`produtos`.`id` NOT IN (' + ids + ')'),
                 include: [{
                     model: ImagensDeProduto,
                     as: 'imagens',
                     attributes: ['image_url'],
                     limit: 1,
+                }, {
+                    model: Loja,
+                    as: 'lojas',
+                    attributes: ['id'],
+                    where: { id: idLoja },
                 }],
             }]
         })
@@ -195,6 +205,7 @@ module.exports = {
                 if (objeto.produtos.imagens[0]) {
                     objeto.imagem = objeto.produtos.imagens[0].image_url;
                 }
+                objeto.idLoja = objeto.produtos.lojas.id;
                 delete objeto.produtos;
                 if (objeto.avaliacoes) {
                     objeto.avaliacoes = objeto.avaliacoes.toJSON();
@@ -207,7 +218,8 @@ module.exports = {
         // formatar objeto de resposta para o front-end
         produtos = formatarObjeto(produtos);
 
-        res.render('carrinho', { page: 'Carrinho', produtos });
+        return res.send(produtos);
+
     },
     checkout: async (req, res) => {
         let usuario = req.session.usuario;
@@ -281,7 +293,7 @@ module.exports = {
     confirmacao: async (req, res) => {
         let usuario = req.session.usuario;
 
-        if(!usuario){
+        if (!usuario) {
             return res.redirect('/usuarios/logar');
         }
 
