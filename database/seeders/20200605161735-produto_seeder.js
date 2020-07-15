@@ -36,13 +36,13 @@ module.exports = {
       id: 6,
       lojas_id: 1,
       nome: 'Bolo de Prestígio',
-      valor: 5,
+      valor: 45,
       descricao: 'Bolo de 1kg sabor prestígio. O queridinho para toda a família!',
     }, {
       id: 7,
       lojas_id: 1,
       nome: 'Bolo de Nutella',
-      valor: 5,
+      valor: 8.5,
       descricao: 'Bolo de 1kg sabor nutella. Explosão de chocolate tamanho família!',
     }, {
       id: 8,
@@ -132,7 +132,7 @@ module.exports = {
       id: 22,
       lojas_id: 3,
       nome: 'Bolo de Milho Cremoso',
-      valor: 7,
+      valor: 25,
       descricao: 'Delicioso bolo de milho cremoso caseiro.',
     }, {
       id: 23,
